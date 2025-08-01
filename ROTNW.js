@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             activePage = ref('Sheet');
             activeTab = ref('profile'); // Reactive variable for active tab
             tabs = ref(['profile', 'combat', 'notes', 'inventory']); // Array of tabs
-            modal = ref(true); // Reactive variable for modal visibility
+            modal = ref(false); // Reactive variable for modal visibility
             modalTab = ref('TakeDamage');
             
 
