@@ -331,8 +331,45 @@ document.addEventListener('DOMContentLoaded', () => {
                         return iDamage;
                     }
 
-                    let remainingDamage = iDamage;
+                    // Calculate damage reduction based on front liner's guard
+                    let frontLiner = this.soldiers[0];
+                    let guardReduction = frontLiner.guard / 100;
+                    let reducedDamage = iDamage * (1 - guardReduction);
+                    let armyDamage = iDamage - reducedDamage;
 
+                    // Apply army damage to soldiers
+                    let remainingArmyDamage = armyDamage;
+                    let soldierIndex = 0;
+
+                    while (remainingArmyDamage > 0 && soldierIndex < this.soldiers.length) {
+                        let currentSoldier = this.soldiers[soldierIndex];
+                        let totalSoldierHealth = currentSoldier.maxHp * currentSoldier.units;
+                        
+                        if (remainingArmyDamage >= totalSoldierHealth) {
+                            // This soldier is completely destroyed
+                            remainingArmyDamage -= totalSoldierHealth;
+                            this.soldiers.splice(soldierIndex, 1);
+                            // Don't increment soldierIndex since we removed an element
+                        } else {
+                            // Damage this soldier partially
+                            let newTotalHealth = totalSoldierHealth - remainingArmyDamage;
+                            let newUnits = Math.ceil(newTotalHealth / currentSoldier.maxHp);
+                            let newHp = newTotalHealth - ((newUnits - 1) * currentSoldier.maxHp);
+                            
+                            // Update soldier stats
+                            currentSoldier.units = newUnits;
+                            currentSoldier.hp = newHp;
+                            
+                            remainingArmyDamage = 0;
+                        }
+                    }
+
+                    // If there's still damage after destroying all soldiers, return it to player
+                    if (remainingArmyDamage > 0) {
+                        reducedDamage += remainingArmyDamage;
+                    }
+
+                    return reducedDamage;
                 }
 
                 totalPower() {
