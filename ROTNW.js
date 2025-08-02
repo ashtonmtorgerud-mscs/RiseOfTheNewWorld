@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
             tabs = ref(['profile', 'combat', 'notes', 'inventory']); // Array of tabs
             modal = ref(false); // Reactive variable for modal visibility
             modalTab = ref('TakeDamage');
-            
 
             started = ref(true);
             introTab = ref(-1);
@@ -94,14 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         const parsed = parseFloat(operand);
                         parsedOperands.push(isNaN(parsed) ? 0 : parsed);
                     });
-
-
-
-
-                    // // Catch Variables
-                    // parsedOperands.forEach((operand, index) => {
-                        
-                    // });
 
 
                     // First, roll dice
@@ -428,7 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.name = iName;
                     this.description = iDescription;
                     this.rollNames = iRollnames;
-                    this.rolls = iRolls;
+                    this.rolls = iRolls || [];
                     this.aoe = [
                         [0, 0, 1, 0, 0],
                         [0, 1, 1, 1, 0],
@@ -458,7 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.affinities = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]; // Array of affinities (resistances)
                     this.skillPotential = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     this.profile = [];
-                    this.skills = ['', '', '', '', '', '', '', '']; // Array of skills
+                    this.skills = []; // Array of skills
                     this.contract = ''; // Contract with a demon
                     this.buffs = [0, 0, 0]; // Buffs for St, Ma, Vi, Ag, Lu
                     this.weapon = ['Bare Hands', [],]; // Array of weapons
@@ -476,6 +467,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.affinitiesBooster = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     this.skillPotentialBoost = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     this.affinitiesDamageBooster = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+
+                    for (let i = 0; i < 8; i++){
+                        this.skills.push(new Skill("", "", [], []));
+                    }
 
                 }
 
@@ -497,14 +493,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.affinitiesBooster = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     this.skillPotentialBoost = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     this.DamageBooster = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                    this.checkBoxes = [];
+
+
                     this.accessories.forEach(accessory => {
+                        this.checkBoxes.push(accessory[1]);
+                    });
+                    this.skills.forEach(skill => {
+                        skill.rolls.forEach(roll => {
+                            this.checkBoxes.push(roll);
+                        })
+                        
+                    });
+
+
+                    this.checkBoxes.forEach(checkBox => {
                         try {
-                            if(accessory[1].startsWith("+") || accessory[1].startsWith("-")){
+                            if(checkBox.startsWith("+") || checkBox.startsWith("-")){
                                 
                                 // Variable Declaration
                                 let percentage = false;
                                 let percentageBoost = 1;
-                                if (accessory[1].split(' ')[0].endsWith('%')) { percentage = true; }
+                                if (checkBox.split(' ')[0].endsWith('%')) { percentage = true; }
                                 let valueBoost = parseInt(accessory[1].split(' ')[0]);
                                 let attributeBoost = accessory[1].split(' ')[1].toLowerCase();
 
@@ -776,7 +786,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else if (messageInput.value.startsWith('/clear')) {
                         // Handle other commands starting with "/"
                         log.value = [];
-                    } else if (messageInput.value.startsWith('/DeleteDemon')){
+                    } else if (messageInput.value.startsWith('/deletedemon')){
 
                     // Delete Demon
                     let index = parseInt(lowercaseMessage.slice(12).trim()) || 0;
@@ -847,6 +857,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     .map(char => futharkMap[char] || char)
                     .join('');
             }
+
+            class damageTaker{
+                constructor(){
+                    this.resistanceReduce = true;
+                    this.defenseReduce = true;
+                    this.armyReduce = true;
+                    this.coefficient = 1;
+
+                    this.takeDamage = (damage) => {
+                        messageInput = damage.toString();
+                        if (this.resistanceReduce){
+                            messageInput = '(' + messageInput + '*' 
+                        }
+                        
+                    }
+
+                }
+
+            } 
+
+
 
             function downloadFutharkFile(inputText, filename = "ᚠᚢᛏᚺᚨᚱᚴᛟᚢᛏᛈᚢᛏ.txt") {
                 const transliterated = transliterateToFuthark(inputText);
