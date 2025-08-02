@@ -331,8 +331,45 @@ document.addEventListener('DOMContentLoaded', () => {
                         return iDamage;
                     }
 
-                    let remainingDamage = iDamage;
+                    // Calculate damage reduction based on front liner's guard
+                    let frontLiner = this.soldiers[0];
+                    let guardReduction = frontLiner.guard / 100;
+                    let reducedDamage = iDamage * (1 - guardReduction);
+                    let armyDamage = iDamage - reducedDamage;
 
+                    // Apply army damage to soldiers
+                    let remainingArmyDamage = armyDamage;
+                    let soldierIndex = 0;
+
+                    while (remainingArmyDamage > 0 && soldierIndex < this.soldiers.length) {
+                        let currentSoldier = this.soldiers[soldierIndex];
+                        let totalSoldierHealth = currentSoldier.maxHp * currentSoldier.units;
+                        
+                        if (remainingArmyDamage >= totalSoldierHealth) {
+                            // This soldier is completely destroyed
+                            remainingArmyDamage -= totalSoldierHealth;
+                            this.soldiers.splice(soldierIndex, 1);
+                            // Don't increment soldierIndex since we removed an element
+                        } else {
+                            // Damage this soldier partially
+                            let newTotalHealth = totalSoldierHealth - remainingArmyDamage;
+                            let newUnits = Math.ceil(newTotalHealth / currentSoldier.maxHp);
+                            let newHp = newTotalHealth - ((newUnits - 1) * currentSoldier.maxHp);
+                            
+                            // Update soldier stats
+                            currentSoldier.units = newUnits;
+                            currentSoldier.hp = newHp;
+                            
+                            remainingArmyDamage = 0;
+                        }
+                    }
+
+                    // If there's still damage after destroying all soldiers, return it to player
+                    if (remainingArmyDamage > 0) {
+                        reducedDamage += remainingArmyDamage;
+                    }
+
+                    return reducedDamage;
                 }
 
                 totalPower() {
@@ -759,12 +796,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         let rawDamage = lowercaseMessage.slice(7).trim();
 
                         rawDamage = dMDAS(rawDamage);
-                        // //Reduce for Army
-                        // if (army.value.soldiers.length > 0) {
-                        //     armyReduction = Math.max(1, Math.ceil(rawDamage * (army.value.soldiers[0].guard * 0.01)));
-                        // }
 
-
+                        // Apply defense reduction from character stats and armor
                         rawDamage = Math.floor(
                             ((rawDamage *
                                 (1 - activeDemon.value.
@@ -775,13 +808,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         if (rawDamage < 1) { rawDamage = 1; }
 
-                        activeDemon.value.hp -= rawDamage;
+                        // Apply army damage reduction if army exists
+                        let finalDamage = rawDamage;
+                        if (army.value.soldiers.length > 0) {
+                            finalDamage = army.value.takeDamage(rawDamage);
+                        }
+
+                        // Apply remaining damage to player
+                        activeDemon.value.hp -= finalDamage;
 
                         if (activeDemon.value.hp < 0) { activeDemon.value.hp = 0; }
 
-
                         // Handle other commands starting with "/"
-                        log.value.push(`Command executed: ${lowercaseMessage.trim()} ` + rawDamage + 'damage taken');
+                        log.value.push(`Command executed: ${lowercaseMessage.trim()} ` + finalDamage + ' damage taken (after army reduction)');
 
                     } else if (messageInput.value.startsWith('/clear')) {
                         // Handle other commands starting with "/"
