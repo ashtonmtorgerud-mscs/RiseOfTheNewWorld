@@ -772,8 +772,8 @@
                     <div class="flex flex-wrap ">
 
                         <!-- Demon Cards -->
-                        <div class="w-1/4 p-2 " v-for="demon in demonList">
-                            <div class="w-full aspect-[16/9] ring-2 rounded-2xl bg-blue-950 ring-indigo-500 overflow-hidden hoverPop"
+                        <div class="w-1/4 p-2 " v-for="(demon, index) in demonList">
+                            <div class="w-full aspect-[16/9] ring-2 rounded-2xl bg-blue-950 overflow-hidden hoverPop" :class="index === 0 ? 'ring-cyan-200' : 'ring-indigo-600'"
                                 @click="activeDemon = demon">
                                 <div class="w-full flex flex-col">
                                     <div class="w-full h-1/5 px-2 pt-1 flex flex-row border-b-2 border-indigo-500">
@@ -839,7 +839,7 @@
                         </div>
                         <div class="w-1/4 p-2">
                             <div class="w-full aspect-[16/9] ring-2 rounded-2xl bg-slate-900 ring-slate-500 overflow-hidden p-5"
-                                @click="characterCreator.createDemon('New Demon')">
+                                @click="characterCreator.createDemon('New Demon'); activeDemon = demonList[demonList.length-1]; activePage='Editor'">
                                 <div class="h-3/4 aspect-square rounded-full mx-auto">
                                     <img src="./Resources/DemonIcon.png"
                                         class="w-full h-full object-fit rounded-full ring-2 ring-slate-500 pixel-art"
@@ -975,10 +975,9 @@
                         <div class="h-full w-2/3 overflow-y-auto p-4 space-y-4">
 
 
-                            <p class="text-4xl font-bold text-emerald-400 border-b-2 mb-2 border-indigo-500"> Active
-                                Soldiers</p>
-                            <div v-for="(soldier, index) in army.soldiers || []" :key="index"
-                                class="bg-slate-900 text-white rounded-2xl ring-2 ring-cyan-600 flex items-center p-4 space-x-4 flex flex-row">
+                            <p class="text-4xl font-bold text-emerald-400 border-b-2 mb-2 border-indigo-500"> Active Soldiers</p>
+                            <div v-for="(soldier, index) in army.soldiers || []" :key="index" :class="index === 0 ? 'ring-yellow-300' : 'ring-cyan-600'"
+                                class="bg-slate-900 text-white rounded-2xl ring-2 flex items-center p-4 space-x-4 flex flex-row">
 
                                 <div class="flex flex-ro flex items-center p-2 space-x-2 gap-2 w-2/3">
                                     <img :src="soldier.icon" alt="icon"
@@ -1491,13 +1490,7 @@
             </div>
         </div>
 
-
-
-
     </div>
 </body>
-
-
-
 
 </html>

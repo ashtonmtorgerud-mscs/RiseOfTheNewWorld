@@ -515,8 +515,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 let percentage = false;
                                 let percentageBoost = 1;
                                 if (checkBox.split(' ')[0].endsWith('%')) { percentage = true; }
-                                let valueBoost = parseInt(accessory[1].split(' ')[0]);
-                                let attributeBoost = accessory[1].split(' ')[1].toLowerCase();
+                                let valueBoost = parseInt(checkBox.split(' ')[0]);
+                                let attributeBoost = checkBox.split(' ')[1].toLowerCase();
 
                                 
 
@@ -568,7 +568,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 }
                                 
                             }
-                            console.log(accessory[1]);
+                            console.log(checkBox);
                         } catch (exception){
                             console.warn(exception)
                         }
@@ -798,9 +798,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                     // Ensure you're not deleting the first demon
-                    if (index > 0 && !activeDemon.main) {
+                    if (index > 0 && !activeDemon.value.main) {
                         demonList.value.splice(index, 1); // Remove the demon from the list
-                        activeDemon = demonList.value[0];  // Set activeDemon to the new first demon
+                        activeDemon.value = demonList.value[0];  // Set activeDemon to the new first demon
                         log.value.push('Demon Deleted');
                     } else if (index === 0) {
                         log.value.push('Cannot delete the first demon!');
