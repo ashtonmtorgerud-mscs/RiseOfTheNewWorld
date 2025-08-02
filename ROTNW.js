@@ -796,12 +796,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         let rawDamage = lowercaseMessage.slice(7).trim();
 
                         rawDamage = dMDAS(rawDamage);
-                        // //Reduce for Army
-                        // if (army.value.soldiers.length > 0) {
-                        //     armyReduction = Math.max(1, Math.ceil(rawDamage * (army.value.soldiers[0].guard * 0.01)));
-                        // }
 
-
+                        // Apply defense reduction from character stats and armor
                         rawDamage = Math.floor(
                             ((rawDamage *
                                 (1 - activeDemon.value.
@@ -812,13 +808,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         if (rawDamage < 1) { rawDamage = 1; }
 
-                        activeDemon.value.hp -= rawDamage;
+                        // Apply army damage reduction if army exists
+                        let finalDamage = rawDamage;
+                        if (army.value.soldiers.length > 0) {
+                            finalDamage = army.value.takeDamage(rawDamage);
+                        }
+
+                        // Apply remaining damage to player
+                        activeDemon.value.hp -= finalDamage;
 
                         if (activeDemon.value.hp < 0) { activeDemon.value.hp = 0; }
 
-
                         // Handle other commands starting with "/"
-                        log.value.push(`Command executed: ${lowercaseMessage.trim()} ` + rawDamage + 'damage taken');
+                        log.value.push(`Command executed: ${lowercaseMessage.trim()} ` + finalDamage + ' damage taken (after army reduction)');
 
                     } else if (messageInput.value.startsWith('/clear')) {
                         // Handle other commands starting with "/"
