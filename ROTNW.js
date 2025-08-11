@@ -4,11 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
         setup() {
 
 
-            activePage = ref('Sheet');
+            activePage = ref('Editor');
             activeTab = ref('profile'); // Reactive variable for active tab
             tabs = ref(['profile', 'combat', 'notes', 'inventory']); // Array of tabs
             modal = ref(false); // Reactive variable for modal visibility
             modalTab = ref('TakeDamage');
+            unlockedTabs = ref([true, true, false, true]);
 
             started = ref(true);
             introTab = ref(-1);
@@ -22,17 +23,44 @@ document.addEventListener('DOMContentLoaded', () => {
             function RollDice(dice, sides) {
                 let total = 0;
                 for (let i = 0; i < dice; i++) {
-                    total += Math.floor(Math.random() * sides+1);
+                    total += Math.floor(Math.random() * sides + 1);
                 }
                 return total;
             }
 
             function dMDAS(iCalculation) {
 
-
                 let calculation = iCalculation;
-                // console.log("dMDAS");
-                // Let it be known that I programmed this shit myself, the PdMDAS function was by my own two hands, I tried to get AI to do it and it couldn't. I see no God up here besides me!
+                // Flag if floor() is used
+                let useFloor = false;
+
+                // Check for floor() wrapper
+                if (calculation.toLowerCase().startsWith("floor(") && calculation.endsWith(")")) {
+                    useFloor = true;
+                    calculation = calculation.slice(6, -1); // remove 'floor(' and ')'
+                }
+
+                // Function to handle parentheses by recursively evaluating them
+                function evaluateParentheses(expression) {
+                    // Regex to find the innermost parentheses
+                    const regex = /\(([^()]+)\)/g;
+
+                    // Replace parentheses with evaluated results
+                    while (regex.test(expression)) {
+                        expression = expression.replace(regex, (match, subExpr) => {
+                            // Here, we call dMDAS to evaluate the expression inside the parentheses
+                            return dMDAS(subExpr);
+                        });
+                    }
+
+                    return expression;
+                }
+
+                // First, process the expression to handle parentheses
+                calculation = evaluateParentheses(calculation);
+
+
+
                 if (calculation.includes("+") || calculation.includes("+") || calculation.includes("*") || calculation.includes("/") || calculation.includes("d")) {
 
                     // Gather Variables
@@ -44,49 +72,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-                    
+                    console.log("activedemon damage booster", activeDemon.value.damageBooster[0]);
                     // Parse Opperands
                     operands.forEach(operand => {
                         operand = operand.trim().toLowerCase();
 
                         // Match known keywords
                         switch (operand) {
-                            case "str": case "st":
-                                parsedOperands.push(activeDemon.value.stats[0]+activeDemon.value.statsBooster[0]);
-                                return;
-                            case "mag": case "ma":
-                                parsedOperands.push(activeDemon.value.stats[1]+activeDemon.value.statsBooster[1]);
-                                return;
-                            case "vit": case "vi":
-                                parsedOperands.push(activeDemon.value.stats[2]+activeDemon.value.statsBooster[2]);
-                                return;
-                            case "agi": case "ag":
-                                parsedOperands.push(activeDemon.value.stats[3]+activeDemon.value.statsBooster[3]);
-                                return;
-                            case "luc": case "lu":
-                                parsedOperands.push(activeDemon.value.stats[4]+activeDemon.value.statsBooster[4]);
-                                return;
-                            case "hp":
-                                parsedOperands.push(activeDemon.value.hp);
-                                return;
-                            case "mhp":
-                                parsedOperands.push(activeDemon.value.maxHp+activeDemon.value.hpBooster);
-                                return;
-                            case "mp":
-                                parsedOperands.push(activeDemon.value.mp);
-                                return;
-                            case "mmp":
-                                parsedOperands.push(activeDemon.value.maxMp+activeDemon.value.mpBooster);
-                                return;
-                            case "t":
-                                parsedOperands.push(activeDemon.value.buffs[0]);
-                                return;
-                            case "r":
-                                parsedOperands.push(activeDemon.value.buffs[1]);
-                                return;
-                            case "s":
-                                parsedOperands.push(activeDemon.value.buffs[2]);
-                                return;
+
+                            // Stats
+                            case "str": case "st": parsedOperands.push(activeDemon.value.stats[0] + activeDemon.value.statsBooster[0]); return;
+                            case "mag": case "ma": parsedOperands.push(activeDemon.value.stats[1] + activeDemon.value.statsBooster[1]); return;
+                            case "vit": case "vi": parsedOperands.push(activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]); return;
+                            case "agi": case "ag": parsedOperands.push(activeDemon.value.stats[3] + activeDemon.value.statsBooster[3]); return;
+                            case "luc": case "lu": parsedOperands.push(activeDemon.value.stats[4] + activeDemon.value.statsBooster[4]); return;
+                            case "hp": parsedOperands.push(activeDemon.value.hp); return;
+                            case "mhp": parsedOperands.push(activeDemon.value.maxHp + activeDemon.value.hpBooster); return;
+                            case "mp": parsedOperands.push(activeDemon.value.mp); return;
+                            case "mmp": parsedOperands.push(activeDemon.value.maxMp + activeDemon.value.mpBooster); return;
+
+                            // Buffs
+                            case "t": parsedOperands.push(activeDemon.value.buffs[0]); return;
+                            case "r": parsedOperands.push(activeDemon.value.buffs[1]); return;
+                            case "s": parsedOperands.push(activeDemon.value.buffs[2]); return;
+                            case "c": parsedOperands.push(activeDemon.value.coefficient); return;
+                            case "o": parsedOperands.push(activeDemon.value.damageBooster[0]); return;
+
+                            // Damage Boosters (renamed to use 'power' to avoid dice parsing issues)
+                            case ("strikepower"): case ("stkpwr"): parsedOperands.push(activeDemon.value.damageBooster[0]); return;
+                            case ("slashpower"): case ("slhpwr"): parsedOperands.push(activeDemon.value.damageBooster[1]); return;
+                            case ("piercepower"): case ("prcpwr"): parsedOperands.push(activeDemon.value.damageBooster[2]); return;
+                            case ("firepower"): case ("firpwr"): parsedOperands.push(activeDemon.value.damageBooster[3]); return;
+                            case ("icepower"): case ("icepwr"): parsedOperands.push(activeDemon.value.damageBooster[4]); return;
+                            case ("elecpower"): case ("elcpwr"): parsedOperands.push(activeDemon.value.damageBooster[5]); return;
+                            case ("forcepower"): case ("frcpwr"): parsedOperands.push(activeDemon.value.damageBooster[6]); return;
+                            case ("toxicpower"): case ("toxpwr"): parsedOperands.push(activeDemon.value.damageBooster[7]); return;
+                            case ("psychicpower"): case ("psypwr"): parsedOperands.push(activeDemon.value.damageBooster[8]); return;
+                            case ("lightpower"): case ("lgtpwr"): parsedOperands.push(activeDemon.value.damageBooster[9]); return;
+                            case ("darkpower"): case ("drkpwr"): parsedOperands.push(activeDemon.value.damageBooster[10]); return;
+                            case ("almightypower"): case ("almpwr"): parsedOperands.push(activeDemon.value.damageBooster[11]); return;
+
+                            // Skill Potential
+                            case ("strikepotential"): case ("stkpot"): parsedOperands.push(activeDemon.value.skillPotential[0] + activeDemon.value.skillPotentialBoost[0]); return;
+                            case ("slashpotential"): case ("slhpot"): parsedOperands.push(activeDemon.value.skillPotential[1] + activeDemon.value.skillPotentialBoost[1]); return;
+                            case ("piercepotential"): case ("prcpot"): parsedOperands.push(activeDemon.value.skillPotential[2] + activeDemon.value.skillPotentialBoost[2]); return;
+                            case ("firepotential"): case ("firpot"): parsedOperands.push(activeDemon.value.skillPotential[3] + activeDemon.value.skillPotentialBoost[3]); return;
+                            case ("icepotential"): case ("icepot"): parsedOperands.push(activeDemon.value.skillPotential[4] + activeDemon.value.skillPotentialBoost[4]); return;
+                            case ("elecpotential"): case ("elcpot"): parsedOperands.push(activeDemon.value.skillPotential[5] + activeDemon.value.skillPotentialBoost[5]); return;
+                            case ("forcepotential"): case ("frcpot"): parsedOperands.push(activeDemon.value.skillPotential[6] + activeDemon.value.skillPotentialBoost[6]); return;
+                            case ("toxicpotential"): case ("toxpot"): parsedOperands.push(activeDemon.value.skillPotential[7] + activeDemon.value.skillPotentialBoost[7]); return;
+                            case ("psychicpotential"): case ("psypot"): parsedOperands.push(activeDemon.value.skillPotential[8] + activeDemon.value.skillPotentialBoost[8]); return;
+                            case ("lightpotential"): case ("lgtpot"): parsedOperands.push(activeDemon.value.skillPotential[9] + activeDemon.value.skillPotentialBoost[9]); return;
+                            case ("darkpotential"): case ("drkpot"): parsedOperands.push(activeDemon.value.skillPotential[10] + activeDemon.value.skillPotentialBoost[10]); return;
+                            case ("almightypotential"): case ("almpot"): parsedOperands.push(activeDemon.value.skillPotential[11] + activeDemon.value.skillPotentialBoost[11]); return;
+                            case ("ailmentpotential"): case ("ailpot"): parsedOperands.push(activeDemon.value.skillPotential[12] + activeDemon.value.skillPotentialBoost[12]); return;
+                            case ("healingpotential"): case ("hlgpot"): parsedOperands.push(activeDemon.value.skillPotential[13] + activeDemon.value.skillPotentialBoost[13]); return;
+                            case ("tacticalpotential"): case ("tacpot"): parsedOperands.push(activeDemon.value.skillPotential[14] + activeDemon.value.skillPotentialBoost[14]); return;
+
+                            // Damage Resistances
+                            case ("strikeresistance"): case ("stkres"): parsedOperands.push(activeDemon.value.affinitiesBooster[0]); return;
+                            case ("slashresistance"): case ("slhres"): parsedOperands.push(activeDemon.value.affinitiesBooster[1]); return;
+                            case ("pierceresistance"): case ("prcres"): parsedOperands.push(activeDemon.value.affinitiesBooster[2]); return;
+                            case ("fireresistance"): case ("firres"): parsedOperands.push(activeDemon.value.affinitiesBooster[3]); return;
+                            case ("iceresistance"): case ("iceres"): parsedOperands.push(activeDemon.value.affinitiesBooster[4]); return;
+                            case ("elecresistance"): case ("elcres"): parsedOperands.push(activeDemon.value.affinitiesBooster[5]); return;
+                            case ("forceresistance"): case ("frcres"): parsedOperands.push(activeDemon.value.affinitiesBooster[6]); return;
+                            case ("toxicresistance"): case ("toxres"): parsedOperands.push(activeDemon.value.affinitiesBooster[7]); return;
+                            case ("psychicresistance"): case ("psyres"): parsedOperands.push(activeDemon.value.affinitiesBooster[8]); return;
+                            case ("lightresistance"): case ("lgtres"): parsedOperands.push(activeDemon.value.affinitiesBooster[9]); return;
+                            case ("darkresistance"): case ("drkres"): parsedOperands.push(activeDemon.value.affinitiesBooster[10]); return;
+
+
+
+
                         }
 
                         // If not a variable, try to parse as number
@@ -331,46 +389,35 @@ document.addEventListener('DOMContentLoaded', () => {
                         return iDamage;
                     }
 
-                    // Calculate damage reduction based on front liner's guard
+                    // Calculate damage reduction from frontliner’s guard
                     let frontLiner = this.soldiers[0];
                     let guardReduction = frontLiner.guard / 100;
-                    let reducedDamage = iDamage * (1 - guardReduction);
-                    let armyDamage = iDamage - reducedDamage;
+                    let armyDamage = Math.ceil(iDamage * guardReduction);
+                    let returningDamage = Math.max(1, iDamage - armyDamage);
 
-                    // Apply army damage to soldiers
-                    let remainingArmyDamage = armyDamage;
-                    let soldierIndex = 0;
+                    // /damage 100
+                    while (armyDamage > 0 && this.soldiers.length > 0) {
 
-                    while (remainingArmyDamage > 0 && soldierIndex < this.soldiers.length) {
-                        let currentSoldier = this.soldiers[soldierIndex];
-                        let totalSoldierHealth = currentSoldier.maxHp * currentSoldier.units;
-                        
-                        if (remainingArmyDamage >= totalSoldierHealth) {
-                            // This soldier is completely destroyed
-                            remainingArmyDamage -= totalSoldierHealth;
-                            this.soldiers.splice(soldierIndex, 1);
-                            // Don't increment soldierIndex since we removed an element
+                        if (armyDamage >= this.soldiers[0].hp) {
+                            // Remove soldier entirely
+                            this.soldiers[0].units -= 1
+                            armyDamage -= this.soldiers[0].hp
+                            this.soldiers[0].hp = this.soldiers[0].maxHp;
+                            if (this.soldiers[0].units < 1) { this.soldiers.splice(0, 1) }
+                            // Don't increment index — next soldier now in current spot
                         } else {
-                            // Damage this soldier partially
-                            let newTotalHealth = totalSoldierHealth - remainingArmyDamage;
-                            let newUnits = Math.ceil(newTotalHealth / currentSoldier.maxHp);
-                            let newHp = newTotalHealth - ((newUnits - 1) * currentSoldier.maxHp);
-                            
-                            // Update soldier stats
-                            currentSoldier.units = newUnits;
-                            currentSoldier.hp = newHp;
-                            
-                            remainingArmyDamage = 0;
+                            // Apply damage across this soldier’s units
+                            this.soldiers[0].hp -= armyDamage;
+                            armyDamage = 0;
                         }
                     }
 
-                    // If there's still damage after destroying all soldiers, return it to player
-                    if (remainingArmyDamage > 0) {
-                        reducedDamage += remainingArmyDamage;
-                    }
+                    returningDamage += armyDamage;
 
-                    return reducedDamage;
+                    // If any damage is left, return it to apply to the demon
+                    return Math.ceil(returningDamage);
                 }
+
 
                 totalPower() {
                     let totalPower = 0;
@@ -431,6 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.units = iUnits;
                     this.endurance = iEndurance;
                     this.assaults = [new Assault('Skirmish', 'Physical', 10, 0), new Assault('Shield Wall', 'Tactical', 0, 1), new Assault('Arrow Rain', 'Physical', 4, 1)];
+                    this.editing = false;
                 }
 
 
@@ -439,20 +487,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             let army = ref(new Army([
-                new Soldier('Einherjar ShieldWaller', 50, 2, 20, 'Resources/DemonIcon.png', 20, 7),
-                new Soldier('Angels', 31, 3, 5, 'Resources/DemonIcon.png', 40, 3),
-                new Soldier('Virtues', 40, 5, 4, 'Resources/DemonIcon.png', 20, 5),
+                
+                new Soldier('Placeholder', 500000, 0, 0, 'Resources/DemonIcon.png', 1, 0)
+                // new Soldier('Einherjar ShieldWaller', 50, 2, 20, 'Resources/DemonIcon.png', 20, 7),
+                // new Soldier('Angels', 31, 3, 5, 'Resources/DemonIcon.png', 40, 3),
+                // new Soldier('Virtues', 40, 5, 4, 'Resources/DemonIcon.png', 20, 5),
+                // new Soldier('Zombie', 10, 1, 5, 'Resources/DemonIcon.png', 20, 0),
 
 
             ]));
-            army.value.soldiers[1].assaults = [new Assault('Skirmish', 'Physical', 10, 0), new Assault('Humble Blessing', 'Healing', 5, 1), new Assault('Heaven\'s Arrows', 'Light', 7, 3)];
+            // army.value.soldiers[1].assaults = [new Assault('Skirmish', 'Physical', 10, 0), new Assault('Humble Blessing', 'Healing', 5, 1), new Assault('Heaven\'s Arrows', 'Light', 7, 3)];
 
 
 
             // Demon class definition
 
             class Skill {
-                constructor(iName, iDescription, iRollnames, iRolls ) {
+                constructor(iName, iDescription, iRollnames, iRolls) {
                     this.name = iName;
                     this.description = iDescription;
                     this.rollNames = iRollnames;
@@ -464,6 +515,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         [0, 1, 1, 1, 0],
                         [0, 0, 1, 0, 0]
                     ]
+                }
+                checkRolls() {
+                    console.log("Got Here");
+                    for (let i = this.rolls.length - 1; i >= 0; i--) {
+                    const rollValue = this.rolls[i]?.toString().trim();
+                    const rollName = this.rollNames[i]?.toString().trim();
+                    if (!rollValue && !rollName) {
+                        this.rolls.splice(i, 1);
+                        this.rollNames.splice(i, 1);
+                    }
+                    }
                 }
             }
 
@@ -480,6 +542,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.maxHp = Math.floor(50 + (this.stats[2] + this.level + (this.stats[4] / 10)) * 7); // Maximum HP
                     this.hp = this.maxHp; // Current HP
                     this.maxMp = Math.floor(32 + ((this.stats[1] * 8) + (this.level) + (this.stats[4] / 4))); // Maximum MP
+                    this.bulwark = 0;
                     this.mp = this.maxMp // Current MP
                     this.exp = 0; // Current Experience Points
                     this.maxExp = 43; // Maximum Experience Points for level up
@@ -489,7 +552,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.skills = []; // Array of skills
                     this.contract = ''; // Contract with a demon
                     this.buffs = [0, 0, 0]; // Buffs for St, Ma, Vi, Ag, Lu
-                    this.weapon = ['Bare Hands', [],]; // Array of weapons
+                    this.weapon = new Skill('Bare Hands', 'An unarmed strike, inflicting weak strike damage to one foe', ['Aim', 'Damage'], ['/roll 1d100+ag', '/roll (C*(stkpwr*(1+T*0.2)*(6+6*(st/20))))d6']); // Array of weapons
                     this.armor = ['Clothes', 1, 2,]; // Array of armor
                     this.accessories = [['Watch', 'Tells the Time'], ['', ''], ['', '']]; // Array of accessories
                     this.growthRates = [2, 2, 2, 2, 2];
@@ -503,10 +566,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.mpBooster = 0;
                     this.affinitiesBooster = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     this.skillPotentialBoost = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                    this.affinitiesDamageBooster = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                    this.damageBooster = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+                    this.coefficient = 1;
 
-
-                    for (let i = 0; i < 8; i++){
+                    for (let i = 0; i < 8; i++) {
                         this.skills.push(new Skill("", "", [], []));
                     }
 
@@ -516,20 +579,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     let oldHP = this.maxHp;
                     this.maxHp = Math.floor(50 + (this.stats[2] + this.level + (this.stats[4] / 10)) * 7); // Maximum HP
                     this.hp += (this.maxHp - oldHP);
-                    // this.hp = this.maxHp; // Current HP
+                    
+                    let oldMP = this.maxMp;
                     this.maxMp = Math.floor(32 + ((this.stats[1] * 8) + (this.level) + (this.stats[4] / 4))); // Maximum MP
-                    // this.mp = this.maxMp // Current MP
+                    this.mp += (this.maxMp - oldMP);
 
                 }
 
 
-                getVariables(){
+                getVariables() {
                     this.statsBooster = [0, 0, 0, 0, 0];
                     this.hpBooster = 0;
                     this.mpBooster = 0;
-                    this.affinitiesBooster = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                    this.affinitiesBooster = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
                     this.skillPotentialBoost = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-                    this.DamageBooster = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+                    this.damageBooster = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
                     this.checkBoxes = [];
 
 
@@ -539,15 +603,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.skills.forEach(skill => {
                         skill.rolls.forEach(roll => {
                             this.checkBoxes.push(roll);
-                        })
-                        
+                        });
                     });
+                    // this.skills.forEach(skill => {
+                    //     skill.rolls.forEach(roll => {
+                    //         this.checkBoxes.push(roll);
+                    //     })
+                    // });
 
 
                     this.checkBoxes.forEach(checkBox => {
                         try {
-                            if(checkBox.startsWith("+") || checkBox.startsWith("-")){
-                                
+                            if (checkBox.startsWith("+") || checkBox.startsWith("-")) {
+
                                 // Variable Declaration
                                 let percentage = false;
                                 let percentageBoost = 1;
@@ -555,61 +623,81 @@ document.addEventListener('DOMContentLoaded', () => {
                                 let valueBoost = parseInt(checkBox.split(' ')[0]);
                                 let attributeBoost = checkBox.split(' ')[1].toLowerCase();
 
-                                
 
-                                switch (attributeBoost){
-                                    case ("hp"): if (percentage){ percentageBoost = this.maxHp/100 }; this.hpBooster += valueBoost*percentageBoost; break;
-                                    case ("mp"): if (percentage){ percentageBoost = this.maxMp/100 }; this.mpBooster += valueBoost*percentageBoost; break;
-                                    case ("str"): case ("st"): case ("strength"):  if (percentage){ percentageBoost = this.stats[0]/100 }; this.statsBooster[0] += Math.floor(valueBoost*percentageBoost); break;
-                                    case ("mag"): case ("ma"): case ("magic"):  if (percentage){ percentageBoost = this.stats[1]/100 }; this.statsBooster[1] += Math.floor(valueBoost*percentageBoost); break;
-                                    case ("vit"): case ("vi"): case ("vitality"):  if (percentage){ percentageBoost = this.stats[1]/100 }; this.statsBooster[2] += Math.floor(valueBoost*percentageBoost); break;
-                                    case ("agi"): case ("ag"): case ("agility"):  if (percentage){ percentageBoost = this.stats[1]/100 }; this.statsBooster[3] += Math.floor(valueBoost*percentageBoost); break;
-                                    case ("luc"): case ("lu"): case ("luck"):  if (percentage){ percentageBoost = this.stats[1]/100 }; this.statsBooster[4] += Math.floor(valueBoost*percentageBoost); break;
-                                    case ("strikedamage"): case ("stkdmg"): this.DamageBooster[0] += valueBoost; break;
-                                    case ("slashdamage"):  case ("slhdmg"): this.DamageBooster[1] += valueBoost; break;
-                                    case ("piercedamage"): case ("prcdmg"): this.DamageBooster[2] += valueBoost; break;
-                                    case ("firedamage"):   case ("firdmg"): this.DamageBooster[3] += valueBoost; break;
-                                    case ("icedamage"):    case ("icedmg"): this.DamageBooster[4] += valueBoost; break;
-                                    case ("elecdamage"):   case ("elcdmg"): this.DamageBooster[5] += valueBoost; break;
-                                    case ("forcedamage"):  case ("frcdmg"): this.DamageBooster[6] += valueBoost; break;
-                                    case ("toxicdamage"):  case ("toxdmg"): this.DamageBooster[7] += valueBoost; break;
-                                    case ("psychicdamage"):case ("psydmg"): this.DamageBooster[8] += valueBoost; break;
-                                    case ("lightdamage"):  case ("lgtdmg"): this.DamageBooster[9] += valueBoost; break;
-                                    case ("darkdamage"):   case ("drkdmg"): this.DamageBooster[10] += valueBoost; break;
+
+                                switch (attributeBoost) {
+                                    case ("hp"): if (percentage) { percentageBoost = this.maxHp / 100 }; this.hpBooster += valueBoost * percentageBoost; break;
+                                    case ("mp"): if (percentage) { percentageBoost = this.maxMp / 100 }; this.mpBooster += valueBoost * percentageBoost; break;
+                                    case ("str"): case ("st"): case ("strength"): if (percentage) { percentageBoost = this.stats[0] / 100 }; this.statsBooster[0] += Math.floor(valueBoost * percentageBoost); break;
+                                    case ("mag"): case ("ma"): case ("magic"): if (percentage) { percentageBoost = this.stats[1] / 100 }; this.statsBooster[1] += Math.floor(valueBoost * percentageBoost); break;
+                                    case ("vit"): case ("vi"): case ("vitality"): if (percentage) { percentageBoost = this.stats[2] / 100 }; this.statsBooster[2] += Math.floor(valueBoost * percentageBoost); break;
+                                    case ("agi"): case ("ag"): case ("agility"): if (percentage) { percentageBoost = this.stats[3] / 100 }; this.statsBooster[3] += Math.floor(valueBoost * percentageBoost); break;
+                                    case ("luc"): case ("lu"): case ("luck"): if (percentage) { percentageBoost = this.stats[4] / 100 }; this.statsBooster[4] += Math.floor(valueBoost * percentageBoost); break;
+                                    case ("strikepower"): case ("stkpwr"): this.damageBooster[0] += valueBoost; break;
+                                    case ("slashpower"): case ("slhpwr"): this.damageBooster[1] += valueBoost; break;
+                                    case ("piercepower"): case ("prcpwr"): this.damageBooster[2] += valueBoost; break;
+                                    case ("firepower"): case ("firpwr"): this.damageBooster[3] += valueBoost; break;
+                                    case ("icepower"): case ("icepwr"): this.damageBooster[4] += valueBoost; break;
+                                    case ("elecpower"): case ("elcpwr"): this.damageBooster[5] += valueBoost; break;
+                                    case ("forcepower"): case ("frcpwr"): this.damageBooster[6] += valueBoost; break;
+                                    case ("toxicpower"): case ("toxpwr"): this.damageBooster[7] += valueBoost; break;
+                                    case ("psychicpower"): case ("psypwr"): this.damageBooster[8] += valueBoost; break;
+                                    case ("lightpower"): case ("lgtpwr"): this.damageBooster[9] += valueBoost; break;
+                                    case ("darkpower"): case ("drkpwr"): this.damageBooster[10] += valueBoost; break;
                                     case ("strikepotential"): case ("stkpot"): this.skillPotentialBoost[0] += valueBoost; break;
-                                    case ("slashpotential"):  case ("slhpot"): this.skillPotentialBoost[1] += valueBoost; break;
+                                    case ("slashpotential"): case ("slhpot"): this.skillPotentialBoost[1] += valueBoost; break;
                                     case ("piercepotential"): case ("prcpot"): this.skillPotentialBoost[2] += valueBoost; break;
-                                    case ("firepotential"):   case ("firpot"): this.skillPotentialBoost[3] += valueBoost; break;
-                                    case ("icepotential"):    case ("icepot"): this.skillPotentialBoost[4] += valueBoost; break;
-                                    case ("elecpotential"):   case ("elcpot"): this.skillPotentialBoost[5] += valueBoost; break;
-                                    case ("forcepotential"):  case ("frcpot"): this.skillPotentialBoost[6] += valueBoost; break;
-                                    case ("toxicpotential"):  case ("toxpot"): this.skillPotentialBoost[7] += valueBoost; break;
-                                    case ("psychicpotential"):case ("psypot"): this.skillPotentialBoost[8] += valueBoost; break;
-                                    case ("lightpotential"):  case ("lgtpot"): this.skillPotentialBoost[9] += valueBoost; break;
-                                    case ("darkpotential"):   case ("drkpot"): this.skillPotentialBoost[10] += valueBoost; break;
+                                    case ("firepotential"): case ("firpot"): this.skillPotentialBoost[3] += valueBoost; break;
+                                    case ("icepotential"): case ("icepot"): this.skillPotentialBoost[4] += valueBoost; break;
+                                    case ("elecpotential"): case ("elcpot"): this.skillPotentialBoost[5] += valueBoost; break;
+                                    case ("forcepotential"): case ("frcpot"): this.skillPotentialBoost[6] += valueBoost; break;
+                                    case ("toxicpotential"): case ("toxpot"): this.skillPotentialBoost[7] += valueBoost; break;
+                                    case ("psychicpotential"): case ("psypot"): this.skillPotentialBoost[8] += valueBoost; break;
+                                    case ("lightpotential"): case ("lgtpot"): this.skillPotentialBoost[9] += valueBoost; break;
+                                    case ("darkpotential"): case ("drkpot"): this.skillPotentialBoost[10] += valueBoost; break;
                                     case ("almightypotential"): case ("almpot"): this.skillPotentialBoost[11] += valueBoost; break;
-                                    case ("ailmentpotential"):  case ("ailpot"): this.skillPotentialBoost[12] += valueBoost; break;
-                                    case ("healingpotential"):  case ("hlgpot"): this.skillPotentialBoost[13] += valueBoost; break;
+                                    case ("ailmentpotential"): case ("ailpot"): this.skillPotentialBoost[12] += valueBoost; break;
+                                    case ("healingpotential"): case ("hlgpot"): this.skillPotentialBoost[13] += valueBoost; break;
                                     case ("tacticalpotential"): case ("tacpot"): this.skillPotentialBoost[14] += valueBoost; break;
                                     case ("strikeresistance"): case ("stkres"): this.affinitiesBooster[0] += valueBoost; break;
-                                    case ("slashresistance"):  case ("slhres"): this.affinitiesBooster[1] += valueBoost; break;
+                                    case ("slashresistance"): case ("slhres"): this.affinitiesBooster[1] += valueBoost; break;
                                     case ("pierceresistance"): case ("prcres"): this.affinitiesBooster[2] += valueBoost; break;
-                                    case ("fireresistance"):   case ("firres"): this.affinitiesBooster[3] += valueBoost; break;
-                                    case ("iceresistance"):    case ("iceres"): this.affinitiesBooster[4] += valueBoost; break;
-                                    case ("elecresistance"):   case ("elcres"): this.affinitiesBooster[5] += valueBoost; break;
-                                    case ("forceresistance"):  case ("frcres"): this.affinitiesBooster[6] += valueBoost; break;
-                                    case ("toxicresistance"):  case ("toxres"): this.affinitiesBooster[7] += valueBoost; break;
-                                    case ("psychicresistance"):case ("psyres"): this.affinitiesBooster[8] += valueBoost; break;
-                                    case ("lightresistance"):  case ("lgtres"): this.affinitiesBooster[9] += valueBoost; break;
-                                    case ("darkresistance"):   case ("drkres"): this.affinitiesBooster[10] += valueBoost; break;
+                                    case ("fireresistance"): case ("firres"): this.affinitiesBooster[3] += valueBoost; break;
+                                    case ("iceresistance"): case ("iceres"): this.affinitiesBooster[4] += valueBoost; break;
+                                    case ("elecresistance"): case ("elcres"): this.affinitiesBooster[5] += valueBoost; break;
+                                    case ("forceresistance"): case ("frcres"): this.affinitiesBooster[6] += valueBoost; break;
+                                    case ("toxicresistance"): case ("toxres"): this.affinitiesBooster[7] += valueBoost; break;
+                                    case ("psychicresistance"): case ("psyres"): this.affinitiesBooster[8] += valueBoost; break;
+                                    case ("lightresistance"): case ("lgtres"): this.affinitiesBooster[9] += valueBoost; break;
+                                    case ("darkresistance"): case ("drkres"): this.affinitiesBooster[10] += valueBoost; break;
                                 }
-                                
+
                             }
                             console.log(checkBox);
-                        } catch (exception){
+                        } catch (exception) {
                             console.warn(exception)
                         }
                     });
+
+
+                    // Floor all booster values to prevent decimals
+
+                    // HP and MP
+                    this.hpBooster = Math.floor(this.hpBooster);
+                    this.mpBooster = Math.floor(this.mpBooster);
+
+                    // Stats (str, mag, vit, agi, luc)
+                    this.statsBooster = this.statsBooster.map(Math.floor);
+
+                    // Affinities (11 elements)
+                    this.affinitiesBooster = this.affinitiesBooster.map(Math.floor);
+
+                    // Skill Potentials (15 elements)
+                    this.skillPotentialBoost = this.skillPotentialBoost.map(Math.floor);
+
+                    // Damage Boosters (15 elements)
+                    this.damageBooster = this.damageBooster.map(Math.floor);
+
                 }
 
 
@@ -618,7 +706,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Create a new Demon instance
             let player = new Demon("Adam");
-            player.skills[0] = new Skill("Agi", "Mild fire damage to 1 foe", ['Aim', 'Damage'], ['/roll 1d100', '/roll 12d6'])
+            player.skills[0] = new Skill("Agi", "Mild fire damage to 1 foe", ['Cost', 'Aim', 'Damage'], ['/mp (10-1)', '/roll 1d100', '/roll 12d6'])
             player.getVariables();
 
             let demonList = ref([
@@ -640,41 +728,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                     // Check if the message starts with "/roll" 
-                    if (lowercaseMessage.startsWith('/roll')) {
+                    if (lowercaseMessage.startsWith('/roll') || lowercaseMessage.startsWith('/math')) {
 
                         // Extract the dice notation (e.g., "3d6 + 2d10 + (4 * 5)")
                         let calculation = lowercaseMessage.slice(5).trim();
                         calculation.replace(' ', '');
                         let total = 0;
-
-
-                        // Flag if floor() is used
-                        let useFloor = false;
-
-                        // Check for floor() wrapper
-                        if (calculation.toLowerCase().startsWith("floor(") && calculation.endsWith(")")) {
-                            useFloor = true;
-                            calculation = calculation.slice(6, -1); // remove 'floor(' and ')'
-                        }
-
-                        // Function to handle parentheses by recursively evaluating them
-                        function evaluateParentheses(expression) {
-                            // Regex to find the innermost parentheses
-                            const regex = /\(([^()]+)\)/g;
-
-                            // Replace parentheses with evaluated results
-                            while (regex.test(expression)) {
-                                expression = expression.replace(regex, (match, subExpr) => {
-                                    // Here, we call dMDAS to evaluate the expression inside the parentheses
-                                    return dMDAS(subExpr);
-                                });
-                            }
-
-                            return expression;
-                        }
-
-                        // First, process the expression to handle parentheses
-                        calculation = evaluateParentheses(calculation);
 
                         // Now call your dMDAS function to evaluate the expression (without parentheses)
                         total = dMDAS(calculation);
@@ -690,6 +749,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         ///Validate Data
                         if (isNaN(xpAmount) || xpAmount <= 0) {
+                            messageInput.value = "";
                             log.value.push('Invalid experience amount. Use format: /xp <amount>');
                             return;
                         }
@@ -737,13 +797,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             let oldMP = activeDemon.value.maxMp;
                             activeDemon.value.maxMp = Math.floor(32 + ((activeDemon.value.stats[1] * 8) + (activeDemon.value.level) + (activeDemon.value.stats[4] / 4)));
                             activeDemon.value.mp += (activeDemon.value.maxMp - oldMP);
+                            activeDemon.value.getVariables();
                         }
 
                         log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
                     } else if (lowercaseMessage.startsWith('/hp')) {
 
+
                         //include damage and healing
-                        let healthAmount = parseInt(messageInput.value.trim().match(/^\/(?:hp)\s+(-?\d+)/i)?.[1] || 0);
+                        let calculation = lowercaseMessage.slice(3).trim();
+                        calculation.replace(' ', '');
+                        let healthAmount = parseInt( dMDAS( calculation ));
+                        //include damage and healing
+                        // let healthAmount = parseInt(messageInput.value.trim().match(/^\/(?:hp)\s+(-?\d+)/i)?.[1] || 0);
 
 
                         if (isNaN(healthAmount)) {
@@ -754,12 +820,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                         activeDemon.value.hp += healthAmount;
-                        if (activeDemon.value.hp > activeDemon.value.maxHp+activeDemon.value.hpBooster) {
-                            activeDemon.value.hp = activeDemon.value.maxHp+activeDemon.value.hpBooster; // Cap the healing to max HP
+                        if (activeDemon.value.hp > activeDemon.value.maxHp + activeDemon.value.hpBooster) {
+                            activeDemon.value.hp = activeDemon.value.maxHp + activeDemon.value.hpBooster; // Cap the healing to max HP
                         }
 
-                        if (activeDemon.value.hp < -activeDemon.value.maxHp+activeDemon.value.hpBooster) {
-                            activeDemon.value.hp = -activeDemon.value.maxHp+activeDemon.value.hpBooster; // Prevent negative HP
+                        if (activeDemon.value.hp < -activeDemon.value.maxHp + activeDemon.value.hpBooster) {
+                            activeDemon.value.hp = -activeDemon.value.maxHp + activeDemon.value.hpBooster; // Prevent negative HP
                         }
 
 
@@ -769,17 +835,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else if (lowercaseMessage.startsWith('/mp')) {
 
                         //include damage and healing
-                        let manaAmount = parseInt(messageInput.value.trim().match(/^\/(?:mp)\s+(-?\d+)/i)?.[1] || 0);
+                        let calculation = lowercaseMessage.slice(3).trim();
+                        calculation.replace(' ', '');
+                        let manaAmount = parseInt( dMDAS( calculation ));
 
 
                         if (isNaN(manaAmount)) {
-                            log.value.push('Invalid health amount. Use format: /mp <amount>');
+                            log.value.push('Invalid mana amount. Use format: /mp <amount>');
+                            messageInput.value = "";
                             return;
                         }
 
                         activeDemon.value.mp += manaAmount;
-                        if (activeDemon.value.mp > activeDemon.value.maxMp+activeDemon.value.mpBooster) {
-                            activeDemon.value.mp = activeDemon.value.maxMp+activeDemon.value.mpBooster; // Cap the healing to max MP
+                        if (activeDemon.value.mp > activeDemon.value.maxMp + activeDemon.value.mpBooster) {
+                            activeDemon.value.mp = activeDemon.value.maxMp + activeDemon.value.mpBooster; // Cap the healing to max MP
                         }
 
                         if (activeDemon.value.mp < 0) {
@@ -792,27 +861,49 @@ document.addEventListener('DOMContentLoaded', () => {
                         log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
                     } else if (messageInput.value.startsWith('/damage')) {
 
+                        let input = messageInput.value.toLowerCase();
+                        let useArmy = true;
+                        let useResistance = true;
+                        let useRakukaja = true;
+
+                        if (input.includes("_noarmy")){
+                            useArmy = false;
+                            input = input.replace("_noarmy", "");
+                        }
+                        if (input.includes("_nores")){
+                            useResistance = false;
+                            input = input.replace("_nores", "");
+                        }
+                        if (input.includes("_noraku")){
+                            useRakukaja = false;
+                            input = input.replace("_noraku", "");
+                        }
+
                         //get the raw damage
-                        let rawDamage = lowercaseMessage.slice(7).trim();
+                        let rawDamage = input.slice(7).trim();
 
                         rawDamage = dMDAS(rawDamage);
 
+                        if (army.value.soldiers.length > 0 && useArmy) {
+                            rawDamage = army.value.takeDamage(rawDamage);
+                        }
+                        
+
+
+                        if (useRakukaja) {
+                            rawDamage *= 1-activeDemon.value.buffs[1]*0.2;
+                        }
+
                         // Apply defense reduction from character stats and armor
-                        rawDamage = Math.floor(
-                            ((rawDamage *
-                                (1 - activeDemon.value.
-                                    buffs[1] * 0.15))) *
-                            ((200 / (200 + ((activeDemon.value.stats[2] + activeDemon.value.armor[2]) *
-                                (1 + ((activeDemon.value.stats[2] + activeDemon.value.armor[2]) / 30))))))
-                        );
+                        if (useResistance){
+                            rawDamage = Math.floor( rawDamage * ((200 / (200 + ((activeDemon.value.stats[2] + activeDemon.value.armor[2]) * (1 + ((activeDemon.value.stats[2] + activeDemon.value.armor[2]) / 30)))))) );
+                        }
+                        
 
                         if (rawDamage < 1) { rawDamage = 1; }
-
                         // Apply army damage reduction if army exists
-                        let finalDamage = rawDamage;
-                        if (army.value.soldiers.length > 0) {
-                            finalDamage = army.value.takeDamage(rawDamage);
-                        }
+                        let finalDamage = parseInt(rawDamage) || 1;
+
 
                         // Apply remaining damage to player
                         activeDemon.value.hp -= finalDamage;
@@ -825,29 +916,44 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else if (messageInput.value.startsWith('/clear')) {
                         // Handle other commands starting with "/"
                         log.value = [];
-                    } else if (messageInput.value.startsWith('/deletedemon')){
+                    } else if (messageInput.value.startsWith('/deletedemon')) {
 
-                    // Delete Demon
-                    let index = parseInt(lowercaseMessage.slice(12).trim()) || 0;
-                    if (index == 0){
-                        messageInput.value = '';
-                    }
-
-                        
+                        // Delete Demon
+                        let index = parseInt(lowercaseMessage.slice(12).trim()) || 0;
+                        if (index == 0) {
+                            messageInput.value = '';
+                        }
 
 
-                    // Ensure you're not deleting the first demon
-                    if (index > 0 && !activeDemon.value.main) {
-                        demonList.value.splice(index, 1); // Remove the demon from the list
-                        activeDemon.value = demonList.value[0];  // Set activeDemon to the new first demon
-                        log.value.push('Demon Deleted');
-                    } else if (index === 0) {
-                        log.value.push('Cannot delete the first demon!');
-                    } else {
-                        log.value.push('Demon is a main demon and cannot be deleted');
-                    }
-                        
 
+
+                        // Ensure you're not deleting the first demon
+                        if (index > 0 && !activeDemon.value.main) {
+                            demonList.value.splice(index, 1); // Remove the demon from the list
+                            activeDemon.value = demonList.value[0];  // Set activeDemon to the new first demon
+                            log.value.push('Demon Deleted');
+                        } else if (index === 0) {
+                            log.value.push('Cannot delete the first demon!');
+                        } else {
+                            log.value.push('Demon is a main demon and cannot be deleted');
+                        }
+
+
+                    } else if (lowercaseMessage.startsWith('/print')) {
+                        console.log(activeDemon.value);
+
+                    } else if (lowercaseMessage.startsWith('/unlock')) {
+                        switch (lowercaseMessage.split(' ')[1]){
+                            case ('demon'): case ('demons'): unlockedTabs.value[1] = true; break;
+                            case ('army'): case ('armies'): unlockedTabs.value[2] = true; break;
+                            case ('edit'): case ('editor'): unlockedTabs.value[3] = true; break;
+                            case ('all'): case ('everything'): unlockedTabs.value[1] = true; unlockedTabs.value[2] = true; unlockedTabs.value[3] = true; break;
+                        }
+
+                    } else if (lowercaseMessage.startsWith('/recalculatevitals')) {
+                        activeDemon.value.recalculateVitals()
+                        // console.log('recalculateVitals');
+                        log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
                     } else if (messageInput.value.startsWith('/')) {
                         // Handle other commands starting with "/"
                         log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
@@ -897,8 +1003,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     .join('');
             }
 
-            class damageTaker{
-                constructor(){
+            class damageTaker {
+                constructor() {
                     this.resistanceReduce = true;
                     this.defenseReduce = true;
                     this.armyReduce = true;
@@ -906,15 +1012,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     this.takeDamage = (damage) => {
                         messageInput = damage.toString();
-                        if (this.resistanceReduce){
-                            messageInput = '(' + messageInput + '*' 
+                        if (this.resistanceReduce) {
+                            messageInput = '(' + messageInput + '*'
                         }
-                        
+
                     }
 
                 }
 
-            } 
+            }
 
 
 
@@ -932,7 +1038,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
 
-            return { activePage, activeTab, tabs, log, messageInput, sendMessage, demonList, activeDemon, player, getBuffShadowStyle, army, modal, started, introTab, readingText, startReading, startingAmbience, characterCreator, modalTab, selectedSkill, displaySkill };
+            return { activePage, activeTab, tabs, log, messageInput, sendMessage, demonList, activeDemon, player, getBuffShadowStyle, army, modal, started, introTab, readingText, startReading, startingAmbience, characterCreator, modalTab, selectedSkill, displaySkill, unlockedTabs };
 
 
         }
