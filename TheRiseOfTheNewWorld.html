@@ -663,7 +663,10 @@
                                                 class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
                                                 {{ keyword }}</p>
                                         </div>
-
+                                        <!-- <button type="button" class="rounded-2xl bg-emerald-700 text-white p-2" @click="dataMaster.printData" >Print</button>
+                                        <button type="button" class="rounded-2xl bg-emerald-700 text-white p-2" @click="dataMaster.updateFileData()" >Update</button>
+                                        <button type="button" class="rounded-2xl bg-emerald-700 text-white p-2" @click="dataMaster.saveData" >Save</button>
+                                        <button type="button" class="rounded-2xl bg-emerald-700 text-white p-2" @click="dataMaster.loadData" >Load</button> -->
 
                                     </div>
                                     <div v-else-if="activeTab === 'combat'" class="w-full h-full p-2">
@@ -686,7 +689,7 @@
 
                                         <div class="h-full w-full" id="">
                                             <!-- <div class="w-full border-b-2 border-indigo-500 bg-blue-900 text-2xl p-2" style="height: 10%;" > <p class="textOutlineBlackThin">Notes</p> </div> -->
-                                            <textarea class="h-full w-full bg-blue-950 resize-none rounded-b-xl p-2"
+                                            <textarea class="h-full w-full bg-blue-950 resize-none rounded-b-xl p-2" v-model="activeDemon.notes"
                                                 id=""></textarea>
                                         </div>
                                     </div>
