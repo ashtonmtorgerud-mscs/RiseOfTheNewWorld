@@ -186,3 +186,60 @@ body {
 }
 
 
+.tooltip {
+  position: relative;
+  /* cursor: help; */
+  /* border-bottom: 1px dotted white; */
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  /* font-family: 'YourCustomFont', sans-serif; */
+  font-size: 0.9rem;
+  background-color: black;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+
+/* Extended Tailwind Colors */
+
+/* Background Colors */
+.bg-maroon-50  { background-color: #fdf6f6; }
+.bg-maroon-100 { background-color: #f8eaea; }
+.bg-maroon-200 { background-color: #efcfcf; }
+.bg-maroon-300 { background-color: #df9d9d; }
+.bg-maroon-400 { background-color: #c96868; }
+.bg-maroon-500 { background-color: #a73838; } /* Base maroon */
+.bg-maroon-600 { background-color: #8d2d2d; }
+.bg-maroon-700 { background-color: #731f1f; }
+.bg-maroon-800 { background-color: #5c1515; }
+.bg-maroon-900 { background-color: #460c0c; }
+
+/* Text Colors (Optional) */
+.text-maroon-50  { color: #fdf6f6; }
+.text-maroon-100 { color: #f8eaea; }
+.text-maroon-200 { color: #efcfcf; }
+.text-maroon-300 { color: #df9d9d; }
+.text-maroon-400 { color: #c96868; }
+.text-maroon-500 { color: #a73838; }
+.text-maroon-600 { color: #8d2d2d; }
+.text-maroon-700 { color: #731f1f; }
+.text-maroon-800 { color: #5c1515; }
+.text-maroon-900 { color: #460c0c; }

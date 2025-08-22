@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Rules of the New World</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Resources/HeeHo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <link rel="stylesheet" href=".\ROTNW.css">
+    <!-- <script src="ROTNW.js"></script> -->
+    <script src="rules.js"></script>
+
+
+</head>
+
+
+
+<body class="" id="app">
+    <div class="totalBackground h-screen w-screen overflow-hidden p-5 select-none hidden lg:block">
+        <div class="text-white h-full container mx-auto text-center ring-2 ring-indigo-200 rounded-2xl bg-gradient-to-l from-cyan-800 to-blue-950 p-4">
+
+            <div class="p-2" v-if="page === 0">
+            <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400">Basics and Terms of the Rules</h1>
+                <p class="text-lg text-emerald-100 font-thin mt-2 text-left p-2">
+                    The Rise of the New World is a Virtual Table Top Role-Playing Game (VTT RPG) with elements from Shin Megami Tensei, Persona, and other JRPGs. The game rules are determined by Game Master (Ashton), with the rules written here 2nd in authority, and messages on other mediums like Discord from Ashton to be 3rd in authority.
+                    
+                    Each player (person at the virtual table) plays as a character, each character can freely describe what they like to do at any given time (within reason). The Game Master (GM) will then determine the outcome of the action, either by narration or by rolling dice. The GM is the final authority on all rules and actions within the game.
+                    If a character falls too far from the narrative of the game, the GM may ask the player to change their character or leave the game (You're free to run off and be a rice farmer, but don't expect me to narrate it).
+                    <br><br>
+                    Your starting character should be, in essence, a self insert. You can alter details like some physical characteristics, names, etc. But they should share your genuine moral beliefs.
+                    <br><br>
+                    Players will play as humans, becomming demon summoners. You can summon a demon you share a pact with, pacts must be formed by signing contract with demons.
+                    The game will have themes of morality, free will, and the nature of humanity.
+                    <br><br>
+                    Please be mindful of other players, don't interrupt them or the GM, don't hog the spotlight, and don't be disruptive. 
+                    <br><br>
+                    If a character is killed, the player may create a new character, but the new character starts at the start of the next sesion, the new character will have 95% of the previous character's exp. The character will also have new equipment, skills, demons, etc (written by the player in collaboration with the GM). After the first act of the game ends, players may no longer create new characters on death. If their characters die, they may spectate and play as NPC demons until either the end of the game or their character is revived.
+                </p>
+            </div>
+
+            <div class="" v-if="page === 1">
+            <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400">Setting and Themes</h1>
+                <p class="text-lg text-emerald-100 font-thin mt-2 text-left">
+                    
+                    The game takes place in the the real world in the current year. The setting is the Biblical apocalypse, with dieties from other religions and mythologies appearing as "demons".
+                    A "Demon" is any supernatural being that is not Yahweh, the God of the Bible (with some exceptions). Satan, Zeus, and even angels are collectively referred to as demons.
+                    <br><br>
+                    The apocalypse occured when "the veil" holding demons in Gehenna finally ripped, there are 5 main factions in the game, each holding their own beliefs for the solution to the apocalypse.
+                    Players will start neutral, and will have to choose a faction to side with at the end of the first act. Players may attempt to change their faction at any time, but doing so will have consequences.
+                    <ul class="list-disc list-inside text-emerald-100 font-thin mt-2 text-left">
+                        <li>Law: Lead by Metatron, seeks to not reestablish the veil, banishing demons back to Gehenna, and create an eternal theocratic kingdom</li>
+                        <li>Reincarnation: Lead by Zeus, seeks to have demons reborn as humans, and create a new world where demons and humans coexist.</li>
+                        <li>Cycle: Lead by Shiva, seeks to destroy the world as we know it and have a better world created in it's place</li>
+                        <li>Chaos: Lead by Lucifer, seeks to have demons and humans exist in a world together on Earth.</li>
+                        <li>Extermination: Lead by Napoleon Bonaparte, believes that humans should destroy the demons to reclaim their world, ungoverned by others</li>
+                    </ul>
+                    <p class="text-lg text-emerald-100 font-thin mt-2 text-left">In addiion, there are other smaller factions</p>
+                    <ul class="list-disc list-inside text-emerald-100 font-thin mt-2 text-left">
+                        <li>Peace: Lead by Siddhartha Gautama (the first Buddha), does not fight but aids all sides</li>
+                        <li>Feral: Aggressive beastial demons that attack on sight</li>
+                        <li>Unaligned: Independent groups that will often operate like others (conquering, defending, etc). Often lead by a charasmatic figure (Kahn, Napolean)</li>
+                    </ul>
+                    <br><br>
+                </p>
+            </div>
+
+            <div class="" v-if="page === 2">
+            <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400">Basic Stats</h1>
+                <p class="text-lg text-emerald-100 font-thin mt-2 text-left">
+                    
+                    The game takes place in the the real world in the current year. The setting is the Biblical apocalypse, with dieties from other religions and mythologies appearing as "demons".
+                    A "Demon" is any supernatural being that is not Yahweh, the God of the Bible (with some exceptions). Satan, Zeus, and even angels are collectively referred to as demons.
+                    <br><br>
+                    
+                    <br><br>
+                </p>
+            </div>
+
+
+            <div class="" v-if="page === 3">
+            <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400">Basic Combat</h1>
+                <p class="text-lg text-emerald-100 font-thin mt-2 text-left">
+                    When combat starts, the side with the higher total combat speed goes first (coinflip on tie) with battlespeed being determined by the agility of all active demons.
+                    During a combat, each side takes turns, having a number of turn press icons equal to the number of active demons on their side. Each turn press icon can be used to perform an action, such as attacking, using a skill, or using an item.
+                    Certian actions like passing turn swapping your active demon, or other use a half turn press icon. 
+                    <br><br>
+                    Using half a turn icon turns the the turn icon into a blinking turn icon, which can be used to perform a full action on the next turn. But if all the turn icons are blinking, using half a turn press icon removes a blinking turn press icon.
+                    <br><br>
+                    Each player can summon a demon they have a pact with, and can only summon one demon at a time. The demon takes the place of the player, and the player cannot activate skills, take damage, etc, though the player can still swap out their demon.
+                    (fractions are roundd down by default).
+                </p>
+            </div>
+
+            <div class="" v-if="page === 4">
+            <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400">Stats, Skills and Items</h1>
+                <p class="text-lg text-emerald-100 font-thin mt-2 text-left">
+                    Characters and demons have stats, which are used to determine the outcome of actions.
+                    <ul class="list-disc list-inside text-emerald-100 font-thin mt-2 text-left">
+                        <li>HP: Health Points, if a character's HP reaches 0, they are incapacitated if a player, and reduced to essence if a demon, and cannot act until they are revived with a skill such as recarm</li>
+                        <li>MP: Mana Points, used to perform skills</li>
+                        <li>Strength: Used to determine the damage of physical attacks</li>
+                        <li>Magic: Used to determine the damage of magical attacks and the amount of MP</li>
+                        <li>Vitality: Used to determine the demon's Max HP and their damage resistance</li>
+                        <li>Agility: Used to determine the speed in combat, evasion rate, and accuracy with physical skills</li>
+                        <li>Luck: All around stat, boosting HP & MP, resisting ailments, evasion, and increasing aim</li>
+                        <li>Affinities: Each demon has affinities, which determine their resistances and weaknesses to elements.</li>
+                        <li>Potential: Elemental potential is reduced the amount of MP consumed by a skill</li>
+                        <li>Skills: Each demon has skills, which are used to perform actions in combat.</li>
+                        <li>Items: Each character can carry items, which can be used to heal, buff, or debuff characters and demons.</li>
+                        <li>Equipment: Each player and demon has equipment, determining their default attack, defense, and other buffs</li>
+                        <li>Buffs: Each demon has buffs for ATK, DEF, and HIT. Each stat of these increases or decreases the effectiveness of their stats by 20%. Buffs remain active until the end of combat</li>
+                        <li>Resistance: Damage taken is reduced by the demons resistance, which is determined by a combination of Vitality, DEF, and Army Guard</li>
+                        <li>Evasion: How likely you are to dodge an attack. If an incoming attack's aim is lower than your evasion, the attack is dodged and you take no damage</li>
+                    </ul>
+                </p>
+                <p class="text-lg text-emerald-100 font-thin mt-2 text-left">
+                    Activating a skill that is not the weapon/default attack consumes MP. Then if it's an attck skill, the skill must be aimed against the target's evasion. If the skill can crit, the result of the die before the modifiers must be higher or equal to the crit rate. Then damage is inflicted to the enemy, increase the amount of dice rolled by 50% if the attack is a critical hit..
+                </p>
+            </div>
+
+            <div class="" v-if="page === 5">
+            <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400">Affinities</h1>
+                <p class="text-xl text-emerald-100 font-thin mt-2 text-left">
+                    Affinities are the elemental resistances and weaknesses of a demon. Each demon has 11 affinities, which are used to determine their resistances and weaknesses to elements.
+                    <br>
+                    Each ailment has a potency, which determines the chance of the ailment being applied. The potency is determined by the skill or item used, and the resistance of the target.
+                    When a demon is afflicted with an ailment, they will have a chance to resist the ailment based on their resistance to that ailment.
+                    If a demon would be afflicted with an ailment, it must roll to "Will" against it. The "Will" is determined by rolling a d100 and adding the demon's luck, and half the demon's vitality (floored). If the roll is higher than the remaining potency of the ailment, the demon resists it and the ailment does not apply.
+                    <br>
+                    Here is a list of ailments and their effects:
+                    <ul class="list-disc list-inside text-emerald-100 font-thin mt-2 text-left text-xl">
+                        <li>Strike (stk): Striking attacks, such as punches and kicks. (Sometimes referred to as striking or bludgeoning)</li>
+                        <li>Slash (slh): Slashing attacks, such as swords and axes.</li>
+                        <li>Pierce (prc): Piercing attacks, such as spears and bullets.</li>
+                        <li>Fire (fir): Fire attacks, from fire and heat</li>
+                        <li>Ice (ice): Ice attacks, from ice and cold sources. (sometimes referred to as cold)</li>
+                        <li>Electric (elc): Electric attacks, such as lightning and electricity. (Sometimes referred to as lightning)</li>
+                        <li>Force (frc): Force attacks, such as tornadoes and shockwaves. (Sometimes referred to as wind)</li>
+                        <li>Psionic (psi): Psionic attacks, such as telekinesis and mind control. (Sometimes referred to as telekinesis or psychic)</li>
+                        <li>Light (lgt): Light attacks, such as holy light and divine judgment. (Sometimes referred to as Holy)</li>
+                        <li>Gloom (glm): Gloom attacks, such as darkness and curses. (Sometimes referred to as Dark)</li>
+                        <li>Almighty (alm): Almighty attacks, such as divine retribution and judgment. Almighty damage cannot be resisted, nulled, repelled, or drained, even from sources like 'Makarakarn'</li>
+                        <li>Ailment (ail): Ailment attacks, such as poison and sleep. Ailment damage cannot be resisted, nulled, repelled, or drained, even from sources like 'Makarakarn'</li>
+                        <li>Healing (hlg): Healing skills restore HP, revive fallen allies, and cure ailments</li>
+                        <li>Tactical (tac): Tactical skills, such as buffs and debuffs.</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="" v-if="page === 6">
+            <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400">Ailments</h1>
+                <p class="text-xl text-emerald-100 font-thin mt-2 text-left">
+                    Ailments are negative effects that can be applied to characters and demons. They can be caused by skills, items, or other effects. Ailments can be cured by skills, items, or bathing in a Magahatsuhi Well.
+                    <br>
+                    Each ailment has a potency, which determines the chance of the ailment being applied. The potency is determined by the skill or item used, and the resistance of the target.
+                    When a demon is afflicted with an ailment, they will have a chance to resist the ailment based on their resistance to that ailment.
+                    If a demon would be afflicted with an ailment, it must roll to "Will" against it. The "Will" is determined by rolling a d100 and adding the demon's luck, and half the demon's vitality (floored). If the roll is higher than the remaining potency of the ailment, the demon resists it and the ailment does not apply.
+                    <br>
+                    Here is a list of ailments and their effects:
+                    <ul class="list-disc list-inside text-emerald-100 font-thin mt-2 text-left text-xl">
+                        <li>Mute: Cannot activate skills</li>
+                        <li>Burning: Takes damage at the start of each turn. The condition ends if the demon takes ice damage (including nulling or draining it, but not dodging)</li>
+                        <li>Freeze: Evasion and is reduced to 5 and cannot move in field battles</li>
+                        <li>Shock: The next attack that can crit automatically crits and the condition ends</li>
+                        <li>Poison: A demon inflicted with poison takes damage at the end of it's turn</li>
+                        <li>Sleep: Cannot act and it's evasion is reduced to 5. Condition ends if it takes any damage</li>
+                        <li>Confusion: At the start of each turn the demon must will against the remaining potency or attack a random ally with it's weapon. On a success, it's turn is skipped instead</li>
+                        <li>Charm: At the start of each turn the demon must will against the remaining potency or use a buff or recovery skill on the source of it's ailment. On a success, it's turn is skipped instead</li>
+                        <li>Mirage: The aim rate of attacks is halved, and attacks that would target a single foe hit a random foe instead.</li>
+                        <li>Fear: Must will against the remaining potency, having it's turn skipped on failure. Cannot Crit. Cannot move in field battles.</li>
+                        <li>Curse: Cannot recover HP or MP</li>
+                        <li>Rage: Must spend it's turn attacking a random enemy with it's weapon, and double the final damage number</li>
+                        <li>Exhaustion: MP is reduced by 10% of your max MP each turn, your movement, aim, and evasion are all reduced by half</li>
+                        <li>Enervation (Cancer): YUP, IT'S FUCKING BACK! DEAL HALF DAMAGE, TAKE AN EXTRA 50% DAMAGE, AND YOU CAN'T USE SKILLS. Go FUCK YOURSELF</li>
+                        <li>Mortal: HP is Immediately to 0</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="" v-if="page === 7">
+            <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400">Ailments</h1>
+                <p class="text-xl text-emerald-100 font-thin mt-2 text-left">
+                    Ailments are negative effects that can be applied to characters and demons. They can be caused by skills, items, or other effects. Ailments can be cured by skills, items, or bathing in a Magahatsuhi Well.
+                    <br>
+                    Each ailment has a potency, which determines the chance of the ailment being applied. The potency is determined by the skill or item used, and the resistance of the target.
+                    When a demon is afflicted with an ailment, they will have a chance to resist the ailment based on their resistance to that ailment.
+                    If a demon would be afflicted with an ailment, it must roll to "Will" against it. The "Will" is determined by rolling a d100 and adding the demon's luck, and half the demon's vitality (floored). If the roll is higher than the remaining potency of the ailment, the demon resists it and the ailment does not apply.
+                    <br>
+                    Here is a list of ailments and their effects:
+                    <ul class="list-disc list-inside text-emerald-100 font-thin mt-2 text-left text-xl">
+                        <li>Mute: Cannot activate skills</li>
+                        <li>Burning: Takes damage at the start of each turn. The condition ends if the demon takes ice damage (including nulling or draining it, but not dodging)</li>
+                        <li>Freeze: Evasion and is reduced to 5 and cannot move in field battles</li>
+                        <li>Shock: The next attack that can crit automatically crits and the condition ends</li>
+                        <li>Poison: A demon inflicted with poison takes damage at the end of it's turn</li>
+                        <li>Sleep: Cannot act and it's evasion is reduced to 5. Condition ends if it takes any damage</li>
+                        <li>Confusion: At the start of each turn the demon must will against the remaining potency or attack a random ally with it's weapon. On a success, it's turn is skipped instead</li>
+                        <li>Charm: At the start of each turn the demon must will against the remaining potency or use a buff or recovery skill on the source of it's ailment. On a success, it's turn is skipped instead</li>
+                        <li>Mirage: The aim rate of attacks is halved, and attacks that would target a single foe hit a random foe instead.</li>
+                        <li>Fear: Must will against the remaining potency, having it's turn skipped on failure. Cannot Crit. Cannot move in field battles.</li>
+                        <li>Curse: Cannot recover HP or MP</li>
+                        <li>Rage: Must spend it's turn attacking a random enemy with it's weapon, and double the final damage number</li>
+                        <li>Exhaustion: MP is reduced by 10% of your max MP each turn, your movement, aim, and evasion are all reduced by half</li>
+                        <li>Enervation (Cancer): YUP, IT'S FUCKING BACK! DEAL HALF DAMAGE, TAKE AN EXTRA 50% DAMAGE, AND YOU CAN'T USE SKILLS. Go FUCK YOURSELF</li>
+                        <li>Mortal: HP is Immediately to 0</li>
+                    </ul>
+                </p>
+            </div>
+
+            <input type="button" value="Previous" class="rounded-2xl bg-emerald-500 hover:bg-emerald-200 text-white font-bold px-4 py-2 m-2 float-left" v-if="page > 0" @click="page--">
+            <input type="button" value="Next" class="rounded-2xl bg-emerald-500 hover:bg-emerald-200 text-white font-bold px-4 py-2 m-2 float-left" v-if="page < 100" @click="page++">
+
+            <!-- Introduction -->
+
+
+
+            <!-- <div class="w-1/2 h-full bg-gradient-to-l from-sky-200 to-white textOutlineBlackThin rounded-l-xl"> {{page}}</div> -->
+            <!-- <div class="w-1/2 h-full bg-gradient-to-r from-sky-950 to-blue-900 textOutlineBlackThin rounded-r-xl ring-1 ring-teal-200">{{page+1}}</div> -->
+
+            <!--  -->
+        </div>
+
+    </div>
+</body>
+
+</html>

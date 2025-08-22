@@ -255,8 +255,6 @@
                     <button class="absolute bottom-5 right-5 bg-emerald-500 px-5 py-4 rounded-2xl font-bold"
                         @click="started=true, startingAmbience.pause()">Finish</button>
                 </div>
-
-
             </div>
         </div>
 
@@ -268,14 +266,36 @@
             style="z-index: 90000;" @click="modal = false" v-if="modal">
             <div class="w-2/3 h-2/3 rounded-3xl  bg-gray-800 flex border-2 border-indigo-500 shadow-lg shadow-indigo-500/100 ring-2 ring-indigo-500 p-5"
                 style="z-index: 90001;" @click.stop>
-                <div class="text-white" v-if="modalTab='TakeDamage'" style="z-index: 90002;">
-                    <h1 class="border-b-2 border-indigo-500 text-5xl font-bold mb-5 w-full" style="z-index: 90003;">Take
-                        Damage</h1>
-                    <div class="text-white">
-                        <div class="flex flex-row">
-                            <input type="text" name="" id=""
-                                class="rounded-2xl ring-2 ring-cyan-400 p-3 font-semibold bg-indigo-950 my-5">
-                            <div class=""></div>
+                <div class="text-white w-full" v-if="modalTab='import'" style="z-index: 90002;">
+                    <h1 class="border-b-2 border-indigo-500 text-5xl font-bold mb-5 w-full" style="z-index: 90003;">Import something...</h1>
+                    <div class="text-white h-1/2 my-3">
+                        <!-- /import -->
+                        <div class="flex flex-row h-full">
+                            <textarea name="" id="" v-model="dataMaster.modalstring" class="rounded-2xl ring-2 ring-cyan-400 p-3 font-semibold bg-indigo-950 my-5 w-full h-full max-h-full"></textarea>
+                        </div>
+                    </div>
+                    <div class="flex flex-row items-center">
+                        <div class="w-1/2 flex flex-row gap-2 ">
+                            <label class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5 ">From File<input type="file" @change="dataMaster.uploadFromFile" accept=".txt,.json,.dmn,.skl,.amy,.rnw" class="hidden"></label>
+                            <input type="button" value="Cancel" @click="modal = false" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5 flex-end">
+                        </div>
+
+                        <!-- Middle Div -->
+                        <div class="flex flex-col w-1/2">
+                            <label for="">Skill Slot:</label>
+                            <div class="flex flex-row">
+                                <input type="text" v-model="dataMaster.selectedSkill" id="" class="w-1/2 text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                            </div>
+                        </div>
+
+                        
+                        <div class="ml-auto w-1/2 flex items-end justify-end gap-2">
+                            
+                            <input type="button" @click="dataMaster.parseFromModal('save')" value="Save" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5 flex-end">
+                            <input type="button" @click="dataMaster.parseFromModal('demon')" value="Demon" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5">
+                            <input type="button" @click="dataMaster.parseFromModal('skill')" value="Skill" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5">
+                            <input type="button" v-if="unlockedTabs[2]" @click="dataMaster.parseFromModal('army')" value="Army" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5">
+                            <input type="button" v-if="unlockedTabs[2]" @click="dataMaster.parseFromModal('soldier')" value="Soldier" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5">
                         </div>
                     </div>
                 </div>
@@ -290,31 +310,31 @@
                         <div class="h-full flex gap-2 p-1">
                             <div
                                 class="rounded-xl bg-gray-800 h-full w-2/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
-                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 0.8</span>
+                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 0.9</span>
                                 </p>
                             </div>
                             <div @click="activePage = 'Sheet'" v-if="unlockedTabs[0]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/SheetIcon.png"
-                                    class="h-full aspect-square object-fit p-1 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-1 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Sheet</p>
                             </div>
                             <div @click="activePage = 'Demons'" v-if="unlockedTabs[1]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/DemonIcon.png"
-                                    class="h-full aspect-square object-fit p-2 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-2 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Demons</p>
                             </div>
                             <div @click="activePage = 'Army'" v-if="unlockedTabs[2]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/ArmyIcon.png"
-                                    class="h-full aspect-square object-fit p-2 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-2 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Army</p>
                             </div>
                             <div @click="activePage = 'Editor'" v-if="unlockedTabs[3]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/EditIcon.png"
-                                    class="h-full aspect-square object-fit p-2 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-2 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Edit</p>
                             </div>
                         </div>
@@ -326,7 +346,7 @@
 
                                 <!-- <p class="text-white text-6xl align-baseline font-thin">Lv</p>
                                 <p class="text-white text-7xl align-baseline font-bold">1</p> -->
-                                <div class="rounded-full bg-black h-full aspect-square ring-teal-300 ring-2 flex p-2">
+                                <div class="rounded-full bg-black h-full aspect-square ring-teal-300 ring-2 flex p-2" @click="messageInput = '/exp '" >
                                     <p
                                         class="absolute text-4xl font-bold text-blue-200 textOutlineBlack drop-shadow-[0_2px_8px_white] drop-shadow-[0_0px_0px_black]">
                                         LV</p>
@@ -499,20 +519,27 @@
                                         <div class="">
                                             <div class="flex flex-col items-center h-full">
                                                 <div class="">
-                                                    <div @click="messageInput = '/damage ' + ''"
-                                                        class="w-full bg-blue-950 aspect-square rounded-lg object-cover mb-1 border-2 border-indigo-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl hoverPop">
+                                                    <div @click="messageInput = '/damage (' + activeDemon.readAffinity(affinity) + '*' + activeDemon.affinitiesReducer[index] + ')*'"
+                                                        class="w-full bg-blue-950 aspect-square rounded-lg object-cover mb-1 border-2 border-indigo-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl hoverPop tooltip">
                                                         <img :src="'./Resources/AffinityIcon' + (index+1) + '.png'"
                                                             class="pulsingFilter" />
+                                                        <span class="tooltiptext">{{['Strike', 'Slash', 'Pierce', 'Fire', 'Ice', 'Electricity', 'Wind', 'Toxic', 'Psionic', 'Light', 'Gloom'][index]}}</span>
                                                     </div>
 
                                                 </div>
 
-                                                <div class="p-1 h-full w-full">
-                                                    <div
-                                                        class="rounded-lg bg-gray-700 flex items-center justify-center text-white font-semibold h-full w-full ring-2 ring-indigo-500 text-2xl textOutlineBlack shadow-lg shadow-indigo-500/50">
-                                                        {{ affinity }}
+                                                
+                                            <div class="p-1 h-full w-full">
+                                                <div class="tooltip h-full w-full">
+                                                    <div class="rounded-lg bg-gray-700 flex items-center justify-center text-white font-semibold h-full w-full ring-2 ring-indigo-500 text-2xl textOutlineBlack shadow-lg shadow-indigo-500/50">
+                                                    {{ affinity }}
                                                     </div>
+                                                    <span class="tooltiptext">{{['Strike', 'Slash', 'Pierce', 'Fire', 'Ice', 'Electricity', 'Wind', 'Toxic', 'Psionic', 'Light', 'Gloom'][index]}} Evasion: {{(Math.max(5,
+                                                Math.floor(((5+activeDemon.stats[3]+activeDemon.armor[2])*(1+(.2*activeDemon.buffs[2])))+(activeDemon.buffs[2]*5))*activeDemon.affinitiesEvasion[index]))}}</span>
                                                 </div>
+                                            </div>
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -563,10 +590,14 @@
                             class="rounded-xl box-shadow flex items-center justify-center h-3/4 w-full overflow-hidden">
                             <div class="grid grid-cols-2 grid-rows-4 grid-flow-col gap-2 w-full h-full p-1"
                                 v-if="!displaySkill">
+                                <!-- Make it so when hovers it plays a sound effect -->
                                 <div v-for="skill in activeDemon.skills" :key="skill.name"
                                     @click="selectedSkill = skill; displaySkill = !!skill.name"
                                     class="bg-gray-800 rounded-2xl flex items-center justify-center text-white font-semibold ring-2 ring-indigo-500 hoverPop">
-                                    {{ skill.name }}
+                                    <div class="h-full aspect-square object-cover p-2" v-if="skill.skillType > 0 && skill.skillType < 16">
+                                        <img :src="'./Resources/AffinityIcon' + (skill.skillType) + '.png'"  class="pulsingFilter" />
+                                    </div>
+                                    <p class="text-xl" >{{ skill.name }}</p>
                                 </div>
                             </div>
                             <div class="w-full h-full p-1" v-if="displaySkill">
@@ -584,7 +615,7 @@
                                             </div>
                                             <div class="p-3 h-full">
                                                 <p
-                                                    class="rounded-2xl bg-blue-900 p-3 min-h-full ring-2 ring-indigo-400">
+                                                    class="rounded-2xl bg-gradient-to-br from-blue-950 to-teal-950 p-3 min-h-full ring-1 ring-indigo-100">
                                                     {{selectedSkill.description}}</p>
                                             </div>
 
@@ -599,7 +630,7 @@
                                                 <div class="font-thin rounded-3xl  bg-gradient-to-r from-blue-900 to-sky-950 ring-1 ring-indigo-500 flex flex-row" v-if="selectedSkill.rollNames[index] != ''"
                                                     @click="messageInput = selectedSkill.rolls[index]">
                                                     <p class="p-2 overflow-hidden whitespace-nowrap text-ellipsis">{{selectedSkill.rolls[index]}}</p>
-                                                    <div @click.stop @click="messageInput = selectedSkill.rolls[index]; sendMessage(); console.log('boobies')"
+                                                    <div @click.stop @click="messageInput = selectedSkill.rolls[index]; sendMessage();"
                                                         class="rounded-full ring-2 ring-indigo-500 bg-indigo-700 ml-auto aspect-square h-full py-2">
                                                         <p class="text-center overflow-hidden">➤</p>
                                                     </div>
@@ -613,7 +644,7 @@
                     </div>
 
                     <!-- Profile, Notes, etc -->
-                    <div class="h-full w-1/3 p-1">
+                    <div class="h-full w-1/3 p-1" style="max-width: 33%;">
                         <div
                             class="bg-gray-800 rounded-xl box-shadow ring-2 ring-indigo-500 flex items-center justify-center h-full w-full text-white font-semibold flex flex-col">
                             <div class=" h-full w-full">
@@ -623,8 +654,8 @@
                                     <div class="w-full h-full flex flex-col justify-end">
                                         <div
                                             class="flex flex-row justify-center gap-1 md:gap-2 border-b-2 border-indigo-500 overflow-hidden">
-                                            <button v-for="tab in tabs" :key="tab" style="max-width: 25%;"
-                                                class="px-4 py-1 h-full w-1/4 rounded-t-lg font-bold text-xs sm:text-sm md:text-md lg:text-lg focus:outline-none"
+                                            <button v-for="tab in tabs" :key="tab" 
+                                                class="px-4 py-1 h-full w-1/3 rounded-t-lg font-bold text-xs sm:text-sm md:text-md lg:text-lg focus:outline-none"
                                                 :class="activeTab === tab ? 'bg-indigo-700 text-white ring-2-- ring-indigo-400' : 'bg-gray-700 text-gray-300'"
                                                 @click="activeTab = tab">
                                                 {{ tab.charAt(0).toUpperCase() + tab.slice(1) }}
@@ -669,20 +700,43 @@
                                         <button type="button" class="rounded-2xl bg-emerald-700 text-white p-2" @click="dataMaster.loadData" >Load</button> -->
 
                                     </div>
-                                    <div v-else-if="activeTab === 'combat'" class="w-full h-full p-2">
-                                        <p @click="selectedSkill = activeDemon.weapon; displaySkill = true;" class="text-emerald-400 text-xl font-semibold mb-2"> Weapon:</p>
-                                        <div @click="selectedSkill = activeDemon.weapon; displaySkill = true;" class="flex flex-row w-full">
-                                            <p 
-                                                class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
-                                                {{activeDemon.weapon.name }}</p>
+                                    <div v-else-if="activeTab === 'combat'" class="w-full h-full p-2 overflow-y-scroll">
+                                        <p @click="selectedSkill = activeDemon.weapon; displaySkill = true;" class="text-emerald-400 text-xl font-semibold mb-2 w-full border-b-2 border-indigo-500"> Weapon: </p>
+                                        <div @click="selectedSkill = activeDemon.weapon; displaySkill = true;" class="flex flex-row w-full gap-2 mb-2">
+                                             <div class="w-1/5 bg-blue-950 aspect-square rounded-lg object-cover mb-1 border-2 border-indigo-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl">
+                                                <img :src="'./Resources/WeaponIcon.png'" class="pulsingFilter" />
+                                            </div>
+                                            <p class="w-4/5 text-white text-lg rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 p-2 mb-1 ring-1 ring-indigo-500"> {{ activeDemon.weapon.name }} <br> <span class="block w-full font-thin text-sm truncate">{{ activeDemon.weapon.description }}</span></p>
                                         </div>
 
-                                        <p class="text-emerald-400 text-xl font-semibold mb-2"> Armor:</p>
+                                        <p class="text-emerald-400 text-xl font-semibold mb-2 w-full border-b-2 border-indigo-500"> Coefficient: </p>
+                                        <!-- Make the coefficient an equation -->
+                                        <input type="text" name="" id="" v-model="activeDemon.coefficient"
+                                            class="w-full text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500" />
+
+                                        <p class="text-emerald-400 text-xl font-semibold mb-2 w-full border-b-2 border-indigo-500" > Ailments: </p>
+                                        <div class="flex flex-row w-full gap-2 text-white text-lg font-thin rounded-full bg-gradient-to-r from-purple-950 to-fuchsia-950 ring-1 ring-indigo-500 items-center pr-2 mb-2" v-for="ailment in activeDemon.ailments">
+                                            <div class="w-1/6 bg-blue-950 aspect-square rounded-full object-cover border-2 shadow-lg shadow-indigo-500/50 hover:shadow-3xl border-indigo-500 hover:border-red-500 hoverPop">
+                                                <img :src="'./Resources/affinityIcon13.png'" class="pulsingFilter" @click="activeDemon.ailments.splice(index, 1)" />
+
+                                            </div>
+                                            
+                                            <input type="text" class="h-full w-1/2 text-white text-lg font-thin rounded-full bg-gradient-to-r from-green-950 to-blue-950 p-2 ring-1 ring-indigo-500" v-model="ailment[0]" />
+                                            <input type="text" class="h-full w-1/2 text-white text-lg font-thin rounded-full bg-gradient-to-r from-green-950 to-blue-950 p-2 ring-1 ring-indigo-500" v-model.number="ailment[1]" />
+                                            
+                                            
+                                        </div>
+                                        <div class="" @click="activeDemon.ailments.push(['New Ailment', 100])" v-if="activeDemon.ailments.length < 10">
+                                            Add Ailment
+                                        </div>
+
+
+                                        <!-- <p class="text-emerald-400 text-xl font-semibold mb-2"> Armor:</p>
                                         <div class="flex flex-row w-full">
                                             <p
                                                 class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
                                                 {{activeDemon.armor[0] }}</p>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div v-else-if="activeTab === 'notes'"
                                         class="w-full h-full flex flex-col items-center justify-center">
@@ -720,38 +774,38 @@
                         <div class="h-full flex gap-2 p-1">
                             <div
                                 class="rounded-xl bg-gray-800 h-full w-2/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
-                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 0.8</span>
+                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 0.9</span>
                                 </p>
                             </div>
                             <div @click="activePage = 'Sheet'" v-if="unlockedTabs[0]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/SheetIcon.png"
-                                    class="h-full aspect-square object-fit p-1 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-1 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Sheet</p>
                             </div>
                             <div @click="activePage = 'Demons'" v-if="unlockedTabs[1]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/DemonIcon.png"
-                                    class="h-full aspect-square object-fit p-2 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-2 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Demons</p>
                             </div>
                             <div @click="activePage = 'Army'" v-if="unlockedTabs[2]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/ArmyIcon.png"
-                                    class="h-full aspect-square object-fit p-2 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-2 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Army</p>
                             </div>
                             <div @click="activePage = 'Editor'" v-if="unlockedTabs[3]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/EditIcon.png"
-                                    class="h-full aspect-square object-fit p-2 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-2 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Edit</p>
                             </div>
                         </div>
                     </div>
                     <div
                         class="h-4/5 bg-gradient-to-r from-blue-950 to-cyan-800 rounded-2xl ring-2 ring-indigo-500 w-full mx-auto flex flex-row p-1">
-                        <img class="aspect-square h-full rounded-full ring-2 ring-slate-200 bg-black pixel-art"
+                        <img class="aspect-square h-full object-cover rounded-full ring-2 ring-slate-200 bg-black pixel-art"
                             :src="activeDemon.icon" />
                         <div class="flex flex-row w-full p-2 h-full">
                             <div class="w-2/3 h-full flex flex-col">
@@ -794,9 +848,10 @@
                                             <div class="flex flex-col items-center h-full">
                                                 <div class="">
                                                     <div
-                                                        class="w-full bg-blue-950 aspect-square rounded-lg object-cover mb-1 border-2 border-indigo-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl">
+                                                        class="w-full bg-blue-950 aspect-square rounded-lg object-cover mb-1 border-2 border-indigo-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl tooltip">
                                                         <img :src="'./Resources/AffinityIcon' + (index+1) + '.png'"
                                                             class="pulsingFilter" />
+                                                        <span class="tooltiptext">{{['Strike', 'Slash', 'Pierce', 'Fire', 'Ice', 'Electricity', 'Wind', 'Toxic', 'Psionic', 'Light', 'Gloom'][index]}}</span>
                                                     </div>
 
                                                 </div>
@@ -938,31 +993,31 @@
                         <div class="h-full flex gap-2 p-1">
                             <div
                                 class="rounded-xl bg-gray-800 h-full w-2/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
-                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 0.8</span>
+                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 0.9</span>
                                 </p>
                             </div>
                             <div @click="activePage = 'Sheet'" v-if="unlockedTabs[0]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/SheetIcon.png"
-                                    class="h-full aspect-square object-fit p-1 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-1 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Sheet</p>
                             </div>
                             <div @click="activePage = 'Demons'" v-if="unlockedTabs[1]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/DemonIcon.png"
-                                    class="h-full aspect-square object-fit p-2 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-2 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Demons</p>
                             </div>
                             <div @click="activePage = 'Army'" v-if="unlockedTabs[2]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/ArmyIcon.png"
-                                    class="h-full aspect-square object-fit p-2 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-2 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Army</p>
                             </div>
                             <div @click="activePage = 'Editor'" v-if="unlockedTabs[3]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/EditIcon.png"
-                                    class="h-full aspect-square object-fit p-2 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-2 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Edit</p>
                             </div>
                         </div>
@@ -975,11 +1030,8 @@
                             class="w-full h-full bg-gradient-to-r from-emerald-900 to-indigo-900 ring-2 rounded-2xl ring-indigo-500 flex flex-row">
                             <div class="h-full w-1/3 p-5">
                                 <div class="ring-2 ring-cyan-400 h-full w-full rounded-2xl bg-slate-900 flex flex-col">
-                                    <div class="w-full h-full flex flex-col p-3" v-if="army.soldiers.length > 0">
-                                        <p
-                                            class="text-4xl font-bold text-emerald-400 border-b-2 mb-2 border-indigo-500">
-                                            {{demonList[0].name}}'s Army</p>
-
+                                    <div class="w-full h-full flex flex-col p-3 overflow-y-scroll" v-if="army.soldiers.length > 0">
+                                        <p class="text-4xl font-bold text-emerald-400 border-b-2 mb-2 border-indigo-500"> {{demonList[0].name}}'s Army</p>
 
                                         <p class="text-white text-3xl font-semibold my-2">
                                             <span class="text-emerald-400 mb-2 mr-2">Total Units: </span>
@@ -989,7 +1041,7 @@
                                         </p>
 
                                         <p class="text-white text-3xl font-semibold my-2">
-                                            <span class="text-emerald-400 mb-2 mr-2">Combined Power: </span>
+                                            <span class="text-emerald-400 mb-2 mr-2">Total Power: </span>
                                             <span
                                                 class="text-white text-xl font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-3 py-1 my-2 ring-1 ring-indigo-500">
                                                 {{ army.totalPower() }}</span>
@@ -1004,36 +1056,25 @@
 
                                         <p class="text-white text-3xl font-semibold my-2">
                                             <span class="text-emerald-400 mb-2 mr-2">Charges: </span>
-                                            <span
-                                                class="text-white text-xl font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-3 py-1 my-2 ring-1 ring-indigo-500"
-                                                @click="army.charges > 0 && army.charges--"> - </span>
-                                            <span
-                                                class="text-white text-xl font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-3 py-1 m-2 ring-1 ring-indigo-500"
-                                                @click="army.charges = 0"> {{ army.charges }}</span>
-                                            <span
-                                                class="text-white text-xl font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-3 py-1 my-2 ring-1 ring-indigo-500"
-                                                @click="army.charges++"> + </span>
-                                        </p>
-
-                                        <p
-                                            class="text-4xl font-bold text-emerald-400 border-b-2 mb-2 border-indigo-500">
-                                            Assaults</p>
-                                        <div class="flex flex-row flex-wrap w-full p-2">
+                                            <span class="text-white text-xl font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-3 py-1 my-2 ring-1 ring-indigo-500" @click="army.charges > 0 && army.charges--"> - </span>
+                                            <span class="text-white text-xl font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-3 py-1 m-2 ring-1 ring-indigo-500" @click="army.charges = 0"> {{ army.charges }}</span>
+                                            <span class="text-white text-xl font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-3 py-1 my-2 ring-1 ring-indigo-500" @click="army.charges++"> + </span>
+                                            </p>
+                                        <p class="text-4xl font-bold text-emerald-400 border-b-2 mb-3 border-indigo-500"> Description</p>
+                                        <p class="text-lg text-white ring-1 bg-slate-800 ring-emerald-700 rounded-xl p-1 min-h-32 h-1/4"> {{army.soldiers[0].description}}</p>
+                                        <p class="text-4xl font-bold text-emerald-400 border-b-2 mb-2 border-indigo-500"> Assaults</p>
+                                        <div class="flex flex-row flex-wrap w-full">
                                             <div v-for="(assault, index) in army.soldiers[0].assaults" :key="index"
                                                 class="w-1/2 p-1">
-                                                <div
-                                                    class="bg-gray-700 rounded-lg flex h-full w-full items-center justify-center text-white font-semibold ring-2 ring-indigo-500 hoverPop cursor-pointer p-4">
-                                                    <p class="text-lg">{{ assault.name }}</p>
+                                                <div @click="messageInput = assault.rolls[0]"
+                                                    class="bg-gray-700 rounded-lg flex h-full w-full text-white font-semibold ring-2 ring-indigo-500 hoverPop cursor-pointer py-3 p-2 tooltip">
+                                                    <p class="text-lg">{{ assault.name }}</p> <br>
+                                                    <span class="tooltiptext">{{ assault.description }}</span>
                                                 </div>
 
                                             </div>
                                         </div>
-                                        <p
-                                            class="text-4xl font-bold text-emerald-400 border-b-2 mb-3 border-indigo-500">
-                                            Description</p>
-                                        <p
-                                            class="text-lg text-white ring-1 bg-slate-800 ring-emerald-700 rounded-xl p-1 min-h-32 h-1/4">
-                                            Description of the soldiers</p>
+                                        
 
                                     </div>
 
@@ -1046,27 +1087,21 @@
                             <div class="h-full w-2/3 overflow-y-auto p-4 space-y-4">
 
 
-                                <p class="text-4xl font-bold text-emerald-400 border-b-2 mb-2 border-indigo-500"> Active
-                                    Soldiers</p>
+                                <p class="text-4xl font-bold text-emerald-400 border-b-2 mb-2 border-indigo-500"> Active Soldiers</p>
                                 <div v-for="(soldier, index) in army.soldiers || []" :key="index"
-                                    :class="index === 0 ? 'ring-yellow-300' : 'ring-cyan-600'"
+                                    :class="index === 0 ? 'ring-yellow-300' : 'ring-cyan-600'" 
                                     class="bg-slate-900 text-white rounded-2xl ring-2 flex items-center p-4 space-x-4 flex flex-row">
-
-                                    <div class="flex flex-ro flex items-center p-2 space-x-2 gap-2 w-2/3">
+                                    <div class="flex flex-ro flex items-center p-2 space-x-2 gap-2 w-2/3" v-if="!soldier.editing">
                                         <img :src="soldier.icon" alt="icon"
-                                            class="aspect-square w-1/5 rounded-full ring-2 ring-white pixel-art" />
+                                            class="aspect-square w-1/5 rounded-full ring-2 ring-white pixel-art object-cover" />
 
                                         <div class="flex flex-col gap-2 space-y-1  w-4/5">
-                                            <p
-                                                class="text-xl font-bold text-emerald-400 border-b-2 border-indigo-500 h-1/4">
-                                                {{
-                                                soldier.name }} x{{ soldier.units}}</p>
+                                            <p class="text-xl font-bold text-emerald-400 border-b-2 border-indigo-500 h-1/4"> {{soldier.name }} x{{ soldier.units}}</p>
                                             <div
                                                 class="w-full h-3/4 flex flex-row justify-between items-center gap-2 grid grid-cols-2">
                                                 <p
                                                     class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
-                                                    HP: {{ (soldier.maxHp*(soldier.units-1)) + soldier.hp
-                                                    }}/{{(soldier.maxHp*soldier.units)}}</p>
+                                                    HP: {{ soldier.hp}}/{{(soldier.maxHp)}}</p>
                                                 <p
                                                     class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
                                                     Endurance: {{ soldier.endurance}}</p>
@@ -1084,17 +1119,85 @@
                                         </div>
                                     </div>
 
-                                    <div class="flex flex-col gap-2">
+                                    <div class="h-full" v-if="soldier.editing">
+                                        <div class="flex flex-row flex-wrap">
+                                            <div class="flex flex-col w-1/3 p-2">
+                                                <label for="">Soldier Name:</label>
+                                                <input type="text" v-model="soldier.name"  id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                            </div>
+                                            <div class="flex flex-col w-1/3 p-2">
+                                                <label for="">Icon URL:</label>
+                                                <input type="text" v-model="soldier.icon"  id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                            </div>
+                                            <div class="flex flex-col w-1/3 p-2">
+                                                <label for="">Unit Count:</label>
+                                                <input type="text" v-model="soldier.units" min="0" max="999" id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                            </div>
+                                            <div class="flex flex-row w-1/3 p-2 gap-2">
+                                                <div class="flex flex-col w-1/2">
+                                                    <label for="">Unit HP:</label>
+                                                    <div class="flex flex-row">
+                                                        <input type="text" v-model="soldier.hp" min="0" max="999" id="" class="w-full text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col w-1/2">
+                                                    <label for="">Unit Max HP:</label>
+                                                    <div class="flex flex-row">
+                                                        <input type="text" v-model="soldier.maxHp" min="0" max="999" id="" class="w-full text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex flex-row w-1/3 p-2 gap-2">
+                                                <div class="flex flex-col w-1/2">
+                                                    <label for="">Guard Reduction:</label>
+                                                    <div class="flex flex-row">
+                                                        <input type="text" v-model="soldier.guard" id="" class="w-full text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col w-1/2">
+                                                    <label for="">Endurance:</label>
+                                                    <div class="flex flex-row">
+                                                        <input type="text" v-model="soldier.endurance" id="" class="w-full text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="flex flex-col w-1/3 p-2">
+                                                <label for="">Unit Power:</label>
+                                                <input type="text" v-model="soldier.power" id="" min="0" max="999" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                            </div>
+
+                                            <div class="flex flex-col w-1/2 p-2" v-for="(assault,assaultIndex ) in soldier.assaults">
+                                                <label for="">Assault {{assaultIndex+1}}:</label>
+                                                <input type="text" v-model="assault.name" id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                                <input type="text" v-model="assault.description" id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                                <input type="text" v-model="assault.rolls[0]" id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                            </div>
+
+                                            <div class="flex flex-col w-full p-2">
+                                                <label for="">Description:</label>
+                                                <textarea type="text" v-model="soldier.description" id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500"></textarea>
+                                            </div>
+
+                                            
+                                        </div>
+                                        <button type="button" @click="soldier.editing = !soldier.editing"
+                                            class="w-full hoverPop bg-indigo-800 hover:bg-indigo-900 p-3 rounded-xl ring-2 ring-indigo-500  h-1/2">Complete Edits</button>
+                                        
+                                    </div>
+
+                                    <div class="flex flex-col gap-2 ml-auto" v-if="!soldier.editing">
                                         <button type="button" @click="army.swapOut(index, (index-1))"
                                             class="hoverPop bg-indigo-800 hover:bg-indigo-900 p-2 rounded-xl ring-2 ring-indigo-500 h-1/2">⮝</button>
                                         <button type="button" @click="army.swapOut(index, (index+1))"
                                             class="hoverPop bg-indigo-800 hover:bg-indigo-900 p-2 rounded-xl ring-2 ring-indigo-500  h-1/2">⮟</button>
                                     </div>
-                                    <div class="flex flex-row gap-2">
-                                        <button type="button" @click=""
+                                    <div class="flex flex-row gap-2" v-if="!soldier.editing">
+                                        <button type="button" @click="soldier.editing = !soldier.editing"
                                             class="w-1/3 hoverPop bg-indigo-800 hover:bg-indigo-900 p-3 rounded-xl ring-2 ring-indigo-500  h-1/2">Edit</button>
                                         <button type="button" @click="army.holdBack(index)"
-                                            class=" hoverPop bg-indigo-800 hover:bg-indigo-900 p-3 rounded-xl ring-2 ring-indigo-500  h-1/2">Deactivate</button>
+                                            class=" hoverPop bg-indigo-800 hover:bg-indigo-900 p-3 rounded-xl ring-2 ring-indigo-500  h-1/2" v-if="army.inactiveSoldiers.length < 9">Deactivate</button>
                                         <button type="button" @click="army.deleteSoldier(index)"
                                             class="hoverPop bg-red-700 hover:bg-red-800 py-3 px-5 rounded-xl ring-2 ring-red-900 h-1/2">X</button>
                                     </div>
@@ -1103,7 +1206,7 @@
 
                                 <!-- New Soldier Button -->
                                 <div class="bg-slate-900 text-white rounded-2xl ring-2 ring-cyan-600 flex items-center p-4 space-x-4"
-                                    @click="army.addSoldier()">
+                                    @click="army.addSoldier()" v-if="army.soldiers.length < 9">
                                     <img src="Resources/DemonIcon.png" alt="icon"
                                         class="h-16 w-16 rounded-full ring-2 ring-white pixel-art" />
                                     <div class="flex flex-col gap-2 space-y-1">
@@ -1126,9 +1229,9 @@
                                     class="bg-slate-900 text-white rounded-2xl ring-2 ring-cyan-600 flex items-center p-4 space-x-4 flex flex-row">
 
                                     <!-- Soldier Icon + Info -->
-                                    <div class="flex flex-row items-center p-2 space-x-2 gap-2 w-2/3">
+                                    <div class="flex flex-row items-center p-2 space-x-2 gap-2 w-2/3" v-if="!soldier.editing">
                                         <img :src="soldier.icon" alt="icon"
-                                            class="aspect-square w-1/5 rounded-full ring-2 ring-white pixel-art" />
+                                            class="aspect-square w-1/5 rounded-full ring-2 ring-white pixel-art object-cover" />
 
                                         <div class="flex flex-col gap-2 space-y-1 w-4/5">
                                             <p
@@ -1158,27 +1261,92 @@
                                         </div>
                                     </div>
 
-                                    <!-- Up / Down Buttons -->
-                                    <div class="flex flex-col gap-2">
-                                        <button type="button" @click="army.swapOutInactive(index, index - 1)"
-                                            class="hoverPop bg-indigo-800 hover:bg-indigo-900 p-2 rounded-xl ring-2 ring-indigo-500 h-1/2">⮝</button>
-                                        <button type="button" @click="army.swapOutInactive(index, index + 1)"
-                                            class="hoverPop bg-indigo-800 hover:bg-indigo-900 p-2 rounded-xl ring-2 ring-indigo-500 h-1/2">⮟</button>
+                                    <div class="h-full" v-if="soldier.editing">
+                                        <div class="flex flex-row flex-wrap">
+                                            <div class="flex flex-col w-1/3 p-2">
+                                                <label for="">Soldier Name:</label>
+                                                <input type="text" v-model="soldier.name" id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                            </div>
+                                            <div class="flex flex-col w-1/3 p-2">
+                                                <label for="">Icon URL:</label>
+                                                <input type="text" v-model="soldier.icon" id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                            </div>
+                                            <div class="flex flex-col w-1/3 p-2">
+                                                <label for="">Unit Count:</label>
+                                                <input type="text" v-model="soldier.units" min="0" max="999" id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                            </div>
+                                            <div class="flex flex-row w-1/3 p-2 gap-2">
+                                                <div class="flex flex-col w-1/2">
+                                                    <label for="">Unit HP:</label>
+                                                    <div class="flex flex-row">
+                                                        <input type="text" v-model="soldier.hp" min="0" max="999" id="" class="w-full text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col w-1/2">
+                                                    <label for="">Unit Max HP:</label>
+                                                    <div class="flex flex-row">
+                                                        <input type="text" v-model="soldier.maxHp" min="0" max="999" id="" class="w-full text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="flex flex-row w-1/3 p-2 gap-2">
+                                                <div class="flex flex-col w-1/2">
+                                                    <label for="">Guard Reduction:</label>
+                                                    <div class="flex flex-row">
+                                                        <input type="text" v-model="soldier.guard" id="" class="w-full text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col w-1/2">
+                                                    <label for="">Endurance:</label>
+                                                    <div class="flex flex-row">
+                                                        <input type="text" v-model="soldier.endurance" id="" class="w-full text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="flex flex-col w-1/3 p-2">
+                                                <label for="">Unit Power:</label>
+                                                <input type="text" v-model="soldier.power" id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                            </div>
+
+                                            <div class="flex flex-col w-1/2 p-2" v-for="(assault,assaultIndex ) in soldier.assaults">
+                                                <label for="">Assault {{assaultIndex+1}}:</label>
+                                                <input type="text" v-model="assault.name" id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                                <input type="text" v-model="assault.description" id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                                <input type="text" v-model="assault.rolls[0]" id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">
+                                            </div>
+
+                                            <div class="flex flex-col w-full p-2">
+                                                <label for="">Description:</label>
+                                                <textarea type="text" v-model="soldier.description" id="" class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500"></textarea>
+                                            </div>
+
+                                            
+                                        </div>
+                                        <button type="button" @click="soldier.editing = !soldier.editing"
+                                            class="w-full hoverPop bg-indigo-800 hover:bg-indigo-900 p-3 rounded-xl ring-2 ring-indigo-500  h-1/2">Complete Edits</button>
+                                        
                                     </div>
 
-                                    <!-- Edit / Activate / Delete Buttons -->
-                                    <div class="flex flex-row gap-2 ml-auto">
-                                        <button type="button" @click="soldier.editing = true"
-                                            class="w-1/3 hoverPop bg-indigo-800 hover:bg-indigo-900 p-3 rounded-xl ring-2 ring-indigo-500 h-1/2">Edit</button>
+                                    <div class="flex flex-col gap-2 ml-auto" v-if="!soldier.editing">
+                                        <button type="button" @click="army.swapOut(index, (index-1))"
+                                            class="hoverPop bg-indigo-800 hover:bg-indigo-900 p-2 rounded-xl ring-2 ring-indigo-500 h-1/2">⮝</button>
+                                        <button type="button" @click="army.swapOut(index, (index+1))"
+                                            class="hoverPop bg-indigo-800 hover:bg-indigo-900 p-2 rounded-xl ring-2 ring-indigo-500  h-1/2">⮟</button>
+                                    </div>
+                                    <div class="flex flex-row gap-2" v-if="!soldier.editing">
+                                        <button type="button" @click="soldier.editing = !soldier.editing"
+                                            class="w-1/3 hoverPop bg-indigo-800 hover:bg-indigo-900 p-3 rounded-xl ring-2 ring-indigo-500  h-1/2">Edit</button>
                                         <button type="button" @click="army.chargeIn(index)"
-                                            class="hoverPop bg-indigo-800 hover:bg-indigo-900 p-3 rounded-xl ring-2 ring-indigo-500 h-1/2">Activate</button>
+                                            class="hoverPop bg-indigo-800 hover:bg-indigo-900 p-3 rounded-xl ring-2 ring-indigo-500 h-1/2" v-if="army.soldiers.length < 9">Activate</button>
                                         <button type="button" @click="army.deleteInactiveSoldier(index)"
                                             class="hoverPop bg-red-700 hover:bg-red-800 py-3 px-5 rounded-xl ring-2 ring-red-900 h-1/2">X</button>
                                     </div>
+
                                 </div>
 
                                 <div class="bg-slate-900 text-white rounded-2xl ring-2 ring-cyan-600 flex items-center p-4 space-x-4"
-                                    @click="army.addInactiveSoldier()">
+                                    @click="army.addInactiveSoldier()" v-if="army.inactiveSoldiers.length < 9">
                                     <img src="Resources/DemonIcon.png" alt="icon"
                                         class="h-16 w-16 rounded-full ring-2 ring-white pixel-art" />
                                     <div class="flex flex-col gap-2 space-y-1">
@@ -1214,31 +1382,31 @@
                         <div class="h-full flex gap-2 p-1">
                             <div
                                 class="rounded-xl bg-gray-800 h-full w-2/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
-                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 0.8</span>
+                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 0.9</span>
                                 </p>
                             </div>
                             <div @click="activePage = 'Sheet'" v-if="unlockedTabs[0]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/SheetIcon.png"
-                                    class="h-full aspect-square object-fit p-1 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-1 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Sheet</p>
                             </div>
                             <div @click="activePage = 'Demons'" v-if="unlockedTabs[1]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/DemonIcon.png"
-                                    class="h-full aspect-square object-fit p-2 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-2 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Demons</p>
                             </div>
                             <div @click="activePage = 'Army'" v-if="unlockedTabs[2]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/ArmyIcon.png"
-                                    class="h-full aspect-square object-fit p-2 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-2 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Army</p>
                             </div>
                             <div @click="activePage = 'Editor'" v-if="unlockedTabs[3]"
                                 class="hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
                                 <img src="./Resources/EditIcon.png"
-                                    class="h-full aspect-square object-fit p-2 pixel-art" alt="">
+                                    class="h-full aspect-square object-cover p-2 pixel-art" alt="">
                                 <p class="text-white font-bold text-center text-3xl align-middle">Edit</p>
                             </div>
                         </div>
@@ -1488,22 +1656,53 @@
 
 
                             <div class="px-5 pt-5">
-                                <p class="text-4xl font-bold text-emerald-400 border-b-2 mb-2 border-indigo-500">Skills</p>
+                                <p class="text-4xl font-bold text-emerald-400 border-b-2 mb-2 border-indigo-500">Weapon and Skills</p>
                             </div>
 
                             <div class="px-5 max-h-200">
                                 <div class="overflow-x-scroll h-full p-2 gap-2 p-3 flex flex-row" style="height: calc(50vh);" >
-                                    <div class="bg-blue-950 text-white p-3 rounded-3xl ring-1 ring-cyan-400 max-h-64 overflow-y-scroll min-h-full min-w-[25vw]"
-                                        v-for="skill in [this.activeDemon.weapon, ...this.activeDemon.skills]">
+                                    <div class="bg-blue-950 text-white p-3 rounded-xl ring-2 ring-cyan-400 max-h-64 overflow-y-scroll min-h-full min-w-[25vw]"
+                                        v-for="(skill, index) in [this.activeDemon.weapon, ...this.activeDemon.skills]" :class="index === 0 ? 'ring-yellow-300' : ''">
+
+
+                                        <div class="" v-if="index === 0">
+                                            <p class="text-2xl font-bold text-amber-400 border-b-2 mb-2 border-indigo-500">Weapon</p>
+
+                                        </div>
 
                                         <div class="flex flex-col my-3">
-                                            <label for="" class="border-b-2 mb-2 border-indigo-500 font-bold text-white">Skill Name:</label>
-                                            <input type="text" v-model.number="skill.name" name=""  class=" h-1/4 bg-blue-950 text-white p-4 rounded-3xl ring-1 ring-cyan-400">
+                                            <label v-if="index === 0" for="" class="border-b-2 mb-2 border-indigo-500 font-bold text-white">Weapon Name:</label>
+                                            <label v-if="index != 0" for="" class="border-b-2 mb-2 border-indigo-500 font-bold text-white">Skill Name:</label>
+                                            
+                                            <div class="flex flex-row items-center h-full gap-2">
+                                                
+                                                <!-- Extra -->
+                                                <div class="aspect-square w-1/6 ring-1 ring-indigo-500 rounded-2xl">
+                                                    <img :src="'./Resources/WeaponIcon.png'" class="pulsingFilter" v-if="index === 0" />
+                                                    <img :src="'./Resources/AffinityIcon' + (skill.skillType) + '.png'" class="pulsingFilter" v-if="index != 0 && skill.skillType" />
+                                                </div>
+                                                
+                                                
+                                                
+
+                                                <!-- Original -->
+                                                <!-- <div class="w-1/6 bg-blue-950 aspect-square rounded-lg object-cover mb-1 border-2 border-indigo-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl hoverPop tooltip"> -->
+                                                    
+                                                <input type="text" v-model="skill.name" class="w-5/6 h-full bg-blue-950 text-white p-4 rounded-3xl ring-1 ring-cyan-400"  v-if="index === 0">
+                                                <input type="text" v-model="skill.name" class="w-1/2 h-full bg-blue-950 text-white p-4 rounded-3xl ring-1 ring-cyan-400"  v-if="index != 0">
+                                                
+                                                <select type="text" v-model.number="skill.skillType" name=""  class="w-1/3 h-full bg-blue-950 text-white p-4 rounded-3xl ring-1 ring-cyan-400" v-if="index != 0">
+                                                    <option value="0">No Icon</option>
+                                                    <option :value="index+1" v-for="(affinity, index) in ['Strike', 'Slash', 'Pierce', 'Fire', 'Ice', 'Electricity', 'Force', 'Toxic', 'Psionic', 'Light', 'Gloom', 'Almighty', 'Ailment', 'Healing', 'Tactical']">{{affinity}}</option>
+                                                </select>
+                                                
+                                            </div>
+                                                
                                         </div>
 
                                         <div class="flex flex-col my-3">
                                             <label for="" class="border-b-2 mb-2 border-indigo-500 font-bold text-white">Skill Description:</label>
-                                            <input type="text" v-model.number="skill.description" name=""  class=" h-1/4 bg-blue-950 text-white p-4 rounded-3xl ring-1 ring-cyan-400">
+                                            <input type="text" v-model.number="skill.description" name=""  class=" h-1/4 bg-blue-950 text-white p-4 rounded-3xl ring-1 ring-cyan-100">
                                         </div>
 
                                         <div class="flex flex-row flex-wrap">
@@ -1532,9 +1731,10 @@
                             <div class="flex flex-row gap-2 h-1/4 p-2">
                                 <div class="" v-for="(affinity, index) in activeDemon.affinities">
                                     <div
-                                        class="w-full bg-blue-950 aspect-square rounded-lg object-cover mb-1 border-2 border-indigo-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl">
+                                        class="w-full bg-blue-950 aspect-square rounded-lg object-cover mb-1 border-2 border-indigo-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl tooltip">
                                         <img :src="'./Resources/AffinityIcon' + (index+1) + '.png'"
                                             class="pulsingFilter" />
+                                        <span class="tooltiptext">{{['Strike', 'Slash', 'Pierce', 'Fire', 'Ice', 'Electricity', 'Wind', 'Toxic', 'Psionic', 'Light', 'Gloom'][index]}}</span>
                                     </div>
                                     <select :id="affinity" v-model="activeDemon.affinities[index]"
                                         class="w-full rounded-2xl h-1/4 text-center text-xl font-bold bg-blue-950 border-2 border-indigo-500 text-emerald-400 text-xl font-bold">
@@ -1558,9 +1758,10 @@
                             <div class="flex flex-row gap-2 h-1/4 p-2">
                                 <div class="" v-for="(potential, index) in activeDemon.skillPotential">
                                     <div
-                                        class="w-full bg-blue-950 aspect-square rounded-lg object-cover mb-1 border-2 border-indigo-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl">
+                                        class="w-full bg-blue-950 aspect-square rounded-lg object-cover mb-1 border-2 border-indigo-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl tooltip">
                                         <img :src="'./Resources/AffinityIcon' + (index+1) + '.png'"
                                             class="pulsingFilter" />
+                                        <span class="tooltiptext">{{['Strike', 'Slash', 'Pierce', 'Fire', 'Ice', 'Electricity', 'Wind', 'Toxic', 'Psionic', 'Light', 'Gloom', 'Almighty', 'Ailment', 'Healing', 'Tactical'][index]}}</span>
                                     </div>
                                     <input type="number" name="" id=""
                                         v-model.number="activeDemon.skillPotential[index]"
@@ -1635,8 +1836,8 @@
             <div class="h-full w-1/4 p-1">
                 <div
                     class="bg-gray-800 rounded-xl box-shadow ring-2 ring-indigo-500 flex flex-col items-center justify-center h-full w-full text-white font-semibold">
-                    <div class="w-full overflow-y-scroll  rounded-xl" style="height: 90%;">
-                        <div>
+                    <div id="messageLog" class="w-full overflow-y-scroll  rounded-xl" style="height: 90%;" >
+                        <div >
                             <div v-for="(l, index) in log" :key="index" class="text-white break-all p-1"
                                 :class="index % 2 === 0 ? 'bg-gray-700' : 'bg-gray-800'">
                                 <p class="text-lg select-text">{{ l }}</p>
@@ -1648,10 +1849,7 @@
                         <textarea v-model="messageInput" @keydown.enter.prevent="sendMessage" maxlength="100"
                             class="w-5/6 bg-blue-950 resize-none text-emerald-400 rounded-bl-xl border-r-2 border-indigo-500 px-1 "
                             name="" id="" placeholder="Write /help for a list of commands"></textarea>
-                        <button @click="sendMessage"
-                            class="w-1/6 bg-indigo-700 hover:bg-indigo-800 text-4xl text-white font-bold py-2 px-4 rounded-br-xl textOutlineBlackThin">
-                            ➣
-                        </button>
+                        <button @click="sendMessage" class="w-1/6 bg-indigo-700 hover:bg-indigo-800 text-4xl text-white font-bold py-2 px-4 rounded-br-xl textOutlineBlackThin"> ➣ </button>
                     </div>
                 </div>
             </div>

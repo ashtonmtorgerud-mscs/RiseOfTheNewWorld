@@ -1,0 +1,192 @@
+,
+{
+    "name": "Zan",
+    "description": "Weak Force damage to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage"
+    ],
+    "rolls": [
+      "/mp -10*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (c*(frcpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
+    ]
+  },
+  {
+    "name": "Mazan",
+    "description": "Weak Force damage to all foes",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage"
+    ],
+    "rolls": [
+      "/mp -15*(1-0.1*frcpot)",
+      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (c*(frcpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
+    ],
+    "aoe": [
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1]
+    ]
+  },
+  {
+    "name": "Zanma",
+    "description": "Medium Force damage to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage"
+    ],
+    "rolls": [
+      "/mp -20*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (c*(frcpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+    ]
+  },
+  {
+    "name": "Mazanma",
+    "description": "Medium Force damage to all foes",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage"
+    ],
+    "rolls": [
+      "/mp -30*(1-0.1*frcpot)",
+      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (c*(frcpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+    ],
+    "aoe": [
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1]
+    ]
+  },
+  {
+    "name": "Zandyne",
+    "description": "Heavy Force damage to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage"
+    ],
+    "rolls": [
+      "/mp -35*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+    ]
+  },
+  {
+    "name": "Mazandyne",
+    "description": "Heavy Force damage to all foes",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage"
+    ],
+    "rolls": [
+      "/mp -50*(1-0.1*frcpot)",
+      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+    ],
+    "aoe": [
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1]
+    ]
+  },
+  {
+    "name": "Zanbarion",
+    "description": "Severe Force damage to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage"
+    ],
+    "rolls": [
+      "/mp -50*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (c*(frcpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
+    ],
+    "aoe": [
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1]
+    ]
+  },
+  {
+    "name": "Mazanbarion",
+    "description": "Severe Force damage to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage"
+    ],
+    "rolls": [
+      "/mp -75*(1-0.1*frcpot)",
+      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (c*(frcpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
+    ],
+    "aoe": [
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1]
+    ]
+  },
+  {
+    "name": "Narukami",
+    "description": "Heavy Breaking-Force damage to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage"
+    ],
+    "rolls": [
+      "/mp -65*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+    ],
+    "aoe": [
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1]
+    ]
+  },
+  {
+    "name": "Wind Dracostrike",
+    "description": "Medium Force damage to 1 foe, strength-based",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/mp -65*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 96-(lu/4+ag/10)*(1+S*0.2)_ceil"
+    ],
+    "aoe": [
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1],
+      [1, 1, 1, 1, 1]
+    ]
+  }
