@@ -830,7 +830,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Create a new Demon instance
             let player = new Demon("Adam");
-            player.skills[0] = new Skill("Agilao", "Medium Fire damage to 1 foe", ['Cost', 'Aim', 'Damage'], ['/mp -20*(1-0.1*firpot)', '/roll (1d100-2+ma)*(0.2*S+1)', '/roll (c*(firpwr*(1+T*0.2)*(16+16*(ma/20))))d6'])
+            // player.skills[0] = new Skill("Agilao", "Medium Fire damage to 1 foe", ['Cost', 'Aim', 'Damage'], ['/cost 20*(1-0.1*firpot)', '/roll (1d100-2+ma)*(0.2*S+1)', '/roll (c*(firpwr*(1+T*0.2)*(16+16*(ma/20))))d6'])
+            // player.skills[0].skillType = 4;
             player.getVariables();
 
             let demonList = ref([
@@ -1000,14 +1001,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         //include damage and healing
                         let calculation = lowercaseMessage.slice(5).trim();
                         let hpCost = false;
-                        let mpCost = false;
+                        let mpCost = true;
                         if (calculation.endsWith('hp')) {
                             hpCost = true;
-                            calculation = calculation.slice(0, -2).trim();
-                        } else if (calculation.endsWith('mp')) {
-                            mpCost = true;
+                            mpCost = false;
                             calculation = calculation.slice(0, -2).trim();
                         }
+                        //  else if (calculation.endsWith('mp')) {
+                        //     mpCost = true;
+                        //     calculation = calculation.slice(0, -2).trim();
+                        // }
 
                         console.log('Cost calculation:', calculation, 'HP cost:', hpCost, 'MP cost:', mpCost);
 
