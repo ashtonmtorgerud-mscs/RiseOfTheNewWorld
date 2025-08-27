@@ -1,4 +1,4 @@
-const { createApp, ref } = Vue;
+const { createApp, ref, onMounted } = Vue;
 document.addEventListener('DOMContentLoaded', () => {
     createApp({
         setup() {
@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let readingText = ref("", speed = 64);
             let timeoutHandles = [];
             let rolledDice = "";
+
+
 
 
             function RollDice(dice, sides) {
@@ -79,7 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     let physE = activeDemon.value.affinitiesGenusEvasion[0]*activeDemon.value.affinitiesGenusEvasion[4];
                     let elmtE = activeDemon.value.affinitiesGenusEvasion[1]*activeDemon.value.affinitiesGenusEvasion[2]*activeDemon.value.affinitiesGenusEvasion[3];
                     let mystE = activeDemon.value.affinitiesGenusEvasion[3]*activeDemon.value.affinitiesGenusEvasion[2]*activeDemon.value.affinitiesGenusEvasion[4];
-
+                    let guardMuch = 0;
+                    let dodgeMuch = 0;
+                    if (activeDemon.guard){guardMuch = 1;}
+                    if (activeDemon.dodge){dodgeMuch = 1;}
 
                     // Parse Opperands
                     operands.forEach(operand => {
@@ -98,11 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             case "mhp": parsedOperands.push(activeDemon.value.maxHp + activeDemon.value.hpBooster); return;
                             case "mp": parsedOperands.push(activeDemon.value.mp); return;
                             case "mmp": parsedOperands.push(activeDemon.value.maxMp + activeDemon.value.mpBooster); return;
+                            case "critbooster": case "cb": parsedOperands.push(activeDemon.value.critBooster); return;
 
                             // Buffs
                             case "t": parsedOperands.push(activeDemon.value.buffs[0]); return;
-                            case "r": parsedOperands.push(activeDemon.value.buffs[1]); return;
-                            case "s": parsedOperands.push(activeDemon.value.buffs[2]); return;
+                            case "r": parsedOperands.push( Math.min(4, activeDemon.value.buffs[1]+guardMuch)); return;
+                            case "s": parsedOperands.push( Math.min(4, activeDemon.value.buffs[2]+dodgeMuch)); return;
                             case "c": parsedOperands.push(dMDAS(activeDemon.value.coefficient + "+0")); return;
                             case "armypower": parsedOperands.push(army.value.totalPower()); return;
 
@@ -123,6 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             case ("lightpower"): case ("lgtpwr"): parsedOperands.push(activeDemon.value.damageBooster[9]*mystP); return;
                             case ("gloompower"): case ("glmpwr"): parsedOperands.push(activeDemon.value.damageBooster[10]*mystP); return;
                             case ("almightypower"): case ("almpwr"): parsedOperands.push(activeDemon.value.damageBooster[11]*mystP); return;
+                            case ("ailmentpower"): case ("ailpwr"): parsedOperands.push(activeDemon.value.damageBooster[12]); return;
+                            case ("healingpower"): case ("hlgpwr"): parsedOperands.push(activeDemon.value.damageBooster[13]); return;
 
                             // Skill Potential
                             case ("strikepotential"): case ("stkpot"): parsedOperands.push(activeDemon.value.skillPotential[0] + activeDemon.value.skillPotentialBoost[0]); return;
@@ -386,7 +394,8 @@ document.addEventListener('DOMContentLoaded', () => {
             class Army {
                 constructor() {
                     this.soldiers = [];
-                    this.inactiveSoldiers = [new Soldier('Skull Servant', 10, 1, 1, 'Resources/DemonIcon.png', 1, 0)];
+                    this.inactiveSoldiers = [];
+                    // new Soldier('Skull Servant', 10, 1, 1, 'Resources/DemonIcon.png', 1, 0)
                     // this.guard = this.soldiers[0].guard || 0;
                     this.charges = 0;
                 }
@@ -559,8 +568,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (!rollValue && !rollName) {
                         this.rolls.splice(i, 1);
                         this.rollNames.splice(i, 1);
+                        }
                     }
-                    }
+                    
                 }
             }
 
@@ -585,9 +595,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.skillPotential = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     this.profile = [];
                     this.skills = []; // Array of skills
-                    this.contract = ''; // Contract with a demon
+                    
                     this.buffs = [0, 0, 0]; // Buffs for St, Ma, Vi, Ag, Lu
-                    this.weapon = new Skill('Bare Hands', 'An unarmed strike, inflicting weak strike damage to one foe', ['Aim', 'Damage'], ['/roll 1d100+ag', '/roll (C*(stkpwr*(1+T*0.2)*(6+6*(st/20))))d6']); // Array of weapons
+                    this.weapon = new Skill('Bare Hands', 'An unarmed strike, inflicting weak strike damage to one foe', ['Aim', 'Damage', 'Crit Rate'], ['/roll 1d100+ag', '/roll (C*(stkpwr*(1+T*0.2)*(6+6*(st/20))))d6', '/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil']); // Array of weapons
                     this.armor = ['Clothes', 1, 2,]; // Array of armor
                     this.accessories = [['Watch', 'Tells the Time'], ['', ''], ['', '']]; // Array of accessories
                     this.growthRates = [2, 2, 2, 2, 2];
@@ -595,6 +605,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.main = false;
                     this.notes = "Write notes here..."
                     this.ailments = []; // Array of ailments
+                    this.guard = false;
+                    this.dodge = false;
+                    this.description = '';
+                    this.birthrights = [];
+                    this.contract = ''; // Contract with a demon
+                    this.newTag = '';
 
                     // Boosters
                     this.statsBooster = [0, 0, 0, 0, 0];
@@ -604,6 +620,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.affinitiesEvasion = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
                     this.skillPotentialBoost = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     this.damageBooster = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+                    this.critBooster = 0;
 
                     // 0 = phys, 1 = elemental, 2 = mystic, 3 = magic, 4 = all
                     this.affinitiesGenusReducer = [1.0, 1.0, 1.0, 1.0, 1.0];
@@ -621,11 +638,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 recalculateVitals() {
                     let oldHP = this.maxHp;
-                    this.maxHp = Math.floor(50 + (this.stats[2] + this.level + (this.stats[4] / 10)) * 7); // Maximum HP
+                    this.maxHp = Math.floor(50 + (this.stats[2] + this.statsBooster[2] + this.level + ( (this.stats[4] + this.statsBooster[4]) / 10)) * 7); // Maximum HP
                     this.hp += (this.maxHp - oldHP);
                     
                     let oldMP = this.maxMp;
-                    this.maxMp = Math.floor(32 + ((this.stats[1] * 8) + (this.level) + (this.stats[4] / 4))); // Maximum MP
+                    this.maxMp = Math.floor(32 + (((this.stats[1] + this.statsBooster[1]) * 8) + this.level + ( (this.stats[4] + this.statsBooster[4] ) / 4))); // Maximum MP
                     this.mp += (this.maxMp - oldMP);
 
                 }
@@ -643,6 +660,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 getVariables() {
+                    this.recalculateVitals();
                     this.statsBooster = [0, 0, 0, 0, 0];
                     this.hpBooster = 0;
                     this.mpBooster = 0;
@@ -653,7 +671,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.affinitiesGenusReducer = [1.0, 1.0, 1.0, 1.0, 1.0];
                     this.affinitiesGenusEvasion = [1.0, 1.0, 1.0, 1.0, 1.0];
                     this.damageGenusBooster = [1.0, 1.0, 1.0, 1.0, 1.0];
-
+                    this.critBooster = 0;
                     this.checkBoxes = [];
 
 
@@ -664,6 +682,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         skill.rolls.forEach(roll => {
                             this.checkBoxes.push(roll);
                         });
+                    });
+                    this.birthrights.forEach(birthright => {
+                        this.checkBoxes.push(birthright);
                     });
                     
                     // Replace checkBoxes with expanded version where '|' splits into multiple entries
@@ -700,7 +721,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                     case ("vit"): case ("vi"): case ("vitality"): if (percentage) { percentageBoost = this.stats[2] / 100 }; this.statsBooster[2] += Math.floor(valueBoost * percentageBoost); break;
                                     case ("agi"): case ("ag"): case ("agility"): if (percentage) { percentageBoost = this.stats[3] / 100 }; this.statsBooster[3] += Math.floor(valueBoost * percentageBoost); break;
                                     case ("luc"): case ("lu"): case ("luck"): if (percentage) { percentageBoost = this.stats[4] / 100 }; this.statsBooster[4] += Math.floor(valueBoost * percentageBoost); break;
-                                    
+                                    case ("critbooster"): case ("cb"): this.critBooster += valueBoost; break;
+
                                     // Damage Boosters
                                     case ("strikepower"): case ("stkpwr"): this.damageBooster[0] += valueBoost*0.01; break;
                                     case ("slashpower"): case ("slhpwr"): this.damageBooster[1] += valueBoost*0.01; break;
@@ -716,7 +738,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     case ("almightypower"): case ("almpwr"): this.damageBooster[11] += valueBoost*0.01; break;
                                     case ("ailmentpower"): case ("ailpwr"): this.damageBooster[12] += valueBoost*0.01; break;
                                     case ("healingpower"): case ("hlgpwr"): this.damageBooster[13] += valueBoost*0.01; break;
-                                    case ("tacticalpower"): case ("tacpwr"): this.damageBooster[14] += valueBoost*0.01; break;
+                                    // case ("tacticalpower"): case ("tacpwr"): this.damageBooster[14] += valueBoost*0.01; break;
 
                                     case ("physpower"): case ("physpwr"): this.damageGenusBooster[0] += valueBoost*0.01; break;
                                     case ("elempower"): case ("elempwr"): this.damageGenusBooster[1] += valueBoost*0.01; break;
@@ -826,7 +848,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             let army = ref(new Army());
-            army.value.soldiers.push(new Soldier('Placeholder', 500000, 0, 0, 'Resources/DemonIcon.png', 1, 0));
+            // army.value.soldiers.push(new Soldier('Placeholder', 500000, 0, 0, 'Resources/DemonIcon.png', 1, 0));
 
             // Create a new Demon instance
             let player = new Demon("Adam");
@@ -994,6 +1016,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                         log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
+                    } else if (lowercaseMessage.startsWith('/bulwark')) {
+
+
+                        //include damage and healing
+                        let calculation = lowercaseMessage.slice(8).trim();
+                        calculation.replace(' ', '');
+                        let bulwarkAmount = parseInt( dMDAS( calculation ));
+
+                        
+
+
+                        if (isNaN(bulwarkAmount)) {
+                            log.value.push('Invalid health amount. Use format: /bulwark <amount>');
+                            return;
+                        }
+
+
+
+                        activeDemon.value.bulwark += bulwarkAmount;
+                        if (activeDemon.value.bulwark > activeDemon.value.maxHp + activeDemon.value.hpBooster) {
+                            activeDemon.value.bulwark = activeDemon.value.maxHp + activeDemon.value.hpBooster; // Cap the healing to max HP
+                        }
+
+                        if (activeDemon.value.hp < 0) {
+                            activeDemon.value.hp = 0; // Prevent negative HP
+                        }
+
+
+
+
+                        log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
                     } else if (lowercaseMessage.startsWith('/cost')) {
 
                         // console.log('Processing /cost command');
@@ -1084,7 +1137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // Apply defense reduction from character stats and armor
                         if (useResistance){
-                            rawDamage = Math.floor( rawDamage * ((200 / (200 + ((activeDemon.value.stats[2] + activeDemon.value.armor[2]) * (1 + ((activeDemon.value.stats[2] + activeDemon.value.armor[2]) / 30)))))) );
+                            rawDamage = Math.floor( rawDamage * ((200 / (200 + (((activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]) + activeDemon.value.armor[2]) * (1 + (((activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]) + activeDemon.value.armor[2]) / 30)))))) );
                         }
                         
 
@@ -1092,6 +1145,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Apply army damage reduction if army exists
                         let finalDamage = parseInt(rawDamage) || 1;
 
+
+                        if (activeDemon.value.bulwark >= finalDamage)
+                            { activeDemon.value.bulwark = Math.max(activeDemon.value.bulwark-finalDamage, 0); finalDamage = 0; }
+                        else 
+                            { finalDamage -= activeDemon.value.bulwark }
+
+                        console.log(activeDemon.value);
 
                         // Apply remaining damage to player
                         activeDemon.value.hp -= finalDamage;
@@ -1117,6 +1177,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         if (messageInput.value.trim() === '/import') {
                             modal.value = true; // Open the import modal
+                            modalTab.value = 'import';
                             log.value.push('Import menu opened');
                             messageInput.value = '';
                             return;
@@ -1135,16 +1196,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             fetch("Resources/skills.json").then(response => response.json()).then(data => {
                                 let skillsCount = activeDemon.value.skills.filter(skill => skill.name !== "").length;
                                 let gotSkill = false;
-                                let skillData = data.find(skill => skill.name.toLowerCase().replace(' ', '') === skillName.toLowerCase());
+                                let skillData = data.find(skill => skill.name.toLowerCase().replace(/[\s']/g, '') === skillName.toLowerCase());
                                 if (importData.length == 2) {
                                     activeDemon.value.skills[skillsCount] = skillData || new Skill("", "", [], []);
-                                    log.value.push("Imported skill: " + skillName + " to slot " + (skillsCount));
+                                    log.value.push("Imported skill: " + skillName + " to slot " + (skillsCount+1));
                                     gotSkill = true;
                                 };
                                 const skillSlot = parseInt(importData[2]) || -1;
                                 if (skillSlot >= 0 && skillSlot < 8) {
                                     activeDemon.value.skills[skillSlot-1] = skillData || new Skill("", "", [], []);
-                                    log.value.push("Imported skill: " + skillName + " to slot " + (skillsCount));
+                                    log.value.push("Imported skill: " + skillName + " to slot " + (skillsCount+1));
                                     gotSkill = true;
                                     messageInput.value = '';
                                 }
@@ -1165,9 +1226,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else if (messageInput.value.startsWith('/clear')) {
                         // Handle other commands starting with "/"
                         log.value = [];
-                    } else if (messageInput.value.startsWith('/deletelocalstorage')) {
+                    } else if (messageInput.value.startsWith('/deletelocalstorage') || messageInput.value.startsWith('/clearallsavedata')) {
                         // Handle other commands starting with "/"
                         localStorage.clear();
+                        log.value.push("Cleared all saved data");
                     } else if (messageInput.value.startsWith('/deletedemon')) {
 
                         // Delete Demon
@@ -1186,10 +1248,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         if (messageInput.value == '/deletedemon') {
                             demonList.value.forEach((demon, index) => {
-                                if (demon === activeDemon.value) {
+                                if (demon === activeDemon.value && demon != demonList.value[0]) {
                                     demonList.value.splice(index, 1); // Remove the demon from the list
                                     activeDemon.value = demonList.value[0];
                                     log.value.push('Demon Deleted');
+                                    messageInput.value = '';
+                                    return;
+                                }
+                                if (demon === activeDemon.value && demon == demonList.value[0]) {
+                                    // demonList.value.splice(index, 1); // Remove the demon from the list
+                                    // activeDemon.value = demonList.value[0];
+                                    log.value.push('Cannot delete the first demon');
                                     messageInput.value = '';
                                     return;
                                 }
@@ -1221,7 +1290,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             dataMaster.value.saveFile = "SAVEDATA";
                         }
                         dataMaster.value.loadData();
-
+                        log.value.push("Loaded Data");
                     } else if (lowercaseMessage.startsWith('/save')) {
 
                         // Check save slot
@@ -1232,14 +1301,32 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         dataMaster.value.saveData();
+                        log.value.push("Saved Data");
 
                     } else if (lowercaseMessage.startsWith('/print')) {
                         dataMaster.value.printData();
+                        log.value.push("Printed Data to the Browser Console");
+
+                    } else if (lowercaseMessage.startsWith('/delete')) {
+                        let trimmedMessage = lowercaseMessage.slice(7).trim().toUpperCase();
+
+                        localStorage.removeItem(trimmedMessage);
+                        log.value.push("Deleted Data: " + trimmedMessage);
 
                     } else if (lowercaseMessage.startsWith('/download')) {
                         let trimmedMessage = lowercaseMessage.slice(9).trim();
 
                         dataMaster.value.downloadData(trimmedMessage);
+                        log.value.push("Downloaded Data");
+
+                    } else if (lowercaseMessage.startsWith('/listofsaves') || lowercaseMessage.startsWith('/listofsaves')) {
+                        let listOfSaves = "";
+                        for (let i = 0; i < localStorage.length; i++) {
+                            listOfSaves += (localStorage.key(i)) + ', ';
+                        }
+
+                        // dataMaster.value.downloadData(trimmedMessage);
+                        log.value.push("List of saves: " + listOfSaves);
 
                     } else if (lowercaseMessage.startsWith('/unlock')) {
                         switch (lowercaseMessage.split(' ')[1]){
@@ -1253,9 +1340,36 @@ document.addEventListener('DOMContentLoaded', () => {
                         activeDemon.value.recalculateVitals()
                         // console.log('recalculateVitals');
                         log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
+                    } else if (lowercaseMessage.startsWith('/help')){
+                        const helpMessage = "List of commands:\n" +
+                            "/roll <dice_expression> or /math <expression> - Roll dice or calculate math expressions (e.g. 3d6 + 2d10 + (4 * 5)). Supports _floor and _ceiling/_ceil flags.\n" +
+                            "/xp <amount> or /exp <amount> - Add experience points to your active demon. Levels up automatically when XP thresholds are met.\n" +
+                            "/hp <amount> - Modify your demon's HP by the specified amount (positive or negative). HP is capped between -maxHp and maxHp.\n" +
+                            "/mp <amount> - Modify your demon's MP by the specified amount. MP cannot go below zero.\n" +
+                            "/bulwark <amount> - Adjust your demon's bulwark (shield) by the given amount. Caps at max HP.\n" +
+                            "/cost <amount> [hp/mp] - Spend MP (default) or HP (if specified) as skill cost. Example: /cost 10 (MP), /cost 5hp (HP).\n" +
+                            "/damage <amount> [_noarmy] [_nores] [_noraku] - Apply damage to your demon. Optional flags disable army reduction, resistance, or Rakukaja buff respectively.\n" +
+                            "/wash - Fully heal HP and MP, reset buffs and ailments, and recalculate stats.\n" +
+                            "/import skill <name> [slot] - Import a skill by name into the next available or specified skill slot (0-7).\n" +
+                            "/clear - Clear the message log.\n" +
+                            "/deletelocalstorage or /clearallsavedata - Clear all saved data from localStorage.\n" +
+                            "/deletedemon [index] - Delete a demon by index (cannot delete the first or main demon).\n" +
+                            "/load [saveFile] - Load a save file (default: SAVEDATA).\n" +
+                            "/save [saveFile] - Save current data to a save file (default: SAVEDATA).\n" +
+                            "/print - Print saved data to the browser console.\n" +
+                            "/delete <key> - Delete a specific key from localStorage.\n" +
+                            "/download <filename> - Download saved data as a file.\n" +
+                            "/listofsaves - List all saved data keys in localStorage.\n" +
+                            "/unlock <demon|army|edit|all> - Unlock specific UI tabs or features.\n" +
+                            "/recalculatevitals - Recalculate your demon’s vitals and stats.\n";
+                        modal.value = true;
+                        modalTab.value = "help";
+                        log.value.push("Loaded help menu");
+                        
                     } else if (messageInput.value.startsWith('/')) {
                         // Handle other commands starting with "/"
-                        log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
+                        log.value.push(`${lowercaseMessage.trim()} is not a valid command`);
+                        
                     } else {
                         // Regular message
                         log.value.push(messageInput.value.trim());
@@ -1537,7 +1651,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             console.log(this.fileData.demons);
                             demonList.value = [];
                             let demonsArray = this.fileData.demons;
-
+                            Object.assign(army.value, this.fileData.army);
                             demonsArray.forEach(demonData => {
                                 let demon = new Demon();  // Create a new Demon instance
                                 Object.assign(demon, demonData);  // Copy saved data into the demon instance
@@ -1560,12 +1674,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         localStorage.setItem(this.saveFile, JSON.stringify(this.fileData));
                     }
+
+
+                    this.autoSave = () => {
+
+                        // Sync up
+                        demonList.value.forEach(demon => {
+                            demon.getVariables();
+                        });
+
+                        this.updateFileData();
+                        this.saveFile = "AUTOSAVE";
+                        this.saveData();
+
+                    }
+
                 }
             }
 
             
 
             let dataMaster = ref(new DataMaster());
+
+            onMounted(() => {
+                const savedState = localStorage.getItem('AUTOSAVE');
+                if (savedState) {
+                    console.log("Autosave data found");
+                    dataMaster.value.saveFile = "AUTOSAVE";
+                    dataMaster.value.loadData(); // Call now that everything is reactive
+                }
+            });
+
 
 
             return { activePage, activeTab, tabs, log, messageInput, sendMessage, demonList, activeDemon, player, getBuffShadowStyle, army, modal, started, introTab, readingText, startReading, startingAmbience, characterCreator, modalTab, selectedSkill, displaySkill, unlockedTabs, dataMaster };

@@ -1,5 +1,13 @@
 [
 
+
+  { "Comment: ----------------------Phys Skills----------------------------": "", "name": "" }, 
+
+
+
+
+  
+
     {
     "name": "Lunge",
     "skillType": 1,
@@ -12,9 +20,9 @@
     ],
     "rolls": [
       "/cost 5*(1-0.1*stkpot)",
-      "/roll (1d100-5+ag)*(0.2*S+1)",
+      "/roll (1d100-5+ag+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(8+8*(st/20))))d6",
-      "/math 96-(lu/4+ag/10)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -29,9 +37,9 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*stkpot)",
-      "/roll (1d100+12+ag)*(0.2*S+1)",
-      "/roll (c*(stkpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 91-(lu/4+ag/10)*(1+S*0.2)_ceil"
+      "/roll (1d100+12+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(stkpwr*(1+T*0.2)*(12+12*(st/20))))d6",
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -46,9 +54,9 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*slhpot)",
-      "/roll (1d100-2+ag)*(0.2*S+1)",
-      "/roll (c*(slhpwr*(1+T*0.2)*(14+14*(ma/20))))d6",
-      "/math 91-(lu/4+ag/10)*(1+S*0.2)_ceil"
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(14+14*(st/20))))d6",
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -63,9 +71,9 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*prcpot)",
-      "/roll (1d100-10+ag)*(0.2*S+1)",
-      "/roll (c*(prcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 81-(lu/4+ag/10)*(1+S*0.2)_ceil"
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(12+12*(st/20))))d6",
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -80,17 +88,252 @@
     ],
     "rolls": [
       "/cost mhp*0.08*(1-0.1*prcpot) HP",
-      "/roll (1d100-10+ag)*(0.2*S+1)",
-      "/roll (c*(prcpwr*(1+T*0.2)*(8+8*(st/20))))d6",
-      "/math 76-(lu/4+ag/10)*(1+S*0.2)_ceil"
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
+      "/math 76-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
+    "name": "Bestial Bite",
+    "skillType": 3,
+    "description": "Weak Pierce damage to 1 foe. Extra crit damage is doubled. \nTags Required: [Fangs]",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 5*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(12+12*(st/20))))d6",
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
+    "name": "Double Fangs",
+    "skillType": 3,
+    "description": "Weak Pierce damage to 1 foe. x2",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 12*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(7+7*(st/20))))d6",
+      "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
+    "name": "Assault Dive",
+    "skillType": 3,
+    "description": "Medium Strike damage to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 16*(1-0.1*stkpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(stkpwr*(1+T*0.2)*(18+18*(st/20))))d6",
+      "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
+    "name": "Needle Spray",
+    "skillType": 3,
+    "description": "Weak Pierce damage to 1 foe, 1d4 times, high crit chance",
+    "rollNames": [
+      "Cost",
+      "Hit Count",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 15*(1-0.1*prcpot)",
+      "/roll 1d4",
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(7+7*(st/20))))d6",
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  
+  {
+    "name": "Critical Slash",
+    "skillType": 3,
+    "description": "Medium Slash damage to 1 foe, always crits, low accuracy",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 12*(1-0.1*prcpot)",
+      "/roll (1d100-50+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(17+17*(st/20))))d6",
+      "/math 6+0"
     ]
   },
 
+  {
+    "name": "Oni-Kagura",
+    "skillType": 3,
+    "description": "Medium Strike damage to 1 foe, high crit rate, low accuracy",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 12*(1-0.1*stkpot)",
+      "/roll (1d100-25+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(stkpwr*(1+T*0.2)*(18+18*(st/20))))d6",
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
 
+  {
+    "name": "Fatal Sword",
+    "skillType": 3,
+    "description": "Medium Slash damage to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 20*(1-0.1*slhpot)",
+      "/roll (1d100-25+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(18+18*(st/20))))d6",
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
   
 
 
 
+
+
+
+
+  {
+    "name": "Fang Breaker",
+    "skillType": 1,
+    "description": "Weak Strike damage to 1 foe and reduces target's ATK by 1 rank",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 15*(1-0.1*stkpot)",
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(stkpwr*(1+T*0.2)*(13+13*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+
+
+
+  {
+    "name": "Pierce Armor",
+    "skillType": 3,
+    "description": "Weak Pierce damage to 1 foe and reduces target's DEF by 1 rank",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 15*(1-0.1*prcpot)",
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(13+13*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
+    "name": "Blinding Strike",
+    "skillType": 1,
+    "description": "Weak Slash damage to 1 foe and reduces target's HIT by 1 rank",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 15*(1-0.1*slhpot)",
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(13+13*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  
+
+
+
+
+
+
+
+
+  {
+    "name": "God's Hand",
+    "skillType": 1,
+    "description": "Severe Strike damage to 1 foe. x2",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 60*(1-0.1*stkpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(stkpwr*(1+T*0.2)*(48+48*(st/20))))d6",
+      "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+
+
+  { "Comment: ----------------------Random Phys Skills----------------------------": "", "name": "" }, 
+
+  {
+    "name": "Rampage",
+    "skillType": 3,
+    "description": "Weak Strike damage to random foes, 2-5 times",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*prcpot)",
+      "/roll (1d100-25+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(8+8*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+
+  { "Comment: ----------------------Multi Phys Skills----------------------------": "", "name": "" }, 
+
+  
+  
+
+
+  { "Comment: ----------------------Fire Skills----------------------------": "", "name": "" }, 
   
   {
     "name": "Agi",
@@ -103,7 +346,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*firpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
     ]
   },
@@ -118,7 +361,7 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*firpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
     ],
     "aoe": [
@@ -140,7 +383,7 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*firpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
     ]
   },
@@ -155,7 +398,7 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*firpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
     ],
     "aoe": [
@@ -177,7 +420,7 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*firpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ]
   },
@@ -192,7 +435,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*firpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ],
     "aoe": [
@@ -214,7 +457,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*firpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ],
     "aoe": [
@@ -236,7 +479,7 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*firpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ],
     "aoe": [
@@ -258,7 +501,7 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*firpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ],
     "aoe": [
@@ -281,9 +524,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*firpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 96-(lu/4+ag/10)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -293,6 +536,9 @@
       [1, 1, 1, 1, 1]
     ]
   },
+
+  { "Comment: ----------------------Ice Skills----------------------------": "", "name": "" }, 
+
 {
     "name": "Bufu",
     "skillType": 5,
@@ -304,7 +550,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*icepot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(12+12*(ma/20))))d6"
     ]
   },
@@ -319,7 +565,7 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*icepot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(12+12*(ma/20))))d6"
     ],
     "aoe": [
@@ -341,12 +587,12 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*icepot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(18+18*(ma/20))))d6"
     ]
   },
   {
-    "name": "MarBufuon",
+    "name": "Mabufula",
     "skillType": 5,
     "description": "Medium ice damage to all foes",
     "rollNames": [
@@ -356,7 +602,7 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*icepot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(18+18*(ma/20))))d6"
     ],
     "aoe": [
@@ -378,12 +624,12 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*icepot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ]
   },
   {
-    "name": "MarBufudyne",
+    "name": "Mabufudyne",
     "skillType": 5,
     "description": "Heavy ice damage to all foes",
     "rollNames": [
@@ -393,7 +639,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*icepot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ],
     "aoe": [
@@ -415,7 +661,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*icepot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ],
     "aoe": [
@@ -427,7 +673,7 @@
     ]
   },
   {
-    "name": "Margibarion",
+    "name": "Mabufubarion",
     "skillType": 5,
     "description": "Severe ice damage to 1 foe",
     "rollNames": [
@@ -437,7 +683,7 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*icepot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ],
     "aoe": [
@@ -459,7 +705,7 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*icepot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ],
     "aoe": [
@@ -482,9 +728,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*icepot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 96-(lu/4+ag/10)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -494,6 +740,10 @@
       [1, 1, 1, 1, 1]
     ]
   },
+
+
+  { "Comment: ----------------------Elec/Lightning Skills----------------------------": "", "name": "" }, 
+
 {
     "name": "Zio",
     "skillType": 6,
@@ -505,12 +755,12 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*elcpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
     ]
   },
   {
-    "name": "MaZio",
+    "name": "Mazio",
     "skillType": 6,
     "description": "Weak Electric damage to all foes",
     "rollNames": [
@@ -520,7 +770,7 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*elcpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
     ],
     "aoe": [
@@ -542,7 +792,7 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*elcpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
     ]
   },
@@ -557,7 +807,7 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*elcpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
     ],
     "aoe": [
@@ -579,7 +829,7 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*elcpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ]
   },
@@ -594,7 +844,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*elcpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ],
     "aoe": [
@@ -616,7 +866,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*elcpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ],
     "aoe": [
@@ -638,7 +888,7 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*elcpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ],
     "aoe": [
@@ -660,7 +910,7 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*elcpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ],
     "aoe": [
@@ -683,9 +933,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*elcpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 96-(lu/4+ag/10)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -695,6 +945,10 @@
       [1, 1, 1, 1, 1]
     ]
   },
+
+  { "Comment: ----------------------Force/Wind Skills----------------------------": "", "name": "" }, 
+
+
 {
     "name": "Zan",
     "skillType": 7,
@@ -706,7 +960,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*frcpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
     ]
   },
@@ -721,7 +975,7 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*frcpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
     ],
     "aoe": [
@@ -743,7 +997,7 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*frcpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
     ]
   },
@@ -758,7 +1012,7 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*frcpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
     ],
     "aoe": [
@@ -780,7 +1034,7 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*frcpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ]
   },
@@ -795,7 +1049,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*frcpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ],
     "aoe": [
@@ -817,7 +1071,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*frcpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ],
     "aoe": [
@@ -839,7 +1093,7 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*frcpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ],
     "aoe": [
@@ -861,7 +1115,7 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*frcpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ],
     "aoe": [
@@ -884,9 +1138,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*frcpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 96-(lu/4+ag/10)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -896,6 +1150,10 @@
       [1, 1, 1, 1, 1]
     ]
   },
+
+
+  { "Comment: ----------------------Toxic/Nuclear Skills----------------------------": "", "name": "" }, 
+
 {
     "name": "Frei",
     "skillType": 8,
@@ -907,7 +1165,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*toxpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
     ]
   },
@@ -922,7 +1180,7 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*toxpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
     ],
     "aoe": [
@@ -944,7 +1202,7 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*toxpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
     ]
   },
@@ -959,7 +1217,7 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*toxpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
     ],
     "aoe": [
@@ -981,7 +1239,7 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*toxpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ]
   },
@@ -996,7 +1254,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*toxpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ],
     "aoe": [
@@ -1018,7 +1276,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*toxpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ],
     "aoe": [
@@ -1040,7 +1298,7 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*toxpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ],
     "aoe": [
@@ -1062,7 +1320,7 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*toxpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ],
     "aoe": [
@@ -1085,9 +1343,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*toxpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 96-(lu/4+ag/10)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1097,6 +1355,9 @@
       [1, 1, 1, 1, 1]
     ]
   },
+
+  { "Comment: ----------------------Pisonic/Psychic Skills----------------------------": "", "name": "" }, 
+
 {
     "name": "Psi",
     "skillType": 9,
@@ -1108,7 +1369,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*psipot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(12+12*(ma/20))))d6"
     ]
   },
@@ -1123,7 +1384,7 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*psipot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(12+12*(ma/20))))d6"
     ],
     "aoe": [
@@ -1145,7 +1406,7 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*psipot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(18+18*(ma/20))))d6"
     ]
   },
@@ -1160,7 +1421,7 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*psipot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(18+18*(ma/20))))d6"
     ],
     "aoe": [
@@ -1182,7 +1443,7 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*psipot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ]
   },
@@ -1197,7 +1458,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*psipot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ],
     "aoe": [
@@ -1219,7 +1480,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*psipot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ],
     "aoe": [
@@ -1241,7 +1502,7 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*psipot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ],
     "aoe": [
@@ -1263,7 +1524,7 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*psipot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ],
     "aoe": [
@@ -1286,9 +1547,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*psipot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 96-(lu/4+ag/10)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1298,6 +1559,12 @@
       [1, 1, 1, 1, 1]
     ]
   },
+
+
+{ "Comment: ----------------------Mystic Skills----------------------------": "", "name": "" }, 
+
+  { "Comment: ----------------------Light/Holy Skills----------------------------": "", "name": "" }, 
+
   {
     "name": "Hama",
     "skillType": 10,
@@ -1310,7 +1577,7 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*lgtpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 40+((lu/2)+(ma/4))*lgtpwr"
     ]
@@ -1327,7 +1594,7 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*lgtpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 30+((lu/2)+(ma/4))*lgtpwr"
     ],
@@ -1351,7 +1618,7 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*lgtpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 60+((lu/2)+(ma/4))*lgtpwr"
     ]
@@ -1368,7 +1635,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*lgtpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 40+((lu/2)+(ma/4))*lgtpwr"
     ],
@@ -1392,7 +1659,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*lgtpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 80+((lu/2)+(ma/4))*lgtpwr"
     ],
@@ -1416,7 +1683,7 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*lgtpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 60+((lu/2)+(ma/4))*lgtpwr"
     ],
@@ -1440,7 +1707,7 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*lgtpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 60+((lu/2)+(ma/4))*lgtpwr"
     ],
@@ -1464,9 +1731,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*lgtpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 96-(lu/4+ag/10)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1476,6 +1743,8 @@
       [1, 1, 1, 1, 1]
     ]
   },
+
+  { "Comment: ----------------------Gloom/Dark Skills----------------------------": "", "name": "" }, 
   {
     "name": "Mudo",
     "skillType": 11,
@@ -1488,7 +1757,7 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*glmpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 40+((lu/2)+(ma/4))*glmpwr"
     ]
@@ -1505,7 +1774,7 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*glmpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 30+((lu/2)+(ma/4))*glmpwr"
     ],
@@ -1529,7 +1798,7 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*glmpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 60+((lu/2)+(ma/4))*glmpwr"
     ]
@@ -1546,7 +1815,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*glmpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 40+((lu/2)+(ma/4))*glmpwr"
     ],
@@ -1570,7 +1839,7 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*glmpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 80+((lu/2)+(ma/4))*glmpwr"
     ],
@@ -1594,7 +1863,7 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*glmpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 60+((lu/2)+(ma/4))*glmpwr"
     ],
@@ -1618,7 +1887,7 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*glmpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 60+((lu/2)+(ma/4))*glmpwr"
     ],
@@ -1642,9 +1911,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*glmpot)",
-      "/roll (1d100-2+ma)*(0.2*S+1)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 96-(lu/4+ag/10)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1652,6 +1921,57 @@
       [1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1]
+    ]
+  },
+
+
+  { "Comment: ----------------------Almighty Skills----------------------------": "", "name": "" }, 
+
+  {
+    "name": "Life Drain",
+    "skillType": 12,
+    "description": "Drains a small amount of HP from 1 foe",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Drain"
+    ],
+    "rolls": [
+      "/cost 5*(1-0.1*almpot)",
+      "/roll (1d100+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(almpwr*(1+T*0.2)*(7+7*(ma/20))))d6"
+    ]
+  },
+  {
+    "name": "Spirit Drain",
+    "skillType": 12,
+    "description": "Drains a small amount of MP from 1 foe",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Drain"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*almpot)",
+      "/roll (1d100+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(almpwr*(1+T*0.2)*(5+5*(ma/20))))d6"
+    ]
+  },
+  {
+    "name": "Life Drain",
+    "skillType": 12,
+    "description": "Drains a small amount of HP/MP from 1 foe",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Drain HP",
+      "Drain MP"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*almpot)",
+      "/roll (1d100+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(almpwr*(1+T*0.2)*(7+7*(ma/20))))d6",
+      "/roll (c*(almpwr*(1+T*0.2)*(5+5*(ma/20))))d6"
     ]
   },
   {
@@ -1665,7 +1985,7 @@
     ],
     "rolls": [
       "/cost 40*(1-0.1*almpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
     ]
   },
@@ -1680,7 +2000,7 @@
     ],
     "rolls": [
       "/cost 70*(1-0.1*almpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
     ]
   },
@@ -1694,11 +2014,30 @@
       "Damage"
     ],
     "rolls": [
-      "/cost 70*(1-0.1*almpot)",
-      "/roll (1d100-5+ma)*(0.2*S+1)",
+      "/cost 120*(1-0.1*almpot)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(28+28*(ma/20))))d6"
     ]
   },
+  {
+    "name": "Freikugel",
+    "skillType": 12,
+    "description": "Severe Strength Based Almighty damage to a single foe",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 70*(1-0.1*almpot)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(almpwr*(1+T*0.2)*(28+28*(st/20))))d6",
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+
+  { "Comment: ----------------------Ailment Skills----------------------------": "", "name": "" }, 
 
   {
     "name": "Dustoma",
@@ -1709,8 +2048,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost -10*(1-0.1*ailpot)",
-      "/math 60+((lu/4+ag/10)*ailpot)_floor"
+      "/cost 10*(1-0.1*ailpot)",
+      "/math 60+((lu/4+ma/10)*ailpot)_floor"
     ]
   },
   {
@@ -1722,8 +2061,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost -25*(1-0.1*ailpot)",
-      "/math 40+((lu/4+ag/10)*ailpot)_floor"
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 40+((lu/4+ma/10)*ailpot)_floor"
     ]
   },
 
@@ -1736,8 +2075,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost -10*(1-0.1*ailpot)",
-      "/math 60+((lu/4+ag/10)*ailpot)_floor"
+      "/cost 10*(1-0.1*ailpot)",
+      "/math 60+((lu/4+ma/10)*ailpot)_floor"
     ]
   },
   {
@@ -1749,10 +2088,1879 @@
       "Potency"
     ],
     "rolls": [
-      "/cost -25*(1-0.1*ailpot)",
-      "/math 40+((lu/4+ag/10)*ailpot)_floor"
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+
+  {
+    "name": "Marin Karin",
+    "skillType": 13,
+    "description": "Chance to inflict charm to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*ailpot)",
+      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Sexy Dance",
+    "skillType": 13,
+    "description": "Chance to inflict charm to all foes",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+
+  {
+    "name": "Dormina",
+    "skillType": 13,
+    "description": "Chance to inflict charm to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*ailpot)",
+      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Lullaby",
+    "skillType": 13,
+    "description": "Chance to inflict sleep to all foes",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Evil Touch",
+    "skillType": 13,
+    "description": "Chance to inflict Fear to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*ailpot)",
+      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Evil Smile",
+    "skillType": 13,
+    "description": "Chance to inflict Fear to all foes",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Makajam",
+    "skillType": 13,
+    "description": "Chance to inflict Seal to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*ailpot)",
+      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Foolish Whisper",
+    "skillType": 13,
+    "description": "Chance to inflict Seal to all foes",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Balzac",
+    "skillType": 13,
+    "description": "Chance to inflict Rage to 1 ally or foe",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*ailpot)",
+      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Valiant Dance",
+    "skillType": 13,
+    "description": "Chance to inflict Rage to all foes",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Pulinpa",
+    "skillType": 13,
+    "description": "Chance to inflict Confusion to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*ailpot)",
+      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Tentarafoo",
+    "skillType": 13,
+    "description": "Chance to inflict Confusion to all foes",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Shibaboo",
+    "skillType": 13,
+    "description": "Chance to inflict Bind to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*ailpot)",
+      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Binding Cry",
+    "skillType": 13,
+    "description": "Chance to inflict Bind to all foes",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Soul Break",
+    "skillType": 13,
+    "description": "Chance to inflict Exhaust to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*ailpot)",
+      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Anima Freeze",
+    "skillType": 13,
+    "description": "Chance to inflict Exhaust to all foes",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+
+  {
+    "name": "Enervation",
+    "skillType": 13,
+    "description": "Chance to inflict Enervate to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*ailpot)",
+      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+  {
+    "name": "Old One",
+    "skillType": 13,
+    "description": "Chance to inflict Enervate to all foes",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+    ]
+  },
+
+
+
+  { "Comment: ----------------------Healing Skills----------------------------": "", "name": "" }, 
+
+  {
+    "name": "Dia",
+    "skillType": 14,
+    "description": "Slightly restores 1 ally's HP",
+    "rollNames": [
+      "Cost",
+      "Healing"
+    ],
+    "rolls": [
+      "/cost 8*(1-0.1*hlgpot)",
+      "/roll (c*(hlgpwr*(12+12*(ma/20))))d6"
+    ]
+  },
+  {
+    "name": "Diara",
+    "skillType": 14,
+    "description": "Moderately restores 1 ally's HP",
+    "rollNames": [
+      "Cost",
+      "Healing"
+    ],
+    "rolls": [
+      "/cost 15*(1-0.1*hlgpot)",
+      "/roll (c*(hlgpwr*(24+24*(ma/20))))d6"
+    ]
+  },
+  {
+    "name": "Diarama",
+    "skillType": 14,
+    "description": "Greatly restores 1 ally's HP",
+    "rollNames": [
+      "Cost",
+      "Healing"
+    ],
+    "rolls": [
+      "/cost 35*(1-0.1*hlgpot)",
+      "/roll (c*(hlgpwr*(36+36*(ma/20))))d6"
+    ]
+  },
+  {
+    "name": "Media",
+    "skillType": 14,
+    "description": "Slightly restores all allies' HP",
+    "rollNames": [
+      "Cost",
+      "Healing"
+    ],
+    "rolls": [
+      "/cost 30*(1-0.1*hlgpot)",
+      "/roll (c*(hlgpwr*(12+12*(ma/20))))d6"
+    ]
+  },
+  {
+    "name": "Mediara",
+    "skillType": 14,
+    "description": "Moderately restores all allies' HP",
+    "rollNames": [
+      "Cost",
+      "Healing"
+    ],
+    "rolls": [
+      "/cost 50*(1-0.1*hlgpot)",
+      "/roll (c*(hlgpwr*(24+24*(ma/20))))d6"
+    ]
+  },
+  {
+    "name": "Mediarama",
+    "skillType": 14,
+    "description": "Greatly restores all allies' HP",
+    "rollNames": [
+      "Cost",
+      "Healing"
+    ],
+    "rolls": [
+      "/cost 100*(1-0.1*hlgpot)",
+      "/roll (c*(hlgpwr*(36+36*(ma/20))))d6"
+    ]
+  },
+  {
+    "name": "Patra",
+    "skillType": 14,
+    "description": "Cures all ailments on 1 ally",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 8*(1-0.1*hlgpot)"
+    ]
+  },
+  {
+    "name": "Me Patra",
+    "skillType": 14,
+    "description": "Cures all ailments on all allies",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 30*(1-0.1*hlgpot)"
+    ]
+  },
+  {
+    "name": "Recarm",
+    "skillType": 14,
+    "description": "Revives 1 ally at half HP (1+mhp/2)",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 20*(1-0.1*hlgpot)"
+    ]
+  },
+  {
+    "name": "Samarecarm",
+    "skillType": 14,
+    "description": "Revives 1 ally at full HP",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 60*(1-0.1*hlgpot)"
+    ]
+  },
+  {
+    "name": "Diara",
+    "skillType": 14,
+    "description": "Moderately restores 1 ally's HP and cures all ailments",
+    "rollNames": [
+      "Cost",
+      "Healing"
+    ],
+    "rolls": [
+      "/cost 30*(1-0.1*hlgpot)",
+      "/roll (c*(hlgpwr*(24+24*(ma/20))))d6"
+    ]
+  },
+  
+
+  
+  { "Comment: ----------------------Tactical Skills----------------------------": "", "name": "" }, 
+  
+  {
+    "name": "Tarukaja",
+    "skillType": 15,
+    "description": "Increase the ATK of 1 ally by 1 rank",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 8*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Rakukaja",
+    "skillType": 15,
+    "description": "Increase the DEF of 1 ally by 1 rank",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 8*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Sukukaja",
+    "skillType": 15,
+    "description": "Increase the HIT of 1 ally by 1 rank",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 8*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Tarunda",
+    "skillType": 15,
+    "description": "Decrease the ATK of 1 foe by 1 rank",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 8*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Rakunda",
+    "skillType": 15,
+    "description": "Decrease the DEF of 1 foe by 1 rank",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 8*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Sukunda",
+    "skillType": 15,
+    "description": "Decrease the HIT of 1 foe by 1 rank",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 8*(1-0.1*tacpot)"
+    ]
+  },
+    {
+    "name": "Matarukaja",
+    "skillType": 15,
+    "description": "Increase the ATK of all allies by 1 rank",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 24*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Marakukaja",
+    "skillType": 15,
+    "description": "Increase the DEF of all allies by 1 rank",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 24*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Masukukaja",
+    "skillType": 15,
+    "description": "Increase the HIT of all allies by 1 rank",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 24*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Matarunda",
+    "skillType": 15,
+    "description": "Decrease the ATK of all foes by 1 rank",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 24*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Marakunda",
+    "skillType": 15,
+    "description": "Decrease the DEF of all foes by 1 rank",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 24*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Masukunda",
+    "skillType": 15,
+    "description": "Decrease the HIT of all foes by 1 rank",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 24*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Tarujaya",
+    "skillType": 15,
+    "description": "Increase the ATK of 1 ally by 2 ranks",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 32*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Rakujaya",
+    "skillType": 15,
+    "description": "Increase the DEF of 1 ally by 2 ranks",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 32*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Sukujaya",
+    "skillType": 15,
+    "description": "Increase the HIT of 1 ally by 2 ranks",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 32*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Tarumara",
+    "skillType": 15,
+    "description": "Decrease the ATK of 1 foe by 2 ranks",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 32*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Rakumara",
+    "skillType": 15,
+    "description": "Decrease the DEF of 1 foe by 2 ranks",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 32*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Sukumara",
+    "skillType": 15,
+    "description": "Decrease the HIT of 1 foe by 2 ranks",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 32*(1-0.1*tacpot)"
+    ]
+  },
+    {
+    "name": "Matarujaya",
+    "skillType": 15,
+    "description": "Increase the ATK of all allies by 2 ranks",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 72*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Marakujaya",
+    "skillType": 15,
+    "description": "Increase the DEF of all allies by 2 ranks",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 72*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Masukujaya",
+    "skillType": 15,
+    "description": "Increase the HIT of all allies by 2 ranks",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 72*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Matarumara",
+    "skillType": 15,
+    "description": "Decrease the ATK of all foes by 2 ranks",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 72*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Marakumara",
+    "skillType": 15,
+    "description": "Decrease the DEF of all foes by 2 ranks",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 72*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Masukumara",
+    "skillType": 15,
+    "description": "Decrease the HIT of all foes by 2 ranks",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 72*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Luster Candy",
+    "skillType": 15,
+    "description": "Increase the ATK/DEF/HIT of 1 ally by 1 rank",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 150*(1-0.1*tacpot)"
+    ]
+  },{
+    "name": "Heat Riser",
+    "skillType": 15,
+    "description": "Increase the ATK/DEF/HIT of 1 ally by 2 ranks",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 300*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Debilitate",
+    "skillType": 15,
+    "description": "Decerase the ATK/DEF/HIT of 1 foe by 1 rank",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 150*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Cold Sinker",
+    "skillType": 15,
+    "description": "Decerase the ATK/DEF/HIT of 1 foe by 2 ranks",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 300*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Dekaja",
+    "skillType": 15,
+    "description": "Removes buffs from all foes",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Dekunda",
+    "skillType": 15,
+    "description": "Removes debuffs from all allies",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Charge",
+    "skillType": 15,
+    "description": "Increase the damage of your next phys attack by 1.25",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Concentrate",
+    "skillType": 15,
+    "description": "Increase the damage of your next magic attack by 1.25",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Critical Aura",
+    "skillType": 15,
+    "description": "Your next phys attack has 100% accuracy and crit rate",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Bowl of Hygieia",
+    "skillType": 15,
+    "description": "Increase the effectiveness of your next healing skill by 1.25, and it can heal above max HP as bulwark",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 20*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Tetrakarn",
+    "skillType": 15,
+    "description": "Grants Tetrakarn to 1 ally (repel next phys damage start end of next turn)",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 50*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Makarakarn",
+    "skillType": 15,
+    "description": "Grants Makarakarn to 1 ally (repel next (non-almighty) magic damage start end of next turn)",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 50*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Taunt",
+    "skillType": 15,
+    "description": "Doubles the change of being targeted until the start of your next turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 8*(1-0.1*tacpot)"
+    ]
+  },
+
+  { "Comment: ----------------------Passive Skills----------------------------": "", "name": "" }, 
+
+
+  {
+    "name": "Life Spring",
+    "skillType": 15,
+    "description": "Increases Max HP",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+15% hp"
+    ]
+  },
+  {
+    "name": "Great Life Spring",
+    "skillType": 15,
+    "description": "Greatly increases Max HP",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+30% hp"
+    ]
+  },
+  {
+    "name": "Mana Spring",
+    "skillType": 15,
+    "description": "Increases Max MP",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+15% mp"
+    ]
+  },
+  {
+    "name": "Great Mana Spring",
+    "skillType": 15,
+    "description": "Greatly increases Max MP",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+30% mp"
+    ]
+  },
+  {
+    "name": "Strength Amp",
+    "skillType": 0,
+    "description": "Increases Strength slightly",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+5 St"
+    ]
+  },
+  {
+    "name": "Magic Amp",
+    "skillType": 0,
+    "description": "Increases Magic slightly",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+5 Ma"
+    ]
+  },
+  {
+    "name": "Vitality Amp",
+    "skillType": 0,
+    "description": "Increases Vitality slightly",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+5 Vi"
+    ]
+  },
+  {
+    "name": "Agility Amp",
+    "skillType": 0,
+    "description": "Increases Agility slightly",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+5 Ag"
+    ]
+  },
+  {
+    "name": "Luck Amp",
+    "skillType": 0,
+    "description": "Increases Luck slightly",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+5 Lu"
+    ]
+  },
+  {
+    "name": "Strike Boost",
+    "skillType": 0,
+    "description": "Increases Strike Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% stkpwr"
+    ]
+  },
+  {
+    "name": "Slash Boost",
+    "skillType": 0,
+    "description": "Increases Slash Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% slhpwr"
+    ]
+  },
+  {
+    "name": "Pierce Boost",
+    "skillType": 0,
+    "description": "Increases Pierce Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% prcpwr"
+    ]
+  },
+  {
+    "name": "Fire Boost",
+    "skillType": 0,
+    "description": "Increases Fire Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% firpwr"
+    ]
+  },
+  {
+    "name": "Ice Boost",
+    "skillType": 0,
+    "description": "Increases Ice Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% icepwr"
+    ]
+  },
+  {
+    "name": "Electric Boost",
+    "skillType": 0,
+    "description": "Increases Electric Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% elcpwr"
+    ]
+  },
+  {
+    "name": "Force Boost",
+    "skillType": 0,
+    "description": "Increases Force Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% frcpwr"
+    ]
+  },
+  {
+    "name": "Toxic Boost",
+    "skillType": 0,
+    "description": "Increases Toxic Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% toxpwr"
+    ]
+  },
+  {
+    "name": "Psionic Boost",
+    "skillType": 0,
+    "description": "Increases Psionic Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% psipwr"
+    ]
+  },
+  {
+    "name": "Light Boost",
+    "skillType": 0,
+    "description": "Increases Light Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% lgtpwr"
+    ]
+  },
+  {
+    "name": "Gloom Boost",
+    "skillType": 0,
+    "description": "Increases Gloom Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% glmpwr"
+    ]
+  },
+  {
+    "name": "Almighty Boost",
+    "skillType": 0,
+    "description": "Increases Almighty Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% almpwr"
+    ]
+  },
+  {
+    "name": "Ailment Boost",
+    "skillType": 0,
+    "description": "Increases Ailment Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% ailpwr"
+    ]
+  },
+  {
+    "name": "Healing Boost",
+    "skillType": 0,
+    "description": "Increases Healing Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% hlgpwr"
+    ]
+  },
+  {
+    "name": "Strike Amp",
+    "skillType": 0,
+    "description": "Greatly increases Strike Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% stkpwr"
+    ]
+  },
+  {
+    "name": "Slash Amp",
+    "skillType": 0,
+    "description": "Greatly increases Slash Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% slhpwr"
+    ]
+  },
+  {
+    "name": "Pierce Amp",
+    "skillType": 0,
+    "description": "Greatly increases Pierce Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% prcpwr"
+    ]
+  },
+  {
+    "name": "Fire Amp",
+    "skillType": 0,
+    "description": "Greatly increases Fire Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% firpwr"
+    ]
+  },
+  {
+    "name": "Ice Amp",
+    "skillType": 0,
+    "description": "Greatly increases Ice Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% icepwr"
+    ]
+  },
+  {
+    "name": "Electric Amp",
+    "skillType": 0,
+    "description": "Greatly increases Electric Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% elcpwr"
+    ]
+  },
+  {
+    "name": "Force Amp",
+    "skillType": 0,
+    "description": "Greatly increases Force Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% frcpwr"
+    ]
+  },
+  {
+    "name": "Toxic Amp",
+    "skillType": 0,
+    "description": "Greatly increases Toxic Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% toxpwr"
+    ]
+  },
+  {
+    "name": "Psionic Amp",
+    "skillType": 0,
+    "description": "Greatly increases Psionic Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% psipwr"
+    ]
+  },
+  {
+    "name": "Light Amp",
+    "skillType": 0,
+    "description": "Greatly increases Light Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% lgtpwr"
+    ]
+  },
+  {
+    "name": "Gloom Amp",
+    "skillType": 0,
+    "description": "Greatly increases Gloom Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% glmpwr"
+    ]
+  },
+  {
+    "name": "Almighty Amp",
+    "skillType": 0,
+    "description": "Greatly increases Almighty Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% almpwr"
+    ]
+  },
+  {
+    "name": "Ailment Amp",
+    "skillType": 0,
+    "description": "Greatly increases Ailment Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% ailpwr"
+    ]
+  },
+  {
+    "name": "Healing Amp",
+    "skillType": 0,
+    "description": "Greatly increases Healing Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% hlgpwr"
+    ]
+  },
+
+  { "Comment: ----------------------Affinity Resistance Skills----------------------------": "", "name": "" }, 
+
+  {
+    "name": "Counter",
+    "skillType": 0,
+    "description": "Chance to repel phys damage",
+    "rollNames": ["Reflection Chance"],
+    "rolls": ["/math 15+(lu/4+ag/10)"]
+  },
+  {
+    "name": "Retaliate",
+    "skillType": 0,
+    "description": "The first time you would take phys damage, make a weapon attack against the source",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Hellish Mask",
+    "skillType": 0,
+    "description": "Resists all Ailments",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Strike",
+    "skillType": 0,
+    "description": "Resists Strike damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Strike",
+    "skillType": 0,
+    "description": "Nulls Strike damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Strike",
+    "skillType": 0,
+    "description": "Drains Strike damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Strike",
+    "skillType": 0,
+    "description": "Repels Strike damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Strike",
+    "skillType": 0,
+    "description": "Absorbs Strike damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Slash",
+    "skillType": 0,
+    "description": "Resists Slash damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Slash",
+    "skillType": 0,
+    "description": "Nulls Slash damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Slash",
+    "skillType": 0,
+    "description": "Drains Slash damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Slash",
+    "skillType": 0,
+    "description": "Repels Slash damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Slash",
+    "skillType": 0,
+    "description": "Absorbs Slash damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Pierce",
+    "skillType": 0,
+    "description": "Resists Pierce damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Pierce",
+    "skillType": 0,
+    "description": "Nulls Pierce damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Pierce",
+    "skillType": 0,
+    "description": "Drains Pierce damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Pierce",
+    "skillType": 0,
+    "description": "Repels Pierce damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Pierce",
+    "skillType": 0,
+    "description": "Absorbs Pierce damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Fire",
+    "skillType": 0,
+    "description": "Resists Fire damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Fire",
+    "skillType": 0,
+    "description": "Nulls Fire damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Fire",
+    "skillType": 0,
+    "description": "Drains Fire damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Fire",
+    "skillType": 0,
+    "description": "Repels Fire damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Fire",
+    "skillType": 0,
+    "description": "Absorbs Fire damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Ice",
+    "skillType": 0,
+    "description": "Resists Ice damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Ice",
+    "skillType": 0,
+    "description": "Nulls Ice damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Ice",
+    "skillType": 0,
+    "description": "Drains Ice damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Ice",
+    "skillType": 0,
+    "description": "Repels Ice damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Ice",
+    "skillType": 0,
+    "description": "Absorbs Ice damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Electric",
+    "skillType": 0,
+    "description": "Resists Electric damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Electric",
+    "skillType": 0,
+    "description": "Nulls Electric damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Electric",
+    "skillType": 0,
+    "description": "Drains Electric damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Electric",
+    "skillType": 0,
+    "description": "Repels Electric damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Electric",
+    "skillType": 0,
+    "description": "Absorbs Electric damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Force",
+    "skillType": 0,
+    "description": "Resists Force damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Force",
+    "skillType": 0,
+    "description": "Nulls Force damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Force",
+    "skillType": 0,
+    "description": "Drains Force damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Force",
+    "skillType": 0,
+    "description": "Repels Force damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Force",
+    "skillType": 0,
+    "description": "Absorbs Force damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Toxic",
+    "skillType": 0,
+    "description": "Resists Toxic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Toxic",
+    "skillType": 0,
+    "description": "Nulls Toxic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Toxic",
+    "skillType": 0,
+    "description": "Drains Toxic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Toxic",
+    "skillType": 0,
+    "description": "Repels Toxic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Toxic",
+    "skillType": 0,
+    "description": "Absorbs Toxic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Psionic",
+    "skillType": 0,
+    "description": "Resists Psionic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Psionic",
+    "skillType": 0,
+    "description": "Nulls Psionic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Psionic",
+    "skillType": 0,
+    "description": "Drains Psionic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Psionic",
+    "skillType": 0,
+    "description": "Repels Psionic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Psionic",
+    "skillType": 0,
+    "description": "Absorbs Psionic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Light",
+    "skillType": 0,
+    "description": "Resists Light damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Light",
+    "skillType": 0,
+    "description": "Nulls Light damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Light",
+    "skillType": 0,
+    "description": "Drains Light damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Light",
+    "skillType": 0,
+    "description": "Repels Light damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Light",
+    "skillType": 0,
+    "description": "Absorbs Light damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Gloom",
+    "skillType": 0,
+    "description": "Resists Gloom damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Gloom",
+    "skillType": 0,
+    "description": "Nulls Gloom damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Gloom",
+    "skillType": 0,
+    "description": "Drains Gloom damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Gloom",
+    "skillType": 0,
+    "description": "Repels Gloom damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Gloom",
+    "skillType": 0,
+    "description": "Absorbs Gloom damage",
+    "rollNames": [],
+    "rolls": []
+  },
+
+
+
+{
+    "name": "Breaking-Strike",
+    "skillType": 0,
+    "description": "Strike damage becomes Breaking-Strike damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Breaking-Slash",
+    "skillType": 0,
+    "description": "Slash damage becomes Breaking-Slash damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Breaking-Pierce",
+    "skillType": 0,
+    "description": "Pierce damage becomes Breaking-Pierce damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Breaking-Fire",
+    "skillType": 0,
+    "description": "Fire damage becomes Breaking-Fire damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Breaking-Ice",
+    "skillType": 0,
+    "description": "Ice damage becomes Breaking-Ice damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Breaking-Electric",
+    "skillType": 0,
+    "description": "Electric damage becomes Breaking-Electric damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Breaking-Force",
+    "skillType": 0,
+    "description": "Force damage becomes Breaking-Force damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Breaking-Toxic",
+    "skillType": 0,
+    "description": "Toxic damage becomes Breaking-Toxic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Breaking-Psionic",
+    "skillType": 0,
+    "description": "Psionic damage becomes Breaking-Psionic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Breaking-Light",
+    "skillType": 0,
+    "description": "Light damage becomes Breaking-Light damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Breaking-Gloom",
+    "skillType": 0,
+    "description": "Gloom damage becomes Breaking-Gloom damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Strike Block",
+    "skillType": 0,
+    "description": "Nullifies Strike Damage on the party for 1 turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Slash Block",
+    "skillType": 0,
+    "description": "Nullifies Slash Damage on the party for 1 turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Pierce Block",
+    "skillType": 0,
+    "description": "Nullifies Pierce Damage on the party for 1 turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Fire Block",
+    "skillType": 0,
+    "description": "Nullifies Fire Damage on the party for 1 turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Ice Block",
+    "skillType": 0,
+    "description": "Nullifies Ice Damage on the party for 1 turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Electric Block",
+    "skillType": 0,
+    "description": "Nullifies Electric Damage on the party for 1 turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Force Block",
+    "skillType": 0,
+    "description": "Nullifies Force Damage on the party for 1 turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Toxic Block",
+    "skillType": 0,
+    "description": "Nullifies Toxic Damage on the party for 1 turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Psionic Block",
+    "skillType": 0,
+    "description": "Nullifies Psionic Damage on the party for 1 turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Light Block",
+    "skillType": 0,
+    "description": "Nullifies Light Damage on the party for 1 turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Gloom Block",
+    "skillType": 0,
+    "description": "Nullifies Gloom Damage on the party for 1 turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Almighty Block",
+    "skillType": 0,
+    "description": "Nullifies Almighty Damage on the party for 1 turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Ailment Block",
+    "skillType": 0,
+    "description": "Nullifies Ailment Damage on the party for 1 turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+  {
+    "name": "Healing Block",
+    "skillType": 0,
+    "description": "Nullifies Healing Damage on the party for 1 turn",
+    "rollNames": [
+      "Cost"
+    ],
+    "rolls": [
+      "/cost 40*(1-0.1*tacpot)"
+    ]
+  },
+
+
+
+
+
+
+
+
+
+  {
+    "name": "Retardmaxxing",
+    "skillType": 0,
+    "description": "Increases Luck slightly",
+    "rollNames": [
+      "De-Amp",
+      "De-Amp",
+      "De-Amp",
+      "De-Amp",
+      "De-Amp"
+    ],
+    "rolls": [
+      "-100% St",
+      "-100% Ma",
+      "-100% Vi",
+      "-100% Ag",
+      "-100% Lu"
     ]
   }
-    
 
 ]
