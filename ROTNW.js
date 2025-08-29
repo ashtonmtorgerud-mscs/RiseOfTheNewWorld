@@ -790,7 +790,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     case ("gloomevasion"): case ("glmeva"): this.affinitiesEvasion[10] *= (100+valueBoost)/100; break;
 
                                     // Affinities Genus Reducers
-                                    case ("physreducer"): case ("phyres"): this.affinitiesGenusReducer[0] *= (100-valueBoost)/100; break;
+                                    case ("physreducer"): case ("physres"): this.affinitiesGenusReducer[0] *= (100-valueBoost)/100; break;
                                     case ("elemreducer"): case ("eleres"): this.affinitiesGenusReducer[1] *= (100-valueBoost)/100; break;
                                     case ("mystreducer"): case ("mystres"): this.affinitiesGenusReducer[2] *= (100-valueBoost)/100; break;
                                     case ("magreducer"): case ("magres"): this.affinitiesGenusReducer[3] *= (100-valueBoost)/100; break;
@@ -1197,6 +1197,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 let skillsCount = activeDemon.value.skills.filter(skill => skill.name !== "").length;
                                 let gotSkill = false;
                                 let skillData = data.find(skill => skill.name.toLowerCase().replace(/[\s']/g, '') === skillName.toLowerCase());
+                                if (skillsCount > 7) { 
+                                    log.value.push("All 8 skill slots are full, please specifiy a specific slot");
+                                    return;
+                                }
                                 if (importData.length == 2) {
                                     activeDemon.value.skills[skillsCount] = skillData || new Skill("", "", [], []);
                                     log.value.push("Imported skill: " + skillName + " to slot " + (skillsCount+1));
@@ -1205,7 +1209,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 const skillSlot = parseInt(importData[2]) || -1;
                                 if (skillSlot >= 0 && skillSlot < 8) {
                                     activeDemon.value.skills[skillSlot-1] = skillData || new Skill("", "", [], []);
-                                    log.value.push("Imported skill: " + skillName + " to slot " + (skillsCount+1));
+                                    log.value.push("Imported skill: " + skillName + " to slot " + (skillsCount));
                                     gotSkill = true;
                                     messageInput.value = '';
                                 }
@@ -1221,6 +1225,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                             );
                         }
+                        dataMaster.value.autoSave();
                         
                         
                     } else if (messageInput.value.startsWith('/clear')) {

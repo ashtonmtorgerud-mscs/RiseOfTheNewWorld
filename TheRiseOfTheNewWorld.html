@@ -299,7 +299,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full max-h-[80vh] overflow-y-auto text-white font-semibold" >
+                <div class="w-full max-h-[80vh] overflow-y-auto text-white font-semibold" v-if="modalTab=='help'">
 
                         <h2 class="text-2xl mb-4 border-b border-indigo-500 pb-2">List of Commands:</h2>
                         <div class="space-y-3 text-lg">
@@ -488,7 +488,7 @@
 
 
                                     <div class="w-full h-1/5 flex items-center bg-indigo-950 rounded-full p-2 ring-1 ring-indigo-300">
-                                        <div class="relative w-full h-full bg-gray-600 rounded-full overflow-hidden">
+                                        <div class="relative w-full h-full min-h-1 bg-gray-600 rounded-full overflow-hidden">
                                             
                                             <!-- HP Bar (base layer) -->
                                             <div
@@ -645,7 +645,7 @@
                                         <div class="">
                                             <div class="flex flex-col items-center h-full">
                                                 <div class="">
-                                                    <div @click="messageInput = '/damage (' + activeDemon.readAffinity(affinity) + '*' + activeDemon.affinitiesReducer[index] + ')*'"
+                                                    <div @click="messageInput = '/damage (' + activeDemon.readAffinity(affinity) + '*' + ['stkres','slhres','prcres','firres','iceres','elcres','frcres','toxres','psyres','lgtres','glmres'][index] + ')*'"
                                                         class="w-full bg-blue-950 aspect-square rounded-lg object-cover mb-1 border-2 border-indigo-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl hoverPop tooltip">
                                                         <img :src="'./Resources/AffinityIcon' + (index+1) + '.png'"
                                                             class="pulsingFilter" />
@@ -793,7 +793,7 @@
                                 </div>
 
                                 <div class="bg-blue-950 rounded-b-2xl" style="height: 92%;">
-                                    <div v-if="activeTab === 'profile'" class="w-full h-full p-2">
+                                    <div v-if="activeTab === 'profile'" class="w-full h-full p-2 overflow-y-auto overflow-x-hidden">
                                         <p class="text-white text-xl font-semibold my-2"> <span
                                                 class="text-xl text-emerald-400 mb-2">Name: </span> <span
                                                 class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500">{{
@@ -813,10 +813,11 @@
                                         </p>
 
                                         <!-- <p class="text-emerald-400 text-xl font-semibold mb-2"></p> -->
+                                         <p class="text-emerald-400 text-xl font-semibold mb-2" v-if="activeDemon.contract != ''"> Description:</p>
                                         <div  v-if="activeDemon.description != ''"
-                                            class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 p-2 mb-1 ring-1 ring-indigo-500">
+                                            class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 p-2 mb-1 ring-1 ring-indigo-500  max-h-48 overflow-y-auto overflow-x-hidden">
                                             <!-- Display each keyword in a styled paragraph -->
-                                            <p class="mb-2" v-if="activeDemon.description != ''"> {{ activeDemon.description }}</p>
+                                            <p class="mb-2 break-words whitespace-pre-wrap" v-if="activeDemon.description != ''"> {{ activeDemon.description }}</p>
                                             
                                             <!-- • -->
                                             <p class="" v-for="birthright in activeDemon.birthrights">  {{ birthright}}</p> 
@@ -832,10 +833,14 @@
 
 
                                         <p class="text-emerald-400 text-xl font-semibold mb-2" v-if="activeDemon.contract != ''"> Contract:</p>
-                                        <div class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 p-2 mb-1 ring-1 ring-indigo-500" v-if="activeDemon.contract != ''">
-                                            <p class="mb-2" > {{ activeDemon.contract }}</p>
-                                            
+                                        <div class="text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 p-2 mb-1 ring-1 ring-indigo-500 max-h-48 overflow-y-auto overflow-x-hidden"
+                                        v-if="activeDemon.contract != ''" >
+                                            <p class="mb-2 break-words whitespace-pre-wrap">
+                                                {{ activeDemon.contract }}
+                                            </p>
                                         </div>
+
+
                                         <!-- <button type="button" class="rounded-2xl bg-emerald-700 text-white p-2" @click="dataMaster.printData" >Print</button>
                                         <button type="button" class="rounded-2xl bg-emerald-700 text-white p-2" @click="dataMaster.updateFileData()" >Update</button>
                                         <button type="button" class="rounded-2xl bg-emerald-700 text-white p-2" @click="dataMaster.saveData" >Save</button>
@@ -857,7 +862,7 @@
                                             class="w-full text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500" />
                                         <p class="text-emerald-400 text-xl font-semibold mb-2 w-full border-b-2 border-indigo-500"> Defending: </p>
                                         <div class="flex flex-row gap-2">
-                                            <input type="button" value="Will" @click="messageInput = '/roll 1d100+lu+vi/2'" class="rounded-full bg-gradient-to-r from-purple-950 to-blue-800 w-1/3 ring-1 ring-cyan-100 textOutlineBlackThin text-xl" >
+                                            <input type="button" value="Will" @click="messageInput = '/roll 1d100+lu+vi/2_floor'" class="rounded-full bg-gradient-to-r from-purple-950 to-blue-800 w-1/3 ring-1 ring-cyan-100 textOutlineBlackThin text-xl" >
                                             <input type="button" value="Guard" @click="activeDemon.guard = !activeDemon.guard; activeDemon.dodge = false;" class="rounded-full textOutlineBlackThin text-xl w-1/3 ring-1" :class="activeDemon.guard ? 'bg-gradient-to-r from-purple-950 to-blue-950 ring-cyan-800 text-gray-300' : 'bg-gradient-to-r from-purple-900 to-blue-800 ring-cyan-100'">
                                             <input type="button" value="Dodge" @click="activeDemon.dodge = !activeDemon.dodge; activeDemon.guard = false;" class="rounded-full textOutlineBlackThin text-xl w-1/3 ring-1" :class="activeDemon.dodge ? 'bg-gradient-to-r from-purple-950 to-blue-950 ring-cyan-800 text-gray-300' : 'bg-gradient-to-r from-purple-900 to-blue-800 ring-cyan-100'">
                                         </div>
@@ -1629,10 +1634,7 @@
                                             @click="activeDemon.birthrights.push('+');">
                                             <div class="text-white rounded-lg bg-gradient-to-r from-sky-950 to-blue-900 max-h-full w-full ring-1 ring-white p-2">
                                                 +New Birthright 
-
                                             </div>
-                                            
-                                            <div class=""></div>
                                         </div>
                                     </div>
                                 </div>
@@ -1966,9 +1968,9 @@
                             </div>
 
 
-                            <div class="w-full flex flex-col gap-1 px-5 h-full">
+                            <div class="w-full flex flex-col gap-1 px-5 h-full min-h-64">
                                     <label for="descriptionBox"
-                                        class=" border-b-2 border-indigo-500 font-bold text-white">Demon Description:</label>
+                                        class="border-b-2 border-indigo-500 font-bold text-white">Demon Contract:</label>
                                     <textarea type="text" v-model="activeDemon.contract" name="" id="descriptionBox" @change="dataMaster.autoSave()"
                                         class="h-full bg-blue-950 text-white p-2 rounded-3xl ring-1 ring-cyan-400 resize-none"> </textarea>
                             </div>

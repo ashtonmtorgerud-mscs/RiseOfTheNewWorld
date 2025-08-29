@@ -338,7 +338,7 @@
   {
     "name": "Agi",
     "skillType": 4,
-    "description": "Weak Fire damage to 1 foe",
+    "description": "Weak Fire damage to 1 foe, with a chance of burn",
     "rollNames": [
       "Cost",
       "Aim",
@@ -1396,7 +1396,7 @@
     ]
   },
   {
-    "name": "psio",
+    "name": "Psio",
     "skillType": 9,
     "description": "Medium Psionic damage to 1 foe",
     "rollNames": [
@@ -2045,11 +2045,12 @@
     "description": "Chance to inflict mirage to 1 foe",
     "rollNames": [
       "Cost",
-      "Potency"
+      "Potency",
+      "Potencier"
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+      "/math 60+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2062,7 +2063,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+      "/math 40+((lu+ma/2)*ailpwr)_floor"
     ]
   },
 
@@ -2076,7 +2077,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+      "/math 60+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2089,7 +2090,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+      "/math 40+((lu+ma/2)*ailpwr)_floor"
     ]
   },
 
@@ -2103,7 +2104,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+      "/math 60+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2116,7 +2117,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+      "/math 40+((lu+ma/2)*ailpwr)_floor"
     ]
   },
 
@@ -2130,7 +2131,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+      "/math 60+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2143,7 +2144,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+      "/math 40+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2156,7 +2157,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+      "/math 60+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2169,7 +2170,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+      "/math 40+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2182,7 +2183,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+      "/math 60+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2195,7 +2196,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+      "/math 40+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2208,7 +2209,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+      "/math 60+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2221,7 +2222,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+      "/math 40+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2234,7 +2235,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+      "/math 60+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2247,7 +2248,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+      "/math 40+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2260,7 +2261,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+      "/math 60+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2273,7 +2274,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+      "/math 40+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2286,7 +2287,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+      "/math 60+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2299,7 +2300,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+      "/math 40+((lu+ma/2)*ailpwr)_floor"
     ]
   },
 
@@ -2313,7 +2314,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu/4+ma/10)*ailpot)_floor"
+      "/math 60+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2326,7 +2327,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu/4+ma/10)*ailpot)_floor"
+      "/math 40+((lu+ma/2)*ailpwr)_floor"
     ]
   },
 

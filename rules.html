@@ -188,17 +188,19 @@
                     <br>
                     Each ailment has a potency, which determines the chance of the ailment being applied. The potency is determined by the skill or item used, and the resistance of the target.
                     When a demon is afflicted with an ailment, they will have a chance to resist the ailment based on their resistance to that ailment.
-                    If a demon would be afflicted with an ailment, it must roll to "Will" against it. The "Will" is determined by rolling a d100 and adding the demon's luck, and half the demon's vitality (floored). If the roll is higher than the remaining potency of the ailment, the demon resists it and the ailment does not apply.
+                    If a demon would be afflicted with an ailment, it must roll to "Will" against it. The "Will" is determined by rolling a d100 and adding the demon's luck, and half the demon's vitality (floored). If the roll is higher than the remaining potency of the ailment, the demon resists it and the ailment does not apply. If the ailment applies, resist potency becomes twice the infliction potency.
+                    At the start of each turn, the demon can make a Will against the resist potency, the resist potency is reduced by the rolled Will, the ailment is removed when the resist potency reaches 0.
                     <br>
                     Here is a list of ailments and their effects:
                     <ul class="list-disc list-inside text-emerald-100 font-thin mt-2 text-left text-xl">
-                        <li>Mute: Cannot activate skills</li>
                         <li>Burning: Takes damage at the start of each turn. The condition ends if the demon takes ice damage (including nulling or draining it, but not dodging)</li>
-                        <li>Freeze: Evasion and is reduced to 5 and cannot move in field battles</li>
+                        <li>Freeze: Evasion is reduced to 5 and cannot move in field battles</li>
                         <li>Shock: The next attack that can crit automatically crits and the condition ends</li>
                         <li>Poison: A demon inflicted with poison takes damage at the end of it's turn</li>
                         <li>Sleep: Cannot act and it's evasion is reduced to 5. Condition ends if it takes any damage</li>
                         <li>Confusion: At the start of each turn the demon must will against the remaining potency or attack a random ally with it's weapon. On a success, it's turn is skipped instead</li>
+                        <li>Mute: Cannot activate skills</li>
+                        <li>Bind: Turn is skipped and evasion is reduced to 5</li>
                         <li>Charm: At the start of each turn the demon must will against the remaining potency or use a buff or recovery skill on the source of it's ailment. On a success, it's turn is skipped instead</li>
                         <li>Mirage: The aim rate of attacks is halved, and attacks that would target a single foe hit a random foe instead.</li>
                         <li>Fear: Must will against the remaining potency, having it's turn skipped on failure. Cannot Crit. Cannot move in field battles.</li>
