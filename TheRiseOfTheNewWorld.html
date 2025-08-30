@@ -645,7 +645,7 @@
                                         <div class="">
                                             <div class="flex flex-col items-center h-full">
                                                 <div class="">
-                                                    <div @click="messageInput = '/damage (' + activeDemon.readAffinity(affinity) + '*' + ['stkres','slhres','prcres','firres','iceres','elcres','frcres','toxres','psyres','lgtres','glmres'][index] + ')*'"
+                                                    <div @click="messageInput = '/damage (c*' + activeDemon.readAffinity(affinity) + '*' + ['stkres','slhres','prcres','firres','iceres','elcres','frcres','toxres','psyres','lgtres','glmres'][index] + ')*'"
                                                         class="w-full bg-blue-950 aspect-square rounded-lg object-cover mb-1 border-2 border-indigo-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl hoverPop tooltip">
                                                         <img :src="'./Resources/AffinityIcon' + (index+1) + '.png'"
                                                             class="pulsingFilter" />
@@ -660,8 +660,9 @@
                                                     <div class="rounded-lg bg-gray-700 flex items-center justify-center text-white font-semibold h-full w-full ring-2 ring-indigo-500 text-2xl textOutlineBlack shadow-lg shadow-indigo-500/50">
                                                     {{ affinity }}
                                                     </div>
-                                                    <span class="tooltiptext">{{['Strike', 'Slash', 'Pierce', 'Fire', 'Ice', 'Electricity', 'Force', 'Toxic', 'Psionic', 'Light', 'Gloom'][index]}} Evasion: {{(Math.max(5,
-                                                Math.floor(((5+activeDemon.stats[3]+activeDemon.armor[2])*(1+(.2*activeDemon.buffs[2])))+(activeDemon.buffs[2]*5))*activeDemon.affinitiesEvasion[index]))}}</span>
+                                                    <span class="tooltiptext" v-if="!activeDemon.dodging">{{['Strike', 'Slash', 'Pierce', 'Fire', 'Ice', 'Electricity', 'Force', 'Toxic', 'Psionic', 'Light', 'Gloom'][index]}} Evasion: {{Math.floor((Math.max(5,((5+activeDemon.stats[3]+activeDemon.armor[2])*(1+(.2*activeDemon.buffs[2])))+(activeDemon.buffs[2]*5))*activeDemon.affinitiesEvasion[index]))}}</span>
+                                                    <span class="tooltiptext" v-if="activeDemon.dodging">{{['Strike', 'Slash', 'Pierce', 'Fire', 'Ice', 'Electricity', 'Force', 'Toxic', 'Psionic', 'Light', 'Gloom'][index]}} Evasion: {{Math.floor((Math.max(5,((5+activeDemon.stats[3]+activeDemon.armor[2])*(1+(.2*Math.min(activeDemon.buffs[2]+1, 4))))+(Math.min(activeDemon.buffs[2]+1, 4)*5))*activeDemon.affinitiesEvasion[index]))}}</span>
+
                                                 </div>
                                             </div>
 
@@ -862,7 +863,7 @@
                                             class="w-full text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500" />
                                         <p class="text-emerald-400 text-xl font-semibold mb-2 w-full border-b-2 border-indigo-500"> Defending: </p>
                                         <div class="flex flex-row gap-2">
-                                            <input type="button" value="Will" @click="messageInput = '/roll 1d100+lu+vi/2_floor'" class="rounded-full bg-gradient-to-r from-purple-950 to-blue-800 w-1/3 ring-1 ring-cyan-100 textOutlineBlackThin text-xl" >
+                                            <input type="button" value="Will" @click="messageInput = '/roll 1d100+lu+vi/2_floor -m Will roll'; sendMessage()" class="rounded-full bg-gradient-to-r from-purple-950 to-blue-800 w-1/3 ring-1 ring-cyan-100 textOutlineBlackThin text-xl" >
                                             <input type="button" value="Guard" @click="activeDemon.guard = !activeDemon.guard; activeDemon.dodge = false;" class="rounded-full textOutlineBlackThin text-xl w-1/3 ring-1" :class="activeDemon.guard ? 'bg-gradient-to-r from-purple-950 to-blue-950 ring-cyan-800 text-gray-300' : 'bg-gradient-to-r from-purple-900 to-blue-800 ring-cyan-100'">
                                             <input type="button" value="Dodge" @click="activeDemon.dodge = !activeDemon.dodge; activeDemon.guard = false;" class="rounded-full textOutlineBlackThin text-xl w-1/3 ring-1" :class="activeDemon.dodge ? 'bg-gradient-to-r from-purple-950 to-blue-950 ring-cyan-800 text-gray-300' : 'bg-gradient-to-r from-purple-900 to-blue-800 ring-cyan-100'">
                                         </div>

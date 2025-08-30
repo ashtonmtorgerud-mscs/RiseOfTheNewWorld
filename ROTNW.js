@@ -842,7 +842,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.endurance = iEndurance;
                     this.description = "";
                     this.pickedSkill = 0;
-                    this.assaults = [new Skill('Skirmish', '(1) Weak Phys damage to all foes', [10], ['/roll (6+6*(armypower/20))d6']), new Skill('', '', [], [],), new Skill('', '', [], [],), new Skill('', '', [], [],) ];
+                    this.assaults = [new Skill('Skirmish', '(1) Weak Strike damage to all foes', [10], ['/roll (6+6*(armypower/20))d6']), new Skill('', '', [], [],), new Skill('', '', [], [],), new Skill('', '', [], [],) ];
                     this.editing = false;
                 }
             }
@@ -880,6 +880,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // Extract the dice notation (e.g., "3d6 + 2d10 + (4 * 5)")
                         let calculation = lowercaseMessage.slice(5).trim();
+                        let comment = "";
+                        if (calculation.includes('-m')){ 
+                            comment = calculation.split('-m')[1].trim();
+                            let caplet = comment.charAt(0).toUpperCase();
+                            let tempComment = comment.slice(1);
+                            comment = "C" + tempComment;
+
+                            // comment = ", " + calculation.split('-m')[1].trim();
+                            comment = ", " + caplet + tempComment;
+                            // console.log("Comment: " + comment);
+                            calculation = calculation.split('-m')[0].trim();
+                        } 
                         let floor = false;
                         let ceiling = false;
                         console.log(calculation);
@@ -896,7 +908,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (ceiling) { total = Math.ceil(total); }
 
                         // Log the result
-                        log.value.push(rolledDice + 'Total: ' + total);
+                        log.value.push(rolledDice + 'Total: ' + total + comment);
                     } else if (lowercaseMessage.startsWith('/xp') || lowercaseMessage.startsWith('/exp')) {
 
                         //Add XP
@@ -1161,8 +1173,36 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Handle other commands starting with "/"
                         log.value.push(`Command executed: ${lowercaseMessage.trim()} ` + finalDamage + ' damage taken (after army reduction)');
 
+                    } else if (messageInput.value.startsWith('/washskills')) {
+                        
+                            fetch("Resources/skills.json").then(response => response.json()).then(data => {
+                                activeDemon.value.skills.forEach(skill => {
+                                    let skillData = data.find(dataSkill => dataSkill.name.toLowerCase() === skill.name.toLowerCase());
+                                    // if (skill.name === skillData.name){
+                                        Object.assign(skill, skillData);  // Copy saved data into the skill instance
+                                    // }
+                                    // activeDemon.value.skills[this.skillSlot - 1] = skill; // Assign the skill to the active demon's skill slot
+                                    activeDemon.value.getVariables();
+                                    activeDemon.value.recalculateVitals();
+                                });
+                                
+                                activeDemon.value.getVariables();
+                                activeDemon.value.recalculateVitals();
+                                
+                                
+                            }).catch(error => {
+                                // log.value.push('Skill not found: ' + skillName);
+                                console.error('Error fetching skill data:', error);
+                            }
+                            );
+
+                        
+
+                        log.value.push('Skills have been washed');
+                        
+                        
                     } else if (messageInput.value.startsWith('/wash')) {
-                        // Handle other commands starting with "/"
+                        // Clean the demon's HP, coefficient, ailments, etc
                         activeDemon.value.getVariables();
                         activeDemon.value.recalculateVitals();
                         activeDemon.value.hp = activeDemon.value.maxHp + activeDemon.value.hpBooster;
@@ -1197,7 +1237,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 let skillsCount = activeDemon.value.skills.filter(skill => skill.name !== "").length;
                                 let gotSkill = false;
                                 let skillData = data.find(skill => skill.name.toLowerCase().replace(/[\s']/g, '') === skillName.toLowerCase());
-                                if (skillsCount > 7) { 
+                                const skillSlot = parseInt(importData[2]) || -1;
+                                if (skillsCount > 7 && skillSlot == -1) { 
                                     log.value.push("All 8 skill slots are full, please specifiy a specific slot");
                                     return;
                                 }
@@ -1206,8 +1247,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                     log.value.push("Imported skill: " + skillName + " to slot " + (skillsCount+1));
                                     gotSkill = true;
                                 };
-                                const skillSlot = parseInt(importData[2]) || -1;
-                                if (skillSlot >= 0 && skillSlot < 8) {
+                                
+                                if (skillSlot >= 0 && skillSlot <= 8) {
                                     activeDemon.value.skills[skillSlot-1] = skillData || new Skill("", "", [], []);
                                     log.value.push("Imported skill: " + skillName + " to slot " + (skillsCount));
                                     gotSkill = true;

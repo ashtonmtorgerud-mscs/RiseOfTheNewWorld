@@ -166,19 +166,17 @@
   
   {
     "name": "Critical Slash",
-    "skillType": 3,
+    "skillType": 2,
     "description": "Medium Slash damage to 1 foe, always crits, low accuracy",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage",
-      "Critical Chance"
+      "Damage"
     ],
     "rolls": [
       "/cost 12*(1-0.1*prcpot)",
       "/roll (1d100-50+ag+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(prcpwr*(1+T*0.2)*(17+17*(st/20))))d6",
-      "/math 6+0"
+      "/roll (c*(slhpwr*(1+T*0.2)*(17+17*(st/20))))d6"
     ]
   },
 
@@ -311,7 +309,7 @@
 
   {
     "name": "Rampage",
-    "skillType": 3,
+    "skillType": 1,
     "description": "Weak Strike damage to random foes, 2-5 times",
     "rollNames": [
       "Cost",
@@ -320,9 +318,9 @@
       "Critical Chance"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*prcpot)",
+      "/cost 10*(1-0.1*stkpot)",
       "/roll (1d100-25+ag+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(prcpwr*(1+T*0.2)*(8+8*(st/20))))d6",
+      "/roll (c*(stkpwr*(1+T*0.2)*(8+8*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
@@ -338,31 +336,39 @@
   {
     "name": "Agi",
     "skillType": 4,
-    "description": "Weak Fire damage to 1 foe, with a chance of burn",
+    "description": "Weak Fire damage to 1 foe, with a chance of Burn",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Burn"
     ],
     "rolls": [
       "/cost 10*(1-0.1*firpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*firpwr)_floor",
+      "/roll (c*(firpwr*(5+5*(lu/10))))d6"
     ]
   },
   {
     "name": "Maragi",
     "skillType": 4,
-    "description": "Weak Fire damage to all foes",
+    "description": "Weak Fire damage to all foes, with a chance of Burn",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Burn"
     ],
     "rolls": [
       "/cost 15*(1-0.1*firpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
+      "/math 20+((lu+ma/2)*firpwr)_floor",
+      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -375,31 +381,39 @@
   {
     "name": "Agilao",
     "skillType": 4,
-    "description": "Medium Fire damage to 1 foe",
+    "description": "Medium Fire damage to 1 foe, with a chance of Burn",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Burn"
     ],
     "rolls": [
       "/cost 20*(1-0.1*firpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*firpwr)_floor",
+      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
   {
     "name": "Maragion",
     "skillType": 4,
-    "description": "Medium Fire damage to all foes",
+    "description": "Medium Fire damage to all foes, with a chance of Burn",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Burn"
     ],
     "rolls": [
       "/cost 30*(1-0.1*firpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*firpwr)_floor",
+      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -412,31 +426,39 @@
   {
     "name": "Agidyne",
     "skillType": 4,
-    "description": "Heavy Fire damage to 1 foe",
+    "description": "Heavy Fire damage to 1 foe, with a chance of Burn",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Burn"
     ],
     "rolls": [
       "/cost 35*(1-0.1*firpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 50+((lu+ma/2)*firpwr)_floor",
+      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
   {
     "name": "Maragidyne",
     "skillType": 4,
-    "description": "Heavy Fire damage to all foes",
+    "description": "Heavy Fire damage to all foes, with a chance of Burn",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Burn"
     ],
     "rolls": [
       "/cost 50*(1-0.1*firpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*firpwr)_floor",
+      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -449,16 +471,20 @@
   {
     "name": "Agibarion",
     "skillType": 4,
-    "description": "Severe Fire damage to 1 foe",
+    "description": "Severe Fire damage to 1 foe, with a chance of Burn",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Burn"
     ],
     "rolls": [
       "/cost 50*(1-0.1*firpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
+      "/math 60+((lu+ma/2)*firpwr)_floor",
+      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -471,16 +497,20 @@
   {
     "name": "Maragibarion",
     "skillType": 4,
-    "description": "Severe Fire damage to 1 foe",
+    "description": "Severe Fire damage to all foes, with a chance of Burn",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Burn"
     ],
     "rolls": [
       "/cost 75*(1-0.1*firpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
+      "/math 50+((lu+ma/2)*firpwr)_floor",
+      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -493,16 +523,20 @@
   {
     "name": "Trisagion",
     "skillType": 4,
-    "description": "Heavy Breaking-Fire damage to 1 foe",
+    "description": "Heavy Breaking-Fire damage to 1 foe, with a chance of Burn",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Burn"
     ],
     "rolls": [
       "/cost 65*(1-0.1*firpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 60+((lu+ma/2)*firpwr)_floor",
+      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -542,31 +576,35 @@
 {
     "name": "Bufu",
     "skillType": 5,
-    "description": "Weak ice damage to 1 foe",
+    "description": "Weak ice damage to 1 foe, with a chance of Freeze",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 10*(1-0.1*icepot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(icepwr*(1+T*0.2)*(12+12*(ma/20))))d6"
+      "/roll (c*(icepwr*(1+T*0.2)*(12+12*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*icepwr)_floor"
     ]
   },
   {
     "name": "Mabufu",
     "skillType": 5,
-    "description": "Weak ice damage to all foes",
+    "description": "Weak ice damage to all foes, with a chance of Freeze",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 15*(1-0.1*icepot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(icepwr*(1+T*0.2)*(12+12*(ma/20))))d6"
+      "/roll (c*(icepwr*(1+T*0.2)*(12+12*(ma/20))))d6",
+      "/math 20+((lu+ma/2)*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -579,31 +617,35 @@
   {
     "name": "Bufula",
     "skillType": 5,
-    "description": "Medium ice damage to 1 foe",
+    "description": "Medium ice damage to 1 foe, with a chance of Freeze",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 20*(1-0.1*icepot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(icepwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+      "/roll (c*(icepwr*(1+T*0.2)*(18+18*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*icepwr)_floor"
     ]
   },
   {
     "name": "Mabufula",
     "skillType": 5,
-    "description": "Medium ice damage to all foes",
+    "description": "Medium ice damage to all foes, with a chance of Freeze",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 30*(1-0.1*icepot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(icepwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+      "/roll (c*(icepwr*(1+T*0.2)*(18+18*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -616,31 +658,35 @@
   {
     "name": "Bufudyne",
     "skillType": 5,
-    "description": "Heavy ice damage to 1 foe",
+    "description": "Heavy ice damage to 1 foe, with a chance of Freeze",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 35*(1-0.1*icepot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 50+((lu+ma/2)*icepwr)_floor"
     ]
   },
   {
     "name": "Mabufudyne",
     "skillType": 5,
-    "description": "Heavy ice damage to all foes",
+    "description": "Heavy ice damage to all foes, with a chance of Freeze",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 50*(1-0.1*icepot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -653,16 +699,18 @@
   {
     "name": "Bufubarion",
     "skillType": 5,
-    "description": "Severe ice damage to 1 foe",
+    "description": "Severe ice damage to 1 foe, with a chance of Freeze",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 50*(1-0.1*icepot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(icepwr*(1+T*0.2)*(30+30*(ma/20))))d6"
+      "/roll (c*(icepwr*(1+T*0.2)*(30+30*(ma/20))))d6",
+      "/math 60+((lu+ma/2)*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -675,16 +723,18 @@
   {
     "name": "Mabufubarion",
     "skillType": 5,
-    "description": "Severe ice damage to 1 foe",
+    "description": "Severe ice damage to all foes, with a chance of Freeze",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 75*(1-0.1*icepot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(icepwr*(1+T*0.2)*(30+30*(ma/20))))d6"
+      "/roll (c*(icepwr*(1+T*0.2)*(30+30*(ma/20))))d6",
+      "/math 50+((lu+ma/2)*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -697,16 +747,18 @@
   {
     "name": "Ice Age",
     "skillType": 5,
-    "description": "Heavy Breaking-ice damage to 1 foe",
+    "description": "Heavy Breaking-ice damage to 1 foe, with a chance of Freeze",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 65*(1-0.1*icepot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 60+((lu+ma/2)*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -717,7 +769,7 @@
     ]
   },
   {
-    "name": "ice Dracostrike",
+    "name": "Ice Dracostrike",
     "skillType": 5,
     "description": "Medium ice damage to 1 foe, strength-based",
     "rollNames": [
@@ -747,31 +799,35 @@
 {
     "name": "Zio",
     "skillType": 6,
-    "description": "Weak Electric damage to 1 foe",
+    "description": "Weak Electric damage to 1 foe, with a chance of Shock",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 10*(1-0.1*elcpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(elcpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
+      "/roll (c*(elcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*elcpwr)_floor"
     ]
   },
   {
     "name": "Mazio",
     "skillType": 6,
-    "description": "Weak Electric damage to all foes",
+    "description": "Weak Electric damage to all foes, with a chance of Shock",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 15*(1-0.1*elcpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(elcpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
+      "/roll (c*(elcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
+      "/math 20+((lu+ma/2)*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -784,31 +840,35 @@
   {
     "name": "Zionga",
     "skillType": 6,
-    "description": "Medium Electric damage to 1 foe",
+    "description": "Medium Electric damage to 1 foe, with a chance of Shock",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 20*(1-0.1*elcpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(elcpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+      "/roll (c*(elcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*elcpwr)_floor"
     ]
   },
   {
     "name": "Mazionga",
     "skillType": 6,
-    "description": "Medium Electric damage to all foes",
+    "description": "Medium Electric damage to all foes, with a chance of Shock",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 30*(1-0.1*elcpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(elcpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+      "/roll (c*(elcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -821,31 +881,35 @@
   {
     "name": "Ziodyne",
     "skillType": 6,
-    "description": "Heavy Electric damage to 1 foe",
+    "description": "Heavy Electric damage to 1 foe, with a chance of Shock",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 35*(1-0.1*elcpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 50+((lu+ma/2)*elcpwr)_floor"
     ]
   },
   {
     "name": "Maziodyne",
     "skillType": 6,
-    "description": "Heavy Electric damage to all foes",
+    "description": "Heavy Electric damage to all foes, with a chance of Shock",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 50*(1-0.1*elcpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -858,16 +922,18 @@
   {
     "name": "Ziobarion",
     "skillType": 6,
-    "description": "Severe Electric damage to 1 foe",
+    "description": "Severe Electric damage to 1 foe, with a chance of Shock",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 50*(1-0.1*elcpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(elcpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
+      "/roll (c*(elcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
+      "/math 60+((lu+ma/2)*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -880,16 +946,18 @@
   {
     "name": "Maziobarion",
     "skillType": 6,
-    "description": "Severe Electric damage to 1 foe",
+    "description": "Severe Electric damage to all foes, with a chance of Shock",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 75*(1-0.1*elcpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(elcpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
+      "/roll (c*(elcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
+      "/math 50+((lu+ma/2)*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -902,16 +970,18 @@
   {
     "name": "Narukami",
     "skillType": 6,
-    "description": "Heavy Breaking-Electric damage to 1 foe",
+    "description": "Heavy Breaking-Electric damage to 1 foe, with a chance of Shock",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 65*(1-0.1*elcpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 60+((lu+ma/2)*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -952,31 +1022,35 @@
 {
     "name": "Zan",
     "skillType": 7,
-    "description": "Weak Force damage to 1 foe",
+    "description": "Weak Force damage to 1 foe, with a change of Mirage",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 10*(1-0.1*frcpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(frcpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
+      "/roll (c*(frcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*frcpwr)_floor"
     ]
   },
   {
     "name": "Mazan",
     "skillType": 7,
-    "description": "Weak Force damage to all foes",
+    "description": "Weak Force damage to all foes, with a change of Mirage",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 15*(1-0.1*frcpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(frcpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
+      "/roll (c*(frcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
+      "/math 20+((lu+ma/2)*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -989,31 +1063,35 @@
   {
     "name": "Zanma",
     "skillType": 7,
-    "description": "Medium Force damage to 1 foe",
+    "description": "Medium Force damage to 1 foe, with a change of Mirage",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 20*(1-0.1*frcpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(frcpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+      "/roll (c*(frcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*frcpwr)_floor"
     ]
   },
   {
     "name": "Mazanma",
     "skillType": 7,
-    "description": "Medium Force damage to all foes",
+    "description": "Medium Force damage to all foes, with a change of Mirage",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 30*(1-0.1*frcpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(frcpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+      "/roll (c*(frcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1026,31 +1104,35 @@
   {
     "name": "Zandyne",
     "skillType": 7,
-    "description": "Heavy Force damage to 1 foe",
+    "description": "Heavy Force damage to 1 foe, with a change of Mirage",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 35*(1-0.1*frcpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 50+((lu+ma/2)*frcpwr)_floor"
     ]
   },
   {
     "name": "Mazandyne",
     "skillType": 7,
-    "description": "Heavy Force damage to all foes",
+    "description": "Heavy Force damage to all foes, with a change of Mirage",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 50*(1-0.1*frcpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1063,16 +1145,18 @@
   {
     "name": "Zanbarion",
     "skillType": 7,
-    "description": "Severe Force damage to 1 foe",
+    "description": "Severe Force damage to 1 foe, with a change of Mirage",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 50*(1-0.1*frcpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(frcpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
+      "/roll (c*(frcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
+      "/math 60+((lu+ma/2)*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1085,16 +1169,18 @@
   {
     "name": "Mazanbarion",
     "skillType": 7,
-    "description": "Severe Force damage to 1 foe",
+    "description": "Severe Force damage to all foes, with a change of Mirage",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 75*(1-0.1*frcpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(frcpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
+      "/roll (c*(frcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
+      "/math 50+((lu+ma/2)*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1107,16 +1193,18 @@
   {
     "name": "Killing Wind",
     "skillType": 7,
-    "description": "Heavy Breaking-Force damage to 1 foe",
+    "description": "Heavy Breaking-Force damage to 1 foe, with a change of Mirage",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 65*(1-0.1*frcpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 60+((lu+ma/2)*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1157,31 +1245,39 @@
 {
     "name": "Frei",
     "skillType": 8,
-    "description": "Weak Toxic damage to 1 foe",
+    "description": "Weak Toxic damage to 1 foe, with a chance of poison",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 10*(1-0.1*toxpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(toxpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
+      "/roll (c*(toxpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*toxpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
   {
     "name": "Mafrei",
     "skillType": 8,
-    "description": "Weak Toxic damage to all foes",
+    "description": "Weak Toxic damage to all foes, with a chance of poison",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 15*(1-0.1*toxpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(toxpwr*(1+T*0.2)*(12+12*(ma/20))))d6"
+      "/roll (c*(toxpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
+      "/math 20+((lu+ma/2)*toxpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1194,31 +1290,39 @@
   {
     "name": "Freila",
     "skillType": 8,
-    "description": "Medium Toxic damage to 1 foe",
+    "description": "Medium Toxic damage to 1 foe, with a chance of poison",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 20*(1-0.1*toxpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(toxpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+      "/roll (c*(toxpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*toxpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
   {
     "name": "Mafreila",
     "skillType": 8,
-    "description": "Medium Toxic damage to all foes",
+    "description": "Medium Toxic damage to all foes, with a chance of poison",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 30*(1-0.1*toxpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(toxpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+      "/roll (c*(toxpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*toxpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1231,31 +1335,39 @@
   {
     "name": "Freidyne",
     "skillType": 8,
-    "description": "Heavy Toxic damage to 1 foe",
+    "description": "Heavy Toxic damage to 1 foe, with a chance of poison",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 35*(1-0.1*toxpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 50+((lu+ma/2)*toxpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
   {
     "name": "Mafreidyne",
     "skillType": 8,
-    "description": "Heavy Toxic damage to all foes",
+    "description": "Heavy Toxic damage to all foes, with a chance of poison",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 50*(1-0.1*toxpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*toxpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1268,16 +1380,20 @@
   {
     "name": "Freibarion",
     "skillType": 8,
-    "description": "Severe Toxic damage to 1 foe",
+    "description": "Severe Toxic damage to 1 foe, with a chance of poison",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 50*(1-0.1*toxpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(toxpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
+      "/roll (c*(toxpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
+      "/math 60+((lu+ma/2)*toxpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1290,16 +1406,20 @@
   {
     "name": "Mafreibarion",
     "skillType": 8,
-    "description": "Severe Toxic damage to 1 foe",
+    "description": "Severe Toxic damage to all foes, with a chance of poison",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 75*(1-0.1*toxpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(toxpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
+      "/roll (c*(toxpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
+      "/math 50+((lu+ma/2)*toxpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1312,16 +1432,20 @@
   {
     "name": "Nova Kaiser",
     "skillType": 8,
-    "description": "Heavy Breaking-Toxic damage to 1 foe",
+    "description": "Heavy Breaking-Toxic damage to 1 foe, with a chance of poison",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 65*(1-0.1*toxpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 60+((lu+ma/2)*toxpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1361,31 +1485,35 @@
 {
     "name": "Psi",
     "skillType": 9,
-    "description": "Weak Psionic damage to 1 foe",
+    "description": "Weak Psionic damage to 1 foe, with a chance of Confusion",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 10*(1-0.1*psipot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(psipwr*(1+T*0.2)*(12+12*(ma/20))))d6"
+      "/roll (c*(psipwr*(1+T*0.2)*(12+12*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*psipwr)_floor"
     ]
   },
   {
     "name": "Mapsi",
     "skillType": 9,
-    "description": "Weak Psionic damage to all foes",
+    "description": "Weak Psionic damage to all foes, with a chance of Confusion",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 15*(1-0.1*psipot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(psipwr*(1+T*0.2)*(12+12*(ma/20))))d6"
+      "/roll (c*(psipwr*(1+T*0.2)*(12+12*(ma/20))))d6",
+      "/math 20+((lu+ma/2)*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1398,31 +1526,35 @@
   {
     "name": "Psio",
     "skillType": 9,
-    "description": "Medium Psionic damage to 1 foe",
+    "description": "Medium Psionic damage to 1 foe, with a chance of Confusion",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 20*(1-0.1*psipot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(psipwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+      "/roll (c*(psipwr*(1+T*0.2)*(18+18*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*psipwr)_floor"
     ]
   },
   {
     "name": "Mapsio",
     "skillType": 9,
-    "description": "Medium Psionic damage to all foes",
+    "description": "Medium Psionic damage to all foes, with a chance of Confusion",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 30*(1-0.1*psipot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(psipwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+      "/roll (c*(psipwr*(1+T*0.2)*(18+18*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1435,31 +1567,35 @@
   {
     "name": "Psiodyne",
     "skillType": 9,
-    "description": "Heavy Psionic damage to 1 foe",
+    "description": "Heavy Psionic damage to 1 foe, with a chance of Confusion",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 35*(1-0.1*psipot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 50+((lu+ma/2)*psipwr)_floor"
     ]
   },
   {
     "name": "Mapsioyne",
     "skillType": 9,
-    "description": "Heavy Psionic damage to all foes",
+    "description": "Heavy Psionic damage to all foes, with a chance of Confusion",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 50*(1-0.1*psipot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1472,16 +1608,18 @@
   {
     "name": "Psiobarion",
     "skillType": 9,
-    "description": "Severe Psionic damage to 1 foe",
+    "description": "Severe Psionic damage to 1 foe, with a chance of Confusion",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 50*(1-0.1*psipot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(psipwr*(1+T*0.2)*(30+30*(ma/20))))d6"
+      "/roll (c*(psipwr*(1+T*0.2)*(30+30*(ma/20))))d6",
+      "/math 60+((lu+ma/2)*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1494,16 +1632,18 @@
   {
     "name": "Mapsiobarion",
     "skillType": 9,
-    "description": "Severe Psionic damage to 1 foe",
+    "description": "Severe Psionic damage to all foes, with a chance of Confusion",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 75*(1-0.1*psipot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(psipwr*(1+T*0.2)*(30+30*(ma/20))))d6"
+      "/roll (c*(psipwr*(1+T*0.2)*(30+30*(ma/20))))d6",
+      "/math 50+((lu+ma/2)*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1516,16 +1656,18 @@
   {
     "name": "Mind Crush",
     "skillType": 9,
-    "description": "Heavy Breaking-Psionic damage to 1 foe",
+    "description": "Heavy Breaking-Psionic damage to 1 foe, with a chance of Confusion",
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage"
+      "Damage",
+      "Potency"
     ],
     "rolls": [
       "/cost 65*(1-0.1*psipot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/math 60+((lu+ma/2)*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1698,7 +1840,7 @@
   {
     "name": "Exorcism",
     "skillType": 10,
-    "description": "Heavy Breaking-Light damage to 1 foe",
+    "description": "Heavy Breaking-Light damage to 1 foe. Chance of Mortal if the target is weak to Light",
     "rollNames": [
       "Cost",
       "Aim",
@@ -1876,7 +2018,7 @@
     ]
   },
   {
-    "name": "Damnation",
+    "name": "Damnation. Chance of Mortal if the target is weak to Gloom",
     "skillType": 11,
     "description": "Heavy Breaking-Gloom damage to 1 foe",
     "rollNames": [
@@ -1986,7 +2128,7 @@
     "rolls": [
       "/cost 40*(1-0.1*almpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(almpwr*(1+T*0.2)*(18+18*(ma/20))))d6"
+      "/roll (c*(almpwr*(1+T*0.2)*(20+20*(ma/20))))d6"
     ]
   },
   {
@@ -2001,7 +2143,7 @@
     "rolls": [
       "/cost 70*(1-0.1*almpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(almpwr*(1+T*0.2)*(24+24*(ma/20))))d6"
+      "/roll (c*(almpwr*(1+T*0.2)*(26+26*(ma/20))))d6"
     ]
   },
   {
@@ -2016,7 +2158,7 @@
     "rolls": [
       "/cost 120*(1-0.1*almpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(almpwr*(1+T*0.2)*(28+28*(ma/20))))d6"
+      "/roll (c*(almpwr*(1+T*0.2)*(32+32*(ma/20))))d6"
     ]
   },
   {
@@ -2040,13 +2182,97 @@
   { "Comment: ----------------------Ailment Skills----------------------------": "", "name": "" }, 
 
   {
+    "name": "Ignite",
+    "skillType": 13,
+    "description": "Chance to inflict Burn to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Potency",
+      "Burn"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*ailpot)",
+      "/math 60+((lu+ma/2)*ailpwr*firpwr)_floor",
+      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
+    ]
+  },
+  {
+    "name": "Ignition",
+    "skillType": 13,
+    "description": "Chance to inflict Burn to all foes",
+    "rollNames": [
+      "Cost",
+      "Potency",
+      "Burn"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 40+((lu+ma/2)*ailpwr*firpwr)_floor",
+      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
+    ]
+  },
+  
+  {
+    "name": "Chill Touch",
+    "skillType": 13,
+    "description": "Chance to inflict Freeze to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*ailpot)",
+      "/math 60+((lu+ma/2)*ailpwr*icepwr)_floor"
+    ]
+  },
+  {
+    "name": "Freezeout",
+    "skillType": 13,
+    "description": "Chance to inflict Freeze to all foes",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 40+((lu+ma/2)*ailpwr*icepwr)_floor"
+    ]
+  },
+
+  {
+    "name": "Discharge",
+    "skillType": 13,
+    "description": "Chance to inflict Shock to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*ailpot)",
+      "/math 60+((lu+ma/2)*ailpwr*elcpwr)_floor"
+    ]
+  },
+  {
+    "name": "Coruscation",
+    "skillType": 13,
+    "description": "Chance to inflict Shock to all foes",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 40+((lu+ma/2)*ailpwr*elcpwr)_floor"
+    ]
+  },
+
+  {
     "name": "Dustoma",
     "skillType": 13,
     "description": "Chance to inflict mirage to 1 foe",
     "rollNames": [
       "Cost",
-      "Potency",
-      "Potencier"
+      "Potency"
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
@@ -2059,11 +2285,13 @@
     "description": "Chance to inflict mirage to all foes",
     "rollNames": [
       "Cost",
-      "Potency"
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
 
@@ -2073,11 +2301,14 @@
     "description": "Chance to inflict poison to 1 foe",
     "rollNames": [
       "Cost",
-      "Potency"
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      
     ]
   },
   {
@@ -2184,6 +2415,19 @@
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*ailpwr)_floor"
+    ]
+  },
+  {
+    "name": "Guilty Gear Lore",
+    "skillType": 13,
+    "description": "High chance to inflict sleep to all foes",
+    "rollNames": [
+      "Cost",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*ailpot)",
+      "/math 80+((lu+ma/2)*ailpwr)_floor"
     ]
   },
   {
@@ -2985,6 +3229,17 @@
     ]
   },
   {
+    "name": "Phys Boost",
+    "skillType": 0,
+    "description": "Increases Physical Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25% physpwr"
+    ]
+  },
+  {
     "name": "Strike Boost",
     "skillType": 0,
     "description": "Increases Strike Damage",
@@ -3136,6 +3391,17 @@
     ],
     "rolls": [
       "+25% hlgpwr"
+    ]
+  },
+  {
+    "name": "Phys Amp",
+    "skillType": 0,
+    "description": "Greatly increases Physical Damage",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+50% physpwr"
     ]
   },
   {
