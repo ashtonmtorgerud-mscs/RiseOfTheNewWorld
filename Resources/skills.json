@@ -2018,9 +2018,9 @@
     ]
   },
   {
-    "name": "Damnation. Chance of Mortal if the target is weak to Gloom",
+    "name": "Damnation",
     "skillType": 11,
-    "description": "Heavy Breaking-Gloom damage to 1 foe",
+    "description": "Heavy Breaking-Gloom damage to 1 foe. Chance of Mortal if the target is weak to Gloom",
     "rollNames": [
       "Cost",
       "Aim",
