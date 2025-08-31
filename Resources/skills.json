@@ -413,10 +413,6 @@
     ]
   },
 
-  
-
-
-
   {
     "name": "Fatal End",
     "skillType": 2,
@@ -450,6 +446,10 @@
       "/roll (c*(slhpwr*(1+T*0.2)*(24+24*(st/20))))d6"
     ]
   },
+
+  
+
+  
 
   {
     "name": "Black Spot",
@@ -616,6 +616,24 @@
       "/cost 20*(1-0.1*slhpot)",
       "/roll (1d100-15+ag+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(13+13*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+
+  {
+    "name": "Myriad Arrows",
+    "skillType": 2,
+    "description": "Medium Pierce damage to random foes, 2-5 times.",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 35*(1-0.1*slhpot)",
+      "/roll (1d100-20+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
@@ -2829,7 +2847,7 @@
     "rolls": [
       "/cost 70*(1-0.1*almpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(almpwr*(1+T*0.2)*(26+26*(ma/20))))d6"
+      "/roll (c*(almpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ]
   },
   {
@@ -2844,7 +2862,7 @@
     "rolls": [
       "/cost 120*(1-0.1*almpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(almpwr*(1+T*0.2)*(32+32*(ma/20))))d6"
+      "/roll (c*(almpwr*(1+T*0.2)*(40+40*(ma/20))))d6"
     ]
   },
   {
@@ -3003,11 +3021,13 @@
     "description": "Chance to inflict poison to all foes",
     "rollNames": [
       "Cost",
-      "Potency"
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
 
