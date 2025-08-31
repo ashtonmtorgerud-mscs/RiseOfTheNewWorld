@@ -1071,9 +1071,9 @@
                                                                 <p
                                                                     class="w-1/2 h-full textOutlineBlackThin text-teal-300 font-bold align-bottom textOutlineBlack">
                                                                     HP</p>
-                                                                <p :class="{ 'text-red-500': demon.hp <= (demon.maxHp/10), 'text-teal-300': demon.hp == (demon.maxHp), 'text-white' : (demon.hp > (demon.maxHp/10) && demon.hp < demon.maxHp) }"
+                                                                <p :class="{ 'text-red-500': demon.hp <= ((demon.maxHp+demon.hpBooster)/10), 'text-teal-300': demon.hp == (demon.maxHp+demon.hpBooster), 'text-white' : (demon.hp > ((demon.maxHp+demon.hpBooster)/10) && demon.hp < (demon.maxHp+demon.hpBooster)) }"
                                                                     class="w-1/2 textOutlineBlackThin italic font-bold w-full text-end">
-                                                                    {{demon.hp}}/{{demon.maxHp}} </p>
+                                                                    {{demon.hp}}/{{demon.maxHp+demon.hpBooster}} </p>
                                                             </div>
                                                             <div
                                                                 class="w-full h-1/4 flex items-center bg-indigo-950 rounded-full p-2 ring-1 ring-indigo-300">
@@ -1092,7 +1092,7 @@
                                                                     MP</p>
                                                                 <p :class="{ 'text-red-500': demon.mp <= ((demon.maxMp+demon.mpBooster)/10), 'text-teal-300': demon.mp == (demon.maxMp+demon.mpBooster), 'text-white' : (demon.mp > ((demon.maxMp+demon.mpBooster)/10) && demon.mp < demon.maxMp+demon.mpBooster) }"
                                                                     class="w-1/2 textOutlineBlackThin italic font-bold w-full text-end">
-                                                                    {{demon.mp}}/{{demon.maxMp}} </p>
+                                                                    {{demon.mp}}/{{demon.maxMp+demon.mpBooster}} </p>
                                                             </div>
                                                             <div
                                                                 class="w-full h-1/4 flex items-center bg-indigo-950 rounded-full p-2 ring-1 ring-indigo-300">
@@ -1100,7 +1100,7 @@
                                                                     class="w-full h-full bg-gray-600 rounded-full overflow-hidden">
                                                                     <div class="h-full min-h-1 bg-gradient-to-r from-cyan-400 to-blue-500"
                                                                         :class="{ 'bg-gradient-to-r from-red-500 to-red-800': demon.mp <= (demon.maxMp/10) }"
-                                                                        :style="{ width: (demon.mp / (activeDemon.maxMp+activeDemon.mpBooster) * 100) + '%' }">
+                                                                        :style="{ width: (demon.mp / (demon.maxMp+demon.mpBooster) * 100) + '%' }">
                                                                     </div>
                                                                 </div>
                                                             </div>
