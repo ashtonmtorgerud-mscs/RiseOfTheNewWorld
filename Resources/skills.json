@@ -6,7 +6,7 @@
 
 
 
-  
+    { "Comment: ----------------------Basic/Utility Skills----------------------------": "", "name": "" }, 
 
     {
     "name": "Lunge",
@@ -76,6 +76,8 @@
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
+
+
   {
     "name": "Single Shot",
     "skillType": 3,
@@ -111,6 +113,25 @@
     ]
   },
   {
+    "name": "Headbutt",
+    "skillType": 3,
+    "description": "Weak Strike damage to 1 foe. Extra damage with [Horns] tag",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Horns Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 7*(1-0.1*stkpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(stkpwr*(1+T*0.2)*(12+12*(st/20))))d6",
+      "/roll (c*(prcpwr*(1+T*0.2)*(4+4*(st/20))))d6",
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
     "name": "Double Fangs",
     "skillType": 3,
     "description": "Weak Pierce damage to 1 foe. x2",
@@ -129,7 +150,7 @@
   },
   {
     "name": "Assault Dive",
-    "skillType": 3,
+    "skillType": 1,
     "description": "Medium Strike damage to 1 foe",
     "rollNames": [
       "Cost",
@@ -182,7 +203,7 @@
 
   {
     "name": "Oni-Kagura",
-    "skillType": 3,
+    "skillType": 1,
     "description": "Medium Strike damage to 1 foe, high crit rate, low accuracy",
     "rollNames": [
       "Cost",
@@ -213,6 +234,42 @@
       "/roll (1d100-25+ag+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(18+18*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+
+  {
+    "name": "Beatdown",
+    "skillType": 1,
+    "description": "Heavy to weak Strike damage to 1 foe, scales with remaining HP",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 20*(1-0.1*stkpot)",
+      "/roll (1d100-25+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*((hp/mhp)*(stkpwr*(1+T*0.2)*(24+24*(st/20)))))d6",
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+
+  {
+    "name": "Vengeance Laceration",
+    "skillType": 2,
+    "description": "Heavy to weak Slash damage to 1 foe, inversely scales with remaining HP",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 20*(1-0.1*slhpot)",
+      "/roll (1d100-25+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*((1.1-hp/mhp)*(slhpwr*(1+T*0.2)*(24+24*(st/20)))))d6",
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   
@@ -277,19 +334,179 @@
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
+  {
+    "name": "Noxious Sting",
+    "skillType": 3,
+    "description": "Medium Pierce damage to 1 foe, with a chance of Poison",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance",
+      "Potency",
+      "Poison"
+    ],
+    "rolls": [
+      "/cost 20*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
+      "/math 60+((lu+ma/2)*ailpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+    ]
+  },
+  {
+    "name": "Dream Needle",
+    "skillType": 3,
+    "description": "Medium Pierce damage to 1 foe, with a chance of Sleep",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 20*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
+      "/math 60+((lu+ma/2)*ailpwr)_floor"
+    ]
+  },
+  {
+    "name": "Muzzle Shot",
+    "skillType": 3,
+    "description": "Medium Pierce damage to 1 foe, with a chance of Mute",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 20*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(18+18*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
+      "/math 60+((lu+ma/2)*ailpwr)_floor"
+    ]
+  },
+  {
+    "name": "Hysterical Slap",
+    "skillType": 3,
+    "description": "Weak Strike damage to 1 foe, with a chance of Rage, x2",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 20*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(10+10*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
+      "/math 60+((lu+ma/2)*ailpwr)_floor"
+    ]
+  },
+
   
 
 
 
+  {
+    "name": "Fatal End",
+    "skillType": 2,
+    "description": "Medium Slash damage to 1 foe.",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 55*(1-0.1*slhpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(24+24*(st/20))))d6",
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
 
+  {
+    "name": "Mighty Cleave",
+    "skillType": 2,
+    "description": "Heavy Slash damage to 1 foe, low accuracy, always crits",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage"
+    ],
+    "rolls": [
+      "/cost 55*(1-0.1*slhpot)",
+      "/roll (1d100-50+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(24+24*(st/20))))d6"
+    ]
+  },
 
+  {
+    "name": "Black Spot",
+    "skillType": 3,
+    "description": "Medium Breaking-Pierce damage to 1 foe. High Crit chance",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 55*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(30+30*(st/20))))d6",
+      "/math 71-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
 
-
-
+  {
+    "name": "Vile Assault",
+    "skillType": 3,
+    "description": "Severe Pierce damage to 1 foe. Extra crit damage is doubled.",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 55*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(42+42*(st/20))))d6",
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
+    "name": "Brave Blade",
+    "skillType": 2,
+    "description": "Severe Slash damage to 1 foe",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 55*(1-0.1*slhpot)",
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(44+44*(st/20))))d6",
+      "/math 71-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
   {
     "name": "God's Hand",
     "skillType": 1,
-    "description": "Severe Strike damage to 1 foe. x2",
+    "description": "Severe Strike damage to 1 foe",
     "rollNames": [
       "Cost",
       "Aim",
@@ -300,6 +517,28 @@
       "/cost 60*(1-0.1*stkpot)",
       "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(48+48*(st/20))))d6",
+      "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+
+  {
+    "name": "Catastrophe",
+    "skillType": 1,
+    "description": "Medium Strike, Slash, and Pierce damage to 1 foe. (1 Aim)",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Strike Damage",
+      "Slash Damage",
+      "Pierce Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 100*(1-0.1*(stkpot*slhpot*prcpot/3))",
+      "/roll (1d100+25+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(stkpwr*(1+T*0.2)*(20+20*(st/20))))d6",
+      "/roll (c*(slhpwr*(1+T*0.2)*(20+20*(st/20))))d6",
+      "/roll (c*(prcpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
@@ -318,17 +557,222 @@
       "Critical Chance"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*stkpot)",
+      "/cost 25*(1-0.1*stkpot)",
       "/roll (1d100-25+ag+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(8+8*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
-  { "Comment: ----------------------Multi Phys Skills----------------------------": "", "name": "" }, 
+  {
+    "name": "Scratch Dance",
+    "skillType": 2,
+    "description": "Weak Slash damage to random foes, 2-5 times.",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 30*(1-0.1*slhpot)",
+      "/roll (1d100-15+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(8+8*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
 
+  {
+    "name": "Kill Rush",
+    "skillType": 2,
+    "description": "Weak Pierce damage to random foes, 2-5 times.",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 35*(1-0.1*slhpot)",
+      "/roll (1d100-20+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(10+10*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+
+
+
+  {
+    "name": "Axel Claw",
+    "skillType": 2,
+    "description": "Weak Slash damage to random foes, 2-4 times. \nTags Required: [Claws]",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 20*(1-0.1*slhpot)",
+      "/roll (1d100-15+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(13+13*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+
+  { "Comment: ----------------------Multi Phys Skills----------------------------": "", "name": "" }, 
   
-  
+  {
+    "name": "Heat Wave",
+    "skillType": 1,
+    "description": "Weak Strike damage to all foes",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*stkpot)",
+      "/roll (1d100-5+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(stkpwr*(1+T*0.2)*(16+16*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
+    "name": "Crusher Onslaught",
+    "skillType": 1,
+    "description": "Medium Strike damage to all foes, low accuracy",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 35*(1-0.1*stkpot)",
+      "/roll (1d100-50+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(stkpwr*(1+T*0.2)*(22+22*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
+    "name": "Critical Wave",
+    "skillType": 1,
+    "description": "Weak Slash damage to all foes, high crit rate",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 30*(1-0.1*slhpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(12+12*(st/20))))d6",
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
+    "name": "Deathbound",
+    "skillType": 1,
+    "description": "Medium Slash damage to all foes, high crit rate",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 45*(1-0.1*slhpot)",
+      "/roll (1d100-5+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(20+20*(st/20))))d6",
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
+    "name": "Megaton Press",
+    "skillType": 1,
+    "description": "Medium Strike damage to all foes, low accuracy",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 45*(1-0.1*stkpot)",
+      "/roll (1d100-50+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(stkpwr*(1+T*0.2)*(25+25*(st/20))))d6",
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
+    "name": "Yabusame Shot",
+    "skillType": 1,
+    "description": "Weak Breaking-Pierce damage to all foes, always crits",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage"
+    ],
+    "rolls": [
+      "/cost 60*(1-0.1*prcpot)",
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(8+8*(st/20))))d6"
+    ]
+  },
+  {
+    "name": "Hades Blast",
+    "skillType": 1,
+    "description": "Heavy Strike damage to all foes",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 70*(1-0.1*stkpot)",
+      "/roll (1d100-5+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(stkpwr*(1+T*0.2)*(32+32*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
+    "name": "Titanomachia",
+    "skillType": 1,
+    "description": "Heavy Pierce damage to all foes, High Crit rate",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 70*(1-0.1*prcpot)",
+      "/roll (1d100-5+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(32+32*(st/20))))d6",
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
+    "name": "Vorpal Blade",
+    "skillType": 1,
+    "description": "Severe Slash damage to all foes",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 85*(1-0.1*prcpot)",
+      "/roll (1d100-20+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*(40+40*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
 
 
   { "Comment: ----------------------Fire Skills----------------------------": "", "name": "" }, 
@@ -544,6 +988,63 @@
       [1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1]
+    ]
+  },
+  {
+    "name": "Fire Breath",
+    "skillType": 4,
+    "description": "Weak Fire damage to random foes, with a chance of Burn, 2-5 times",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Potency",
+      "Burn"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*firpot)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(firpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*firpwr)_floor",
+      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
+    ]
+  },
+  {
+    "name": "Fire Breath",
+    "skillType": 4,
+    "description": "Weak Fire damage to random foes, with a chance of Burn, 2-5 times",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Potency",
+      "Burn"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*firpot)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(firpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*firpwr)_floor",
+      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
+    ]
+  },
+  {
+    "name": "Hellfire",
+    "skillType": 4,
+    "description": "Medium Fire damage to random foes, with a chance of Burn, 2-5 times",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Potency",
+      "Burn"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*firpot)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(firpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*firpwr)_floor",
+      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
   {
@@ -766,6 +1267,40 @@
       [1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1]
+    ]
+  },
+  {
+    "name": "Ice Breath",
+    "skillType": 5,
+    "description": "Weak Ice damage to random foes, with a chance of Freeze, 2-5 times",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*icepot)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(icepwr*(1+T*0.2)*(10+10*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*icepwr)_floor"
+    ]
+  },
+  {
+    "name": "Glacial Blast",
+    "skillType": 5,
+    "description": "Medium Ice damage to random foes, with a chance of Freeze, 2-5 times",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*icepot)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(icepwr*(1+T*0.2)*(16+16*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*icepwr)_floor"
     ]
   },
   {
@@ -992,6 +1527,40 @@
     ]
   },
   {
+    "name": "Shockbound",
+    "skillType": 6,
+    "description": "Weak Elec damage to random foes, with a chance of Shock, 2-5 times",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*elcpot)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(elcpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*elcpwr)_floor"
+    ]
+  },
+  {
+    "name": "Bolt Storm",
+    "skillType": 6,
+    "description": "Medium Elec damage to random foes, with a chance of Shock, 2-5 times",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*elcpot)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(elcpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*elcpwr)_floor"
+    ]
+  },
+  {
     "name": "Storm Dracostrike",
     "skillType": 6,
     "description": "Medium Electric damage to 1 foe, strength-based",
@@ -1215,6 +1784,40 @@
     ]
   },
   {
+    "name": "Wind Breath",
+    "skillType": 7,
+    "description": "Weak Force damage to random foes, with a chance of Mirage, 2-5 times",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(frcpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*frcpwr)_floor"
+    ]
+  },
+  {
+    "name": "Bolt Storm",
+    "skillType": 7,
+    "description": "Medium Force damage to random foes, with a chance of Mirage, 2-5 times",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(frcpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*frcpwr)_floor"
+    ]
+  },
+  {
     "name": "Wind Dracostrike",
     "skillType": 7,
     "description": "Medium Force damage to 1 foe, strength-based",
@@ -1432,7 +2035,7 @@
   {
     "name": "Nova Kaiser",
     "skillType": 8,
-    "description": "Heavy Breaking-Toxic damage to 1 foe, with a chance of poison",
+    "description": "Heavy Breaking-Toxic damage to 1 foe, with a chance of Poison",
     "rollNames": [
       "Cost",
       "Aim",
@@ -1453,6 +2056,40 @@
       [1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1]
+    ]
+  },
+  {
+    "name": "Acid Breath",
+    "skillType": 8,
+    "description": "Weak Toxic damage to random foes, with a chance of Poison, 2-5 times",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*toxpot)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(toxpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*toxpwr)_floor"
+    ]
+  },
+  {
+    "name": "Stagnant Air",
+    "skillType": 8,
+    "description": "Medium Toxic damage to random foes, with a chance of Poison, 2-5 times",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*toxpot)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(toxpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*toxpwr)_floor"
     ]
   },
   {
@@ -1678,6 +2315,40 @@
     ]
   },
   {
+    "name": "Psychic Shockwave",
+    "skillType": 9,
+    "description": "Weak Psionic damage to random foes, with a chance of Confusion, 2-5 times",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*psipot)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(psipwr*(1+T*0.2)*(10+10*(ma/20))))d6",
+      "/math 30+((lu+ma/2)*psipwr)_floor"
+    ]
+  },
+  {
+    "name": "Neurotoxic Surge",
+    "skillType": 9,
+    "description": "Medium Psionic damage to random foes, with a chance of Confusion, 2-5 times",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Potency"
+    ],
+    "rolls": [
+      "/cost 25*(1-0.1*psipot)",
+      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(psipwr*(1+T*0.2)*(16+16*(ma/20))))d6",
+      "/math 40+((lu+ma/2)*psipwr)_floor"
+    ]
+  },
+  {
     "name": "Psychic Dracostrike",
     "skillType": 9,
     "description": "Medium Psionic damage to 1 foe, strength-based",
@@ -1721,7 +2392,7 @@
       "/cost 20*(1-0.1*lgtpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu/2)+(ma/4))*lgtpwr"
+      "/math 40+((lu+ma/2)*lgtpwr)_floor"
     ]
   },
   {
@@ -1738,7 +2409,7 @@
       "/cost 30*(1-0.1*lgtpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu/2)+(ma/4))*lgtpwr"
+      "/math 30+((lu+ma/2)*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1762,7 +2433,7 @@
       "/cost 35*(1-0.1*lgtpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu/2)+(ma/4))*lgtpwr"
+      "/math 60+((lu+ma/2)*lgtpwr)_floor"
     ]
   },
   {
@@ -1779,7 +2450,7 @@
       "/cost 50*(1-0.1*lgtpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu/2)+(ma/4))*lgtpwr"
+      "/math 40+((lu+ma/2)*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1803,7 +2474,7 @@
       "/cost 50*(1-0.1*lgtpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 80+((lu/2)+(ma/4))*lgtpwr"
+      "/math 80+((lu+ma/2)*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1827,7 +2498,7 @@
       "/cost 75*(1-0.1*lgtpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu/2)+(ma/4))*lgtpwr"
+      "/math 60+((lu+ma/2)*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1851,7 +2522,7 @@
       "/cost 65*(1-0.1*lgtpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu/2)+(ma/4))*lgtpwr"
+      "/math 60+((lu+ma/2)*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1901,7 +2572,7 @@
       "/cost 20*(1-0.1*glmpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu/2)+(ma/4))*glmpwr"
+      "/math 40+((lu+ma/2)*glmpwr)_floor"
     ]
   },
   {
@@ -1918,7 +2589,7 @@
       "/cost 30*(1-0.1*glmpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu/2)+(ma/4))*glmpwr"
+      "/math 30+((lu+ma/2)*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1942,7 +2613,7 @@
       "/cost 35*(1-0.1*glmpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu/2)+(ma/4))*glmpwr"
+      "/math 60+((lu+ma/2)*glmpwr)_floor"
     ]
   },
   {
@@ -1959,7 +2630,7 @@
       "/cost 50*(1-0.1*glmpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu/2)+(ma/4))*glmpwr"
+      "/math 40+((lu+ma/2)*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1983,7 +2654,7 @@
       "/cost 50*(1-0.1*glmpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 80+((lu/2)+(ma/4))*glmpwr"
+      "/math 80+((lu+ma/2)*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2007,7 +2678,7 @@
       "/cost 75*(1-0.1*glmpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu/2)+(ma/4))*glmpwr"
+      "/math 80+((lu+ma/2)*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2031,7 +2702,7 @@
       "/cost 65*(1-0.1*glmpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu/2)+(ma/4))*glmpwr"
+      "/math 60+((lu+ma/2)*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2114,6 +2785,21 @@
       "/roll (1d100+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(7+7*(ma/20))))d6",
       "/roll (c*(almpwr*(1+T*0.2)*(5+5*(ma/20))))d6"
+    ]
+  },
+  {
+    "name": "Self Destruct",
+    "skillType": 12,
+    "description": "Heavy Almighty damage to all foes, instantly kills the user (nullifies death prevention skills)",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage"
+    ],
+    "rolls": [
+      "/cost 1*(1-0.1*almpot)",
+      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(almpwr*(1+T*0.2)*(26+26*(ma/20))))d6"
     ]
   },
   {
@@ -3051,7 +3737,7 @@
   {
     "name": "Charge",
     "skillType": 15,
-    "description": "Increase the damage of your next phys attack by 1.25",
+    "description": "Multiply the damage of your next phys attack by 2.25",
     "rollNames": [
       "Cost"
     ],
@@ -3062,7 +3748,7 @@
   {
     "name": "Concentrate",
     "skillType": 15,
-    "description": "Increase the damage of your next magic attack by 1.25",
+    "description": "Multiply the damage of your next magic attack by 2.25",
     "rollNames": [
       "Cost"
     ],
@@ -4213,7 +4899,7 @@
   {
     "name": "Retardmaxxing",
     "skillType": 0,
-    "description": "Increases Luck slightly",
+    "description": "Retardmax",
     "rollNames": [
       "De-Amp",
       "De-Amp",

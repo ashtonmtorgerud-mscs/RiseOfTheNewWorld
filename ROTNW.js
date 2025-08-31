@@ -1193,8 +1193,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             }).catch(error => {
                                 // log.value.push('Skill not found: ' + skillName);
                                 console.error('Error fetching skill data:', error);
-                            }
-                            );
+                            });
 
                         
 
@@ -1268,6 +1267,27 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                         dataMaster.value.autoSave();
                         
+                        
+                    } else if (messageInput.value.startsWith('/physskills')) {
+                        // Handle other commands starting with "/"
+                        fetch("Resources/skills.json")
+                        .then(response => response.json())
+                        .then(data => {
+                            let physSkills = data.filter(skill => [1, 2, 3].includes(skill.skillType));
+                            let physSkillList = "List: ";
+                            let physSkillType = ["Strike", "Slash", "Pierce"];
+                            physSkills.forEach(physSkill => {
+                                physSkillList = physSkillList + physSkill.name + "(" + physSkillType[physSkill.skillType] +") , ";
+                            })
+                            console.log("Physical Skills:", physSkillList); // Debug output, can be removed later
+
+                            activeDemon.value.getVariables();
+                            activeDemon.value.recalculateVitals();
+                        })
+                        .catch(error => {
+                            console.error('Error fetching skill data:', error);
+                        });
+
                         
                     } else if (messageInput.value.startsWith('/clear')) {
                         // Handle other commands starting with "/"
