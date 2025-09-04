@@ -291,9 +291,10 @@
                         
                         <div class="ml-auto w-1/2 flex items-end justify-end gap-2">
                             
-                            <input type="button" @click="dataMaster.parseFromModal('save')" value="Save" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5 flex-end">
-                            <input type="button" @click="dataMaster.parseFromModal('demon')" value="Demon" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5">
-                            <input type="button" @click="dataMaster.parseFromModal('skill')" value="Skill" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5">
+                            
+                            <input type="button" @click="dataMaster.parseFromModal('save')" value="Save" class="rounded-full p-1 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5 flex-end">
+                            <input type="button" @click="dataMaster.parseFromModal('demon')" value="Demon" class="rounded-full p-1 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5">
+                            <input type="button" @click="dataMaster.parseFromModal('skill')" value="Skill" class="rounded-full p-1 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5">
                             <input type="button" v-if="unlockedTabs[2]" @click="dataMaster.parseFromModal('army')" value="Army" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5">
                             <input type="button" v-if="unlockedTabs[2]" @click="dataMaster.parseFromModal('soldier')" value="Soldier" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5">
                         </div>
@@ -2319,9 +2320,9 @@
                         </div>
                     </div>
                     <div class="flex flex-row items-center">
-                        <div class="w-1/2 flex flex-row gap-2 ">
-                            <label class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5 ">From File<input type="file" @change="dataMaster.uploadFromFile" accept=".txt,.json,.dmn,.skl,.amy,.rnw" class="hidden"></label>
-                            <input type="button" value="Cancel" @click="modal = false" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5 flex-end">
+                        <div class="w-full flex flex-row gap-2 ">
+                            <label class="rounded-full p-2 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5 ">File<input type="file" @change="dataMaster.uploadFromFile" accept=".txt,.json,.dmn,.skl,.amy,.rnw" class="hidden"></label>
+                            <!-- <input type="button" value="Cancel" @click="modal = false" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5 flex-end"> -->
                         </div>
 
                         <!-- Middle Div -->
@@ -2333,13 +2334,22 @@
                         </div>
 
                         
-                        <div class="ml-auto w-1/2 flex items-end justify-end gap-2">
+                        <div class="ml-auto w-1/4 flex items-end justify-end gap-2">
                             
-                            <input type="button" @click="dataMaster.parseFromModal('save')" value="Save" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5 flex-end">
-                            <input type="button" @click="dataMaster.parseFromModal('demon')" value="Demon" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5">
-                            <input type="button" @click="dataMaster.parseFromModal('skill')" value="Skill" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5">
-                            <input type="button" v-if="unlockedTabs[2]" @click="dataMaster.parseFromModal('army')" value="Army" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5">
-                            <input type="button" v-if="unlockedTabs[2]" @click="dataMaster.parseFromModal('soldier')" value="Soldier" class="rounded-full p-4 ring-1 ring-cyan-200 font-semibold bg-cyan-500 hover:bg-cyan-700 my-5">
+                            <select
+                                class="w-full h-full bg-blue-950 text-white p-4 rounded-3xl ring-1 ring-cyan-400"
+                                v-if="index != 0" v-model="selectedImportCategory"
+                                @change="dataMaster.parseFromModal(selectedImportCategory)"
+                                >
+                                <option value="">-</option>
+                                <option value="save">Save</option>
+                                <option value="demon">Demon</option>
+                                <option value="skill">Skill</option>
+                                <option v-if="unlockedTabs[2]" value="army">Army</option>
+                                <option v-if="unlockedTabs[2]" value="soldier">Soldier</option>
+                            </select>
+
+                            
                         </div>
                     </div>
                 </div>

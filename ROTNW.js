@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
             activePage = ref('Sheet');
             activeTab = ref('profile'); // Reactive variable for active tab
             tabs = ref(['profile', 'combat', 'notes']); // Array of tabs
+            selectedImportCategory = ref('')
             modal = ref(false); // Reactive variable for modal visibility
             modalTab = ref('import');
             unlockedTabs = ref([true, true, true, true]);
@@ -1546,6 +1547,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     };
 
                     this.parseFromModal = (iType) => {
+                        // console.log("Got Here");
                         try {
                             switch (iType) {
                                 case ("demon"):
