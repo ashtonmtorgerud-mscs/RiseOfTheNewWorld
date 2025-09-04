@@ -1721,6 +1721,27 @@ document.addEventListener('DOMContentLoaded', () => {
                             demonsArray.forEach(demonData => {
                                 let demon = new Demon();  // Create a new Demon instance
                                 Object.assign(demon, demonData);  // Copy saved data into the demon instance
+                                
+
+                                // Fix the weapon (assuming it's a Skill too)
+                                    if (demon.weapon) {
+                                        demon.weapon = new Skill(
+                                            demon.weapon.name,
+                                            demon.weapon.description,
+                                            demon.weapon.rollNames || [],
+                                            demon.weapon.rolls || []
+                                        );
+                                    }
+
+                                    // Reconstruct each skill in the array
+                                    if (Array.isArray(demon.skills)) {
+                                        demon.skills = demon.skills.map(skillData => new Skill(
+                                            skillData.name,
+                                            skillData.description,
+                                            skillData.rollNames || [],
+                                            skillData.rolls || []
+                                        ));
+                                    }
                                 demon.recalculateVitals();  // Optionally recalculate stats or do any necessary setup
                                 demonList.value.push(demon);  // Add the demon to the list
                             });
