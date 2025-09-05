@@ -221,7 +221,7 @@
 
   {
     "name": "Fatal Sword",
-    "skillType": 3,
+    "skillType": 1,
     "description": "Medium Slash damage to 1 foe",
     "rollNames": [
       "Cost",
