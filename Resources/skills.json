@@ -2862,7 +2862,7 @@
     "rolls": [
       "/cost 120*(1-0.1*almpot)",
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(almpwr*(1+T*0.2)*(40+40*(ma/20))))d6"
+      "/roll (c*(almpwr*(1+T*0.2)*(42+42*(ma/20))))d6"
     ]
   },
   {

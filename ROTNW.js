@@ -79,9 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     let elmtR = activeDemon.value.affinitiesGenusReducer[1]*activeDemon.value.affinitiesGenusReducer[2]*activeDemon.value.affinitiesGenusReducer[3];
                     let mystR = activeDemon.value.affinitiesGenusReducer[3]*activeDemon.value.affinitiesGenusReducer[2]*activeDemon.value.affinitiesGenusReducer[4];
                     let allR = activeDemon.value.affinitiesGenusReducer[4];
-                    let physE = activeDemon.value.affinitiesGenusEvasion[0]*activeDemon.value.affinitiesGenusEvasion[4];
-                    let elmtE = activeDemon.value.affinitiesGenusEvasion[1]*activeDemon.value.affinitiesGenusEvasion[2]*activeDemon.value.affinitiesGenusEvasion[3];
-                    let mystE = activeDemon.value.affinitiesGenusEvasion[3]*activeDemon.value.affinitiesGenusEvasion[2]*activeDemon.value.affinitiesGenusEvasion[4];
+                    let allEva = activeDemon.value.affinitiesGenusEvasion[4];
+                    let physEva = activeDemon.value.affinitiesGenusEvasion[0]*activeDemon.value.affinitiesGenusEvasion[4];
+                    let elmtEva = activeDemon.value.affinitiesGenusEvasion[1]*activeDemon.value.affinitiesGenusEvasion[2]*activeDemon.value.affinitiesGenusEvasion[3];
+                    // let elmtEva = 100;
+                    console.log("allEva", allEva)
+                    let mystEva = activeDemon.value.affinitiesGenusEvasion[3]*activeDemon.value.affinitiesGenusEvasion[2]*activeDemon.value.affinitiesGenusEvasion[4];
                     let guardMuch = 0;
                     let dodgeMuch = 0;
                     if (activeDemon.guard){guardMuch = 1;}
@@ -130,8 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             case ("lightpower"): case ("lgtpwr"): parsedOperands.push(activeDemon.value.damageBooster[9]*mystP); return;
                             case ("gloompower"): case ("glmpwr"): parsedOperands.push(activeDemon.value.damageBooster[10]*mystP); return;
                             case ("almightypower"): case ("almpwr"): parsedOperands.push(activeDemon.value.damageBooster[11]*mystP); return;
-                            case ("ailmentpower"): case ("ailpwr"): parsedOperands.push(activeDemon.value.damageBooster[12]); return;
-                            case ("healingpower"): case ("hlgpwr"): parsedOperands.push(activeDemon.value.damageBooster[13]); return;
+                            case ("ailmentpower"): case ("ailpwr"): parsedOperands.push(activeDemon.value.damageBooster[12]*mystP); return;
+                            case ("healingpower"): case ("hlgpwr"): parsedOperands.push(activeDemon.value.damageBooster[13*mystP]); return;
 
                             // Skill Potential
                             case ("strikepotential"): case ("stkpot"): parsedOperands.push(activeDemon.value.skillPotential[0] + activeDemon.value.skillPotentialBoost[0]); return;
@@ -162,20 +165,26 @@ document.addEventListener('DOMContentLoaded', () => {
                             case ("psionicresistance"): case ("psires"): case ("psychicresistance"): case ("psyres"): parsedOperands.push(activeDemon.value.affinitiesReducer[8]*elmtR); return;
                             case ("lightresistance"): case ("lgtres"): parsedOperands.push(activeDemon.value.affinitiesReducer[9]*mystR); return;
                             case ("gloomresistance"): case ("glmres"): parsedOperands.push(activeDemon.value.affinitiesReducer[10]*mystR); return;
-
+                            case ("allresistance"): case ("allres"): parsedOperands.push(allR); return;
+                            
                             // Damage Evasion
-                            case ("strikeevasion"): case ("stkeva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[0]*physE); return;
-                            case ("slashevasion"): case ("slheva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[1]*physE); return;
-                            case ("pierceevasion"): case ("prceva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[2]*physE); return;
-                            case ("fireevasion"): case ("fireva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[3]*elmtE); return;
-                            case ("iceevasion"): case ("iceeva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[4]*elmtE); return;
-                            case ("elecevasion"): case ("elceva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[5]*elmtE); return;
-                            case ("forceevasion"): case ("frceva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[6]*elmtE); return;
-                            case ("toxicevasion"): case ("toxeva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[7]*elmtE); return;
-                            case ("psionicevasion"): case ("psieva"): case ("psychicevasion"): case ("psyeva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[8]*elmtE); return;
-                            case ("lightevasion"): case ("lgteva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[9])*mystE; return;
-                            case ("gloomevasion"): case ("glmeva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[10]*mystEs); return;
+                            case ("strikeevasion"): case ("stkeva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[0]*physEva*allEva); return;
+                            case ("slashevasion"): case ("slheva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[1]*physEva*allEva); return;
+                            case ("pierceevasion"): case ("prceva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[2]*physEva*allEva); return;
+                            case ("fireevasion"): case ("fireva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[3]*elmtEva*allEva); return;
+                            case ("iceevasion"): case ("iceeva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[4]*elmtEva*allEva); return;
+                            case ("elecevasion"): case ("elceva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[5]*elmtEva*allEva); return;
+                            case ("forceevasion"): case ("frceva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[6]*elmtEva*allEva); return;
+                            case ("toxicevasion"): case ("toxeva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[7]*elmtEva*allEva); return;
+                            case ("psionicevasion"): case ("psieva"): case ("psychicevasion"): case ("psyeva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[8]*elmtEva*allEva); return;
+                            case ("lightevasion"): case ("lgteva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[9])*mystEva*allEva; return;
+                            case ("gloomevasion"): case ("glmeva"): parsedOperands.push(activeDemon.value.affinitiesEvasion[10]*mystEva*allEva); return;
 
+                            case ("physicalevasion"): case ("physeva"): parsedOperands.push(physEva*allEva); return;
+                            case ("elementalevasion"): case ("elmeva"): parsedOperands.push(elmtEva*allEva); return;
+                            case ("mysticevasion"): case ("mysteva"): parsedOperands.push(mystEva*allEva); return;
+                            case ("allevasion"): case ("alleva"): parsedOperands.push(allEva); return; 
+                            
                         }
 
 
@@ -598,7 +607,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.skills = []; // Array of skills
                     
                     this.buffs = [0, 0, 0]; // Buffs for St, Ma, Vi, Ag, Lu
-                    this.weapon = new Skill('Bare Hands', 'An unarmed strike, inflicting weak strike damage to one foe', ['Aim', 'Damage', 'Crit Rate'], ['/roll 1d100+ag', '/roll (C*(stkpwr*(1+T*0.2)*(6+6*(st/20))))d6', '/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil']); // Array of weapons
+                    this.weapon = new Skill('Bare Hands', 'An unarmed strike, inflicting weak strike damage to one foe', ['Aim', 'Damage', 'Crit Rate'], ['/roll (1d100-5+ag+lu/4)*(0.2*S+1)_floor', '/roll (C*(stkpwr*(1+T*0.2)*(6+6*(st/20))))d6', '/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil']); // Array of weapons
                     this.armor = ['Clothes', 1, 2,]; // Array of armor
                     this.accessories = [['Watch', 'Tells the Time'], ['', ''], ['', '']]; // Array of accessories
                     this.growthRates = [2, 2, 2, 2, 2];
@@ -742,7 +751,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     // case ("tacticalpower"): case ("tacpwr"): this.damageBooster[14] += valueBoost*0.01; break;
 
                                     case ("physpower"): case ("physpwr"): this.damageGenusBooster[0] += valueBoost*0.01; break;
-                                    case ("elempower"): case ("elempwr"): this.damageGenusBooster[1] += valueBoost*0.01; break;
+                                    case ("elmtpower"): case ("elmtpwr"): this.damageGenusBooster[1] += valueBoost*0.01; break;
                                     case ("mystpower"): case ("mystpwr"): this.damageGenusBooster[2] += valueBoost*0.01; break;
                                     case ("magpower"): case ("magpwr"): this.damageGenusBooster[3] += valueBoost*0.01; break;
                                     case ("allpower"): case ("allpwr"): this.damageGenusBooster[4] += valueBoost*0.01; break;
@@ -791,11 +800,19 @@ document.addEventListener('DOMContentLoaded', () => {
                                     case ("gloomevasion"): case ("glmeva"): this.affinitiesEvasion[10] *= (100+valueBoost)/100; break;
 
                                     // Affinities Genus Reducers
-                                    case ("physreducer"): case ("physres"): this.affinitiesGenusReducer[0] *= (100-valueBoost)/100; break;
-                                    case ("elemreducer"): case ("eleres"): this.affinitiesGenusReducer[1] *= (100-valueBoost)/100; break;
-                                    case ("mystreducer"): case ("mystres"): this.affinitiesGenusReducer[2] *= (100-valueBoost)/100; break;
-                                    case ("magreducer"): case ("magres"): this.affinitiesGenusReducer[3] *= (100-valueBoost)/100; break;
-                                    case ("allreducer"): case ("allres"): this.affinitiesGenusReducer[4] *= (100-valueBoost)/100; break;
+                                    case ("physresistance"): case ("physres"): this.affinitiesGenusReducer[0] *= (100-valueBoost)/100; break;
+                                    case ("elemresistance"): case ("elmtres"): this.affinitiesGenusReducer[1] *= (100-valueBoost)/100; break;
+                                    case ("mystresistance"): case ("mystres"): this.affinitiesGenusReducer[2] *= (100-valueBoost)/100; break;
+                                    case ("magicresistance"): case ("magres"): this.affinitiesGenusReducer[3] *= (100-valueBoost)/100; break;
+                                    case ("allresistance"): case ("allres"): this.affinitiesGenusReducer[4] *= (100-valueBoost)/100; break;
+
+
+                                    // Affinities Genus Reducers
+                                    case ("physevasion"): case ("physeva"): this.affinitiesGenusEvasion[0] *= 1+(valueBoost/100); break;
+                                    case ("elemevasion"): case ("elmteva"): this.affinitiesGenusEvasion[1] *= 1+(valueBoost/100); break;
+                                    case ("mystevasion"): case ("mysteva"): this.affinitiesGenusEvasion[2] *= 1+(valueBoost/100); break;
+                                    case ("magicevasion"): case ("mageva"): this.affinitiesGenusEvasion[3] *= 1+(valueBoost/100); break;
+                                    case ("allevasion"): case ("alleva"): this.affinitiesGenusEvasion[4] *= 1+(valueBoost/100); break;
                                 }
                             }
                         } catch (exception) {
@@ -1711,10 +1728,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Load saved data from localStorage and update game state
                     this.loadData = () => {
                         const savedData = localStorage.getItem(this.saveFile);
-
+                        
+                        console.log(savedData.demons);
                         if (savedData) {
                             this.fileData = JSON.parse(savedData);
-
+                            // console.log("savedata: ", this.fileData);
+                            if (this.fileData.demons.length < 1) { return; }
+                            // console.log("savedata 2: ", this.fileData);
                             // Update the game variables with loaded data
                             console.log(this.fileData.demons);
                             demonList.value = [];
@@ -1743,7 +1763,11 @@ document.addEventListener('DOMContentLoaded', () => {
                                             skillData.rollNames || [],
                                             skillData.rolls || []
                                         ));
+                                        demon.skills.forEach((skill, index) => {
+                                            demon.skills[index].skillType = demonData.skills[index].skillType;
+                                        })
                                     }
+
                                 demon.recalculateVitals();  // Optionally recalculate stats or do any necessary setup
                                 demonList.value.push(demon);  // Add the demon to the list
                             });

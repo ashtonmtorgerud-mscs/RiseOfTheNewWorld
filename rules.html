@@ -208,6 +208,12 @@
                 </div>
             </div>
 
+
+            <div class="h-[95%]" v-if="page === 6">
+                
+            </div>
+
+
             <div class="max-h-[5%] flex gap-2 justify-end">
                 <input type="button" value="Previous" class="rounded-2xl bg-emerald-500 hover:bg-emerald-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" v-if="page > 0" @click="page--">
                 <input type="button" value="Next" class="rounded-2xl bg-emerald-500 hover:bg-emerald-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" v-if="page < 100" @click="page++">
