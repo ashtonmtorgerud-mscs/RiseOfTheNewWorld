@@ -927,6 +927,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // Log the result
                         log.value.push(rolledDice + 'Total: ' + total + comment);
+                    } else if (lowercaseMessage.startsWith('/xpall') || lowercaseMessage.startsWith('/expall')) {
+
+                        //Add XP
+                        let xpAmount = parseInt(
+                            messageInput.value.trim().toLowerCase().replace('/expall', '').replace('/xpall', '').trim()
+                        );
+                        console.log("EXP AMOUNT: " + xpAmount);
+
+
+
+
+                        ///Validate Data
+                        if (isNaN(xpAmount) || xpAmount <= 0) {
+                            messageInput.value = "";
+                            log.value.push('Invalid experience amount. Use format: /xp <amount>');
+                            return;
+                        }
+
+                        demonList.value.forEach( demon => {
+                        demon.exp += xpAmount;
+                        ///Level up
+                        while (demon.exp >= demon.maxExp) {
+
+                            ///Block at max level
+                            if (demon.level == 99) { demon.exp = 0; demon.maxExp = 0; break }
+
+                            ///Level up and add available points
+                            demon.level++;
+                            if (demon.level % 2 === 0) {
+                                demon.availablePoints++;
+                            }
+
+                            //Randomly boost stats according to the growth rates
+                            let statPool = [];
+
+                            for (let i = 0; i < 5; i++) {
+                                for (let j = 0; j < demon.growthRates[i]; j++) {
+                                    statPool.push(i);
+                                }
+                            }
+
+                            // Shuffle the pool
+                            for (let i = statPool.length - 1; i > 0; i--) {
+                                let j = Math.floor(Math.random() * (i + 1));
+                                [statPool[i], statPool[j]] = [statPool[j], statPool[i]];
+                            }
+
+                            // Increase 3 stats
+                            let chosen = statPool.slice(0, 3);
+                            for (let index of chosen) {
+                                demon.stats[index]++;
+                            }
+
+                            ///Cut XP, increase max XP, HP, and MP
+                            demon.exp -= demon.maxExp;
+                            demon.maxExp = Math.floor(demon.maxExp * 1.1 + 50); // Increase maxExp by 20% each level
+                            // activeDemon.value.maxHp = Math.floor(50 + (activeDemon.value.stats[2] + activeDemon.value.level + (activeDemon.value.stats[4] / 10)) * 7);
+                            let oldHP = demon.maxHp;
+                            demon.maxHp = Math.floor(50 + (demon.stats[2] + demon.level + (demon.stats[4] / 10)) * 7);
+                            demon.hp += (demon.maxHp - oldHP);
+                            let oldMP = demon.maxMp;
+                            demon.maxMp = Math.floor(32 + ((demon.stats[1] * 8) + (demon.level) + (demon.stats[4] / 4)));
+                            demon.mp += (demon.maxMp - oldMP);
+                            demon.getVariables();
+                        }
+                        })
+                        
+
+                        log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
                     } else if (lowercaseMessage.startsWith('/xp') || lowercaseMessage.startsWith('/exp')) {
 
                         //Add XP

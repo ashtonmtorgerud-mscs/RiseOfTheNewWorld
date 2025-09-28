@@ -81,7 +81,7 @@
   {
     "name": "Single Shot",
     "skillType": 3,
-    "description": "Weak Strike damage to 1 foe",
+    "description": "Weak Pierce damage to 1 foe, high crit rate, costs HP",
     "rollNames": [
       "Cost",
       "Aim",
@@ -114,7 +114,7 @@
   },
   {
     "name": "Headbutt",
-    "skillType": 3,
+    "skillType": 1,
     "description": "Weak Strike damage to 1 foe. Extra damage with [Horns] tag",
     "rollNames": [
       "Cost",
@@ -195,7 +195,7 @@
       "Damage"
     ],
     "rolls": [
-      "/cost 12*(1-0.1*prcpot)",
+      "/cost 12*(1-0.1*slhpot)",
       "/roll (1d100-50+ag+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(17+17*(st/20))))d6"
     ]
@@ -221,7 +221,7 @@
 
   {
     "name": "Fatal Sword",
-    "skillType": 1,
+    "skillType": 2,
     "description": "Medium Slash damage to 1 foe",
     "rollNames": [
       "Cost",
@@ -335,6 +335,23 @@
     ]
   },
   {
+    "name": "Sack Attack",
+    "skillType": 1,
+    "description": "Weak Strike damage to 1 foe, extra crit damage is doubled. \n If the target is [Humanoid] & [Male], reduce HIT by 2 ranks",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 15*(1-0.1*stkpot)",
+      "/roll (1d100-15+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(10+10*(st/20))))d6",
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+  {
     "name": "Noxious Sting",
     "skillType": 3,
     "description": "Medium Pierce damage to 1 foe, with a chance of Poison",
@@ -395,7 +412,7 @@
   },
   {
     "name": "Hysterical Slap",
-    "skillType": 3,
+    "skillType": 1,
     "description": "Weak Strike damage to 1 foe, with a chance of Rage, x2",
     "rollNames": [
       "Cost",
@@ -405,9 +422,9 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*prcpot)",
+      "/cost 20*(1-0.1*stkpot)",
       "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(prcpwr*(1+T*0.2)*(10+10*(st/20))))d6",
+      "/roll (c*(stkpwr*(1+T*0.2)*(10+10*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/math 60+((lu+ma/2)*ailpwr)_floor"
     ]
@@ -584,7 +601,7 @@
 
   {
     "name": "Kill Rush",
-    "skillType": 2,
+    "skillType": 3,
     "description": "Weak Pierce damage to random foes, 2-5 times.",
     "rollNames": [
       "Cost",
@@ -593,9 +610,9 @@
       "Critical Chance"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*slhpot)",
+      "/cost 35*(1-0.1*prcpot)",
       "/roll (1d100-20+ag+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(slhpwr*(1+T*0.2)*(10+10*(st/20))))d6",
+      "/roll (c*(prcpwr*(1+T*0.2)*(10+10*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
@@ -622,7 +639,7 @@
 
   {
     "name": "Myriad Arrows",
-    "skillType": 2,
+    "skillType": 3,
     "description": "Medium Pierce damage to random foes, 2-5 times.",
     "rollNames": [
       "Cost",
@@ -631,9 +648,45 @@
       "Critical Chance"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*slhpot)",
+      "/cost 35*(1-0.1*prcpot)",
       "/roll (1d100-20+ag+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(slhpwr*(1+T*0.2)*(16+16*(st/20))))d6",
+      "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+
+  {
+    "name": "Boulder Rush",
+    "skillType": 2,
+    "description": "Medium Slash damage to random foes, 2-5 times.",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 35*(1-0.1*slhpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(17+17*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+    ]
+  },
+
+  {
+    "name": "Tempest Slash",
+    "skillType": 2,
+    "description": "Medium Slash damage to random foes, 2-5 times.",
+    "rollNames": [
+      "Cost",
+      "Aim",
+      "Damage",
+      "Critical Chance"
+    ],
+    "rolls": [
+      "/cost 35*(1-0.1*slhpot)",
+      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*(17+17*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
@@ -727,7 +780,7 @@
   },
   {
     "name": "Yabusame Shot",
-    "skillType": 1,
+    "skillType": 3,
     "description": "Weak Breaking-Pierce damage to all foes, always crits",
     "rollNames": [
       "Cost",
@@ -811,7 +864,7 @@
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
       "/math 30+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*(5+5*(lu/10))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
     ]
   },
   {
@@ -830,7 +883,7 @@
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
       "/math 20+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -856,7 +909,7 @@
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 40+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
     ]
   },
   {
@@ -875,7 +928,7 @@
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 30+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -901,7 +954,7 @@
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 50+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
     ]
   },
   {
@@ -920,7 +973,7 @@
       "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 40+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -946,7 +999,7 @@
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 60+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2897,7 +2950,7 @@
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*ailpwr*firpwr)_floor",
-      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
     ]
   },
   {
@@ -2912,7 +2965,7 @@
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*ailpwr*firpwr)_floor",
-      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
     ]
   },
   
@@ -3692,7 +3745,7 @@
   {
     "name": "Luster Candy",
     "skillType": 15,
-    "description": "Increase the ATK/DEF/HIT of 1 ally by 1 rank",
+    "description": "Increase the ATK/DEF/HIT of all allies by 1 rank",
     "rollNames": [
       "Cost"
     ],
@@ -3713,7 +3766,7 @@
   {
     "name": "Debilitate",
     "skillType": 15,
-    "description": "Decerase the ATK/DEF/HIT of 1 foe by 1 rank",
+    "description": "Decerase the ATK/DEF/HIT of all allies by 1 rank",
     "rollNames": [
       "Cost"
     ],
@@ -3836,8 +3889,41 @@
 
 
   {
-    "name": "Life Spring",
+    "name": "Bloody Glee",
+    "skillType": 0,
+    "description": "Increases Critical Strike Chance",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+10 CB"
+    ]
+  },
+  {
+    "name": "Savage Glee",
     "skillType": 15,
+    "description": "Greatly increases Critical Strike Chance",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+20 CB"
+    ]
+  },
+  {
+    "name": "Murderous Glee",
+    "skillType": 15,
+    "description": "Monstrously increases Critical Strike Chance",
+    "rollNames": [
+      "Effect"
+    ],
+    "rolls": [
+      "+25 CB"
+    ]
+  },
+  {
+    "name": "Life Spring",
+    "skillType": 0,
     "description": "Increases Max HP",
     "rollNames": [
       "Effect"
@@ -3848,7 +3934,7 @@
   },
   {
     "name": "Great Life Spring",
-    "skillType": 15,
+    "skillType": 0,
     "description": "Greatly increases Max HP",
     "rollNames": [
       "Effect"
@@ -3859,7 +3945,7 @@
   },
   {
     "name": "Mana Spring",
-    "skillType": 15,
+    "skillType": 0,
     "description": "Increases Max MP",
     "rollNames": [
       "Effect"
@@ -3870,7 +3956,7 @@
   },
   {
     "name": "Great Mana Spring",
-    "skillType": 15,
+    "skillType": 0,
     "description": "Greatly increases Max MP",
     "rollNames": [
       "Effect"
@@ -4875,31 +4961,9 @@
     ]
   },
   {
-    "name": "Almighty Block",
+    "name": "Tactical Block",
     "skillType": 0,
-    "description": "Nullifies Almighty Damage on the party for 1 turn",
-    "rollNames": [
-      "Cost"
-    ],
-    "rolls": [
-      "/cost 40*(1-0.1*tacpot)"
-    ]
-  },
-  {
-    "name": "Ailment Block",
-    "skillType": 0,
-    "description": "Nullifies Ailment Damage on the party for 1 turn",
-    "rollNames": [
-      "Cost"
-    ],
-    "rolls": [
-      "/cost 40*(1-0.1*tacpot)"
-    ]
-  },
-  {
-    "name": "Healing Block",
-    "skillType": 0,
-    "description": "Nullifies Healing Damage on the party for 1 turn",
+    "description": "Nullifies debuffs on the party for 1 turn",
     "rollNames": [
       "Cost"
     ],
