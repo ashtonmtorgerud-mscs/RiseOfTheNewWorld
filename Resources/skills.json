@@ -657,8 +657,8 @@
 
   {
     "name": "Boulder Rush",
-    "skillType": 2,
-    "description": "Medium Slash damage to random foes, 2-5 times.",
+    "skillType": 1,
+    "description": "Medium Strike damage to random foes, 2-5 times.",
     "rollNames": [
       "Cost",
       "Aim",
@@ -666,9 +666,9 @@
       "Critical Chance"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*slhpot)",
+      "/cost 35*(1-0.1*stkpot)",
       "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(slhpwr*(1+T*0.2)*(17+17*(st/20))))d6",
+      "/roll (c*(stkpwr*(1+T*0.2)*(17+17*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
