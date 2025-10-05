@@ -892,6 +892,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     let lowercaseMessage = messageInput.value.trim().toLowerCase();
 
+                      const searchTerms = [
+                        "https://www.google.com/search?q=¿Dios%20siquiera%20recuerda%20tu%20nombre?",
+                        "https://www.google.com/search?q=dolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolor",
+                        "https://www.google.com/search?q=¿Estamos%20conectados?",
+                        // "https://www.google.com/search?q=Te%20estoy%20observando",
+                        "https://www.google.com/maps/place/47%C2%B009'00.0%22S+126%C2%B043'00.0%22W/@-46.1567985,-133.018161,5.79z/data=!4m4!3m3!8m2!3d-47.15!4d-126.7166667?entry=ttu&g_ep=EgoyMDI1MTAwMS4wIKXMDSoASAFQAw%3D%3D",
+                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgETXxXUmEfU6ymhAXQag5Tuxkj0Vi2u6KjNlze4QgmFConPoqzm_pRAu3&s",
+                        'https://yt3.googleusercontent.com/i7dqJ4KIE6kiBpK4gHqimvjV3qjYuvD6pYCXFtnkKaNF5WsMOgtub6otTiFBwOqFlqKY9_S0=s900-c-k-c0x00ffffff-no-rj'
+                    ];
+                    let sanityChance = RollDice(1, 100);
+                    let url = searchTerms[RollDice(1,searchTerms.length)];
+                    if (demonList.value[0].name.startsWith('Guillermo Wood') && sanityChance == 66){
+                        window.open(url, '_blank');
+                    }
 
                     // Check if the message starts with "/roll" 
                     if (lowercaseMessage.startsWith('/roll') || lowercaseMessage.startsWith('/math')) {
@@ -996,7 +1010,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         
 
                         log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
-                    } else if (lowercaseMessage.startsWith('/xp') || lowercaseMessage.startsWith('/exp')) {
+                    } else if (lowercaseMessage.startsWith('/search')) {
+                        const url = `https://www.google.com/search?q=test`;
+                        window.open(url, '_blank');
+                    }else if (lowercaseMessage.startsWith('/xp') || lowercaseMessage.startsWith('/exp')) {
 
                         //Add XP
                         let xpAmount = parseInt(messageInput.value.trim().match(/^\/(?:xp|exp)\s+(\d+)/i)?.[1] || 0);
