@@ -393,7 +393,7 @@
                         <div class="h-full flex gap-2 p-1">
                             <div
                                 class="rounded-xl bg-gray-800 h-full w-2/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
-                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.1</span>
+                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.2</span>
                                 </p>
                             </div>
                             <div @click="activePage = 'Sheet'" v-if="unlockedTabs[0]"
@@ -869,10 +869,9 @@
                                         </div>
                                         <p class="text-emerald-400 text-xl font-semibold my-2 w-full border-b-2 border-indigo-500" > Ailments: </p>
                                         
-                                        <div class="flex flex-row w-full gap-2 text-white text-lg font-thin rounded-full bg-gradient-to-r from-purple-950 to-fuchsia-950 ring-1 ring-indigo-500 items-center pr-2 my-2" v-for="ailment in activeDemon.ailments">
+                                        <div class="flex flex-row w-full gap-2 text-white text-lg font-thin rounded-full bg-gradient-to-r from-purple-950 to-fuchsia-950 ring-1 ring-indigo-500 items-center pr-2 my-2" v-for="(ailment, index) in activeDemon.ailments">
                                             <div class="w-1/6 bg-blue-950 aspect-square rounded-full object-cover border-2 shadow-lg shadow-indigo-500/50 hover:shadow-3xl border-indigo-500 hover:border-red-500 hoverPop">
                                                 <img :src="'./Resources/AffinityIcon13.png'" class="pulsingFilter" @click="activeDemon.ailments.splice(index, 1)" />
-
                                             </div>
                                             
                                             <input type="text" class="h-full w-1/2 text-white text-lg font-thin rounded-full bg-gradient-to-r from-green-950 to-blue-950 p-2 ring-1 ring-indigo-500" v-model="ailment[0]" />
@@ -928,7 +927,7 @@
                         <div class="h-full flex gap-2 p-1">
                             <div
                                 class="rounded-xl bg-gray-800 h-full w-2/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
-                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.1</span>
+                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.2</span>
                                 </p>
                             </div>
                             <div @click="activePage = 'Sheet'" v-if="unlockedTabs[0]"
@@ -1049,7 +1048,7 @@
                             <div class="w-1/4 p-2 " v-for="(demon, index) in demonList">
                                 <div class="w-full aspect-[16/9] ring-2 rounded-2xl bg-blue-950 overflow-hidden hoverPop"
                                     :class="index === 0 ? 'ring-cyan-200' : 'ring-indigo-600'"
-                                    @click="activeDemon = demon">
+                                    @click="activeDemon = demon; displaySkill = false;">
                                     <div class="w-full flex flex-col">
                                         <div class="w-full h-1/5 px-2 pt-1 flex flex-row border-b-2 border-indigo-500">
                                             <div class="text-white font-bold w-3/4 text-left truncate">{{demon.name}}
@@ -1147,7 +1146,7 @@
                         <div class="h-full flex gap-2 p-1">
                             <div
                                 class="rounded-xl bg-gray-800 h-full w-2/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
-                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.1</span>
+                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.2</span>
                                 </p>
                             </div>
                             <div @click="activePage = 'Sheet'" v-if="unlockedTabs[0]"
@@ -1536,7 +1535,7 @@
                         <div class="h-full flex gap-2 p-1">
                             <div
                                 class="rounded-xl bg-gray-800 h-full w-2/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
-                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.1</span>
+                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.2</span>
                                 </p>
                             </div>
                             <div @click="activePage = 'Sheet'" v-if="unlockedTabs[0]"
@@ -2050,7 +2049,7 @@
                     </div>
                     <div class="bg-blue-100 w-full flex flex-row rounded-b-xl border-t-4 border-indigo-500"
                         style="height: 10%;">
-                        <textarea v-model="messageInput" @keydown.enter.prevent="sendMessage" maxlength="100"
+                        <textarea v-model="messageInput" @keydown.enter.prevent="sendMessage" maxlength="500"
                             class="w-5/6 bg-blue-950 resize-none text-emerald-400 rounded-bl-xl border-r-2 border-indigo-500 px-1 "
                             name="" id="" placeholder="Write /help for a list of commands"></textarea>
                         <button @click="sendMessage" class="w-1/6 bg-indigo-700 hover:bg-indigo-800 text-4xl text-white font-bold py-2 px-4 rounded-br-xl textOutlineBlackThin"> ➣ </button>

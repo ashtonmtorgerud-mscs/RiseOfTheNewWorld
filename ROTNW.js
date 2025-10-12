@@ -943,11 +943,24 @@ document.addEventListener('DOMContentLoaded', () => {
                         log.value.push(rolledDice + 'Total: ' + total + comment);
                     } else if (lowercaseMessage.startsWith('/xpall') || lowercaseMessage.startsWith('/expall')) {
 
+
+
                         //Add XP
-                        let xpAmount = parseInt(
-                            messageInput.value.trim().toLowerCase().replace('/expall', '').replace('/xpall', '').trim()
-                        );
-                        console.log("EXP AMOUNT: " + xpAmount);
+                        let xpAmount = 0;
+                        let defeatedLevel = 0;
+                        let defeatedCount = 0;
+                        let expString = messageInput.value.trim().toLowerCase().replace('/expall', '').replace('/xpall', '').trim();
+
+                        if (expString.includes('l')){
+                            defeatedLevel = expString.split('l')[1];
+                            defeatedCount = parseInt(expString.split('l')[0]) || 1;
+                            xpAmount = Math.floor((defeatedLevel**1.75)+(defeatedLevel*1.8*10)/2)*defeatedCount;
+
+                        }
+
+
+
+                        // console.log("EXP AMOUNT: " + xpAmount);
 
 
 
@@ -960,7 +973,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         demonList.value.forEach( demon => {
-                        demon.exp += xpAmount;
+                        
+                        let personalizedEXP = xpAmount;
+                        
+                        if (defeatedLevel != 0){
+                            personalizedEXP = Math.floor((xpAmount * Math.max(0.1, (1+((defeatedLevel-demon.level)/10))))/1);
+                        }
+                        // console.log("PERSONALIZED EXP AMOUNT: " + personalizedEXP);
+                        demon.exp += personalizedEXP;
                         ///Level up
                         while (demon.exp >= demon.maxExp) {
 
@@ -1008,8 +1028,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                         })
                         
-
-                        log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
+                        log.value.push("EXP: " + xpAmount)
+                        // log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
                     } else if (lowercaseMessage.startsWith('/search')) {
                         const url = `https://www.google.com/search?q=test`;
                         window.open(url, '_blank');
@@ -1510,6 +1530,56 @@ document.addEventListener('DOMContentLoaded', () => {
                         activeDemon.value.recalculateVitals()
                         // console.log('recalculateVitals');
                         log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
+                    } else if (lowercaseMessage.startsWith('/equip')){
+                        ///Check what to equip (Weapon, armor, accessory)
+                        let checkMessage = lowercaseMessage.slice(6);
+
+                        if (checkMessage.trim().startsWith('weapon')){
+                            
+                            // Get Wepaon name and description
+                            let weaponString = checkMessage.trim().slice(6);
+                            let rawMessage = messageInput.value;
+                            
+
+
+                            // Assign weapon name and description
+                            activeDemon.value.weapon.name = toTitleCase(weaponString.split('{')[1].split('}')[0]) || "Barehands";
+                            activeDemon.value.weapon.description = rawMessage.split('{')[2].split('}')[0].trim();
+
+                            // Get the new rolls
+                            let newRolls = weaponString.split('{').slice(3).map(roll => roll.split('}')[0]).slice(0,8);
+                            activeDemon.value.weapon.rollNames = [];
+                            activeDemon.value.weapon.rolls = [];
+                            newRolls.forEach((roll, index) => {
+                                activeDemon.value.weapon.rollNames[index] = toTitleCase(roll.split(':')[0].trim());
+                                activeDemon.value.weapon.rolls[index] = roll.split(':')[1].trim()
+                            });
+                            
+                            log.value.push("Equipped '" + activeDemon.value.weapon.name + "'");
+
+
+                            //     /equip weapon {chainsaw} {This one-sided sword appears glows a weak purple, it's blade is around 4 feet long, and is particularly sharp.} {aim : /roll (1d100-5+ag+lu/4)*(0.2*S+1)_floor} {damage : /roll (c*(slhpwr*(1+T*0.2)*(12+12*(st/30))))d6} {critical chance : /math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil}
+                            
+                        } else if (checkMessage.trim().startsWith('armor')){
+                            let  armorString = checkMessage.trim().slice(5).trim();
+                            
+                            let armorName = toTitleCase(armorString.split('{')[1].split('}')[0]);
+                            
+                            activeDemon.value.armor[0] = armorName || "Nude";
+                            activeDemon.value.armor[1] = parseInt(armorString.split('{')[2].split(']')[0]) || 0;
+                            activeDemon.value.armor[2] = parseInt(armorString.split('{')[3].split(']')[0]) || 0;
+
+                            log.value.push("Equipped " + activeDemon.value.armor[0] + ", " + activeDemon.value.armor[1] + " evasion and " + activeDemon.value.armor[1] + " defense")
+                        } else if (checkMessage.trim().startsWith('accessory')){
+                            
+                        }
+
+                        // Check which slot it is
+
+                        // Equip the info in that slot
+
+                        // Log info
+
                     } else if (lowercaseMessage.startsWith('/help')){
                         const helpMessage = "List of commands:\n" +
                             "/roll <dice_expression> or /math <expression> - Roll dice or calculate math expressions (e.g. 3d6 + 2d10 + (4 * 5)). Supports _floor and _ceiling/_ceil flags.\n" +
@@ -1593,6 +1663,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     .join('');
             }
 
+            function toTitleCase(str) {
+            return str
+                .toLowerCase()
+                .split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+            }
 
 
 
