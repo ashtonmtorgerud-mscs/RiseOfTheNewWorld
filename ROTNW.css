@@ -60,6 +60,14 @@
     animation: pulseBG 8s ease infinite;
 }
 
+
+.gridBackground {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, grey 1px, transparent 1px),
+    linear-gradient(to bottom, grey 1px, transparent 1px);
+}
+
 .hoverPop:hover {
     transform: scale(1.05);
     transition: all 0.1s ease-in-out;

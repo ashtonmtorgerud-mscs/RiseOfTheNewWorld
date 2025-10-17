@@ -955,7 +955,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             defeatedLevel = expString.split('l')[1];
                             defeatedCount = parseInt(expString.split('l')[0]) || 1;
                             xpAmount = Math.floor((defeatedLevel**1.75)+(defeatedLevel*1.8*10)/2)*defeatedCount;
-
+                        } else {
+                            xpAmount = parseInt(expString);
                         }
 
 

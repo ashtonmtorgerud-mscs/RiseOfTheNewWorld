@@ -18,10 +18,75 @@
 
 
 
-<body class="" id="app">
-    
-    <div class="bg-red-200">
-        test
+<body class="h-screen w-screen totalBackground" id="app">
+
+    <div class="flex flex-row h-screen w-screen">
+        <div class="h-full w-[10%] bg-red-200 flex flex-col gap-3 p-3">
+            <div class="w-full aspect-square bg-blue-100" @click="page = 1">
+                Boobs <br>
+                Pos: {{containers[0].pos}} <br>
+                GetX: {{containers[0].getX()}} <br>
+                GetY: {{containers[0].getY()}} <br>
+                Mouse: {{"[" + mouse.x + ", " + mouse.y + "]"}}
+
+
+            </div>
+            <div class="w-full aspect-square bg-blue-400" @click="page = 2">
+                titties
+            </div>
+            <div class="w-full aspect-square bg-blue-100" @click="page = 3">
+                boobies
+            </div>
+            <div class="w-full aspect-square bg-blue-400" @click="page = 4">
+                Tits
+            </div>
+        </div>
+        <div class="h-full w-[90%]">
+
+            <!-- Inventory -->
+            <div class="h-full w-full gridBackground" v-if="page == 1">
+
+                <div v-for="container in containers">
+                    <div class="absolute rounded-2xl bg-blue-200 border-2 min-w-[100px] min-h-[100px] max-w-[1000px] max-h-[1000px] border-indigo-500 text-nowrap overflow-hidden" v-if="!container.packed" :style="{  left: container.getX() + 'px', top: container.getY() + 'px', width: container.getWidth() + 'px', height: container.getHeight() + 'px' }">
+                        <div class="border-b-2 border-teal-300 font-bold" @mousedown="container.Pickup()">
+                            {{container.name}}
+                        </div>
+
+                        <div class="" v-for="(item, index) in container.items">
+                            <div class="" v-if="!item.editing" @click="item.editing=true">
+                                •{{item.name + " x" + item.count + ", (" + (item.weight*item.count) + "lbs)"}}
+                            </div>
+                            <div class="flex flex-row gap-2" v-if="item.editing">
+                                <div class="" @click="item.editing=false">•</div>
+                                <input type="text" v-model="item.name">
+                                <input type="number" v-model.number="item.weight">
+                                <input type="number" v-model.number="item.count">
+                            </div>
+
+                        </div>
+
+                        <input type="button" value="Add" class="px-2 py-1 bg-blue-500 rounded-full font-bold text-white"
+                            @click="container.PackItem()">
+
+                        <input type="button" value="Pack" class="px-2 py-1 bg-blue-500 rounded-full font-bold text-white"
+                            @click="container.packed = true">
+
+                        <div class="absolute bottom-0 right-0 aspect-square w-[32px] bg-red-200"
+                            @mousedown="container.resizing = true; console.log('resizing bro')"></div>
+                    </div>
+                </div>
+                <div class="absolute bottom-2 left-[calc(10px+10%)]">
+                    <p>Zoom: {{camera.zoom}}</p>
+                    <input type="range" name="" v-model="camera.zoom" id="" min="-1" max="2" step="0.1">
+                </div>
+
+
+            </div>
+            <div class="h-full w-full bg-blue-500" v-if="page == 2">Titties</div>
+            <div class="h-full w-full bg-green-500" v-if="page == 3">Boobies</div>
+            <div class="h-full w-full bg-yellow-500" v-if="page == 4">Tits</div>
+
+        </div>
     </div>
 
 </body>
