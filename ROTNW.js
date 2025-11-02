@@ -1095,11 +1095,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
-                    } else if (lowercaseMessage.startsWith('/hp')) {
+                    } else if (lowercaseMessage.startsWith('/hp') || lowercaseMessage.startsWith('/heal')) {
 
 
                         //include damage and healing
-                        let calculation = lowercaseMessage.slice(3).trim();
+                        let calculation = "";
+                        if (lowercaseMessage.startsWith('/hp')){
+                            calculation = lowercaseMessage.slice(3).trim();
+                        } else if (lowercaseMessage.startsWith('/heal')){
+                            calculation = lowercaseMessage.slice(5).trim();
+                        }
                         calculation.replace(' ', '');
                         let healthAmount = parseInt( dMDAS( calculation ));
                         //include damage and healing
@@ -1118,8 +1123,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             activeDemon.value.hp = activeDemon.value.maxHp + activeDemon.value.hpBooster; // Cap the healing to max HP
                         }
 
-                        if (activeDemon.value.hp < -activeDemon.value.maxHp + activeDemon.value.hpBooster) {
-                            activeDemon.value.hp = -activeDemon.value.maxHp + activeDemon.value.hpBooster; // Prevent negative HP
+                        // if (activeDemon.value.hp < -activeDemon.value.maxHp + activeDemon.value.hpBooster) {
+                        //     activeDemon.value.hp = -activeDemon.value.maxHp + activeDemon.value.hpBooster; // Prevent negative HP
+                        // }
+                        
+                        if (activeDemon.value.hp < 0) {
+                            activeDemon.value.hp = 0; // Prevent negative HP
                         }
 
 
@@ -1239,6 +1248,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                         log.value.push(`Command executed: ${lowercaseMessage.trim()}, but there was an unexpected error.`);
+                    } else if (messageInput.value.startsWith('/speed')){
+                        
+                        let battleSpeed = dMDAS("1d100+ag+(lu/2)_floor")
+                        
+
+                        log.value.push("Calculated battlespeed equals " + Math.floor(battleSpeed));
+                        
                     } else if (messageInput.value.startsWith('/damage')) {
 
                         let input = messageInput.value.toLowerCase();
@@ -1286,7 +1302,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (activeDemon.value.bulwark >= finalDamage)
                             { activeDemon.value.bulwark = Math.max(activeDemon.value.bulwark-finalDamage, 0); finalDamage = 0; }
                         else 
-                            { finalDamage -= activeDemon.value.bulwark }
+                            { 
+                                finalDamage -= activeDemon.value.bulwark
+                                activeDemon.value.bulwark = 0;
+                            }
 
                         console.log(activeDemon.value);
 

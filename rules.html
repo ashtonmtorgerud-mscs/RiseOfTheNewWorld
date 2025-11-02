@@ -202,6 +202,7 @@
                             reduced by half</li>
                         <li>Enervation (Cancer): YUP, IT'S FUCKING BACK! DEAL HALF DAMAGE, TAKE AN EXTRA 50% DAMAGE, AND YOU CAN'T
                             USE SKILLS. Go FUCK YOURSELF</li>
+                        <li>Bleeding: Reducing remaining potency by will inflicts an equal amount of Almighty damage </li>
                         <li>Mortal: HP is Immediately to 0</li>
                     </ul>
                     </p>
@@ -209,7 +210,33 @@
             </div>
 
 
-            <div class="h-[95%]" v-if="page === 6">
+            <div class="h-[95%]" v-if="page === 7">
+                <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400 h-[6%]">Skills</h1>
+                
+                <!-- <p class="text-xl text-emerald-100 font-thin mt-2 text-left h-[8%]">Skills are used by demons in combat to inflict damage, heal allies, and gain tactical advantage. These are a list of general skills. Some demons have unique skills not listed here.</p> -->
+                <div class="h-[9%] w-full flex flex-row">
+                    <div class="aspect-square bg-black" v-for="(n, index) in 17">
+                        <div class="w-full h-full bg-blue-950" :class="index == selectedSkillNumber ? 'border border-cyan-300 scale-[105%] bg-blue-900' : 'border border-indigo-500'" @click="selectedSkillNumber = n-1; filterSkills(n-1)">
+                            <p v-if="n == 1">No Filter</p>
+                            
+                            <div class="" v-if="n != 0 && n != 17">
+                                <img :src="'./Resources/AffinityIcon' + (n-1) + '.png'" alt="" class="pulsingFilter">
+                            </div>
+                                
+                            <p v-if="n == 17">Passive</p>
+                        </div>
+                    </div>
+                </div>
+                    <div class="overflow-y-scroll max-h-[85%]">
+                        <table class="table-auto border-2 border-white w-full">
+                            <thead >
+                                <tr v-for="skill in filteredSkills" class=""> 
+                                    <th class="border border-white p-1 text-xl" v-if="skill.name"> {{skill.name}} </th>
+                                    <th class="border border-white p-2" v-if="skill.name"> {{skill.description}} </th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
                 
             </div>
 

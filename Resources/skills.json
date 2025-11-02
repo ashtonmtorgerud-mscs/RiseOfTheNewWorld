@@ -115,7 +115,7 @@
   {
     "name": "Headbutt",
     "skillType": 1,
-    "description": "Weak Strike damage to 1 foe. Extra damage with [Horns] tag",
+    "description": "Weak Strike damage to 1 foe. Extra damage with [Horns]",
     "rollNames": [
       "Cost",
       "Aim",
@@ -729,7 +729,7 @@
   },
   {
     "name": "Critical Wave",
-    "skillType": 1,
+    "skillType": 2,
     "description": "Weak Slash damage to all foes, high crit rate",
     "rollNames": [
       "Cost",
@@ -812,7 +812,7 @@
   },
   {
     "name": "Titanomachia",
-    "skillType": 1,
+    "skillType": 2,
     "description": "Heavy Pierce damage to all foes, High Crit rate",
     "rollNames": [
       "Cost",
@@ -829,7 +829,7 @@
   },
   {
     "name": "Vorpal Blade",
-    "skillType": 1,
+    "skillType": 2,
     "description": "Severe Slash damage to all foes",
     "rollNames": [
       "Cost",
@@ -1059,25 +1059,6 @@
       [1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1],
       [1, 1, 1, 1, 1]
-    ]
-  },
-  {
-    "name": "Fire Breath",
-    "skillType": 4,
-    "description": "Weak Fire damage to random foes, with a chance of Burn, 2-5 times",
-    "rollNames": [
-      "Cost",
-      "Aim",
-      "Damage",
-      "Potency",
-      "Burn"
-    ],
-    "rolls": [
-      "/cost 25*(1-0.1*firpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
   {
@@ -1872,7 +1853,7 @@
     ]
   },
   {
-    "name": "Bolt Storm",
+    "name": "Tornado",
     "skillType": 7,
     "description": "Medium Force damage to random foes, with a chance of Mirage, 2-5 times",
     "rollNames": [
@@ -2842,7 +2823,7 @@
     ]
   },
   {
-    "name": "Life Drain",
+    "name": "Energy Drain",
     "skillType": 12,
     "description": "Drains a small amount of HP/MP from 1 foe",
     "rollNames": [

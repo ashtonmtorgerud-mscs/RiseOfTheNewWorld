@@ -18,16 +18,17 @@
 
 
 
-<body class="h-screen w-screen totalBackground" id="app">
+<body class="h-screen w-screen totalBackground select-none" id="app">
 
     <div class="flex flex-row h-screen w-screen">
         <div class="h-full w-[10%] bg-red-200 flex flex-col gap-3 p-3">
             <div class="w-full aspect-square bg-blue-100" @click="page = 1">
                 Boobs <br>
-                Pos: {{containers[0].pos}} <br>
+                {{selectedContainer}}
+                <!-- Pos: {{containers[0].pos}} <br>
                 GetX: {{containers[0].getX()}} <br>
                 GetY: {{containers[0].getY()}} <br>
-                Mouse: {{"[" + mouse.x + ", " + mouse.y + "]"}}
+                Mouse: {{"[" + mouse.x + ", " + mouse.y + "]"}} -->
 
 
             </div>
@@ -46,33 +47,77 @@
             <!-- Inventory -->
             <div class="h-full w-full gridBackground" v-if="page == 1">
 
+                <!-- Ghost preview for selectedContainer -->
+                <div 
+                    v-if="selectedContainer && selectedContainer.packed"
+                    :style="{ 
+                        position: 'fixed',
+                        left: (mouse.x + 10) + 'px', 
+                        top: (mouse.y + 10) + 'px', 
+                        width: '100px',
+                        height: '100px',
+                        backgroundColor: 'rgba(0, 0, 255, 0.3)',
+                        border: '2px dashed blue',
+                        pointerEvents: 'none',
+                        zIndex: 1000,
+                        borderRadius: '8px'
+                    }">
+                    {{ selectedContainer.name }}
+                </div>
+
+
                 <div v-for="container in containers">
-                    <div class="absolute rounded-2xl bg-blue-200 border-2 min-w-[100px] min-h-[100px] max-w-[1000px] max-h-[1000px] border-indigo-500 text-nowrap overflow-hidden" v-if="!container.packed" :style="{  left: container.getX() + 'px', top: container.getY() + 'px', width: container.getWidth() + 'px', height: container.getHeight() + 'px' }">
-                        <div class="border-b-2 border-teal-300 font-bold" @mousedown="container.Pickup()">
-                            {{container.name}}
-                        </div>
-
-                        <div class="" v-for="(item, index) in container.items">
-                            <div class="" v-if="!item.editing" @click="item.editing=true">
-                                •{{item.name + " x" + item.count + ", (" + (item.weight*item.count) + "lbs)"}}
-                            </div>
-                            <div class="flex flex-row gap-2" v-if="item.editing">
-                                <div class="" @click="item.editing=false">•</div>
-                                <input type="text" v-model="item.name">
-                                <input type="number" v-model.number="item.weight">
-                                <input type="number" v-model.number="item.count">
-                            </div>
+                    <div class="absolute rounded-2xl bg-blue-200 border-2 min-w-[100px] min-h-[100px] max-w-[1000px] max-h-[1000px] border-indigo-500 text-nowrap overflow-hidden" v-if="!container.packed" :style="{  left: container.getX() + 'px', top: container.getY() + 'px', width: container.getWidth() + 'px', height: container.getHeight() + 'px' }" :class="container.moving ? 'z-[999]' : ''">
+                        
+                        
+                        <div class="border-b-2 border-teal-300 font-bold h-8" @mousedown="container.Pickup();">
+                            {{container.name}} {{container.totalWeight()}}
 
                         </div>
+
+                        <div class="h-[calc(100%-4rem)] w-full flex flex-row">
+                            <div class=" bg-red-200 w-full" :class="container.slots.length > 0 ? `w-[calc(${container.vDividerFunction()}px)]` : 'w-full'">
+                                <div class="" v-for="(item, index) in container.items">
+                                    <div v-if="!item.editing" @click="item.editing=true">
+                                        •{{item.name + " x" + item.count + ", (" + (item.weight*item.count) + "lbs)"}}
+                                    </div>
+
+                                    <div class="flex flex-row gap-2" v-if="item.editing">
+                                        <div class="" @click="item.editing=false">•</div>
+                                        <input type="text" v-model="item.name">
+                                        <input type="number" v-model.number="item.weight">
+                                        <input type="number" v-model.number="item.count">
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-if="container.slots.length > 0" class="h-full w-1 bg-red-500" @mousedown="container.movingDivider = true;"></div>
+                            <div v-if="container.slots.length > 0" class="h-full flex flex-row p-2 gap-2">
+                                    <div class="min-h-16 min-w-32 rounded bg-gray-800" v-for="(slot, index) in container.slots">
+                                    <div class="w-full rounded h-full bg-gray-700"  
+
+
+                                        
+                                        @mouseup="container.slots[index] = selectedContainer; selectedContainer = null;">
+
+                                        <!-- MOUSEUP IS GOING TO MAKE IT -->
+                                        <div class="text-white">{{ slot ? slot.name : 'Empty' }}</div> 
+                                        <!-- Why quesiton mark?? -->
+                                        <div v-if="slot?.packed" @click="selectedContainer = container.slots[index]; container.slots[index] = null; selectedContainer.packed = true;">Unpack</div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
 
                         <input type="button" value="Add" class="px-2 py-1 bg-blue-500 rounded-full font-bold text-white"
                             @click="container.PackItem()">
 
                         <input type="button" value="Pack" class="px-2 py-1 bg-blue-500 rounded-full font-bold text-white"
-                            @click="container.packed = true">
+                            @click="selectedContainer = container; container.packed = true;">
 
                         <div class="absolute bottom-0 right-0 aspect-square w-[32px] bg-red-200"
-                            @mousedown="container.resizing = true; console.log('resizing bro')"></div>
+                            @mousedown="container.resizing = true; console.log('resizing bro: ' + container.resizing)"></div>
                     </div>
                 </div>
                 <div class="absolute bottom-2 left-[calc(10px+10%)]">

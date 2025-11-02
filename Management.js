@@ -2,101 +2,130 @@ const { createApp, ref } = Vue;
 document.addEventListener('DOMContentLoaded', () => {
     createApp({
         setup() {
+            const mouse = ref({ x: 0, y: 0 });
+            const camera = ref({ pos: [0,0], zoom: 1 });
+            const containers = ref([]);
+            const page = ref(1);
+            const selectedContainer = ref(null);
 
-            let mouse = ref({
-                x: 0,
-                y: 0
-            });
+            // Live getters — these are called EVERY render
+            const getMouse = () => mouse.value;
+            const getCamera = () => camera.value;
 
             window.addEventListener("mousemove", (e) => {
                 mouse.value.x = e.clientX;
                 mouse.value.y = e.clientY;
             });
-            window.addEventListener("mouseup", (e) => {
-                containers.value.map (container => { container.resizing = false; container.moving = false;})
+
+            window.addEventListener("mouseup", () => {
+                containers.value.forEach(c => {
+                    c.moving = false;
+                    c.resizing = false;
+                    c.movingDivider = false;
+                });
             });
 
-
-            let page = ref(1);
-            let selectedContainer = null;
-            let containers = ref([]);
-            let camera = ref({
-                pos: [0,0],
-                zoom: 1
-
-            })
-
-            class Container{
-                constructor(iName){
+            class Container {
+                constructor(iName) {
                     this.name = iName;
                     this.packed = false;
-                    this.pos = [500,500];
-                    this.size = [500, 100];
+                    this.pos = [300, 200];
+                    this.size = [400, 300];
                     this.posOffset = [0, 0];
                     this.items = [];
+                    this.slots = [];
+                    this.vehicleDivider = this.size[0] / 2;
                     this.moving = false;
                     this.resizing = false;
+                    this.movingDivider = false;
+                }
 
-                    this.Pickup = () => {
-                        this.posOffset[0] = this.pos[0] - mouse.value.x;
-                        this.posOffset[1] = this.pos[1] - mouse.value.y;
-                        this.moving = true;
+                Pickup() {
+                    const m = getMouse();  // ← LIVE MOUSE
+                    this.posOffset[0] = this.pos[0] - m.x;
+                    this.posOffset[1] = this.pos[1] - m.y;
+                    this.moving = true;
+                }
+
+                getX() {
+                    const m = getMouse();
+                    const cam = getCamera();
+                    if (this.moving) {
+                        this.pos[0] = m.x + this.posOffset[0];
+                        return this.pos[0];
                     }
+                    return this.pos[0] * cam.zoom;
+                }
 
-                    this.getX = () => {
-                        if (this.moving){
-                            this.pos[0] = mouse.value.x+this.posOffset[0];
-                            return mouse.value.x+this.posOffset[0];
-                        }
-                        return (this.pos[0] - window.innerWidth*0.00000055)*camera.value.zoom;
+                getY() {
+                    const m = getMouse();
+                    const cam = getCamera();
+                    if (this.moving) {
+                        this.pos[1] = m.y + this.posOffset[1];
+                        return this.pos[1];
                     }
+                    return this.pos[1] * cam.zoom;
+                }
 
-                    this.getY = () => {
-                        if (this.moving){
-                            this.pos[1] = mouse.value.y+this.posOffset[1];
-                            return mouse.value.y+this.posOffset[1];
-                        }
-                        return (this.pos[1] + window.innerHeight*0.00000045)*camera.value.zoom;
+                getWidth() {
+                    const m = getMouse();
+                    if (this.resizing) {
+                        this.size[0] = Math.max(100, m.x - this.getX() + 15);
                     }
-
-                    this.getWidth = () => {
-                        if (this.resizing){
-                            this.size[0] = mouse.value.x - this.getX() + 15;
-                        }
-                        return this.size[0];
+                    if (this.vehicleDivider > this.size[0]) {
+                        this.vehicleDivider = Math.max(98, this.size[0] - 2);
                     }
+                    return this.size[0];
+                }
 
-                    this.getHeight = () => {
-                        if (this.resizing){
-                            this.size[1] = mouse.value.y - this.getY() + 15;
-                        }
-                        return this.size[1];
+                getHeight() {
+                    const m = getMouse();
+                    if (this.resizing) {
+                        this.size[1] = Math.max(80, m.y - this.getY() + 15);
                     }
+                    return this.size[1];
+                }
 
-                    this.PackItem = () => { 
-                        this.items.push(new Item({}));
+                vDividerFunction() {
+                    const m = getMouse();
+                    if (this.movingDivider) {
+                        this.vehicleDivider = Math.max(80, Math.min(m.x - this.getX(), this.size[0] - 80));
                     }
+                    return this.vehicleDivider;
+                }
 
+                totalWeight() {
+                    let tWeight = 0;
+                    this.items.forEach(item => {
+                        tWeight += (item.weight || 0) * (item.count || 0);
+                    });
+                    this.slots.forEach(slot => {
+                        if (slot) tWeight += parseFloat(slot.totalWeight() || 0);
+                    });
+                    return tWeight;
+                }
 
+                PackItem() {
+                    this.items.push(new Item({}));
                 }
             }
 
-            class Item{
-                constructor({iName="Name", iCount=1, iDescription="", iWeight=0}){
+            class Item {
+                constructor({ iName = "Name", iCount = 1, iWeight = 0 } = {}) {
                     this.name = iName;
                     this.count = iCount;
-                    this.description = iDescription;
                     this.weight = iWeight;
                     this.editing = true;
                 }
             }
 
+            // Create containers
             containers.value.push(new Container("Cont1"));
             containers.value.push(new Container("Cont2"));
-            containers.value[0].items.push(new Item({iName: "Boobs"}));
-            console.log(containers.value[0])
+            containers.value[0].items.push(new Item({ iName: "Ladder" }));
+            containers.value[1].slots = [null];
 
-         return { page, containers, camera, mouse };
+            return { page, containers, camera, mouse, selectedContainer };
         }
     }).mount('#app');
 });
