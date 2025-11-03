@@ -1111,8 +1111,8 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*firpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(firpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
@@ -1367,8 +1367,8 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*icepot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(icepwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
@@ -1624,8 +1624,8 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*elcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(elcpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
@@ -1881,8 +1881,8 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*frcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(frcpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
@@ -2156,8 +2156,8 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*toxpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(toxpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
@@ -2412,8 +2412,8 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*psipot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(psipwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
@@ -2596,8 +2596,8 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*lgtpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(lgtpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
@@ -2776,8 +2776,8 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*glmpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
-      "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
+      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (c*(glmpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ],
     "aoe": [
