@@ -1344,6 +1344,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         log.value.push('Skills have been washed');
                         
                         
+                    } else if (messageInput.value.startsWith('/washall')) {
+
+
+                        demonList.value.forEach(demon => {
+                            // Clean the demon's HP, coefficient, ailments, etc
+                            demon.getVariables();
+                            demon.recalculateVitals();
+                            demon.hp = demon.maxHp + demon.hpBooster;
+                            demon.mp = demon.maxMp + demon.mpBooster;
+                            demon.buffs = [0, 0, 0]; // Reset buffs
+                            demon.ailments = []; // Reset ailments
+                            demon.coefficient = 1; // Reset coefficient
+                        })
+                        
+                        log.value.push('Demon washed and stats recalculated');
+                        
+                        
                     } else if (messageInput.value.startsWith('/wash')) {
                         // Clean the demon's HP, coefficient, ailments, etc
                         activeDemon.value.getVariables();
