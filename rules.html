@@ -22,6 +22,23 @@
     <div class="totalBackground h-screen w-screen overflow-hidden p-5 select-text hidden lg:block">
         <div class="text-white h-full container mx-auto text-center ring-2 ring-indigo-200 rounded-2xl bg-gradient-to-l from-cyan-800 to-blue-950 p-4">
 
+            
+            <div class="h-[95%]" v-if="page === -1">
+                <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400">Index</h1>
+
+                <p class="text-lg text-emerald-100 font-thin mt-2 text-left overflow-y-auto p-2 flex flex-col">
+                    <a @click="page = 1" class="font-bold">Basic Rules</a>
+                    <a @click="page = 2" class="font-bold">Setting and Theme</a>
+                    <a @click="page = 3" class="font-bold">Basic Stats</a>
+                    <a @click="page = 4" class="font-bold">Basic Stats</a>
+                    <a @click="page = 5" class="font-bold">Stats, Skills and Items</a>
+                    <a @click="page = 6" class="font-bold">Affinities</a>
+                    <a @click="page = 6" class="font-bold">Ailments</a>
+                    <a @click="page = 6" class="font-bold">Skills</a>
+                </p>
+
+            </div>
+
             <div class="h-[95%]" v-if="page === 0">
             <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400">Basics and Terms of the Rules</h1>
                 <p class="text-lg text-emerald-100 font-thin mt-2 text-left overflow-y-auto p-2">
@@ -61,7 +78,7 @@
                     <ul class="list-disc list-inside text-emerald-100 font-thin mt-2 text-left overflow-y-auto">
                         <li>Peace: Lead by Siddhartha Gautama (the first Buddha), does not fight but aids all sides</li>
                         <li>Feral: Aggressive beastial demons that attack on sight</li>
-                        <li>Unaligned: Independent groups that will often operate like others (conquering, defending, etc). Often lead by a charasmatic figure (Kahn, Napolean)</li>
+                        <li>Unaligned: Independent groups that will often operate like others (conquering, defending, etc). Often lead by a charasmatic figure (Kahn)</li>
                     </ul>
                     <br><br>
                 </p>
@@ -182,7 +199,8 @@
                     <ul class="list-disc list-inside text-emerald-100 font-thin mt-2 text-left overflow-y-auto text-xl">
                         <li>Burning: Takes Fire damage at the start of each turn. The condition ends if the demon takes ice damage
                             (including nulling or draining it, but not dodging or repelling)</li>
-                        <li>Freeze: Evasion is reduced to 5 and cannot move in field battles</li>
+                        <li>Freeze: Evasion is reduced to 5 and cannot move in field battles. The condition ends if the demon takes ice damage
+                            (including nulling or draining it, but not dodging or repelling) </li>
                         <li>Shock: The next attack that can crit automatically crits and the condition ends</li>
                         <li>Mirage: The aim rate of attacks is halved, and attacks that would target a single foe hit a random foe
                             instead.</li>
@@ -192,7 +210,7 @@
                         <li>Mute: Cannot activate skills</li>
                         <li>Bind: Turn is skipped and evasion is reduced to 5</li>
                         <li>Charm: At the start of each turn, will against the remaining potency or use a buff or
-                            recovery skill on the source of it's ailment. On a success, it's turn is skipped instead</li>
+                            recovery skill on the source of it's ailment. On a success, it's turn is skipped instead. You can will to redue the remaining potency any time you would take damage from the source of your charm</li>
                         <li>Fear: Must will against the remaining potency, having it's turn skipped on failure. Cannot Crit. Cannot
                             move in field battles.</li>
                         <li>Curse: Cannot recover HP or MP</li>
@@ -241,9 +259,15 @@
             </div>
 
 
-            <div class="max-h-[5%] flex gap-2 justify-end">
-                <input type="button" value="Previous" class="rounded-2xl bg-emerald-500 hover:bg-emerald-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" v-if="page > 0" @click="page--">
-                <input type="button" value="Next" class="rounded-2xl bg-emerald-500 hover:bg-emerald-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" v-if="page < 100" @click="page++">
+            <div class="max-h-[5%] w-full flex flex-row">
+                <div class="h-full w-1/2 flex gap-2">
+                    <input type="button" value="Intex" class="rounded-2xl bg-emerald-500 hover:bg-emerald-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" v-if="page > 0" @click="page=-1">
+                </div>
+                <div class="h-full w-1/2 flex gap-2 justify-end">
+                    <input type="button" value="Previous" class="rounded-2xl bg-emerald-500 hover:bg-emerald-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" v-if="page > 0" @click="page--">
+                    <input type="button" value="Next" class="rounded-2xl bg-emerald-500 hover:bg-emerald-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" v-if="page < 100" @click="page++">
+                </div>
+                
             </div>
             
 

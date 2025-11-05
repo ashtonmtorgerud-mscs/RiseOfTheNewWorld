@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createApp({
         setup() {
 
-            let page = ref(7);
+            let page = ref(-1);
             skillsList = ref([]);
             filteredSkills = ref([]);
             selectedSkillNumber = ref(0);
