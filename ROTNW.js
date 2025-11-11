@@ -901,7 +901,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgETXxXUmEfU6ymhAXQag5Tuxkj0Vi2u6KjNlze4QgmFConPoqzm_pRAu3&s",
                         'https://yt3.googleusercontent.com/i7dqJ4KIE6kiBpK4gHqimvjV3qjYuvD6pYCXFtnkKaNF5WsMOgtub6otTiFBwOqFlqKY9_S0=s900-c-k-c0x00ffffff-no-rj'
                     ];
-                    let sanityChance = RollDice(1, 100);
+                    let sanityChance = RollDice(1, 66);
                     let url = searchTerms[RollDice(1,searchTerms.length)];
                     if (demonList.value[0].name.startsWith('Guillermo Wood') && sanityChance == 66){
                         window.open(url, '_blank');
