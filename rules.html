@@ -27,14 +27,14 @@
                 <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400">Index</h1>
 
                 <p class="text-lg text-emerald-100 font-thin mt-2 text-left overflow-y-auto p-2 flex flex-col">
-                    <a @click="page = 1" class="font-bold">Basic Rules</a>
-                    <a @click="page = 2" class="font-bold">Setting and Theme</a>
+                    <a @click="page = 0" class="font-bold">Basic Rules</a>
+                    <a @click="page = 1" class="font-bold">Setting and Theme</a>
+                    <a @click="page = 2" class="font-bold">Basic Stats</a>
                     <a @click="page = 3" class="font-bold">Basic Stats</a>
-                    <a @click="page = 4" class="font-bold">Basic Stats</a>
-                    <a @click="page = 5" class="font-bold">Stats, Skills and Items</a>
-                    <a @click="page = 6" class="font-bold">Affinities</a>
+                    <a @click="page = 4" class="font-bold">Stats, Skills and Items</a>
+                    <a @click="page = 5" class="font-bold">Affinities</a>
                     <a @click="page = 6" class="font-bold">Ailments</a>
-                    <a @click="page = 6" class="font-bold">Skills</a>
+                    <a @click="page = 7" class="font-bold">Skills</a>
                 </p>
 
             </div>
@@ -261,7 +261,7 @@
 
             <div class="max-h-[5%] w-full flex flex-row">
                 <div class="h-full w-1/2 flex gap-2">
-                    <input type="button" value="Intex" class="rounded-2xl bg-emerald-500 hover:bg-emerald-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" v-if="page > 0" @click="page=-1">
+                    <input type="button" value="Intex" class="rounded-2xl bg-emerald-500 hover:bg-emerald-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" v-if="page > -1" @click="page=-1">
                 </div>
                 <div class="h-full w-1/2 flex gap-2 justify-end">
                     <input type="button" value="Previous" class="rounded-2xl bg-emerald-500 hover:bg-emerald-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" v-if="page > 0" @click="page--">

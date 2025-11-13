@@ -624,6 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Boosters
                     this.statsBooster = [0, 0, 0, 0, 0];
+                    this.armorBooster = [ 0, 0 ];
                     this.hpBooster = 0;
                     this.mpBooster = 0;
                     this.affinitiesReducer = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
@@ -688,6 +689,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.accessories.forEach(accessory => {
                         this.checkBoxes.push(accessory[1]);
                     });
+                    this.weapon.rolls.forEach(roll => {
+                            this.checkBoxes.push(roll);
+                        });
                     this.skills.forEach(skill => {
                         skill.rolls.forEach(roll => {
                             this.checkBoxes.push(roll);
@@ -973,6 +977,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             return;
                         }
 
+                        let levelUpMessage = "Base EXP: " + xpAmount;
+
                         demonList.value.forEach( demon => {
                         
                         let personalizedEXP = xpAmount;
@@ -980,10 +986,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (defeatedLevel != 0){
                             personalizedEXP = Math.floor((xpAmount * Math.max(0.1, (1+((defeatedLevel-demon.level)/10))))/1);
                         }
+                        
                         // console.log("PERSONALIZED EXP AMOUNT: " + personalizedEXP);
                         demon.exp += personalizedEXP;
+
+                        levelUpMessage += '\n' + demon.name + " gained " + personalizedEXP + "EXP";
+
+
                         ///Level up
                         while (demon.exp >= demon.maxExp) {
+
+                            
 
                             ///Block at max level
                             if (demon.level == 99) { demon.exp = 0; demon.maxExp = 0; break }
@@ -993,6 +1006,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (demon.level % 2 === 0) {
                                 demon.availablePoints++;
                             }
+
+                            levelUpMessage += '\n' + demon.name + " leveled up! (" + (demon.level-1) + " -> " + demon.level + ")";
 
                             //Randomly boost stats according to the growth rates
                             let statPool = [];
@@ -1029,7 +1044,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                         })
                         
-                        log.value.push("EXP: " + xpAmount)
+                        log.value.push(levelUpMessage)
                         // log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
                     } else if (lowercaseMessage.startsWith('/search')) {
                         const url = `https://www.google.com/search?q=test`;
@@ -1355,6 +1370,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             demon.mp = demon.maxMp + demon.mpBooster;
                             demon.buffs = [0, 0, 0]; // Reset buffs
                             demon.ailments = []; // Reset ailments
+                            demon.bulwark = 0;
                             demon.coefficient = 1; // Reset coefficient
                         })
                         
@@ -1370,7 +1386,52 @@ document.addEventListener('DOMContentLoaded', () => {
                         activeDemon.value.buffs = [0, 0, 0]; // Reset buffs
                         activeDemon.value.ailments = []; // Reset ailments
                         activeDemon.value.coefficient = 1; // Reset coefficient
+                        activeDemon.value.bulwark = 0;
                         log.value.push('Demon washed and stats recalculated');
+                        
+                        
+                    } else if (messageInput.value.startsWith('/learn')) {
+                        
+                        
+                        let importData = messageInput.value.trim().toLowerCase().slice(6).trim().split(' ');
+                        // Get the skill data from TheRiseOfTheNewWorld/Resources/skills.json 
+
+                            let skillName = importData[0];
+
+                            fetch("Resources/skills.json").then(response => response.json()).then(data => {
+                                let skillsCount = activeDemon.value.skills.filter(skill => skill.name !== "").length;
+                                let gotSkill = false;
+                                let skillData = data.find(skill => skill.name.toLowerCase().replace(/[\s']/g, '') === skillName.toLowerCase());
+                                const skillSlot = parseInt(importData[1]) || -1;
+                                if (skillsCount > 7 && skillSlot == -1) { 
+                                    log.value.push("All 8 skill slots are full, please specifiy a specific slot");
+                                    return;
+                                }
+                                if (importData.length == 1) {
+                                    activeDemon.value.skills[skillsCount] = skillData || new Skill("", "", [], []);
+                                    log.value.push("Imported skill: " + skillName + " to slot " + (skillsCount+1));
+                                    gotSkill = true;
+                                };
+                                
+                                if (skillSlot >= 0 && skillSlot <= 8) {
+                                    activeDemon.value.skills[skillSlot-1] = skillData || new Skill("", "", [], []);
+                                    log.value.push("Imported skill: " + skillName + " to slot " + (skillsCount));
+                                    gotSkill = true;
+                                    messageInput.value = '';
+                                }
+                                activeDemon.value.getVariables();
+                                activeDemon.value.recalculateVitals();
+                                if (!gotSkill) {
+                                    log.value.push("Could not find a skill slot to import to. Use /import skill <name> [slot]");
+                                }
+                                
+                            }).catch(error => {
+                                log.value.push('Skill not found: ' + skillName);
+                                console.error('Error fetching skill data:', error);
+                            }
+                            );
+
+                        dataMaster.value.autoSave();
                         
                         
                     } else if (messageInput.value.startsWith('/import')) {
