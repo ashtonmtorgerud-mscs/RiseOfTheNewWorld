@@ -319,7 +319,7 @@
   },
   {
     "name": "Blinding Strike",
-    "skillType": 1,
+    "skillType": 2,
     "description": "Weak Slash damage to 1 foe and reduces target's HIT by 1 rank",
     "rollNames": [
       "Cost",
@@ -746,7 +746,7 @@
   },
   {
     "name": "Deathbound",
-    "skillType": 1,
+    "skillType": 2,
     "description": "Medium Slash damage to all foes, high crit rate",
     "rollNames": [
       "Cost",
@@ -812,7 +812,7 @@
   },
   {
     "name": "Titanomachia",
-    "skillType": 2,
+    "skillType": 3,
     "description": "Heavy Pierce damage to all foes, High Crit rate",
     "rollNames": [
       "Cost",
@@ -1102,18 +1102,22 @@
   {
     "name": "Fire Dracostrike",
     "skillType": 4,
-    "description": "Medium Fire damage to 1 foe, strength-based",
+    "description": "Medium Fire damage with a slight chance of burn to 1 foe, strength-based",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance"
+      "Critical Chance",
+      "Potency",
+      "Burn"
     ],
     "rolls": [
       "/cost 65*(1-0.1*firpot)",
       "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(20+20*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
+      "/math 20+((lu+st/2)*firpwr)_floor",
+      "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1358,18 +1362,20 @@
   {
     "name": "Ice Dracostrike",
     "skillType": 5,
-    "description": "Medium ice damage to 1 foe, strength-based",
+    "description": "Medium ice damage with a slight chance of freeze to 1 foe, strength-based",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance"
+      "Critical Chance",
+      "Potency"
     ],
     "rolls": [
       "/cost 65*(1-0.1*icepot)",
       "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(20+20*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
+      "/math 20+((lu+st/2)*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1615,18 +1621,20 @@
   {
     "name": "Storm Dracostrike",
     "skillType": 6,
-    "description": "Medium Electric damage to 1 foe, strength-based",
+    "description": "Medium Electric damage with a slight chance of shock to 1 foe, strength-based",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance"
+      "Critical Chance",
+      "Potency"
     ],
     "rolls": [
       "/cost 65*(1-0.1*elcpot)",
       "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(20+20*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
+      "/math 40+((lu+st/2)*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1872,18 +1880,20 @@
   {
     "name": "Wind Dracostrike",
     "skillType": 7,
-    "description": "Medium Force damage to 1 foe, strength-based",
+    "description": "Medium Force damage with a slight chance of mirage to 1 foe, strength-based",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance"
+      "Critical Chance",
+      "Potency"
     ],
     "rolls": [
       "/cost 65*(1-0.1*frcpot)",
       "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(20+20*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
+      "/math 20+((lu+st/2)*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2118,13 +2128,15 @@
       "Cost",
       "Aim",
       "Damage",
-      "Potency"
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 25*(1-0.1*toxpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*toxpwr)_floor"
+      "/math 30+((lu+ma/2)*toxpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
   {
@@ -2135,30 +2147,36 @@
       "Cost",
       "Aim",
       "Damage",
-      "Potency"
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 25*(1-0.1*toxpot)",
       "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*toxpwr)_floor"
+      "/math 40+((lu+ma/2)*toxpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
   {
     "name": "Atomic Dracostrike",
     "skillType": 8,
-    "description": "Medium Toxic damage to 1 foe, strength-based",
+    "description": "Medium Toxic damage with a slight chance of Poison to 1 foe, strength-based",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance"
+      "Critical Chance",
+      "Potency",
+      "Poison"
     ],
     "rolls": [
       "/cost 65*(1-0.1*toxpot)",
       "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(20+20*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
+      "/math 20+((lu+st/2)*toxpwr)_floor",
+      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2403,18 +2421,20 @@
   {
     "name": "Psychic Dracostrike",
     "skillType": 9,
-    "description": "Medium Psionic damage to 1 foe, strength-based",
+    "description": "Medium Psionic damage with a slight chance of confusion to 1 foe, strength-based",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance"
+      "Critical Chance",
+      "Potency"
     ],
     "rolls": [
       "/cost 65*(1-0.1*psipot)",
       "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(20+20*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
+      "/math 20+((lu+st/2)*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2587,18 +2607,20 @@
   {
     "name": "Holy Dracostrike",
     "skillType": 10,
-    "description": "Medium Light damage to 1 foe, strength-based",
+    "description": "Medium Light damage to 1 foe, strength-based. Slight chance of Mortal if the target is weak to Light",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance"
+      "Critical Chance",
+      "Infliction"
     ],
     "rolls": [
       "/cost 65*(1-0.1*lgtpot)",
       "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(20+20*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
+      "/math 30+((lu+st/2)*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2767,18 +2789,20 @@
   {
     "name": "Unholy Dracostrike",
     "skillType": 11,
-    "description": "Medium Gloom damage to 1 foe, strength-based",
+    "description": "Medium Gloom damage to 1 foe, strength-based. Slight chance of Mortal if the target is weak to Gloom",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance"
+      "Critical Chance",
+      "Infliction"
     ],
     "rolls": [
       "/cost 65*(1-0.1*glmpot)",
       "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(20+20*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
+      "/math 30+((lu+ma/2)*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -3788,6 +3812,37 @@
       "/cost 40*(1-0.1*tacpot)"
     ]
   },
+
+  {"name":"Tarakukaja","skillType":15,"description":"Increase ATK/DEF of 1 ally by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
+  {"name":"Matarakukaja","skillType":15,"description":"Increase ATK/DEF of all allies by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
+  {"name":"Tarakunda","skillType":15,"description":"Decrease ATK/DEF of 1 foe by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
+  {"name":"Matarakunda","skillType":15,"description":"Decrease ATK/DEF of all foes by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
+  {"name":"Tarakujaya","skillType":15,"description":"Increase ATK/DEF of 1 ally by 2 ranks","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
+  {"name":"Matarakujaya","skillType":15,"description":"Increase ATK/DEF of all allies by 2 ranks","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
+  {"name":"Tarakumara","skillType":15,"description":"Decrease ATK/DEF of 1 afoelly by 2 ranks for 3 turns","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
+  {"name":"Matarakumara","skillType":15,"description":"Decrease ATK/DEF of all foes by 2 ranks for 3 turns","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
+
+  {"name":"Rasukuja","skillType":15,"description":"Increase DEF/HIT of 1 ally by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
+  {"name":"Marasukuja","skillType":15,"description":"Increase DEF/HIT of all allies by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
+  {"name":"Rasunda","skillType":15,"description":"Decrease DEF/HIT of 1 foe by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
+  {"name":"Marasunda","skillType":15,"description":"Decrease DEF/HIT of all foes by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
+  {"name":"Rasujaya","skillType":15,"description":"Increase DEF/HIT of 1 ally by 2 ranks","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
+  {"name":"Marasujaya","skillType":15,"description":"Increase DEF/HIT of all allies by 2 ranks","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
+  {"name":"Rasumara","skillType":15,"description":"Decrease DEF/HIT of 1 foe by 2 ranks for 3 turns","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
+  {"name":"Marasumara","skillType":15,"description":"Decrease DEF/HIT of all foes by 2 ranks for 3 turns","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
+
+  {"name":"Tasukuja","skillType":15,"description":"Increase ATK/HIT of 1 ally by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
+  {"name":"Matasukuja","skillType":15,"description":"Increase ATK/HIT of all allies by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
+  {"name":"Tasunda","skillType":15,"description":"Decrease ATK/HIT of 1 foe by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
+  {"name":"Matasunda","skillType":15,"description":"Decrease ATK/HIT of all foes by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
+  {"name":"Tasujaya","skillType":15,"description":"Increase ATK/HIT of 1 ally by 2 ranks","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
+  {"name":"Matasujaya","skillType":15,"description":"Increase ATK/HIT of all allies by 2 ranks","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
+  {"name":"Tasumara","skillType":15,"description":"Decrease ATK/HIT of 1 foe by 2 rank for 3 turns","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
+  {"name":"Matasumara","skillType":15,"description":"Decrease ATK/HIT of all foes by 2 rank for 3 turns","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
+
+
+
+
   {
     "name": "Charge",
     "skillType": 15,

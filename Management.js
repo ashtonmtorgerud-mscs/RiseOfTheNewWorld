@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const containers = ref([]);
             const page = ref(1);
             const selectedContainer = ref(null);
+            let selectedIndex = ref(-1);
 
             // Live getters — these are called EVERY render
             const getMouse = () => mouse.value;
@@ -22,12 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     c.moving = false;
                     c.resizing = false;
                     c.movingDivider = false;
+                    if (c.packing){
+                        c.packed = false; //WORK ON THIS FIRST
+                    }
+                    
                 });
+
+                if (selectedIndex.value != -1){
+                    const m = getMouse();  // ← LIVE MOUSE
+                    containers.value[selectedIndex.value].pos = [m.x, m.y];
+                    selectedIndex.value = -1;
+                }
             });
 
             class Container {
                 constructor(iName) {
                     this.name = iName;
+                    this.packing = false;
                     this.packed = false;
                     this.pos = [300, 200];
                     this.size = [400, 300];
@@ -123,9 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
             containers.value.push(new Container("Cont1"));
             containers.value.push(new Container("Cont2"));
             containers.value[0].items.push(new Item({ iName: "Ladder" }));
-            containers.value[1].slots = [null];
+            containers.value[1].slots = [null, null];
 
-            return { page, containers, camera, mouse, selectedContainer };
+            return { page, containers, camera, mouse, selectedContainer, selectedIndex };
         }
     }).mount('#app');
 });

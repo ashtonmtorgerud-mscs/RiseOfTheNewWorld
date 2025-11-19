@@ -184,6 +184,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             case ("elementalevasion"): case ("elmeva"): parsedOperands.push(elmtEva*allEva); return;
                             case ("mysticevasion"): case ("mysteva"): parsedOperands.push(mystEva*allEva); return;
                             case ("allevasion"): case ("alleva"): parsedOperands.push(allEva); return; 
+
+
+                            // Armor Defense and Evasion
+                            case ("ares"): case("armorresistance"): case ("aresistance"): case("armorres"): parsedOperands.push(activeDemon.value.armorBooster[0]); return;
+                            case ("aeva"): case("armorevasion"): case ("aevasion"): case("armoreva"): parsedOperands.push(activeDemon.value.armorBooster[1]); return;
                             
                         }
 
@@ -624,13 +629,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Boosters
                     this.statsBooster = [0, 0, 0, 0, 0];
-                    this.armorBooster = [ 0, 0 ];
                     this.hpBooster = 0;
                     this.mpBooster = 0;
                     this.affinitiesReducer = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
                     this.affinitiesEvasion = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
                     this.skillPotentialBoost = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     this.damageBooster = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+                    this.armorBooster = [0,0];
                     this.critBooster = 0;
 
                     // 0 = phys, 1 = elemental, 2 = mystic, 3 = magic, 4 = all
@@ -640,6 +645,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                     this.coefficient = 1;
+                    this.coeffs = [0, 0, 0, 0];
 
                     for (let i = 0; i < 8; i++) {
                         this.skills.push(new Skill("", "", [], []));
@@ -682,6 +688,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.affinitiesGenusReducer = [1.0, 1.0, 1.0, 1.0, 1.0];
                     this.affinitiesGenusEvasion = [1.0, 1.0, 1.0, 1.0, 1.0];
                     this.damageGenusBooster = [1.0, 1.0, 1.0, 1.0, 1.0];
+                    this.armorBooster = [0,0];
                     this.critBooster = 0;
                     this.checkBoxes = [];
 
@@ -817,6 +824,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                     case ("mystevasion"): case ("mysteva"): this.affinitiesGenusEvasion[2] *= 1+(valueBoost/100); break;
                                     case ("magicevasion"): case ("mageva"): this.affinitiesGenusEvasion[3] *= 1+(valueBoost/100); break;
                                     case ("allevasion"): case ("alleva"): this.affinitiesGenusEvasion[4] *= 1+(valueBoost/100); break;
+
+                                    // Armor Boosters
+                                    case ("ares"): case("armorresistance"): case ("aresist"): case("armorresist"): if (percentage) {percentageBoost = this.armor[1] / 100 }; this.armorBooster[0] += valueBoost * percentageBoost; break;
+                                    case ("aeva"): case("armorevasion"): case ("aevasion"): case("armoreva"): if (percentage) {percentageBoost = this.armor[2] / 100 }; this.armorBooster[1] += valueBoost * percentageBoost; break;
                                 }
                             }
                         } catch (exception) {
@@ -1265,10 +1276,67 @@ document.addEventListener('DOMContentLoaded', () => {
                         log.value.push(`Command executed: ${lowercaseMessage.trim()}, but there was an unexpected error.`);
                     } else if (messageInput.value.startsWith('/speed')){
                         
-                        let battleSpeed = dMDAS("1d100+ag+(lu/2)_floor")
+                        let battleSpeed = dMDAS("1d100+ag+(lu/2)");
                         
 
                         log.value.push("Calculated battlespeed equals " + Math.floor(battleSpeed));
+                        
+                    } else if (messageInput.value.startsWith('/will')){
+
+                        // Calculate for reducing eahc ailment
+
+                        // Check whether it's getting a will roll, reducing a specific ailment, or all ailments
+                        let willTarget = messageInput.value.toLowerCase().slice(5).trim();
+                        let willMessage = "";
+
+                        // If will is all
+                        if (willTarget == "all"){
+                            
+                            activeDemon.value.ailments.forEach(ailment => {
+                                if (!ailment[1].isNaN){
+                                    
+                                    // Get will reduction Math
+                                    let willReduction = dMDAS("1d100");
+                                    if (willReduction > 95){ willReduction *= 2; }
+                                    willReduction += Math.floor(dMDAS("lu+(vi/2)"));
+
+                                    willMessage += '\n' + ailment[0] + ": " + ailment[1] + " -> "
+                                    ailment[1] -= willReduction;
+                                    willMessage += Math.max(ailment[1], 0);
+                                    if (ailment[1] <= 0){
+                                        willMessage += ' (Cured)';
+                                    }
+                                    
+                                }
+                            })
+                        }
+
+                        let willTargetNumber = parseInt(willTarget) || 0;
+                        if (willTargetNumber > 0 && willTargetNumber <= activeDemon.value.ailments.length){
+
+                            // Get will reduction Math
+                            let willReduction = dMDAS("1d100");
+                            if (willReduction > 95){ willReduction *= 2; }
+                            willReduction += Math.floor(dMDAS("lu+(vi/2)"));
+                            
+                            willMessage += '\n' + activeDemon.value.ailments[willTarget-1][0] + ": " + activeDemon.value.ailments[willTarget-1][1] + " -> "
+                            activeDemon.value.ailments[willTarget-1][1] -= willReduction;
+                            willMessage += Math.max(activeDemon.value.ailments[willTarget-1][1], 0);
+
+                        }
+                        if (willTarget == ''){
+                            // Get will reduction Math
+                            let willReduction = dMDAS("1d100");
+                            if (willReduction > 95){ willReduction *= 2; }
+                            willReduction += Math.floor(dMDAS("lu+(vi/2)"));
+                            willMessage += willReduction;
+                        }
+                        
+                        // Cleanup Ailments
+                        activeDemon.value.ailments = activeDemon.value.ailments.filter(a => a[1] > 0);
+
+                        // Log it
+                        log.value.push("Will: " + willMessage);
                         
                     } else if (messageInput.value.startsWith('/damage')) {
 
@@ -1305,7 +1373,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // Apply defense reduction from character stats and armor
                         if (useResistance){
-                            rawDamage = Math.floor( rawDamage * ((200 / (200 + (((activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]) + activeDemon.value.armor[2]) * (1 + (((activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]) + activeDemon.value.armor[2]) / 30)))))) );
+                            rawDamage = Math.floor( rawDamage * ((200 / (200 + (((activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]) + (activeDemon.value.armor[1] + activeDemon.value.armorBooster[1])) * (1 + (((activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]) + (activeDemon.value.armor[1] + activeDemon.value.armorBooster[0])) / 30)))))) );
                         }
                         
 
@@ -1592,7 +1660,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         log.value.push("Saved Data");
 
                     } else if (lowercaseMessage.startsWith('/print')) {
-                        dataMaster.value.printData();
+                        // dataMaster.value.printData();
+                        console.log(activeDemon.value)
                         log.value.push("Printed Data to the Browser Console");
 
                     } else if (lowercaseMessage.startsWith('/delete')) {
@@ -1667,7 +1736,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             activeDemon.value.armor[1] = parseInt(armorString.split('{')[2].split(']')[0]) || 0;
                             activeDemon.value.armor[2] = parseInt(armorString.split('{')[3].split(']')[0]) || 0;
 
-                            log.value.push("Equipped " + activeDemon.value.armor[0] + ", " + activeDemon.value.armor[1] + " evasion and " + activeDemon.value.armor[1] + " defense")
+                            log.value.push("Equipped " + activeDemon.value.armor[0] + ", " + activeDemon.value.armor[2] + " evasion and " + activeDemon.value.armor[1] + " defense")
                         } else if (checkMessage.trim().startsWith('accessory')){
                             
                         }

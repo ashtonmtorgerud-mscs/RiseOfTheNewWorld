@@ -11,7 +11,7 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <link rel="stylesheet" href=".\ROTNW.css">
     <!-- <script src="ROTNW.js"></script> -->
-    <script src="Management.js"></script>
+    <script src="Management.js"></script>c
 
 
 </head>
@@ -24,11 +24,18 @@
         <div class="h-full w-[10%] bg-red-200 flex flex-col gap-3 p-3">
             <div class="w-full aspect-square bg-blue-100" @click="page = 1">
                 Boobs <br>
-                {{selectedContainer}}
+                <p v-if="true">SI: {{selectedIndex}}</p>
+                containers
+                <p v-for="container in containers">
+                    {{container.name}}
+                </p>
+
+
                 <!-- Pos: {{containers[0].pos}} <br>
                 GetX: {{containers[0].getX()}} <br>
                 GetY: {{containers[0].getY()}} <br>
                 Mouse: {{"[" + mouse.x + ", " + mouse.y + "]"}} -->
+                
 
 
             </div>
@@ -45,11 +52,11 @@
         <div class="h-full w-[90%]">
 
             <!-- Inventory -->
-            <div class="h-full w-full gridBackground" v-if="page == 1">
+            <div class="h-full w-full gridBackground" v-if="page == 1" @click="">
 
                 <!-- Ghost preview for selectedContainer -->
                 <div 
-                    v-if="selectedContainer && selectedContainer.packed"
+                    v-if="selectedIndex != -1"
                     :style="{ 
                         position: 'fixed',
                         left: (mouse.x + 10) + 'px', 
@@ -62,16 +69,16 @@
                         zIndex: 1000,
                         borderRadius: '8px'
                     }">
-                    {{ selectedContainer.name }}
+                    {{ containers[selectedIndex].name }}
                 </div>
 
 
-                <div v-for="container in containers">
+                <div v-for="(container, index) in containers">
                     <div class="absolute rounded-2xl bg-blue-200 border-2 min-w-[100px] min-h-[100px] max-w-[1000px] max-h-[1000px] border-indigo-500 text-nowrap overflow-hidden" v-if="!container.packed" :style="{  left: container.getX() + 'px', top: container.getY() + 'px', width: container.getWidth() + 'px', height: container.getHeight() + 'px' }" :class="container.moving ? 'z-[999]' : ''">
                         
                         
                         <div class="border-b-2 border-teal-300 font-bold h-8" @mousedown="container.Pickup();">
-                            {{container.name}} {{container.totalWeight()}}
+                            {{container.name}} {{container.packed}}
 
                         </div>
 
@@ -97,14 +104,16 @@
 
 
                                         
-                                        @mouseup="container.slots[index] = selectedContainer; selectedContainer = null;">
+                                        @mouseup="container.slots[index] = containers[selectedIndex]; containers[selectedIndex].packed = true; containers[selectedIndex].packing = false; selectedIndex = -1;">
 
                                         <!-- MOUSEUP IS GOING TO MAKE IT -->
                                         <div class="text-white">{{ slot ? slot.name : 'Empty' }}</div> 
+                                        <p class="text-white">{{ slot ? slot.packed : 'Nothing'}}</p>
                                         <!-- Why quesiton mark?? -->
-                                        <div v-if="slot?.packed" @click="selectedContainer = container.slots[index]; container.slots[index] = null; selectedContainer.packed = true;">Unpack</div>
                                         
                                     </div>
+                                    <div v-if="slot?.packed" @click="container.slots[index].packing = true; container.slots[index].packed = true;">Unpack</div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -114,7 +123,7 @@
                             @click="container.PackItem()">
 
                         <input type="button" value="Pack" class="px-2 py-1 bg-blue-500 rounded-full font-bold text-white"
-                            @click="selectedContainer = container; container.packed = true;">
+                            @click="selectedIndex = index;  container.packing = true; container.packed = true;">
 
                         <div class="absolute bottom-0 right-0 aspect-square w-[32px] bg-red-200"
                             @mousedown="container.resizing = true; console.log('resizing bro: ' + container.resizing)"></div>
