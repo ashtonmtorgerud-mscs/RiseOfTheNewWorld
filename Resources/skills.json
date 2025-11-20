@@ -3771,7 +3771,7 @@
   {
     "name": "Debilitate",
     "skillType": 15,
-    "description": "Decerase the ATK/DEF/HIT of all allies by 1 rank",
+    "description": "Decerase the ATK/DEF/HIT of all foes by 1 rank",
     "rollNames": [
       "Cost"
     ],
@@ -3819,26 +3819,26 @@
   {"name":"Matarakunda","skillType":15,"description":"Decrease ATK/DEF of all foes by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
   {"name":"Tarakujaya","skillType":15,"description":"Increase ATK/DEF of 1 ally by 2 ranks","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
   {"name":"Matarakujaya","skillType":15,"description":"Increase ATK/DEF of all allies by 2 ranks","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
-  {"name":"Tarakumara","skillType":15,"description":"Decrease ATK/DEF of 1 afoelly by 2 ranks for 3 turns","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
-  {"name":"Matarakumara","skillType":15,"description":"Decrease ATK/DEF of all foes by 2 ranks for 3 turns","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
+  {"name":"Tarakumara","skillType":15,"description":"Decrease ATK/DEF of 1 afoelly by 2 ranks","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
+  {"name":"Matarakumara","skillType":15,"description":"Decrease ATK/DEF of all foes by 2 ranks ","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
 
-  {"name":"Rasukuja","skillType":15,"description":"Increase DEF/HIT of 1 ally by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
-  {"name":"Marasukuja","skillType":15,"description":"Increase DEF/HIT of all allies by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
+  {"name":"Rasukukaja","skillType":15,"description":"Increase DEF/HIT of 1 ally by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
+  {"name":"Marasukukaja","skillType":15,"description":"Increase DEF/HIT of all allies by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
   {"name":"Rasunda","skillType":15,"description":"Decrease DEF/HIT of 1 foe by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
   {"name":"Marasunda","skillType":15,"description":"Decrease DEF/HIT of all foes by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
   {"name":"Rasujaya","skillType":15,"description":"Increase DEF/HIT of 1 ally by 2 ranks","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
   {"name":"Marasujaya","skillType":15,"description":"Increase DEF/HIT of all allies by 2 ranks","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
-  {"name":"Rasumara","skillType":15,"description":"Decrease DEF/HIT of 1 foe by 2 ranks for 3 turns","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
-  {"name":"Marasumara","skillType":15,"description":"Decrease DEF/HIT of all foes by 2 ranks for 3 turns","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
+  {"name":"Rasumara","skillType":15,"description":"Decrease DEF/HIT of 1 foe by 2 ranks ","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
+  {"name":"Marasumara","skillType":15,"description":"Decrease DEF/HIT of all foes by 2 ranks ","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
 
-  {"name":"Tasukuja","skillType":15,"description":"Increase ATK/HIT of 1 ally by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
-  {"name":"Matasukuja","skillType":15,"description":"Increase ATK/HIT of all allies by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
+  {"name":"Tasukukaja","skillType":15,"description":"Increase ATK/HIT of 1 ally by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
+  {"name":"Matasukukaja","skillType":15,"description":"Increase ATK/HIT of all allies by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
   {"name":"Tasunda","skillType":15,"description":"Decrease ATK/HIT of 1 foe by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
   {"name":"Matasunda","skillType":15,"description":"Decrease ATK/HIT of all foes by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
   {"name":"Tasujaya","skillType":15,"description":"Increase ATK/HIT of 1 ally by 2 ranks","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
   {"name":"Matasujaya","skillType":15,"description":"Increase ATK/HIT of all allies by 2 ranks","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
-  {"name":"Tasumara","skillType":15,"description":"Decrease ATK/HIT of 1 foe by 2 rank for 3 turns","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
-  {"name":"Matasumara","skillType":15,"description":"Decrease ATK/HIT of all foes by 2 rank for 3 turns","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
+  {"name":"Tasumara","skillType":15,"description":"Decrease ATK/HIT of 1 foe by 2 rank ","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
+  {"name":"Matasumara","skillType":15,"description":"Decrease ATK/HIT of all foes by 2 rank ","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
 
 
 
