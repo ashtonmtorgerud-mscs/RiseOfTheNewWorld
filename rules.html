@@ -178,7 +178,7 @@
             <div class="h-[95%]" v-if="page === 6">
                 <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400">Ailments</h1>
                 <div class=" overflow-y-auto max-h-[90%]">
-                    <p class="text-xl text-emerald-100 font-thin mt-2 text-left">
+                    <p class="text-xl text-emerald-100 font-thin my-2 text-left">
                         Ailments are negative effects that can be applied to characters and demons. They can be caused by skills,
                         items, or other effects. Ailments can be cured by skills, items, or bathing in a Magahatsuhi Well.
                         <br>
@@ -196,34 +196,135 @@
                         ailment does not apply irregardless of it's ailment affinity.
                         <br>
                         Here is a list of ailments and their effects:
-                    <ul class="list-disc list-inside text-emerald-100 font-thin mt-2 text-left overflow-y-auto text-xl">
-                        <li>Burning: Takes Fire damage at the start of each turn. The condition ends if the demon takes ice damage
-                            (including nulling or draining it, but not dodging or repelling)</li>
-                        <li>Freeze: Evasion is reduced to 5 and cannot move in field battles. The condition ends if the demon takes ice damage
-                            (including nulling or draining it, but not dodging or repelling) </li>
-                        <li>Shock: The next attack that can crit automatically crits and the condition ends</li>
-                        <li>Mirage: The aim rate of attacks is halved, and attacks that would target a single foe hit a random foe
-                            instead.</li>
-                        <li>Poison: A demon inflicted with poison takes Toxic damage at the end of it's turn</li>
-                        <li>Confusion: At the start of each turn, Will vs remaining potency. Failing skips your turn, and if it's by more than half, weapon attack a random ally</li>
-                        <li>Sleep: Cannot act and it's evasion is reduced to 5. Condition ends if it takes any damage</li>
-                        <li>Mute: Cannot activate skills</li>
-                        <li>Bind: Turn is skipped and evasion is reduced to 5</li>
-                        <li>Charm: At the start of each turn, will against the remaining potency or use a buff or
-                            recovery skill on the source of it's ailment. On a success, it's turn is skipped instead. You can will to redue the remaining potency any time you would take damage from the source of your charm</li>
-                        <li>Fear: Must will against the remaining potency, having it's turn skipped on failure. Cannot Crit. Cannot
-                            move in field battles.</li>
-                        <li>Curse: Cannot recover HP or MP</li>
-                        <li>Rage: Must spend it's turn attacking a random enemy with it's weapon, and double the final damage number
-                        </li>
-                        <li>Exhaustion: MP is reduced by 10% of your max MP each turn, your movement, aim, and evasion are all
-                            reduced by half</li>
-                        <li>Enervation (Cancer): YUP, IT'S FUCKING BACK! DEAL HALF DAMAGE, TAKE AN EXTRA 50% DAMAGE, AND YOU CAN'T
-                            USE SKILLS. Go FUCK YOURSELF</li>
-                        <li>Bleeding: Reducing remaining potency by will inflicts an equal amount of Almighty damage </li>
-                        <li>Mortal: HP is Immediately to 0</li>
-                    </ul>
                     </p>
+                    <table class="table-auto border-2 border-white w-full">
+                        <thead>
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Burning</b></th>
+                                <th class="border border-white p-2">
+                                    Takes Fire damage at the start of each turn. The condition ends if the demon takes ice damage
+                                    (including nulling or draining it, but not dodging or repelling)
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Freeze</b></th>
+                                <th class="border border-white p-2">
+                                    -5% elmtres, evasion is reduced to 5 and cannot move in field battles. The condition ends if the demon takes fire damage
+                                    (including nulling or draining it, but not dodging or repelling)
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Shock</b></th>
+                                <th class="border border-white p-2">
+                                    The next attack that can crit automatically crits and the condition ends
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Mirage</b></th>
+                                <th class="border border-white p-2">
+                                    -40% allaim, and attacks that would target a single foe hit a random foe instead.
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Poison</b></th>
+                                <th class="border border-white p-2">
+                                    A demon inflicted with poison takes Toxic damage at the end of its turn
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Confusion</b></th>
+                                <th class="border border-white p-2">
+                                    At the start of each turn, Will vs remaining potency. Failing skips your turn, and if it's by more than half,
+                                    weapon attack a random ally, tossing out a random consumable item, or 
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Sleep</b></th>
+                                <th class="border border-white p-2">
+                                    Cannot act and its evasion is reduced to 5. Condition ends if it takes any damage
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Mute</b></th>
+                                <th class="border border-white p-2">
+                                    Cannot activate skills
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Bind</b></th>
+                                <th class="border border-white p-2">
+                                    Turn is skipped and evasion is reduced to 5
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Charm</b></th>
+                                <th class="border border-white p-2">
+                                    At the start of each turn, will against remaining potency or use a buff or recovery skill on the source of its ailment.
+                                    On a success, its turn is skipped instead. You can will to reduce the remaining potency any time you would take
+                                    damage from the source of your charm
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Fear</b></th>
+                                <th class="border border-white p-2">
+                                    Must will against the remaining potency, having its turn skipped on failure. Cannot crit. Cannot move in field battles.
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Curse</b></th>
+                                <th class="border border-white p-2">
+                                    Cannot recover HP or MP
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Rage</b></th>
+                                <th class="border border-white p-2">
+                                    Must spend its turn attacking a random enemy with its weapon, and double the final damage number
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Exhaustion</b></th>
+                                <th class="border border-white p-2">
+                                    MP is reduced by 10% of max MP each turn; movement, aim, and evasion are all reduced by half
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Enervation</b></th>
+                                <th class="border border-white p-2">
+                                    -50% St/Ma/Vi. Will against the remaining potency or canont use skills that turn.
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Bleeding</b></th>
+                                <th class="border border-white p-2">
+                                    Reducing remaining potency by Will inflicts an equal amount of Almighty damage
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th class="border border-white p-1 text-xl"><b>Mortal</b></th>
+                                <th class="border border-white p-2">
+                                    HP is immediately set to 0
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+
                 </div>
             </div>
 
@@ -256,6 +357,18 @@
                         </table>
                     </div>
                 
+            </div>
+
+            <div class="h-[95%]" v-if="page === 8">
+                <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400 h-[6%]">Sequence and Chains</h1>
+                <div class=" overflow-y-auto max-h-[90%]">
+                    <p class="text-xl text-emerald-100 font-thin my-2 text-left">
+                        Certain skills apply in a sequence. For example, elemental skills like Agi and Bufu inflict an ailment after inflicting damage. If an enemy is weak or resistant to the ailment, it does not affect turn counters as the ailment infliction is a secondary effect. In addition, if a demon is immune to/repels/drains an element, the ailment or secondary effect is not inflicted, and make even be reflected.
+                        <br>
+                        Certain skills happen in reaction to other skills, in which, the reaction skills resolve before the initial skills. Even if multiple reaction skills happen in sequence, the effects resolve in a reverse order of activation. if two reaction effects would attempt to activate at the same time, the order is determined by battle speed, with the higher speed activating first.
+                    </p>
+                </div>
+
             </div>
 
 

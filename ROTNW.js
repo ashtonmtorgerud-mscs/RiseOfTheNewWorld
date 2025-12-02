@@ -72,16 +72,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     let operands = calculation.split(/[+\-*/d]/)
                     let operators = [...calculation.match(/[+\-*/d]/g)];
                     let parsedOperands = [];
+
+                    // Power Genus Calc
                     let physP = activeDemon.value.damageGenusBooster[0]*activeDemon.value.damageGenusBooster[4];
                     let elmtP = activeDemon.value.damageGenusBooster[1]*activeDemon.value.damageGenusBooster[2]*activeDemon.value.damageGenusBooster[3]*activeDemon.value.damageGenusBooster[4];
                     let mystP = activeDemon.value.damageGenusBooster[3]*activeDemon.value.damageGenusBooster[2]*activeDemon.value.damageGenusBooster[4];
+                    
+                    // Resist Genus Calc
                     let physR = activeDemon.value.affinitiesGenusReducer[0]*activeDemon.value.affinitiesGenusReducer[4];
                     let elmtR = activeDemon.value.affinitiesGenusReducer[1]*activeDemon.value.affinitiesGenusReducer[2]*activeDemon.value.affinitiesGenusReducer[3];
                     let mystR = activeDemon.value.affinitiesGenusReducer[3]*activeDemon.value.affinitiesGenusReducer[2]*activeDemon.value.affinitiesGenusReducer[4];
                     let allR = activeDemon.value.affinitiesGenusReducer[4];
+
+                    // Evasion Genus Calc
                     let allEva = activeDemon.value.affinitiesGenusEvasion[4];
                     let physEva = activeDemon.value.affinitiesGenusEvasion[0]*activeDemon.value.affinitiesGenusEvasion[4];
                     let elmtEva = activeDemon.value.affinitiesGenusEvasion[1]*activeDemon.value.affinitiesGenusEvasion[2]*activeDemon.value.affinitiesGenusEvasion[3];
+
+
+                    // Aim Genus Calc
+                    let physAim = activeDemon.value.aimGenusBooster[0]*activeDemon.value.aimGenusBooster[4];
+                    let elmtAim = activeDemon.value.aimGenusBooster[1]*activeDemon.value.aimGenusBooster[2]*activeDemon.value.aimGenusBooster[3]*activeDemon.value.aimGenusBooster[4];
+                    let mystAim = activeDemon.value.aimGenusBooster[3]*activeDemon.value.aimGenusBooster[2]*activeDemon.value.aimGenusBooster[4];
+
                     // let elmtEva = 100;
                     console.log("allEva", allEva)
                     let mystEva = activeDemon.value.affinitiesGenusEvasion[3]*activeDemon.value.affinitiesGenusEvasion[2]*activeDemon.value.affinitiesGenusEvasion[4];
@@ -115,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             case "s": parsedOperands.push( Math.min(4, activeDemon.value.buffs[2]+dodgeMuch)); return;
                             case "c": parsedOperands.push(dMDAS(activeDemon.value.coefficient + "+0")); return;
                             case "armypower": parsedOperands.push(army.value.totalPower()); return;
+                            case "wilpwr": case "willpower": parsedOperands.push(activeDemon.value.willPower); return; 
 
 
                             // 0 = phys, 1 = elemental, 2 = mystic, 3 = magic, 4 = all
@@ -136,6 +150,22 @@ document.addEventListener('DOMContentLoaded', () => {
                             case ("ailmentpower"): case ("ailpwr"): parsedOperands.push(activeDemon.value.damageBooster[12]*mystP); return;
                             case ("healingpower"): case ("hlgpwr"): parsedOperands.push(activeDemon.value.damageBooster[13*mystP]); return;
 
+                            // Aim Boosters
+                            case ("strikeaim"): case ("stkaim"): parsedOperands.push(activeDemon.value.aimBooster[0] * physAim); return;
+                            case ("slashaim"): case ("slhaim"): parsedOperands.push(activeDemon.value.aimBooster[1] * physAim); return;
+                            case ("pierceaim"): case ("prcaim"): parsedOperands.push(activeDemon.value.aimBooster[2] * physAim); return;
+                            case ("fireaim"): case ("firaim"): parsedOperands.push(activeDemon.value.aimBooster[3] * elmtAim); return;
+                            case ("iceaim"): case ("iceaim"): parsedOperands.push(activeDemon.value.aimBooster[4] * elmtAim); return;
+                            case ("elecaim"): case ("elcaim"): parsedOperands.push(activeDemon.value.aimBooster[5] * elmtAim); return;
+                            case ("forceaim"): case ("frcaim"): parsedOperands.push(activeDemon.value.aimBooster[6] * elmtAim); return;
+                            case ("toxicaim"): case ("toxim"): parsedOperands.push(activeDemon.value.aimBooster[7] * elmtAim); return;
+                            case ("psionicaim"): case ("psiaim"): case ("psychicaim"): case ("psyaim"): parsedOperands.push(activeDemon.value.aimBooster[8] * elmtAim); return;
+                            case ("lightaim"): case ("lgtaim"): parsedOperands.push(activeDemon.value.aimBooster[9] * mystAim); return;
+                            case ("gloomaim"): case ("glmaim"): parsedOperands.push(activeDemon.value.aimBooster[10] * mystAim); return;
+                            case ("almightyaim"): case ("almaim"): parsedOperands.push(activeDemon.value.aimBooster[11] * mystAim); return;
+
+
+    
                             // Skill Potential
                             case ("strikepotential"): case ("stkpot"): parsedOperands.push(activeDemon.value.skillPotential[0] + activeDemon.value.skillPotentialBoost[0]); return;
                             case ("slashpotential"): case ("slhpot"): parsedOperands.push(activeDemon.value.skillPotential[1] + activeDemon.value.skillPotentialBoost[1]); return;
@@ -185,6 +215,24 @@ document.addEventListener('DOMContentLoaded', () => {
                             case ("mysticevasion"): case ("mysteva"): parsedOperands.push(mystEva*allEva); return;
                             case ("allevasion"): case ("alleva"): parsedOperands.push(allEva); return; 
 
+                            // Ailment Power
+                            case ("burnailment"): case ("brnail"): parsedOperands.push(activeDemon.value.ailmentBooster[0]); return;
+                            case ("freezeailment"): case ("frzail"): parsedOperands.push(activeDemon.value.ailmentBooster[1]); return;
+                            case ("shockailment"): case ("shkail"): parsedOperands.push(activeDemon.value.ailmentBooster[2]); return;
+                            case ("mirageailment"): case ("mrgail"): parsedOperands.push(activeDemon.value.ailmentBooster[3]); return;
+                            case ("poisonailment"): case ("psnail"): parsedOperands.push(activeDemon.value.ailmentBooster[4]); return;
+                            case ("confusionailment"): case ("cfnail"): parsedOperands.push(activeDemon.value.ailmentBooster[5]); return;
+                            case ("sleepailment"): case ("slpail"): parsedOperands.push(activeDemon.value.ailmentBooster[6]); return;
+                            case ("muteailment"): case ("mutail"): parsedOperands.push(activeDemon.value.ailmentBooster[7]); return;
+                            case ("bindailment"): case ("bndail"): parsedOperands.push(activeDemon.value.ailmentBooster[8]); return;
+                            case ("charmailment"): case ("crmail"): parsedOperands.push(activeDemon.value.ailmentBooster[9]); return;
+                            case ("fearailment"): case ("ferail"): parsedOperands.push(activeDemon.value.ailmentBooster[10]); return;
+                            case ("curseailment"): case ("crsail"): parsedOperands.push(activeDemon.value.ailmentBooster[11]); return;
+                            case ("rageailment"): case ("rgeail"): parsedOperands.push(activeDemon.value.ailmentBooster[12]); return;
+                            case ("exhaustionailment"): case ("exhail"): parsedOperands.push(activeDemon.value.ailmentBooster[13]); return;
+                            case ("enervationailment"): case ("evtail"): parsedOperands.push(activeDemon.value.ailmentBooster[14]); return;
+                            case ("bleedingailment"): case ("bldail"): parsedOperands.push(activeDemon.value.ailmentBooster[15]); return;
+                            case ("mortalailment"): case ("mrlail"): case ("ftlail"): parsedOperands.push(activeDemon.value.ailmentBooster[16]); return;
 
                             // Armor Defense and Evasion
                             case ("ares"): case("armorresistance"): case ("aresistance"): case("armorres"): parsedOperands.push(activeDemon.value.armorBooster[0]); return;
@@ -505,16 +553,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     // /damage 100
                     while (armyDamage > 0 && this.soldiers.length > 0) {
 
-                        if (armyDamage >= this.soldiers[0].hp) {
+                        if (armyDamage >= (this.soldiers[0].hp+this.soldiers[0].endurance)) {
                             // Remove soldier entirely
                             this.soldiers[0].units -= 1
-                            armyDamage -= this.soldiers[0].hp
+                            armyDamage -= Math.max(1, (this.soldiers[0].hp+this.soldiers[0].endurance));
                             this.soldiers[0].hp = this.soldiers[0].maxHp;
                             if (this.soldiers[0].units < 1) { this.soldiers.splice(0, 1) }
                             // Don't increment index — next soldier now in current spot
                         } else {
+
                             // Apply damage across this soldier’s units
-                            this.soldiers[0].hp -= armyDamage;
+                            this.soldiers[0].hp -= (armyDamage-this.soldiers[0].endurance);
                             armyDamage = 0;
                         }
                     }
@@ -607,12 +656,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.exp = 0; // Current Experience Points
                     this.maxExp = 43; // Maximum Experience Points for level up
                     this.affinities = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]; // Array of affinities (resistances)
+                    this.ailmentResistances = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"];
                     this.skillPotential = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     this.profile = [];
                     this.skills = []; // Array of skills
                     
                     this.buffs = [0, 0, 0]; // Buffs for St, Ma, Vi, Ag, Lu
-                    this.weapon = new Skill('Bare Hands', 'An unarmed strike, inflicting weak strike damage to one foe', ['Aim', 'Damage', 'Crit Rate'], ['/roll (1d100-5+ag+lu/4)*(0.2*S+1)_floor', '/roll (C*(stkpwr*(1+T*0.2)*(6+6*(st/20))))d6', '/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil']); // Array of weapons
+                    this.weapon = new Skill('Bare Hands', 'An unarmed strike, inflicting weak strike damage to one foe', ['Aim', 'Damage', 'Crit Rate'], ['/roll (1d100-5+ag+lu/4)*(stkaim)*(0.2*S+1)_floor', '/roll (C*(stkpwr*(1+T*0.2)*(6+6*(st/20))))d6', '/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil']); // Array of weapons
                     this.armor = ['Clothes', 1, 2,]; // Array of armor
                     this.accessories = [['Watch', 'Tells the Time'], ['', ''], ['', '']]; // Array of accessories
                     this.growthRates = [2, 2, 2, 2, 2];
@@ -635,17 +685,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.affinitiesEvasion = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
                     this.skillPotentialBoost = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     this.damageBooster = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+                    this.aimBooster = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
                     this.armorBooster = [0,0];
                     this.critBooster = 0;
+                    this.willPower = 1.0;
+
+                    // 
+                    this.ailmentBooster = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
 
                     // 0 = phys, 1 = elemental, 2 = mystic, 3 = magic, 4 = all
                     this.affinitiesGenusReducer = [1.0, 1.0, 1.0, 1.0, 1.0];
                     this.affinitiesGenusEvasion = [1.0, 1.0, 1.0, 1.0, 1.0];
                     this.damageGenusBooster = [1.0, 1.0, 1.0, 1.0, 1.0];
+                    this.aimGenusBooster = [1.0, 1.0, 1.0, 1.0, 1.0];
 
 
                     this.coefficient = 1;
-                    this.coeffs = [0, 0, 0, 0];
+
+                    // 
+                    this.coeffs = [];
 
                     for (let i = 0; i < 8; i++) {
                         this.skills.push(new Skill("", "", [], []));
@@ -685,12 +743,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.affinitiesEvasion = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
                     this.skillPotentialBoost = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
                     this.damageBooster = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+                    this.aimBooster = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
                     this.affinitiesGenusReducer = [1.0, 1.0, 1.0, 1.0, 1.0];
                     this.affinitiesGenusEvasion = [1.0, 1.0, 1.0, 1.0, 1.0];
                     this.damageGenusBooster = [1.0, 1.0, 1.0, 1.0, 1.0];
+                    this.aimGenusBooster = [1.0, 1.0, 1.0, 1.0, 1.0];
                     this.armorBooster = [0,0];
                     this.critBooster = 0;
                     this.checkBoxes = [];
+                    this.willPower = 1;
 
 
                     this.accessories.forEach(accessory => {
@@ -707,6 +768,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.birthrights.forEach(birthright => {
                         this.checkBoxes.push(birthright);
                     });
+                    this.coeffs.forEach(coeff => {
+                        this.checkBoxes.push(coeff[1]);
+                    })
+                    this.ailments.forEach(ailment => {
+                        this.checkBoxes.push(ailment[2]);
+                    })
                     
                     // Replace checkBoxes with expanded version where '|' splits into multiple entries
                     this.checkBoxes = this.checkBoxes
@@ -761,11 +828,53 @@ document.addEventListener('DOMContentLoaded', () => {
                                     case ("healingpower"): case ("hlgpwr"): this.damageBooster[13] += valueBoost*0.01; break;
                                     // case ("tacticalpower"): case ("tacpwr"): this.damageBooster[14] += valueBoost*0.01; break;
 
+                                    // Aim Boosters
+                                    case ("strikeaim"):  case ("stkaim"): this.aimBooster[0] += valueBoost * 0.01; break;
+                                    case ("slashaIm"):   case ("slhaim"): this.aimBooster[1] += valueBoost * 0.01; break;
+                                    case ("pierceaim"):  case ("prcaim"): this.aimBooster[2] += valueBoost * 0.01; break;
+                                    case ("fireaim"):    case ("firaim"): this.aimBooster[3] += valueBoost * 0.01; break;
+                                    case ("iceaim"):     case ("iceaim"): this.aimBooster[4] += valueBoost * 0.01; break;
+                                    case ("elecaim"):    case ("elcaim"): this.aimBooster[5] += valueBoost * 0.01; break;
+                                    case ("forceaim"):   case ("frcaim"): this.aimBooster[6] += valueBoost * 0.01; break;
+                                    case ("toxicaim"):   case ("toxim"):  this.aimBooster[7] += valueBoost * 0.01; break;
+                                    case ("psychicaim"): case ("psyaim"): this.aimBooster[8] += valueBoost * 0.01; break;
+                                    case ("lightaim"):   case ("lgtaim"): this.aimBooster[9] += valueBoost * 0.01; break;
+                                    case ("gloomaim"):   case ("glmaim"): this.aimBooster[10] += valueBoost * 0.01; break;
+                                    case ("almightyaim"):case ("almaim"): this.aimBooster[11] += valueBoost * 0.01; break;
+
+
                                     case ("physpower"): case ("physpwr"): this.damageGenusBooster[0] += valueBoost*0.01; break;
                                     case ("elmtpower"): case ("elmtpwr"): this.damageGenusBooster[1] += valueBoost*0.01; break;
                                     case ("mystpower"): case ("mystpwr"): this.damageGenusBooster[2] += valueBoost*0.01; break;
                                     case ("magpower"): case ("magpwr"): this.damageGenusBooster[3] += valueBoost*0.01; break;
                                     case ("allpower"): case ("allpwr"): this.damageGenusBooster[4] += valueBoost*0.01; break;
+
+                                    case ("physaim"): case ("physaim"): this.aimGenusBooster[0] += valueBoost*0.01; break;
+                                    case ("elmtaim"): case ("elmtaim"): this.aimGenusBooster[1] += valueBoost*0.01; break;
+                                    case ("mystaim"): case ("mystaim"): this.aimGenusBooster[2] += valueBoost*0.01; break;
+                                    case ("magaim"): case ("magaim"): this.aimGenusBooster[3] += valueBoost*0.01; break;
+                                    case ("allaim"): case ("allaim"): this.aimGenusBooster[4] += valueBoost*0.01; break;
+
+
+                                    // Damage Boosters
+                                    case ("burnailment"): case ("brnail"): this.ailmentBooster[0] += valueBoost*0.01; break;
+                                    case ("freezeailment"): case ("frzail"): this.ailmentBooster[1] += valueBoost*0.01; break;
+                                    case ("shockailment"): case ("shkail"): this.ailmentBooster[2] += valueBoost*0.01; break;
+                                    case ("mirageailment"): case ("mrgail"): this.ailmentBooster[3] += valueBoost*0.01; break;
+                                    case ("poisonailment"): case ("psnail"): this.ailmentBooster[4] += valueBoost*0.01; break;
+                                    case ("confusionailment"): case ("cfnail"): this.ailmentBooster[5] += valueBoost*0.01; break;
+                                    case ("sleepailment"): case ("slpail"): this.ailmentBooster[6] += valueBoost*0.01; break;
+                                    case ("muteailment"): case ("mutail"): this.ailmentBooster[7] += valueBoost*0.01; break;
+                                    case ("bindailment"): case ("bndail"): this.ailmentBooster[8] += valueBoost*0.01; break;
+                                    case ("charmailment"): case ("crmail"): this.ailmentBooster[9] += valueBoost*0.01; break;
+                                    case ("fearailment"): case ("ferail"): this.ailmentBooster[10] += valueBoost*0.01; break;
+                                    case ("curseailment"): case ("crsail"): this.ailmentBooster[11] += valueBoost*0.01; break;
+                                    case ("rageailment"): case ("rgeail"): this.ailmentBooster[12] += valueBoost*0.01; break;
+                                    case ("exhaustionailment"): case ("exhail"): this.ailmentBooster[13] += valueBoost*0.01; break;
+                                    case ("enervationailment"): case ("evtail"): this.ailmentBooster[14] += valueBoost*0.01; break;
+                                    case ("bleedingailment"): case ("bldail"): this.ailmentBooster[15] += valueBoost*0.01; break;
+                                    case ("mortalailment"): case ("mrlail"): this.ailmentBooster[16] += valueBoost*0.01; break;
+
 
                                     // Affinities Boosters
                                     case ("strikepotential"): case ("stkpot"): this.skillPotentialBoost[0] += valueBoost; break;
@@ -828,6 +937,13 @@ document.addEventListener('DOMContentLoaded', () => {
                                     // Armor Boosters
                                     case ("ares"): case("armorresistance"): case ("aresist"): case("armorresist"): if (percentage) {percentageBoost = this.armor[1] / 100 }; this.armorBooster[0] += valueBoost * percentageBoost; break;
                                     case ("aeva"): case("armorevasion"): case ("aevasion"): case("armoreva"): if (percentage) {percentageBoost = this.armor[2] / 100 }; this.armorBooster[1] += valueBoost * percentageBoost; break;
+
+                                    // Evasion and Resistance Boosters
+                                    case ("res"): case("resistance"): if (percentage) { percentageBoost = this.armor[1] / 100 }; this.armorBooster[0] += valueBoost * percentageBoost; break;
+                                    case ("eva"): case("evasion"): if (percentage) { percentageBoost = this.armor[2] / 100 }; this.armorBooster[1] += valueBoost * percentageBoost; break;
+
+
+                                    case ("willpower"): case ("wilpwr"): this.willPower += valueBoost*0.01; break;
                                 }
                             }
                         } catch (exception) {
@@ -838,7 +954,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                     // Floor all booster values to prevent decimals
-
+                    this.recalculateVitals();
                     // HP and MP
                     this.hpBooster = Math.floor(this.hpBooster);
                     this.mpBooster = Math.floor(this.mpBooster);
@@ -1057,10 +1173,22 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         log.value.push(levelUpMessage)
                         // log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
+                    } else if (lowercaseMessage.startsWith('/coeff')) {
+                        let formattedString = lowercaseMessage.slice(6).trim();            
+                        let newCoeffName = "New Coeff";
+                        let newCoeffBox = "";
+                        newCoeffName = formattedString.split("{")[1].split("}")[0] || "New Coeff";
+                        newCoeffBox = formattedString.split("{")[2].split("}")[0] || "";
+
+                        activeDemon.value.coeffs.push([newCoeffNamem, newCoeffBox]);
+
+
+                    } else if (lowercaseMessage.startsWith('/search')) {
+                    
                     } else if (lowercaseMessage.startsWith('/search')) {
                         const url = `https://www.google.com/search?q=test`;
                         window.open(url, '_blank');
-                    }else if (lowercaseMessage.startsWith('/xp') || lowercaseMessage.startsWith('/exp')) {
+                    } else if (lowercaseMessage.startsWith('/xp') || lowercaseMessage.startsWith('/exp')) {
 
                         //Add XP
                         let xpAmount = parseInt(messageInput.value.trim().match(/^\/(?:xp|exp)\s+(\d+)/i)?.[1] || 0);
@@ -1298,7 +1426,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     // Get will reduction Math
                                     let willReduction = dMDAS("1d100");
                                     if (willReduction > 95){ willReduction *= 2; }
-                                    willReduction += Math.floor(dMDAS("lu+(vi/2)"));
+                                    willReduction += Math.floor(dMDAS("(lu+(vi/2))*wilpwr"));
 
                                     willMessage += '\n' + ailment[0] + ": " + ailment[1] + " -> "
                                     ailment[1] -= willReduction;
@@ -1440,6 +1568,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             demon.ailments = []; // Reset ailments
                             demon.bulwark = 0;
                             demon.coefficient = 1; // Reset coefficient
+                            
                         })
                         
                         log.value.push('Demon washed and stats recalculated');

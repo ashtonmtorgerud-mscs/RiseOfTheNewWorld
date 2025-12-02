@@ -20,7 +20,7 @@
     ],
     "rolls": [
       "/cost 5*(1-0.1*stkpot)",
-      "/roll (1d100-5+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(8+8*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -37,7 +37,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*stkpot)",
-      "/roll (1d100+12+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100+12+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(12+12*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -54,7 +54,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*slhpot)",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(14+14*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -71,7 +71,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*prcpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(12+12*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -90,7 +90,7 @@
     ],
     "rolls": [
       "/cost mhp*0.08*(1-0.1*prcpot) HP",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 76-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -107,7 +107,7 @@
     ],
     "rolls": [
       "/cost 5*(1-0.1*prcpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(12+12*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -125,7 +125,7 @@
     ],
     "rolls": [
       "/cost 7*(1-0.1*stkpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(stkaim)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(12+12*(st/20))))d6",
       "/roll (c*(prcpwr*(1+T*0.2)*(4+4*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
@@ -143,7 +143,7 @@
     ],
     "rolls": [
       "/cost 12*(1-0.1*prcpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(7+7*(st/20))))d6",
       "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -160,7 +160,7 @@
     ],
     "rolls": [
       "/cost 16*(1-0.1*stkpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(18+18*(st/20))))d6",
       "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -179,7 +179,7 @@
     "rolls": [
       "/cost 15*(1-0.1*prcpot)",
       "/roll 1d4",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(7+7*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -196,7 +196,7 @@
     ],
     "rolls": [
       "/cost 12*(1-0.1*slhpot)",
-      "/roll (1d100-50+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-50+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(17+17*(st/20))))d6"
     ]
   },
@@ -213,7 +213,7 @@
     ],
     "rolls": [
       "/cost 12*(1-0.1*stkpot)",
-      "/roll (1d100-25+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-25+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(18+18*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -231,7 +231,7 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*slhpot)",
-      "/roll (1d100-25+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-25+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(18+18*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -249,7 +249,7 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*stkpot)",
-      "/roll (1d100-25+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-25+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*((hp/mhp)*(stkpwr*(1+T*0.2)*(24+24*(st/20)))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -267,18 +267,11 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*slhpot)",
-      "/roll (1d100-25+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-25+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*((1.1-hp/mhp)*(slhpwr*(1+T*0.2)*(24+24*(st/20)))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
-  
-
-
-
-
-
-
 
   {
     "name": "Fang Breaker",
@@ -292,7 +285,7 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*stkpot)",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(13+13*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -312,7 +305,7 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*prcpot)",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(13+13*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -329,7 +322,7 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*slhpot)",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(13+13*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -346,7 +339,7 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*stkpot)",
-      "/roll (1d100-15+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-15+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(10+10*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -365,11 +358,11 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*prcpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/math 60+((lu+ma/2)*ailpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
   },
   {
@@ -385,10 +378,10 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*prcpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/math 60+((lu+ma/2)*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*slpail*ailpwr)_floor"
     ]
   },
   {
@@ -404,10 +397,10 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*prcpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(18+18*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/math 60+((lu+ma/2)*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*mutail*ailpwr)_floor"
     ]
   },
   {
@@ -423,10 +416,10 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*stkpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(10+10*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/math 60+((lu+ma/2)*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*ragail*ailpwr)_floor"
     ]
   },
 
@@ -442,7 +435,7 @@
     ],
     "rolls": [
       "/cost 55*(1-0.1*slhpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(24+24*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -459,7 +452,7 @@
     ],
     "rolls": [
       "/cost 55*(1-0.1*slhpot)",
-      "/roll (1d100-50+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-50+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(24+24*(st/20))))d6"
     ]
   },
@@ -480,7 +473,7 @@
     ],
     "rolls": [
       "/cost 55*(1-0.1*prcpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(30+30*(st/20))))d6",
       "/math 71-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -498,7 +491,7 @@
     ],
     "rolls": [
       "/cost 55*(1-0.1*prcpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(42+42*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -515,7 +508,7 @@
     ],
     "rolls": [
       "/cost 55*(1-0.1*slhpot)",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(44+44*(st/20))))d6",
       "/math 71-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -532,7 +525,7 @@
     ],
     "rolls": [
       "/cost 60*(1-0.1*stkpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(48+48*(st/20))))d6",
       "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -552,7 +545,7 @@
     ],
     "rolls": [
       "/cost 100*(1-0.1*(stkpot*slhpot*prcpot/3))",
-      "/roll (1d100+25+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100+25+ag+lu/4)*((stkaim+slhaim+prcaim)/3)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/roll (c*(slhpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/roll (c*(prcpwr*(1+T*0.2)*(20+20*(st/20))))d6",
@@ -575,7 +568,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*stkpot)",
-      "/roll (1d100-25+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-25+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(8+8*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -593,7 +586,7 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*slhpot)",
-      "/roll (1d100-15+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-15+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(8+8*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -611,7 +604,7 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*prcpot)",
-      "/roll (1d100-20+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-20+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(10+10*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -631,7 +624,7 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*slhpot)",
-      "/roll (1d100-15+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-15+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(13+13*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -649,7 +642,7 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*prcpot)",
-      "/roll (1d100-20+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-20+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -667,7 +660,7 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*stkpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(17+17*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -685,7 +678,7 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*slhpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(17+17*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -705,7 +698,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*stkpot)",
-      "/roll (1d100-5+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -722,7 +715,7 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*stkpot)",
-      "/roll (1d100-50+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-50+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(22+22*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -739,7 +732,7 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*slhpot)",
-      "/roll (1d100-10+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-10+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(12+12*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -756,7 +749,7 @@
     ],
     "rolls": [
       "/cost 45*(1-0.1*slhpot)",
-      "/roll (1d100-5+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -773,7 +766,7 @@
     ],
     "rolls": [
       "/cost 45*(1-0.1*stkpot)",
-      "/roll (1d100-50+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-50+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(25+25*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -789,7 +782,7 @@
     ],
     "rolls": [
       "/cost 60*(1-0.1*prcpot)",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(8+8*(st/20))))d6"
     ]
   },
@@ -805,7 +798,7 @@
     ],
     "rolls": [
       "/cost 70*(1-0.1*stkpot)",
-      "/roll (1d100-5+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(32+32*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -822,7 +815,7 @@
     ],
     "rolls": [
       "/cost 70*(1-0.1*prcpot)",
-      "/roll (1d100-5+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(32+32*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -839,7 +832,7 @@
     ],
     "rolls": [
       "/cost 85*(1-0.1*prcpot)",
-      "/roll (1d100-20+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-20+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(40+40*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -861,10 +854,10 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*firpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
+      "/math 30+((lu+ma/2)*brnail*firpwr)_floor",
+      "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ]
   },
   {
@@ -880,10 +873,10 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*firpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor_floor",
+      "/roll (1d100-5+ma+lu/4)*(firaim)*(0.2*S+1)_floor_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 20+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
+      "/math 20+((lu+ma/2)*brnail*firpwr)_floor",
+      "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -906,10 +899,10 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*firpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
+      "/math 40+((lu+ma/2)*brnail*firpwr)_floor",
+      "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ]
   },
   {
@@ -925,10 +918,10 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*firpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
+      "/math 30+((lu+ma/2)*brnail*firpwr)_floor",
+      "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -951,10 +944,10 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*firpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
+      "/math 50+((lu+ma/2)*brnail*firpwr)_floor",
+      "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ]
   },
   {
@@ -970,10 +963,10 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*firpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
+      "/math 40+((lu+ma/2)*brnail*firpwr)_floor",
+      "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -996,10 +989,10 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*firpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*firpwr)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
+      "/math 60+((lu+ma/2)*brnail*firpwr)_floor",
+      "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1022,9 +1015,9 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*firpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*firpwr)_floor",
+      "/math 50+((lu+ma/2)*brnail*firpwr)_floor",
       "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
@@ -1048,9 +1041,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*firpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*firpwr)_floor",
+      "/math 60+((lu+ma/2)*brnail*firpwr)_floor",
       "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
@@ -1074,9 +1067,9 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*firpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*firpwr)_floor",
+      "/math 30+((lu+ma/2)*brnail*firpwr)_floor",
       "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
@@ -1093,9 +1086,9 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*firpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*firpwr)_floor",
+      "/math 40+((lu+ma/2)*brnail*firpwr)_floor",
       "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
@@ -1113,7 +1106,7 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*firpot)",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/math 20+((lu+st/2)*firpwr)_floor",
@@ -1142,9 +1135,9 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*icepot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*icepwr)_floor"
+      "/math 30+((lu+ma/2)*frzail*icepwr)_floor"
     ]
   },
   {
@@ -1159,9 +1152,9 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*icepot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 20+((lu+ma/2)*icepwr)_floor"
+      "/math 20+((lu+ma/2)*frzail*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1183,9 +1176,9 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*icepot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*icepwr)_floor"
+      "/math 40+((lu+ma/2)*frzail*icepwr)_floor"
     ]
   },
   {
@@ -1200,9 +1193,9 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*icepot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*icepwr)_floor"
+      "/math 30+((lu+ma/2)*frzail*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1224,9 +1217,9 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*icepot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*icepwr)_floor"
+      "/math 50+((lu+ma/2)*frzail*icepwr)_floor"
     ]
   },
   {
@@ -1241,9 +1234,9 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*icepot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*icepwr)_floor"
+      "/math 40+((lu+ma/2)*frzail*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1265,9 +1258,9 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*icepot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*icepwr)_floor"
+      "/math 60+((lu+ma/2)*frzail*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1289,9 +1282,9 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*icepot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*icepwr)_floor"
+      "/math 50+((lu+ma/2)*frzail*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1313,9 +1306,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*icepot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*icepwr)_floor"
+      "/math 60+((lu+ma/2)*frzail*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1337,9 +1330,9 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*icepot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*icepwr)_floor"
+      "/math 30+((lu+ma/2)*frzail*icepwr)_floor"
     ]
   },
   {
@@ -1354,9 +1347,9 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*icepot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(16+16*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*icepwr)_floor"
+      "/math 40+((lu+ma/2)*frzail*icepwr)_floor"
     ]
   },
   {
@@ -1372,7 +1365,7 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*icepot)",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/math 20+((lu+st/2)*icepwr)_floor"
@@ -1401,9 +1394,9 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*elcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*elcpwr)_floor"
+      "/math 30+((lu+ma/2)*shkail*elcpwr)_floor"
     ]
   },
   {
@@ -1418,9 +1411,9 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*elcpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 20+((lu+ma/2)*elcpwr)_floor"
+      "/math 20+((lu+ma/2)*shkail*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1442,9 +1435,9 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*elcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*elcpwr)_floor"
+      "/math 40+((lu+ma/2)*shkail*elcpwr)_floor"
     ]
   },
   {
@@ -1459,9 +1452,9 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*elcpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*elcpwr)_floor"
+      "/math 30+((lu+ma/2)*shkail*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1483,9 +1476,9 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*elcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*elcpwr)_floor"
+      "/math 50+((lu+ma/2)*shkail*elcpwr)_floor"
     ]
   },
   {
@@ -1500,9 +1493,9 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*elcpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*elcpwr)_floor"
+      "/math 40+((lu+ma/2)*shkail*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1524,9 +1517,9 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*elcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*elcpwr)_floor"
+      "/math 60+((lu+ma/2)*shkail*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1548,9 +1541,9 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*elcpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*elcpwr)_floor"
+      "/math 50+((lu+ma/2)*shkail*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1572,9 +1565,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*elcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*elcpwr)_floor"
+      "/math 60+((lu+ma/2)*shkail*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1596,9 +1589,9 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*elcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*elcpwr)_floor"
+      "/math 30+((lu+ma/2)*shkail*elcpwr)_floor"
     ]
   },
   {
@@ -1613,9 +1606,9 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*elcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*elcpwr)_floor"
+      "/math 40+((lu+ma/2)*shkail*elcpwr)_floor"
     ]
   },
   {
@@ -1631,7 +1624,7 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*elcpot)",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/math 40+((lu+st/2)*elcpwr)_floor"
@@ -1660,9 +1653,9 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*frcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*frcpwr)_floor"
+      "/math 30+((lu+ma/2)*mrgail*frcpwr)_floor"
     ]
   },
   {
@@ -1677,9 +1670,9 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*frcpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 20+((lu+ma/2)*frcpwr)_floor"
+      "/math 20+((lu+ma/2)*mrgail*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1701,9 +1694,9 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*frcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*frcpwr)_floor"
+      "/math 40+((lu+ma/2)*mrgail*frcpwr)_floor"
     ]
   },
   {
@@ -1718,9 +1711,9 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*frcpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*frcpwr)_floor"
+      "/math 30+((lu+ma/2)*mrgail*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1742,9 +1735,9 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*frcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*frcpwr)_floor"
+      "/math 50+((lu+ma/2)*mrgail*frcpwr)_floor"
     ]
   },
   {
@@ -1759,9 +1752,9 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*frcpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*frcpwr)_floor"
+      "/math 40+((lu+ma/2)*mrgail*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1783,9 +1776,9 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*frcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*frcpwr)_floor"
+      "/math 60+((lu+ma/2)*mrgail*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1807,9 +1800,9 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*frcpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*frcpwr)_floor"
+      "/math 50+((lu+ma/2)*mrgail*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1831,9 +1824,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*frcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*frcpwr)_floor"
+      "/math 60+((lu+ma/2)*mrgail*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1855,9 +1848,9 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*frcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*frcpwr)_floor"
+      "/math 30+((lu+ma/2)*mrgail*frcpwr)_floor"
     ]
   },
   {
@@ -1872,9 +1865,9 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*frcpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*frcpwr)_floor"
+      "/math 40+((lu+ma/2)*mrgail*frcpwr)_floor"
     ]
   },
   {
@@ -1890,7 +1883,7 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*frcpot)",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/math 20+((lu+st/2)*frcpwr)_floor"
@@ -1920,10 +1913,10 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*toxpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*toxpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/math 30+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
   },
   {
@@ -1939,10 +1932,10 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*toxpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 20+((lu+ma/2)*toxpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/math 20+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1965,10 +1958,10 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*toxpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*toxpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/math 40+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
   },
   {
@@ -1984,10 +1977,10 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*toxpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*toxpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/math 30+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2010,10 +2003,10 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*toxpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*toxpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/math 50+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
   },
   {
@@ -2029,10 +2022,10 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*toxpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*toxpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/math 40+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2055,10 +2048,10 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*toxpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*toxpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/math 60+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2081,10 +2074,10 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*toxpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*toxpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/math 50+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2107,10 +2100,10 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*toxpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*toxpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/math 60+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2133,10 +2126,10 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*toxpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*toxpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/math 30+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
   },
   {
@@ -2152,10 +2145,10 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*toxpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*toxpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/math 40+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
   },
   {
@@ -2172,11 +2165,11 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*toxpot)",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/math 20+((lu+st/2)*toxpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2201,9 +2194,9 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*psipot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*psipwr)_floor"
+      "/math 30+((lu+ma/2)*cfnail*psipwr)_floor"
     ]
   },
   {
@@ -2218,9 +2211,9 @@
     ],
     "rolls": [
       "/cost 15*(1-0.1*psipot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 20+((lu+ma/2)*psipwr)_floor"
+      "/math 20+((lu+ma/2)*cfnail*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2242,9 +2235,9 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*psipot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*psipwr)_floor"
+      "/math 40+((lu+ma/2)*cfnail*psipwr)_floor"
     ]
   },
   {
@@ -2259,9 +2252,9 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*psipot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*psipwr)_floor"
+      "/math 30+((lu+ma/2)*cfnail*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2283,9 +2276,9 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*psipot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*psipwr)_floor"
+      "/math 50+((lu+ma/2)*cfnail*psipwr)_floor"
     ]
   },
   {
@@ -2300,9 +2293,9 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*psipot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*psipwr)_floor"
+      "/math 40+((lu+ma/2)*cfnail*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2324,9 +2317,9 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*psipot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*psipwr)_floor"
+      "/math 60+((lu+ma/2)*cfnail*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2348,9 +2341,9 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*psipot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*psipwr)_floor"
+      "/math 50+((lu+ma/2)*cfnail*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2372,9 +2365,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*psipot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*psipwr)_floor"
+      "/math 60+((lu+ma/2)*cfnail*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2396,9 +2389,9 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*psipot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*psipwr)_floor"
+      "/math 30+((lu+ma/2)*cfnail*psipwr)_floor"
     ]
   },
   {
@@ -2413,9 +2406,9 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*psipot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(16+16*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*psipwr)_floor"
+      "/math 40+((lu+ma/2)*cfnail*psipwr)_floor"
     ]
   },
   {
@@ -2431,7 +2424,7 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*psipot)",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/math 20+((lu+st/2)*psipwr)_floor"
@@ -2462,9 +2455,9 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*lgtpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*lgtpwr)_floor"
+      "/math 40+((lu+ma/2)*mrlail*lgtpwr)_floor"
     ]
   },
   {
@@ -2479,9 +2472,9 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*lgtpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*lgtpwr)_floor"
+      "/math 30+((lu+ma/2)*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2503,9 +2496,9 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*lgtpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*lgtpwr)_floor"
+      "/math 60+((lu+ma/2)*mrlail*lgtpwr)_floor"
     ]
   },
   {
@@ -2520,9 +2513,9 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*lgtpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*lgtpwr)_floor"
+      "/math 40+((lu+ma/2)*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2544,9 +2537,9 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*lgtpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 80+((lu+ma/2)*lgtpwr)_floor"
+      "/math 80+((lu+ma/2)*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2568,9 +2561,9 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*lgtpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*lgtpwr)_floor"
+      "/math 60+((lu+ma/2)*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2592,9 +2585,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*lgtpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*lgtpwr)_floor"
+      "/math 60+((lu+ma/2)*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2617,7 +2610,7 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*lgtpot)",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/math 30+((lu+st/2)*lgtpwr)_floor"
@@ -2644,9 +2637,9 @@
     ],
     "rolls": [
       "/cost 20*(1-0.1*glmpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*glmpwr)_floor"
+      "/math 40+((lu+ma/2)*mrlail*glmpwr)_floor"
     ]
   },
   {
@@ -2661,9 +2654,9 @@
     ],
     "rolls": [
       "/cost 30*(1-0.1*glmpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*glmpwr)_floor"
+      "/math 30+((lu+ma/2)*mrlail*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2685,9 +2678,9 @@
     ],
     "rolls": [
       "/cost 35*(1-0.1*glmpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*glmpwr)_floor"
+      "/math 60+((lu+ma/2)*mrlail*glmpwr)_floor"
     ]
   },
   {
@@ -2702,9 +2695,9 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*glmpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*glmpwr)_floor"
+      "/math 40+((lu+ma/2)*mrlail*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2726,9 +2719,9 @@
     ],
     "rolls": [
       "/cost 50*(1-0.1*glmpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 80+((lu+ma/2)*glmpwr)_floor"
+      "/math 80+((lu+ma/2)*mrlail*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2750,9 +2743,9 @@
     ],
     "rolls": [
       "/cost 75*(1-0.1*glmpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 80+((lu+ma/2)*glmpwr)_floor"
+      "/math 80+((lu+ma/2)*mrlail*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2774,9 +2767,9 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*glmpot)",
-      "/roll (1d100-2+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*glmpwr)_floor"
+      "/math 60+((lu+ma/2)*mrlail*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2799,10 +2792,10 @@
     ],
     "rolls": [
       "/cost 65*(1-0.1*glmpot)",
-      "/roll (1d100-2+ag+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/math 30+((lu+ma/2)*glmpwr)_floor"
+      "/math 30+((lu+ma/2)*mrlail*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2827,7 +2820,7 @@
     ],
     "rolls": [
       "/cost 5*(1-0.1*almpot)",
-      "/roll (1d100+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(7+7*(ma/20))))d6"
     ]
   },
@@ -2842,7 +2835,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*almpot)",
-      "/roll (1d100+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(5+5*(ma/20))))d6"
     ]
   },
@@ -2858,7 +2851,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*almpot)",
-      "/roll (1d100+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(7+7*(ma/20))))d6",
       "/roll (c*(almpwr*(1+T*0.2)*(5+5*(ma/20))))d6"
     ]
@@ -2874,7 +2867,7 @@
     ],
     "rolls": [
       "/cost 1*(1-0.1*almpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(26+26*(ma/20))))d6"
     ]
   },
@@ -2889,7 +2882,7 @@
     ],
     "rolls": [
       "/cost 40*(1-0.1*almpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(20+20*(ma/20))))d6"
     ]
   },
@@ -2904,7 +2897,7 @@
     ],
     "rolls": [
       "/cost 70*(1-0.1*almpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ]
   },
@@ -2919,7 +2912,7 @@
     ],
     "rolls": [
       "/cost 120*(1-0.1*almpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(42+42*(ma/20))))d6"
     ]
   },
@@ -2935,7 +2928,7 @@
     ],
     "rolls": [
       "/cost 70*(1-0.1*almpot)",
-      "/roll (1d100-5+ma+lu/4)*(0.2*S+1)_floor",
+      "/roll (1d100-5+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(28+28*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -2954,8 +2947,8 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr*firpwr)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
+      "/math 60+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
+      "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ]
   },
   {
@@ -2969,8 +2962,8 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr*firpwr)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
+      "/math 40+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
+      "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ]
   },
   
@@ -2984,7 +2977,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr*icepwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ]
   },
   {
@@ -2997,7 +2990,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr*icepwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ]
   },
 
@@ -3011,7 +3004,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr*elcpwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ]
   },
   {
@@ -3024,7 +3017,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr*elcpwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ]
   },
 
@@ -3038,7 +3031,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*frcpwr*mrgail*ailpwr)_floor"
     ]
   },
   {
@@ -3047,13 +3040,11 @@
     "description": "Chance to inflict mirage to all foes",
     "rollNames": [
       "Cost",
-      "Potency",
-      "Poison"
+      "Potency"
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/math 40+((lu+ma/2)*frcpwr*mrgail*ailpwr)_floor"
     ]
   },
 
@@ -3068,8 +3059,8 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/math 60+((lu+ma/2)*psnail*toxpwr*ailpwr)_floor",
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
       
     ]
   },
@@ -3084,8 +3075,8 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr)_floor",
-      "/roll (c*(toxpwr*ailpwr*(4+4*(lu/10))))d6"
+      "/math 40+((lu+ma/2)*psnail*toxpwr*ailpwr)_floor",
+      "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
   },
 
@@ -3099,7 +3090,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*crmail*ailpwr)_floor"
     ]
   },
   {
@@ -3112,7 +3103,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr)_floor"
+      "/math 40+((lu+ma/2)*crmail*ailpwr)_floor"
     ]
   },
 
@@ -3126,7 +3117,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*slpail*ailpwr)_floor"
     ]
   },
   {
@@ -3139,7 +3130,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr)_floor"
+      "/math 40+((lu+ma/2)*slpail*ailpwr)_floor"
     ]
   },
   {
@@ -3152,7 +3143,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*ferail*ailpwr)_floor"
     ]
   },
   {
@@ -3165,7 +3156,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr)_floor"
+      "/math 40+((lu+ma/2)*ferail*ailpwr)_floor"
     ]
   },
   {
@@ -3178,7 +3169,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*mutail*ailpwr)_floor"
     ]
   },
   {
@@ -3191,7 +3182,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 80+((lu+ma/2)*ailpwr)_floor"
+      "/math 80+((lu+ma/2)*slpail*ailpwr)_floor"
     ]
   },
   {
@@ -3204,7 +3195,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr)_floor"
+      "/math 40+((lu+ma/2)*mutail*ailpwr)_floor"
     ]
   },
   {
@@ -3217,7 +3208,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*rgeail*ailpwr)_floor"
     ]
   },
   {
@@ -3230,7 +3221,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr)_floor"
+      "/math 40+((lu+ma/2)*rgeail*ailpwr)_floor"
     ]
   },
   {
@@ -3243,7 +3234,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*cfnail*ailpwr)_floor"
     ]
   },
   {
@@ -3256,7 +3247,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr)_floor"
+      "/math 40+((lu+ma/2)*cfnail*ailpwr)_floor"
     ]
   },
   {
@@ -3269,7 +3260,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*bndail*ailpwr)_floor"
     ]
   },
   {
@@ -3282,7 +3273,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr)_floor"
+      "/math 40+((lu+ma/2)*bndail*ailpwr)_floor"
     ]
   },
   {
@@ -3295,7 +3286,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*exhail*ailpwr)_floor"
     ]
   },
   {
@@ -3308,7 +3299,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr)_floor"
+      "/math 40+((lu+ma/2)*exhail*ailpwr)_floor"
     ]
   },
 
@@ -3322,7 +3313,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*evtail*ailpwr)_floor"
     ]
   },
   {
@@ -3335,7 +3326,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*ailpwr)_floor"
+      "/math 40+((lu+ma/2)*evtail*ailpwr)_floor"
     ]
   },
 

@@ -393,7 +393,7 @@
                         <div class="h-full flex gap-2 p-1">
                             <div
                                 class="rounded-xl bg-gray-800 h-full w-2/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
-                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.2.3</span>
+                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.2.4</span>
                                 </p>
                             </div>
                             <div @click="activePage = 'Sheet'" v-if="unlockedTabs[0]"
@@ -546,7 +546,7 @@
                                                 Math.floor((5+activeDemon.stats[3]+activeDemon.statsBooster[3]+activeDemon.armor[2]+activeDemon.armorBooster[1])*(1+(.2* Math.min(activeDemon.buffs[2]+1, 4))))+(Math.min(activeDemon.buffs[2]+1, 4)*5))}}
                                             </p>
                                         </div>
-                                        <div v-if="!activeDemon.guard"
+                                        <div v-if="!activeDemon.guard" @click="messageInput = '/damage c*'"
                                             class="h-full w-1/2 bg-black  flex items-center justify-center bg-indigo-950 rounded-full p-2 ring-1 ring-indigo-300">
                                             <p v-if="army.soldiers.length > 0"
                                                 class="w-full h-full text-xl text-center textOutlineBlackThin font-bold text-teal-300">
@@ -566,7 +566,7 @@
                                                 (200/(200+((activeDemon.stats[2]+activeDemon.statsBooster[2]+(activeDemon.armor[1]+activeDemon.armorBooster[0]))*(1+((activeDemon.armor[1] + activeDemon.armorBooster[0])/30))))))
                                                 }}%</p>
                                         </div>
-                                        <div v-if="activeDemon.guard"
+                                        <div v-if="activeDemon.guard" @click="messageInput = '/damage c*'"
                                             class="h-full w-1/2 bg-black  flex items-center justify-center bg-indigo-950 rounded-full p-2 ring-1 ring-indigo-300">
                                             <p v-if="army.soldiers.length > 0"
                                                 class="w-full h-full text-xl text-center textOutlineBlackThin font-bold text-teal-300">
@@ -849,7 +849,7 @@
 
                                     </div>
                                     <div v-else-if="activeTab === 'combat'" class="w-full h-full p-2 overflow-y-scroll">
-                                        <p @click="selectedSkill = activeDemon.weapon; displaySkill = true;" class="text-emerald-400 text-xl font-semibold mb-2 w-full border-b-2 border-indigo-500"> Weapon: </p>
+                                        <p @click="selectedSkill = activeDemon.weapon; displaySkill = true;" class="text-emerald-400 text-2xl font-bold my-2 w-full italic border-b-2 border-indigo-500"> Weapon: </p>
                                         <div @click="selectedSkill = activeDemon.weapon; displaySkill = true;" class="flex flex-row w-full gap-2 mb-2">
                                              <div class="w-1/5 bg-blue-950 aspect-square rounded-lg object-cover mb-1 border-2 border-indigo-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl">
                                                 <img :src="'./Resources/WeaponIcon.png'" class="pulsingFilter" />
@@ -857,11 +857,31 @@
                                             <p class="w-4/5 text-white text-lg rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 p-2 mb-1 ring-1 ring-indigo-500"> {{ activeDemon.weapon.name }} <br> <span class="block w-full font-thin text-sm truncate">{{ activeDemon.weapon.description }}</span></p>
                                         </div>
 
-                                        <p class="text-emerald-400 text-xl font-semibold mb-2 w-full border-b-2 border-indigo-500"> Coefficient: </p>
+                                        <p class="text-emerald-400 text-2xl font-bold italic my-2 w-full border-b-2 border-indigo-500"> Coefficients: </p>
                                         <!-- Make the coefficient an equation -->
                                         <input type="text" name="" id="" v-model="activeDemon.coefficient"
                                             class="w-full text-white text-lg font-thin rounded-2xl bg-gradient-to-r from-sky-950 to-blue-900 px-2 mb-1 ring-1 ring-indigo-500" />
-                                        <p class="text-emerald-400 text-xl font-semibold mb-2 w-full border-b-2 border-indigo-500"> Defending: </p>
+
+                                        <div class="flex flex-row w-full gap-2 text-white text-lg font-thin rounded-full my-2 bg-gradient-to-r from-purple-950 to-fuchsia-950 ring-1 ring-indigo-500 items-center pr-2 my-2" v-for="(coeff, index) in activeDemon.coeffs">
+                                            <div class="w-1/6 bg-blue-950 aspect-square rounded-full object-cover border-2 shadow-lg shadow-indigo-500/50 hover:shadow-3xl border-indigo-500 hover:border-red-500 hoverPop">
+                                                <img :src="'./Resources/BuffIcon0.png'" class="pulsingFilter" @click="activeDemon.coeffs.splice(index, 1); dataMaster.autoSave()" />
+                                            </div>
+                                            
+                                            <input type="text" class="h-full w-1/2 text-white text-lg font-thin rounded-full bg-gradient-to-r from-green-950 to-blue-950 p-2 ring-1 ring-indigo-500" v-model="coeff[0]"  @change="dataMaster.autoSave()"/>
+                                            <input type="text" class="h-full w-1/2 text-white text-lg font-thin rounded-full bg-gradient-to-r from-green-950 to-blue-950 p-2 ring-1 ring-indigo-500" v-model="coeff[1]" @change="dataMaster.autoSave()" />
+                                            
+                                        </div>
+
+                                        <div class="w-full flex flex-row justify-between">
+                                            <div class="my-2" @click="activeDemon.coeffs.push(['New Coeff', 'Effect'])" v-if="activeDemon.coeffs.length < 10">
+                                                <p class="bg-indigo-950 border border-indigo-500 p-2 rounded-full">Add Coeff</p>
+                                            </div>
+                                            <div class="my-2 mr-2" @click="activeDemon.coeffs = []">
+                                                <p class="bg-indigo-950 border border-indigo-500 p-2 rounded-full">Clear All</p>
+                                            </div>
+                                        </div>
+
+                                        <p class="text-emerald-400 text-2xl font-bold italic my-2 w-full border-b-2 border-indigo-500"> Defending: </p>
                                         
                                         <div class="flex flex-row gap-2">
                                             <!-- <input type="button" value="Will" @click="messageInput = '/will'; sendMessage()" class="rounded-full bg-gradient-to-r from-purple-950 to-blue-800 w-1/2 ring-1 ring-cyan-100 textOutlineBlackThin text-xl" > -->
@@ -875,19 +895,24 @@
                                             <input type="button" value="Guard" @click="activeDemon.guard = !activeDemon.guard; activeDemon.dodge = false;" class="rounded-full textOutlineBlackThin text-xl w-1/3 ring-1" :class="activeDemon.guard ? 'bg-gradient-to-r from-purple-950 to-blue-950 ring-cyan-800 text-gray-300' : 'bg-gradient-to-r from-purple-900 to-blue-800 ring-cyan-100'">
                                             <input type="button" value="Dodge" @click="activeDemon.dodge = !activeDemon.dodge; activeDemon.guard = false;" class="rounded-full textOutlineBlackThin text-xl w-1/3 ring-1" :class="activeDemon.dodge ? 'bg-gradient-to-r from-purple-950 to-blue-950 ring-cyan-800 text-gray-300' : 'bg-gradient-to-r from-purple-900 to-blue-800 ring-cyan-100'">
                                         </div>
-                                        <p class="text-emerald-400 text-xl font-semibold my-2 w-full border-b-2 border-indigo-500" > Ailments: </p>
+                                        <p class="text-emerald-400 text-2xl font-bold italic mt-4 mb-2 w-full border-b-2 border-indigo-500" > Ailments: </p>
                                         
                                         <div class="flex flex-row w-full gap-2 text-white text-lg font-thin rounded-full bg-gradient-to-r from-purple-950 to-fuchsia-950 ring-1 ring-indigo-500 items-center pr-2 my-2" v-for="(ailment, index) in activeDemon.ailments">
-                                            <div class="w-1/6 bg-blue-950 aspect-square rounded-full object-cover border-2 shadow-lg shadow-indigo-500/50 hover:shadow-3xl border-indigo-500 hover:border-red-500 hoverPop">
+                                            <div class="w-1/5 bg-blue-950 aspect-square rounded-full object-cover border-2 shadow-lg shadow-indigo-500/50 hover:shadow-3xl border-indigo-500 hover:border-red-500 hoverPop">
                                                 <img :src="'./Resources/AffinityIcon13.png'" class="pulsingFilter" @click="activeDemon.ailments.splice(index, 1)" />
                                             </div>
-                                            
-                                            <input type="text" class="h-full w-1/2 text-white text-lg font-thin rounded-full bg-gradient-to-r from-green-950 to-blue-950 p-2 ring-1 ring-indigo-500" v-model="ailment[0]" />
-                                            <input type="text" class="h-full w-1/3 text-white text-lg font-thin rounded-full bg-gradient-to-r from-green-950 to-blue-950 p-2 ring-1 ring-indigo-500" v-model.number="ailment[1]" />
+
+                                            <div class="flex flex-col items-center w-5/6 p-2 gap-2">
+                                                <div class="flex flex-row gap-2">
+                                                    <input type="text" class="h-full w-3/4 text-white text-lg font-thin rounded-full bg-gradient-to-r from-green-950 to-blue-950 p-2 ring-1 ring-indigo-500" v-model="ailment[0]" />
+                                                    <input type="text" class="h-full w-1/4 text-white text-base font-thin rounded-full bg-gradient-to-r from-green-950 to-blue-950 p-2 ring-1 ring-indigo-500" v-model.number="ailment[1]" />
+                                                </div>
+                                                <input type="text" class="h-full w-5/6 text-white text-lg font-thin rounded-full bg-gradient-to-r from-green-950 to-blue-950 px-2 py-1 ring-1 ring-indigo-500" v-model="ailment[2]" @change="dataMaster.autoSave()" />
+                                            </div>
                                             
                                         </div>
                                         <div class="w-full flex flex-row justify-between">
-                                            <div class="my-2" @click="activeDemon.ailments.push(['New Ailment', 100])" v-if="activeDemon.ailments.length < 10">
+                                            <div class="my-2" @click="activeDemon.ailments.push(['New Ailment', 100, 'Ailment effect'])" v-if="activeDemon.ailments.length < 10">
                                                 <p class="bg-indigo-950 border border-indigo-500 p-2 rounded-full">Add Ailment</p>
                                             </div>
                                             <div class="my-2 mr-2" @click="messageInput = '/will all'; sendMessage()">
@@ -940,7 +965,7 @@
                         <div class="h-full flex gap-2 p-1">
                             <div
                                 class="rounded-xl bg-gray-800 h-full w-2/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
-                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.2.3</span>
+                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.2.4</span>
                                 </p>
                             </div>
                             <div @click="activePage = 'Sheet'" v-if="unlockedTabs[0]"
@@ -1159,7 +1184,7 @@
                         <div class="h-full flex gap-2 p-1">
                             <div
                                 class="rounded-xl bg-gray-800 h-full w-2/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
-                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.2.3</span>
+                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.2.4</span>
                                 </p>
                             </div>
                             <div @click="activePage = 'Sheet'" v-if="unlockedTabs[0]"
@@ -1548,7 +1573,7 @@
                         <div class="h-full flex gap-2 p-1">
                             <div
                                 class="rounded-xl bg-gray-800 h-full w-2/6 box-shadow ring-2 ring-indigo-500 align-middle flex items-center justify-center">
-                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.2.3</span>
+                                <p class="text-white font-bold text-center text-3xl align-middle">Rise of the New World <span class="text-xs">v 1.2.4</span>
                                 </p>
                             </div>
                             <div @click="activePage = 'Sheet'" v-if="unlockedTabs[0]"
@@ -1948,6 +1973,24 @@
                                         <option value="Nul">Nul</option>
                                         <option value="Drn">Drn</option>
                                         <option value="Rpl">Rpl</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-row gap-2 h-1/4 p-2">
+                                <div class="" v-for="(ailment, index) in activeDemon.ailmentResistances">
+                                    <div
+                                        class="w-full bg-blue-950 aspect-square rounded-lg object-cover mb-1 border-2 border-indigo-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl tooltip">
+                                        <img :src="'./Resources/AilmentIcon' + (index+1) + '.png'"
+                                            class="pulsingFilter" />
+                                        <span class="tooltiptext">{{['Burn', 'Freeze', 'Shock', 'Mirage', 'Poison', 'Confusion', 'Sleep', 'Seal', 'Bind', 'Charm', 'Fear', 'Curse', 'Rage', 'Exhaustion', 'Enervation', 'Bleeding', 'Mortal'][index]}}</span>
+                                    </div>
+                                    <select :id="ailment" v-model="activeDemon.ailmentResistances[index]" @change="dataMaster.autoSave()"
+                                        class="w-full rounded-2xl h-1/4 text-center text-xl font-bold bg-blue-950 border-2 border-indigo-500 text-emerald-400 text-xl font-bold">
+                                        <option value="-">-</option>
+                                        <option value="Wk">Wk</option>
+                                        <option value="Str">Str</option>
+                                        <option value="Nul">Nul</option>
                                     </select>
                                 </div>
                             </div>
