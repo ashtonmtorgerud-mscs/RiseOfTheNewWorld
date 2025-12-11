@@ -2503,7 +2503,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             return { activePage, activeTab, tabs, log, messageInput, sendMessage, demonList, activeDemon, player, getBuffShadowStyle, army, modal, started, introTab, readingText, startReading, startingAmbience, characterCreator, modalTab, selectedSkill, displaySkill, unlockedTabs, dataMaster, displayAilments };
 
-
         }
     }).mount('#app');
 });
