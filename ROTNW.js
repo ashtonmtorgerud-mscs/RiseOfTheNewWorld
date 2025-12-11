@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let readingText = ref("", speed = 64);
             let timeoutHandles = [];
             let rolledDice = "";
+            let displayAilments = ref(false);
 
 
 
@@ -222,12 +223,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             case ("mirageailment"): case ("mrgail"): parsedOperands.push(activeDemon.value.ailmentBooster[3]); return;
                             case ("poisonailment"): case ("psnail"): parsedOperands.push(activeDemon.value.ailmentBooster[4]); return;
                             case ("confusionailment"): case ("cfnail"): parsedOperands.push(activeDemon.value.ailmentBooster[5]); return;
-                            case ("sleepailment"): case ("slpail"): parsedOperands.push(activeDemon.value.ailmentBooster[6]); return;
-                            case ("muteailment"): case ("mutail"): parsedOperands.push(activeDemon.value.ailmentBooster[7]); return;
+                            case ("muteailment"): case ("mutail"): parsedOperands.push(activeDemon.value.ailmentBooster[6]); return;
+                            case ("curseailment"): case ("crsail"): parsedOperands.push(activeDemon.value.ailmentBooster[7]); return;
                             case ("bindailment"): case ("bndail"): parsedOperands.push(activeDemon.value.ailmentBooster[8]); return;
                             case ("charmailment"): case ("crmail"): parsedOperands.push(activeDemon.value.ailmentBooster[9]); return;
                             case ("fearailment"): case ("ferail"): parsedOperands.push(activeDemon.value.ailmentBooster[10]); return;
-                            case ("curseailment"): case ("crsail"): parsedOperands.push(activeDemon.value.ailmentBooster[11]); return;
+                            case ("sleepailment"): case ("slpail"): parsedOperands.push(activeDemon.value.ailmentBooster[11]); return;
                             case ("rageailment"): case ("rgeail"): parsedOperands.push(activeDemon.value.ailmentBooster[12]); return;
                             case ("exhaustionailment"): case ("exhail"): parsedOperands.push(activeDemon.value.ailmentBooster[13]); return;
                             case ("enervationailment"): case ("evtail"): parsedOperands.push(activeDemon.value.ailmentBooster[14]); return;
@@ -772,7 +773,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         this.checkBoxes.push(coeff[1]);
                     })
                     this.ailments.forEach(ailment => {
-                        this.checkBoxes.push(ailment[2]);
+                        this.checkBoxes.push(ailment[3]);
                     })
                     
                     // Replace checkBoxes with expanded version where '|' splits into multiple entries
@@ -863,12 +864,12 @@ document.addEventListener('DOMContentLoaded', () => {
                                     case ("mirageailment"): case ("mrgail"): this.ailmentBooster[3] += valueBoost*0.01; break;
                                     case ("poisonailment"): case ("psnail"): this.ailmentBooster[4] += valueBoost*0.01; break;
                                     case ("confusionailment"): case ("cfnail"): this.ailmentBooster[5] += valueBoost*0.01; break;
-                                    case ("sleepailment"): case ("slpail"): this.ailmentBooster[6] += valueBoost*0.01; break;
-                                    case ("muteailment"): case ("mutail"): this.ailmentBooster[7] += valueBoost*0.01; break;
+                                    case ("muteailment"): case ("mutail"): this.ailmentBooster[6] += valueBoost*0.01; break;
+                                    case ("curseailment"): case ("crsail"): this.ailmentBooster[7] += valueBoost*0.01; break;
                                     case ("bindailment"): case ("bndail"): this.ailmentBooster[8] += valueBoost*0.01; break;
                                     case ("charmailment"): case ("crmail"): this.ailmentBooster[9] += valueBoost*0.01; break;
                                     case ("fearailment"): case ("ferail"): this.ailmentBooster[10] += valueBoost*0.01; break;
-                                    case ("curseailment"): case ("crsail"): this.ailmentBooster[11] += valueBoost*0.01; break;
+                                    case ("sleepailment"): case ("slpail"): this.ailmentBooster[11] += valueBoost*0.01; break;
                                     case ("rageailment"): case ("rgeail"): this.ailmentBooster[12] += valueBoost*0.01; break;
                                     case ("exhaustionailment"): case ("exhail"): this.ailmentBooster[13] += valueBoost*0.01; break;
                                     case ("enervationailment"): case ("evtail"): this.ailmentBooster[14] += valueBoost*0.01; break;
@@ -1174,15 +1175,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         log.value.push(levelUpMessage)
                         // log.value.push(`Command executed: ${lowercaseMessage.trim()}`);
                     } else if (lowercaseMessage.startsWith('/coeff')) {
-                        let formattedString = lowercaseMessage.slice(6).trim();            
-                        let newCoeffName = "New Coeff";
-                        let newCoeffBox = "";
-                        newCoeffName = formattedString.split("{")[1].split("}")[0] || "New Coeff";
-                        newCoeffBox = formattedString.split("{")[2].split("}")[0] || "";
+                        let formattedString = lowercaseMessage.slice(6).trim();
 
-                        activeDemon.value.coeffs.push([newCoeffNamem, newCoeffBox]);
+                        // match all {...} groups
+                        let matches = [...formattedString.matchAll(/\{([^}]*)\}/g)];
 
+                        let newCoeffName = matches[0]?.[1] || "New Coeff";
+                        let newCoeffBox  = matches[1]?.[1] || "";
 
+                        activeDemon.value.coeffs.push([newCoeffName, newCoeffBox]);
                     } else if (lowercaseMessage.startsWith('/search')) {
                     
                     } else if (lowercaseMessage.startsWith('/search')) {
@@ -1455,9 +1456,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (willTarget == ''){
                             // Get will reduction Math
                             let willReduction = dMDAS("1d100");
-                            if (willReduction > 95){ willReduction *= 2; }
-                            willReduction += Math.floor(dMDAS("lu+(vi/2)"));
-                            willMessage += willReduction;
+                            let gotCrit = "";
+                            if (willReduction > 95){ willReduction *= 2; gotCrit = " CRITICAL WILL"}
+
+                            let willBoost = Math.floor(dMDAS("lu+(vi/2)"));
+                            willMessage = "1d100+(lu+vi/2)*wilpwr (" + willReduction + gotCrit +"), Total:" + (willReduction+willBoost*activeDemon.value.willPower);
                         }
                         
                         // Cleanup Ailments
@@ -1466,6 +1469,38 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Log it
                         log.value.push("Will: " + willMessage);
                         
+                    } else if (messageInput.value.startsWith('/inflict')){
+                        let input = messageInput.value.toLowerCase().slice(8).trim().split(" ");
+                        let willPower = dMDAS("1d100+(lu+vi/2)*wilpwr");
+                        let potency = dMDAS(input[1]);
+                        if (willPower > potency){
+                            log.value.push("Overcame potency!");
+                        } else{
+                            potency *=2;
+                            switch (input[0]){
+                                case "burn": activeDemon.value.ailments.push(['Burning', 1, potency, 'Take fire damage at the start of each turn']); log.value.push("Inflicted " + input[0]); break;
+                                case "freeze": activeDemon.value.ailments.push(['Frozen', 2, potency, '-999 eva | -5% elmtres']); log.value.push("Inflicted " + input[0]); break;
+                                case "shock": activeDemon.value.ailments.push(['Shock', 3, potency, 'Next hit with a crit chance crits']); log.value.push("Inflicted " + input[0]); break;
+                                case "mirage": activeDemon.value.ailments.push(['Mirage', 4, potency, '-40% allaim | Cannot pick targets']); log.value.push("Inflicted " + input[0]); break;
+                                case "poison": activeDemon.value.ailments.push(['Poison', 5, potency, 'Take toxic damage at the end of each turn']); log.value.push("Inflicted " + input[0]); break;
+                                case "confusion": activeDemon.value.ailments.push(['Confused', 6, potency, 'Will or skip turn, hit ally if high fail']); log.value.push("Inflicted " + input[0]); break;
+                                case "seal": activeDemon.value.ailments.push(['Sealed', 7, potency, 'Cannot use skills']); log.value.push("Inflicted " + input[0]); break;
+                                case "curse": activeDemon.value.ailments.push(['Cursed', 8, potency, 'Cannot recover HP/MP']); log.value.push("Inflicted " + input[0]); break;
+                                case "bind": activeDemon.value.ailments.push(['Bind', 9, potency, 'Turn is skipped | -999 eva']); log.value.push("Inflicted " + input[0]); break;
+                                case "charm": activeDemon.value.ailments.push(['Charmed', 10, potency, 'Will or skip, buff/heal source on high fail']); log.value.push("Inflicted " + input[0]); break;
+                                case "fear": activeDemon.value.ailments.push(['Afraid', 11, potency, 'Will or skip, cannot crit']); log.value.push("Inflicted " + input[0]); break;
+                                case "sleep": activeDemon.value.ailments.push(['Sleeping', 12, potency, '-999 eva | turn skipped. Cured if hit']); log.value.push("Inflicted " + input[0]); break;
+                                case "rage": activeDemon.value.ailments.push(['Enraged', 13, potency, 'Always weapon attacks source of rage | -100% allres | +100% physpwr']); log.value.push("Inflicted " + input[0]); break;
+                                case "exhaustion": activeDemon.value.ailments.push(['Exhaustion', 14, potency, 'Start Eeach turn: /mp -mmp/10 | -50% allres']); log.value.push("Inflicted " + input[0]); break;
+                                case "enervation": activeDemon.value.ailments.push(['Enervation', 15, potency, 'Will to use skills | -50% St | -50% Ma | -50% Vi']); log.value.push("Inflicted " + input[0]); break;
+                                case "bleeding": activeDemon.value.ailments.push(['Bleeding', 16, potency, 'Take damage as you recover potency']); log.value.push("Inflicted " + input[0]); break;
+                                case "mortal": activeDemon.value.ailments.push(['Mortal', 17, potency, 'REDUCE HP TO 0 AND CURE']); log.value.push("Inflicted " + input[0]); break;
+                            }
+                        }
+                        
+                        
+
+
                     } else if (messageInput.value.startsWith('/damage')) {
 
                         let input = messageInput.value.toLowerCase();
@@ -1585,6 +1620,191 @@ document.addEventListener('DOMContentLoaded', () => {
                         activeDemon.value.coefficient = 1; // Reset coefficient
                         activeDemon.value.bulwark = 0;
                         log.value.push('Demon washed and stats recalculated');
+                        
+                        
+                    } else if (messageInput.value.startsWith('/powerlevel')) {
+                        // Clean the demon's HP, coefficient, ailments, etc
+                        activeDemon.value.getVariables();
+                        activeDemon.value.recalculateVitals();
+
+
+                        log.value.push(
+                            'Power levels:' + '\n' + 
+                            'Physical Power: ' + activeDemon.value.damageGenusBooster[0] + '\n' +
+                            'Elemental Power: ' + activeDemon.value.damageGenusBooster[1] + '\n' +
+                            'Mystical Power: ' + activeDemon.value.damageGenusBooster[2] + '\n' +
+                            'Magical Power: ' + activeDemon.value.damageGenusBooster[3] + '\n' +
+                            'All Power: ' + activeDemon.value.damageGenusBooster[4] + '\n' + '\n' +
+
+                            'Strike Power: ' + activeDemon.value.damageBooster[0] + '\n' +
+                            'Slash Power: ' + activeDemon.value.damageBooster[1] + '\n' +
+                            'Pierce Power: ' + activeDemon.value.damageBooster[2] + '\n' +
+                            'Fire Power: ' + activeDemon.value.damageBooster[3] + '\n' +
+                            'Ice Power: ' + activeDemon.value.damageBooster[4] + '\n' +
+                            'Electric Power: ' + activeDemon.value.damageBooster[5] + '\n' +
+                            'Force Power: ' + activeDemon.value.damageBooster[6] + '\n' +
+                            'Toxic Power: ' + activeDemon.value.damageBooster[7] + '\n' +
+                            'Psionic Power: ' + activeDemon.value.damageBooster[8] + '\n' +
+                            'Light Power: ' + activeDemon.value.damageBooster[9] + '\n' +
+                            'Gloom Power: ' + activeDemon.value.damageBooster[10] + '\n' +
+                            'Almighty Power: ' + activeDemon.value.damageBooster[11] + '\n' +
+                            'Ailment Power: ' + activeDemon.value.damageBooster[12] + '\n' +
+                            'Healing Power: ' + activeDemon.value.damageBooster[13] + '\n' + '\n' +
+
+                            'Aim Boosters:' + '\n' +
+                            'Strike Aim: ' + activeDemon.value.aimBooster[0] + '\n' +
+                            'Slash Aim: ' + activeDemon.value.aimBooster[1] + '\n' +
+                            'Pierce Aim: ' + activeDemon.value.aimBooster[2] + '\n' +
+                            'Fire Aim: ' + activeDemon.value.aimBooster[3] + '\n' +
+                            'Ice Aim: ' + activeDemon.value.aimBooster[4] + '\n' +
+                            'Electric Aim: ' + activeDemon.value.aimBooster[5] + '\n' +
+                            'Force Aim: ' + activeDemon.value.aimBooster[6] + '\n' +
+                            'Toxic Aim: ' + activeDemon.value.aimBooster[7] + '\n' +
+                            'Psionic Aim: ' + activeDemon.value.aimBooster[8] + '\n' +
+                            'Light Aim: ' + activeDemon.value.aimBooster[9] + '\n' +
+                            'Gloom Aim: ' + activeDemon.value.aimBooster[10] + '\n' +
+                            'Almighty Aim: ' + activeDemon.value.aimBooster[11] + '\n' + '\n' +
+
+                            'Genus Power Levels:' + '\n' +
+                            'Physical Genus Power: ' + activeDemon.value.damageGenusBooster[0] + '\n' +
+                            'Elemental Genus Power: ' + activeDemon.value.damageGenusBooster[1] + '\n' +
+                            'Mystical Genus Power: ' + activeDemon.value.damageGenusBooster[2] + '\n' +
+                            'Magical Genus Power: ' + activeDemon.value.damageGenusBooster[3] + '\n' +
+                            'All Genus Power: ' + activeDemon.value.damageGenusBooster[4] + '\n' + '\n' +
+
+                            'Genus Aim Levels:' + '\n' +
+                            'Physical Genus Aim: ' + activeDemon.value.aimGenusBooster[0] + '\n' +
+                            'Elemental Genus Aim: ' + activeDemon.value.aimGenusBooster[1] + '\n' +
+                            'Mystical Genus Aim: ' + activeDemon.value.aimGenusBooster[2] + '\n' +
+                            'Magical Genus Aim: ' + activeDemon.value.aimGenusBooster[3] + '\n' +
+                            'All Genus Aim: ' + activeDemon.value.aimGenusBooster[4] + '\n' + '\n' +
+
+                            'Ailment Power:' + '\n' +
+                            'Burn: ' + activeDemon.value.ailmentBooster[0] + '\n' +
+                            'Freeze: ' + activeDemon.value.ailmentBooster[1] + '\n' +
+                            'Shock: ' + activeDemon.value.ailmentBooster[2] + '\n' +
+                            'Mirage: ' + activeDemon.value.ailmentBooster[3] + '\n' +
+                            'Poison: ' + activeDemon.value.ailmentBooster[4] + '\n' +
+                            'Confusion: ' + activeDemon.value.ailmentBooster[5] + '\n' +
+                            'Mute: ' + activeDemon.value.ailmentBooster[6] + '\n' +
+                            'Curse: ' + activeDemon.value.ailmentBooster[7] + '\n' +
+                            'Bind: ' + activeDemon.value.ailmentBooster[8] + '\n' +
+                            'Charm: ' + activeDemon.value.ailmentBooster[9] + '\n' +
+                            'Fear: ' + activeDemon.value.ailmentBooster[10] + '\n' +
+                            'Sleep: ' + activeDemon.value.ailmentBooster[11] + '\n' +
+                            'Rage: ' + activeDemon.value.ailmentBooster[12] + '\n' +
+                            'Exhaustion: ' + activeDemon.value.ailmentBooster[13] + '\n' +
+                            'Enervation: ' + activeDemon.value.ailmentBooster[14] + '\n' +
+                            'Bleeding: ' + activeDemon.value.ailmentBooster[15] + '\n' +
+                            'Mortal: ' + activeDemon.value.ailmentBooster[16] + '\n' + '\n' +
+
+                            'Skill Potentials:' + '\n' +
+                            'Strike Potential: ' + activeDemon.value.skillPotentialBoost[0] + '\n' +
+                            'Slash Potential: ' + activeDemon.value.skillPotentialBoost[1] + '\n' +
+                            'Pierce Potential: ' + activeDemon.value.skillPotentialBoost[2] + '\n' +
+                            'Fire Potential: ' + activeDemon.value.skillPotentialBoost[3] + '\n' +
+                            'Ice Potential: ' + activeDemon.value.skillPotentialBoost[4] + '\n' +
+                            'Electric Potential: ' + activeDemon.value.skillPotentialBoost[5] + '\n' +
+                            'Force Potential: ' + activeDemon.value.skillPotentialBoost[6] + '\n' +
+                            'Toxic Potential: ' + activeDemon.value.skillPotentialBoost[7] + '\n' +
+                            'Psionic Potential: ' + activeDemon.value.skillPotentialBoost[8] + '\n' +
+                            'Light Potential: ' + activeDemon.value.skillPotentialBoost[9] + '\n' +
+                            'Gloom Potential: ' + activeDemon.value.skillPotentialBoost[10] + '\n' +
+                            'Almighty Potential: ' + activeDemon.value.skillPotentialBoost[11] + '\n' +
+                            'Ailment Potential: ' + activeDemon.value.skillPotentialBoost[12] + '\n' +
+                            'Healing Potential: ' + activeDemon.value.skillPotentialBoost[13] + '\n' +
+                            'Tactical Potential: ' + activeDemon.value.skillPotentialBoost[14] + '\n' + '\n' +
+
+                            'Affinities Resistance:' + '\n' +
+                            'Strike Resistance: ' + activeDemon.value.affinitiesReducer[0] + '\n' +
+                            'Slash Resistance: ' + activeDemon.value.affinitiesReducer[1] + '\n' +
+                            'Pierce Resistance: ' + activeDemon.value.affinitiesReducer[2] + '\n' +
+                            'Fire Resistance: ' + activeDemon.value.affinitiesReducer[3] + '\n' +
+                            'Ice Resistance: ' + activeDemon.value.affinitiesReducer[4] + '\n' +
+                            'Electric Resistance: ' + activeDemon.value.affinitiesReducer[5] + '\n' +
+                            'Force Resistance: ' + activeDemon.value.affinitiesReducer[6] + '\n' +
+                            'Toxic Resistance: ' + activeDemon.value.affinitiesReducer[7] + '\n' +
+                            'Psionic Resistance: ' + activeDemon.value.affinitiesReducer[8] + '\n' +
+                            'Light Resistance: ' + activeDemon.value.affinitiesReducer[9] + '\n' +
+                            'Gloom Resistance: ' + activeDemon.value.affinitiesReducer[10] + '\n' + '\n' +
+
+                            'Affinities Evasion:' + '\n' +
+                            'Strike Evasion: ' + activeDemon.value.affinitiesEvasion[0] + '\n' +
+                            'Slash Evasion: ' + activeDemon.value.affinitiesEvasion[1] + '\n' +
+                            'Pierce Evasion: ' + activeDemon.value.affinitiesEvasion[2] + '\n' +
+                            'Fire Evasion: ' + activeDemon.value.affinitiesEvasion[3] + '\n' +
+                            'Ice Evasion: ' + activeDemon.value.affinitiesEvasion[4] + '\n' +
+                            'Electric Evasion: ' + activeDemon.value.affinitiesEvasion[5] + '\n' +
+                            'Force Evasion: ' + activeDemon.value.affinitiesEvasion[6] + '\n' +
+                            'Toxic Evasion: ' + activeDemon.value.affinitiesEvasion[7] + '\n' +
+                            'Psionic Evasion: ' + activeDemon.value.affinitiesEvasion[8] + '\n' +
+                            'Light Evasion: ' + activeDemon.value.affinitiesEvasion[9] + '\n' +
+                            'Gloom Evasion: ' + activeDemon.value.affinitiesEvasion[10] + '\n' + '\n' +
+
+                            'Genus Resistances:' + '\n' +
+                            'Physical Resistance: ' + activeDemon.value.affinitiesGenusReducer[0] + '\n' +
+                            'Elemental Resistance: ' + activeDemon.value.affinitiesGenusReducer[1] + '\n' +
+                            'Mystical Resistance: ' + activeDemon.value.affinitiesGenusReducer[2] + '\n' +
+                            'Magic Resistance: ' + activeDemon.value.affinitiesGenusReducer[3] + '\n' +
+                            'All Resistance: ' + activeDemon.value.affinitiesGenusReducer[4] + '\n' + '\n' +
+
+                            'Genus Evasion:' + '\n' +
+                            'Physical Evasion: ' + activeDemon.value.affinitiesGenusEvasion[0] + '\n' +
+                            'Elemental Evasion: ' + activeDemon.value.affinitiesGenusEvasion[1] + '\n' +
+                            'Mystical Evasion: ' + activeDemon.value.affinitiesGenusEvasion[2] + '\n' +
+                            'Magic Evasion: ' + activeDemon.value.affinitiesGenusEvasion[3] + '\n' +
+                            'All Evasion: ' + activeDemon.value.affinitiesGenusEvasion[4] + '\n' + '\n' +
+
+                            'Armor Boosters:' + '\n' +
+                            'Armor Resistance Boost: ' + activeDemon.value.armorBooster[0] + '\n' +
+                            'Armor Evasion Boost: ' + activeDemon.value.armorBooster[1] + '\n' + '\n' +
+
+                            'Willpower: ' + activeDemon.value.willPower
+
+                        );
+                        
+                        
+                    } else if (messageInput.value.startsWith('/display')) {
+                        
+                        
+                        let importData = messageInput.value.trim().toLowerCase().slice(8).trim();
+                        // Get the skill data from TheRiseOfTheNewWorld/Resources/skills.json 
+
+                            let skillName = importData;
+
+                            fetch("Resources/skills.json").then(response => response.json()).then(data => {
+                                let skillsCount = activeDemon.value.skills.filter(skill => skill.name !== "").length;
+                                let gotSkill = false;
+                                let skillData = data.find(skill => skill.name.toLowerCase().replace(/[\s']/g, '') === skillName.toLowerCase());
+
+                                
+                                
+                                if (skillData.name != ""){
+                                    selectedSkill.value = skillData || new Skill("", "", [], []);
+                                    displaySkill.value = true;
+                                    log.value.push("Displayed skill: " + skillName + '\n' + " Skilldata: " + skillData);
+                                    console.log(skillData)
+                                    gotSkill = true;
+                                    messageInput.value = '';
+                                    activeDemon.value.getVariables();
+                                    activeDemon.value.recalculateVitals();
+                                }
+                                    
+
+
+
+                                if (!gotSkill) {
+                                    log.value.push("Could not find a skill Display");
+                                    displaySkill.value = false;
+                                }
+                                
+                            }).catch(error => {
+                                log.value.push('Skill not found: ' + skillName);
+                                console.error('Error fetching skill data:', error);
+                            }
+                            );
+
+                        dataMaster.value.autoSave();
                         
                         
                     } else if (messageInput.value.startsWith('/learn')) {
@@ -2279,7 +2499,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-            return { activePage, activeTab, tabs, log, messageInput, sendMessage, demonList, activeDemon, player, getBuffShadowStyle, army, modal, started, introTab, readingText, startReading, startingAmbience, characterCreator, modalTab, selectedSkill, displaySkill, unlockedTabs, dataMaster };
+            return { activePage, activeTab, tabs, log, messageInput, sendMessage, demonList, activeDemon, player, getBuffShadowStyle, army, modal, started, introTab, readingText, startReading, startingAmbience, characterCreator, modalTab, selectedSkill, displaySkill, unlockedTabs, dataMaster, displayAilments };
 
 
         }

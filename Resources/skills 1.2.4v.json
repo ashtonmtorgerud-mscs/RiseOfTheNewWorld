@@ -16,15 +16,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 5*(1-0.1*stkpot)",
       "/roll (1d100-5+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(8+8*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(8+8*(st/20))))d6"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -35,15 +33,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 10*(1-0.1*stkpot)",
       "/roll (1d100+12+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(12+12*(st/20))))d6",
-      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(12+12*(st/20))))d6"
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -54,15 +50,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 10*(1-0.1*slhpot)",
       "/roll (1d100-2+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(14+14*(st/20))))d6",
-      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(14+14*(st/20))))d6"
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -73,15 +67,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 10*(1-0.1*prcpot)",
       "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(12+12*(st/20))))d6",
-      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(12+12*(st/20))))d6"
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
@@ -94,15 +86,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost mhp*0.08*(1-0.1*prcpot) HP",
       "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
-      "/math 76-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(16+16*(st/20))))d6"
+      "/math 76-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -113,15 +103,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 5*(1-0.1*prcpot)",
       "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(12+12*(st/20))))d6",
-      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*2*(12+12*(st/20))))d6"
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -133,18 +121,14 @@
       "Aim",
       "Damage",
       "Horns Damage",
-      "Critical Chance",
-      "Damage (Crit)",
-      "HornsDamage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 7*(1-0.1*stkpot)",
       "/roll (1d100-10+ag+lu/4)*(stkaim)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(12+12*(st/20))))d6",
       "/roll (c*(prcpwr*(1+T*0.2)*(4+4*(st/20))))d6",
-      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(12+12*(st/20))))d6",
-      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(4+4*(st/20))))d6"
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -155,15 +139,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 12*(1-0.1*prcpot)",
       "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(7+7*(st/20))))d6",
-      "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(7+7*(st/20))))d6"
+      "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -174,15 +156,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 16*(1-0.1*stkpot)",
       "/roll (1d100-10+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(18+18*(st/20))))d6",
-      "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(18+18*(st/20))))d6"
+      "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -194,16 +174,14 @@
       "Hit Count",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 15*(1-0.1*prcpot)",
       "/roll 1d4",
       "/roll (1d100-2+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(7+7*(st/20))))d6",
-      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(7+7*(st/20))))d6"
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   
@@ -214,12 +192,12 @@
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage (Crit)"
+      "Damage"
     ],
     "rolls": [
       "/cost 12*(1-0.1*slhpot)",
       "/roll (1d100-50+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
-      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(17+17*(st/20))))d6"
+      "/roll (c*(slhpwr*(1+T*0.2)*(17+17*(st/20))))d6"
     ]
   },
 
@@ -231,15 +209,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 12*(1-0.1*stkpot)",
       "/roll (1d100-25+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(18+18*(st/20))))d6",
-      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(18+18*(st/20))))d6"
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
@@ -251,8 +227,7 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 20*(1-0.1*slhpot)",
@@ -270,8 +245,7 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 20*(1-0.1*stkpot)",
@@ -289,8 +263,7 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 20*(1-0.1*slhpot)",
@@ -308,8 +281,7 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 15*(1-0.1*stkpot)",
@@ -329,8 +301,7 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 15*(1-0.1*prcpot)",
@@ -347,15 +318,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 15*(1-0.1*slhpot)",
       "/roll (1d100-2+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(13+13*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(13+13*(st/20))))d6"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -366,15 +335,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 15*(1-0.1*stkpot)",
       "/roll (1d100-15+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(10+10*(st/20))))d6",
-      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*2*(10+10*(st/20))))d6"
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -386,7 +353,6 @@
       "Aim",
       "Damage",
       "Critical Chance",
-      "Damage (Crit)",
       "Potency",
       "Poison"
     ],
@@ -395,7 +361,6 @@
       "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(16+16*(st/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
@@ -409,7 +374,6 @@
       "Aim",
       "Damage",
       "Critical Chance",
-      "Damage (Crit)",
       "Potency"
     ],
     "rolls": [
@@ -417,7 +381,6 @@
       "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(16+16*(st/20))))d6",
       "/math 60+((lu+ma/2)*slpail*ailpwr)_floor"
     ]
   },
@@ -430,7 +393,6 @@
       "Aim",
       "Damage",
       "Critical Chance",
-      "Damage (Crit)",
       "Potency"
     ],
     "rolls": [
@@ -438,7 +400,6 @@
       "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(18+18*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(18+18*(st/20))))d6",
       "/math 60+((lu+ma/2)*mutail*ailpwr)_floor"
     ]
   },
@@ -451,7 +412,6 @@
       "Aim",
       "Damage",
       "Critical Chance",
-      "Damage (Crit)",
       "Potency"
     ],
     "rolls": [
@@ -459,7 +419,6 @@
       "/roll (1d100-10+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(10+10*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(10+10*(st/20))))d6",
       "/math 60+((lu+ma/2)*ragail*ailpwr)_floor"
     ]
   },
@@ -472,15 +431,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 55*(1-0.1*slhpot)",
       "/roll (1d100-10+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(24+24*(st/20))))d6",
-      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(24+24*(st/20))))d6"
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
@@ -496,7 +453,7 @@
     "rolls": [
       "/cost 55*(1-0.1*slhpot)",
       "/roll (1d100-50+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
-      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(24+24*(st/20))))d6"
+      "/roll (c*(slhpwr*(1+T*0.2)*(24+24*(st/20))))d6"
     ]
   },
 
@@ -512,15 +469,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 55*(1-0.1*prcpot)",
       "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(30+30*(st/20))))d6",
-      "/math 71-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(30+30*(st/20))))d6"
+      "/math 71-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
@@ -532,15 +487,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 55*(1-0.1*prcpot)",
       "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(42+42*(st/20))))d6",
-      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*2*(42+42*(st/20))))d6"
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -551,15 +504,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 55*(1-0.1*slhpot)",
       "/roll (1d100-2+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(44+44*(st/20))))d6",
-      "/math 71-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(44+44*(st/20))))d6"
+      "/math 71-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -570,15 +521,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 60*(1-0.1*stkpot)",
       "/roll (1d100-10+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(48+48*(st/20))))d6",
-      "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*.5*(48+48*(st/20))))d6"
+      "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
@@ -615,15 +564,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 25*(1-0.1*stkpot)",
       "/roll (1d100-25+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(8+8*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(8+8*(st/20))))d6"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
@@ -635,15 +582,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 30*(1-0.1*slhpot)",
       "/roll (1d100-15+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
-      "/roll (c*(slhpwr*(1+T*0.2)*(9+9*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(9+9*(st/20))))d6"
+      "/roll (c*(slhpwr*(1+T*0.2)*(8+8*(st/20))))d6",
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
@@ -655,15 +600,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 35*(1-0.1*prcpot)",
       "/roll (1d100-20+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(10+10*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(10+10*(st/20))))d6"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
@@ -677,15 +620,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 20*(1-0.1*slhpot)",
       "/roll (1d100-15+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(13+13*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(13+13*(st/20))))d6"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
@@ -697,15 +638,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 35*(1-0.1*prcpot)",
       "/roll (1d100-20+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
-      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(16+16*(st/20))))d6"
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
@@ -717,15 +656,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 35*(1-0.1*stkpot)",
       "/roll (1d100-10+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(17+17*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(17+17*(st/20))))d6"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
@@ -737,15 +674,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 35*(1-0.1*slhpot)",
       "/roll (1d100-10+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(17+17*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(17+17*(st/20))))d6"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
@@ -759,15 +694,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 25*(1-0.1*stkpot)",
       "/roll (1d100-5+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(16+16*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(16+16*(st/20))))d6"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -778,15 +711,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 35*(1-0.1*stkpot)",
       "/roll (1d100-50+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(22+22*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(22+22*(st/20))))d6"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -797,15 +728,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 30*(1-0.1*slhpot)",
       "/roll (1d100-10+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(12+12*(st/20))))d6",
-      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(12+12*(st/20))))d6"
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -816,15 +745,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 45*(1-0.1*slhpot)",
       "/roll (1d100-5+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(20+20*(st/20))))d6",
-      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6"
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -835,15 +762,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 45*(1-0.1*stkpot)",
       "/roll (1d100-50+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(25+25*(st/20))))d6",
-      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(25+25*(st/20))))d6"
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -853,12 +778,12 @@
     "rollNames": [
       "Cost",
       "Aim",
-      "Damage (Crit)"
+      "Damage"
     ],
     "rolls": [
       "/cost 60*(1-0.1*prcpot)",
       "/roll (1d100-2+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
-      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(8+8*(st/20))))d6"
+      "/roll (c*(prcpwr*(1+T*0.2)*(8+8*(st/20))))d6"
     ]
   },
   {
@@ -869,15 +794,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 70*(1-0.1*stkpot)",
       "/roll (1d100-5+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(32+32*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(32+32*(st/20))))d6"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -888,15 +811,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 70*(1-0.1*prcpot)",
       "/roll (1d100-5+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(32+32*(st/20))))d6",
-      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(32+32*(st/20))))d6"
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
   {
@@ -907,15 +828,13 @@
       "Cost",
       "Aim",
       "Damage",
-      "Critical Chance",
-      "Damage (Crit)"
+      "Critical Chance"
     ],
     "rolls": [
       "/cost 85*(1-0.1*prcpot)",
       "/roll (1d100-20+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(40+40*(st/20))))d6",
-      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(40+40*(st/20))))d6"
+      "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
@@ -1182,7 +1101,6 @@
       "Aim",
       "Damage",
       "Critical Chance",
-      "Damage (Crit)",
       "Potency",
       "Burn"
     ],
@@ -1191,7 +1109,6 @@
       "/roll (1d100-2+ag+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(firpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 20+((lu+st/2)*firpwr)_floor",
       "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
@@ -1444,7 +1361,6 @@
       "Aim",
       "Damage",
       "Critical Chance",
-      "Damage (Crit)",
       "Potency"
     ],
     "rolls": [
@@ -1452,8 +1368,7 @@
       "/roll (1d100-2+ag+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(icepwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
-      "/math 20+((lu+st/2)*frzail*icepwr)_floor"
+      "/math 20+((lu+st/2)*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1705,7 +1620,6 @@
       "Aim",
       "Damage",
       "Critical Chance",
-      "Damage (Crit)",
       "Potency"
     ],
     "rolls": [
@@ -1713,7 +1627,6 @@
       "/roll (1d100-2+ag+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(elcpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 40+((lu+st/2)*elcpwr)_floor"
     ],
     "aoe": [
@@ -1966,7 +1879,6 @@
       "Aim",
       "Damage",
       "Critical Chance",
-      "Damage (Crit)",
       "Potency"
     ],
     "rolls": [
@@ -1974,7 +1886,6 @@
       "/roll (1d100-2+ag+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(frcpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 20+((lu+st/2)*frcpwr)_floor"
     ],
     "aoe": [
@@ -2249,7 +2160,6 @@
       "Aim",
       "Damage",
       "Critical Chance",
-      "Damage (Crit)",
       "Potency",
       "Poison"
     ],
@@ -2258,7 +2168,6 @@
       "/roll (1d100-2+ag+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(toxpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 20+((lu+st/2)*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
@@ -2511,7 +2420,6 @@
       "Aim",
       "Damage",
       "Critical Chance",
-      "Damage (Crit)",
       "Potency"
     ],
     "rolls": [
@@ -2519,7 +2427,6 @@
       "/roll (1d100-2+ag+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(psipwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 20+((lu+st/2)*psipwr)_floor"
     ],
     "aoe": [
@@ -2539,38 +2446,34 @@
   {
     "name": "Hama",
     "skillType": 10,
-    "description": "Medium Light damage to 1 foe, with a chance of Seal. Chance of Mortal if the target is weak to Light",
+    "description": "Medium Light damage to 1 foe. Chance of Mortal if the target is weak to Light",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Potency (Seal)",
-      "Potency (Mortal)"
+      "Infliction"
     ],
     "rolls": [
       "/cost 20*(1-0.1*lgtpot)",
       "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*mutail*lgtpwr)_floor",
       "/math 40+((lu+ma/2)*mrlail*lgtpwr)_floor"
     ]
   },
   {
     "name": "Mahama",
     "skillType": 10,
-    "description": "Medium Light damage to all foes, with a chance of Seal. Chance of Mortal if the target is weak to Light",
+    "description": "Medium Light damage to all foes. Chance of Mortal if the target is weak to Light",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Potency (Seal)",
-      "Potency (Mortal)"
+      "Infliction"
     ],
     "rolls": [
       "/cost 30*(1-0.1*lgtpot)",
       "/roll (1d100-5+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*mutail*lgtpwr)_floor",
       "/math 30+((lu+ma/2)*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
@@ -2584,38 +2487,34 @@
   {
     "name": "Hamaon",
     "skillType": 10,
-    "description": "Heavy Light damage to 1 foe, with a chance of Seal. Chance of Mortal if the target is weak to Light",
+    "description": "Heavy Light damage to 1 foe. Chance of Mortal if the target is weak to Light",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Potency (Seal)",
-      "Potency (Mortal)"
+      "Infliction"
     ],
     "rolls": [
       "/cost 35*(1-0.1*lgtpot)",
       "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*mutail*lgtpwr)_floor",
       "/math 60+((lu+ma/2)*mrlail*lgtpwr)_floor"
     ]
   },
   {
     "name": "Mahamaon",
     "skillType": 10,
-    "description": "Heavy Light damage to all foes, with a chance of Seal. Chance of Mortal if the target is weak to Light",
+    "description": "Heavy Light damage to all foes. Chance of Mortal if the target is weak to Light",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Potency (Seal)",
-      "Potency (Mortal)"
+      "Infliction"
     ],
     "rolls": [
       "/cost 50*(1-0.1*lgtpot)",
       "/roll (1d100-5+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*mutail*lgtpwr)_floor",
       "/math 40+((lu+ma/2)*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
@@ -2629,19 +2528,17 @@
   {
     "name": "Hamabarion",
     "skillType": 10,
-    "description": "Severe Light damage to 1 foe, with a chance of Seal. Chance of Mortal if the target is weak to Light",
+    "description": "Severe Light damage to 1 foe. Chance of Mortal if the target is weak to Light",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Potency (Seal)",
-      "Potency (Mortal)"
+      "Infliction"
     ],
     "rolls": [
       "/cost 50*(1-0.1*lgtpot)",
       "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 80+((lu+ma/2)*mutail*lgtpwr)_floor",
       "/math 80+((lu+ma/2)*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
@@ -2655,19 +2552,17 @@
   {
     "name": "Mahamabarion",
     "skillType": 10,
-    "description": "Severe Light damage to 1 foe, with a chance of Seal. Chance of Mortal if the target is weak to Light",
+    "description": "Severe Light damage to 1 foe. Chance of Mortal if the target is weak to Light",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Potency (Seal)",
-      "Potency (Mortal)"
+      "Infliction"
     ],
     "rolls": [
       "/cost 75*(1-0.1*lgtpot)",
       "/roll (1d100-5+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*mutail*lgtpwr)_floor",
       "/math 60+((lu+ma/2)*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
@@ -2681,19 +2576,17 @@
   {
     "name": "Exorcism",
     "skillType": 10,
-    "description": "Heavy Breaking-Light damage to 1 foe, with a chance of Seal. Chance of Mortal if the target is weak to Light",
+    "description": "Heavy Breaking-Light damage to 1 foe. Chance of Mortal if the target is weak to Light",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Potency (Seal)",
-      "Potency (Mortal)"
+      "Infliction"
     ],
     "rolls": [
       "/cost 65*(1-0.1*lgtpot)",
       "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*mutail*lgtpwr)_floor",
       "/math 60+((lu+ma/2)*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
@@ -2707,21 +2600,19 @@
   {
     "name": "Holy Dracostrike",
     "skillType": 10,
-    "description": "Medium Light damage to 1 foe, strength-based. Slight chance of Seal",
+    "description": "Medium Light damage to 1 foe, strength-based. Slight chance of Mortal if the target is weak to Light",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
       "Critical Chance",
-      "Damage (Crit)",
-      "Potency"
+      "Infliction"
     ],
     "rolls": [
       "/cost 65*(1-0.1*lgtpot)",
       "/roll (1d100-2+ag+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(lgtpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 30+((lu+st/2)*lgtpwr)_floor"
     ],
     "aoe": [
@@ -2737,39 +2628,34 @@
   {
     "name": "Mudo",
     "skillType": 11,
-    "description": "Medium Gloom damage to 1 foe, with a chance of Curse. Chance of Mortal if the target is weak to Gloom",
+    "description": "Medium Gloom damage to 1 foe. Chance of Mortal if the target is weak to Gloom",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Potency (Curse)",
-      "Potency (Mortal)"
+      "Infliction"
     ],
     "rolls": [
       "/cost 20*(1-0.1*glmpot)",
       "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*crsail*glmpwr)_floor",
       "/math 40+((lu+ma/2)*mrlail*glmpwr)_floor"
-      
     ]
   },
   {
     "name": "Mamudo",
     "skillType": 11,
-    "description": "Medium Gloom damage to all foes, with a chance of Curse. Chance of Mortal if the target is weak to Gloom",
+    "description": "Medium Gloom damage to all foes. Chance of Mortal if the target is weak to Gloom",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Potency (Curse)",
-      "Potency (Mortal)"
+      "Infliction"
     ],
     "rolls": [
       "/cost 30*(1-0.1*glmpot)",
       "/roll (1d100-5+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*crsail*glmpwr)_floor",
       "/math 30+((lu+ma/2)*mrlail*glmpwr)_floor"
     ],
     "aoe": [
@@ -2783,38 +2669,34 @@
   {
     "name": "Mudoon",
     "skillType": 11,
-    "description": "Heavy Gloom damage to 1 foe, with a chance of Curse. Chance of Mortal if the target is weak to Gloom",
+    "description": "Heavy Gloom damage to 1 foe. Chance of Mortal if the target is weak to Gloom",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Potency (Curse)",
-      "Potency (Mortal)"
+      "Infliction"
     ],
     "rolls": [
       "/cost 35*(1-0.1*glmpot)",
       "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*crsail*glmpwr)_floor",
       "/math 60+((lu+ma/2)*mrlail*glmpwr)_floor"
     ]
   },
   {
     "name": "Mamudoon",
     "skillType": 11,
-    "description": "Heavy Gloom damage to all foes, with a chance of Curse. Chance of Mortal if the target is weak to Gloom",
+    "description": "Heavy Gloom damage to all foes. Chance of Mortal if the target is weak to Gloom",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Potency (Curse)",
-      "Potency (Mortal)"
+      "Infliction"
     ],
     "rolls": [
       "/cost 50*(1-0.1*glmpot)",
       "/roll (1d100-5+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*crsail*glmpwr)_floor",
       "/math 40+((lu+ma/2)*mrlail*glmpwr)_floor"
     ],
     "aoe": [
@@ -2828,19 +2710,17 @@
   {
     "name": "Mudobarion",
     "skillType": 11,
-    "description": "Severe Gloom damage to 1 foe, with a chance of Curse. Chance of Mortal if the target is weak to Gloom",
+    "description": "Severe Gloom damage to 1 foe. Chance of Mortal if the target is weak to Gloom",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Potency (Curse)",
-      "Potency (Mortal)"
+      "Infliction"
     ],
     "rolls": [
       "/cost 50*(1-0.1*glmpot)",
       "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 80+((lu+ma/2)*crsail*glmpwr)_floor",
       "/math 80+((lu+ma/2)*mrlail*glmpwr)_floor"
     ],
     "aoe": [
@@ -2854,19 +2734,17 @@
   {
     "name": "Mamudobarion",
     "skillType": 11,
-    "description": "Severe Gloom damage to 1 foe, with a chance of Curse. Chance of Mortal if the target is weak to Gloom",
+    "description": "Severe Gloom damage to 1 foe. Chance of Mortal if the target is weak to Gloom",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Potency (Curse)",
-      "Potency (Mortal)"
+      "Infliction"
     ],
     "rolls": [
       "/cost 75*(1-0.1*glmpot)",
       "/roll (1d100-5+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 80+((lu+ma/2)*crsail*glmpwr)_floor",
       "/math 80+((lu+ma/2)*mrlail*glmpwr)_floor"
     ],
     "aoe": [
@@ -2880,19 +2758,17 @@
   {
     "name": "Damnation",
     "skillType": 11,
-    "description": "Heavy Breaking-Gloom damage to 1 foe, with a chance of Curse. Chance of Mortal if the target is weak to Gloom",
+    "description": "Heavy Breaking-Gloom damage to 1 foe. Chance of Mortal if the target is weak to Gloom",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
-      "Potency (Curse)",
-      "Potency (Mortal)"
+      "Infliction"
     ],
     "rolls": [
       "/cost 65*(1-0.1*glmpot)",
       "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*crsail*glmpwr)_floor",
       "/math 60+((lu+ma/2)*mrlail*glmpwr)_floor"
     ],
     "aoe": [
@@ -2906,13 +2782,12 @@
   {
     "name": "Unholy Dracostrike",
     "skillType": 11,
-    "description": "Medium Gloom damage to 1 foe, strength-based. Slight chance of Curse",
+    "description": "Medium Gloom damage to 1 foe, strength-based. Slight chance of Mortal if the target is weak to Gloom",
     "rollNames": [
       "Cost",
       "Aim",
       "Damage",
       "Critical Chance",
-      "Damage (Crit)",
       "Infliction"
     ],
     "rolls": [
@@ -2920,7 +2795,6 @@
       "/roll (1d100-2+ag+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(glmpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 30+((lu+ma/2)*mrlail*glmpwr)_floor"
     ],
     "aoe": [
