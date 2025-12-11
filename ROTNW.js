@@ -1184,6 +1184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         let newCoeffBox  = matches[1]?.[1] || "";
 
                         activeDemon.value.coeffs.push([newCoeffName, newCoeffBox]);
+                        dataMaster.value.autoSave();
                     } else if (lowercaseMessage.startsWith('/search')) {
                     
                     } else if (lowercaseMessage.startsWith('/search')) {
@@ -1497,6 +1498,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 case "mortal": activeDemon.value.ailments.push(['Mortal', 17, potency, 'REDUCE HP TO 0 AND CURE']); log.value.push("Inflicted " + input[0]); break;
                             }
                         }
+                        dataMaster.autoSave();
                         
                         
 
