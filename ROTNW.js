@@ -1423,17 +1423,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (willTarget == "all"){
                             
                             activeDemon.value.ailments.forEach(ailment => {
-                                if (!ailment[1].isNaN){
+                                if (!ailment[2].isNaN){
                                     
                                     // Get will reduction Math
                                     let willReduction = dMDAS("1d100");
                                     if (willReduction > 95){ willReduction *= 2; }
                                     willReduction += Math.floor(dMDAS("(lu+(vi/2))*wilpwr"));
 
-                                    willMessage += '\n' + ailment[0] + ": " + ailment[1] + " -> "
-                                    ailment[1] -= willReduction;
-                                    willMessage += Math.max(ailment[1], 0);
-                                    if (ailment[1] <= 0){
+                                    willMessage += '\n' + ailment[0] + ": " + ailment[2] + " -> "
+                                    ailment[2] -= willReduction;
+                                    willMessage += Math.max(ailment[2], 0);
+                                    if (ailment[2] <= 0){
                                         willMessage += ' (Cured)';
                                     }
                                     
