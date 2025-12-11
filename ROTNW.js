@@ -1461,7 +1461,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (willReduction > 95){ willReduction *= 2; gotCrit = " CRITICAL WILL"}
 
                             let willBoost = Math.floor(dMDAS("lu+(vi/2)"));
-                            willMessage = "1d100+(lu+vi/2)*wilpwr (" + willReduction + gotCrit +"), Total:" + (willReduction+willBoost*activeDemon.value.willPower);
+                            willMessage = "1d100+(lu+vi/2)*wilpwr (" + willReduction + gotCrit +"), Total: " + (willReduction+willBoost*activeDemon.value.willPower);
                         }
                         
                         // Cleanup Ailments
