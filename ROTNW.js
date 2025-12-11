@@ -1465,7 +1465,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                         
                         // Cleanup Ailments
-                        activeDemon.value.ailments = activeDemon.value.ailments.filter(a => a[1] > 0);
+                        activeDemon.value.ailments = activeDemon.value.ailments.filter(a => a[2] > 0);
 
                         // Log it
                         log.value.push("Will: " + willMessage);
