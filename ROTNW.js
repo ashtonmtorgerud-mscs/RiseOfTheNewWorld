@@ -1498,9 +1498,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                 case "mortal": activeDemon.value.ailments.push(['Mortal', 17, potency, 'REDUCE HP TO 0 AND CURE']); log.value.push("Inflicted " + input[0]); break;
                             }
                         }
-                        activeDemon.recalculateVitals();
-                        
-                        // dataMaster.autoSave();
+                        // activeDemon.recalculateVitals();
+
+                        dataMaster.value.autoSave();
                         
                         
 
