@@ -396,7 +396,7 @@
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/roll (c*(prcpwr*(1+T*0.2)*1.5*(16+16*(st/20))))d6",
-      "/math 60+((lu+ma/2)*ailpwr)_floor",
+      "/math 60+((lu+ma/2)*psnail*toxpwr*ailpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
   },
@@ -937,7 +937,7 @@
       "/cost 10*(1-0.1*firpot)",
       "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*brnail*firpwr)_floor",
+      "/math 30+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ]
   },
@@ -956,7 +956,7 @@
       "/cost 15*(1-0.1*firpot)",
       "/roll (1d100-5+ma+lu/4)*(firaim)*(0.2*S+1)_floor_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 20+((lu+ma/2)*brnail*firpwr)_floor",
+      "/math 20+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ],
     "aoe": [
@@ -982,7 +982,7 @@
       "/cost 20*(1-0.1*firpot)",
       "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*brnail*firpwr)_floor",
+      "/math 40+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ]
   },
@@ -1001,7 +1001,7 @@
       "/cost 30*(1-0.1*firpot)",
       "/roll (1d100-5+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*brnail*firpwr)_floor",
+      "/math 30+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ],
     "aoe": [
@@ -1027,7 +1027,7 @@
       "/cost 35*(1-0.1*firpot)",
       "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*brnail*firpwr)_floor",
+      "/math 50+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ]
   },
@@ -1046,7 +1046,7 @@
       "/cost 50*(1-0.1*firpot)",
       "/roll (1d100-5+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*brnail*firpwr)_floor",
+      "/math 40+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ],
     "aoe": [
@@ -1072,7 +1072,7 @@
       "/cost 50*(1-0.1*firpot)",
       "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*brnail*firpwr)_floor",
+      "/math 60+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ],
     "aoe": [
@@ -1098,7 +1098,7 @@
       "/cost 75*(1-0.1*firpot)",
       "/roll (1d100-5+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*brnail*firpwr)_floor",
+      "/math 50+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
@@ -1124,7 +1124,7 @@
       "/cost 65*(1-0.1*firpot)",
       "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*brnail*firpwr)_floor",
+      "/math 60+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
     "aoe": [
@@ -1150,7 +1150,7 @@
       "/cost 25*(1-0.1*firpot)",
       "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*brnail*firpwr)_floor",
+      "/math 30+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
@@ -1169,7 +1169,7 @@
       "/cost 25*(1-0.1*firpot)",
       "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*brnail*firpwr)_floor",
+      "/math 40+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ]
   },
@@ -1220,7 +1220,7 @@
       "/cost 10*(1-0.1*icepot)",
       "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*frzail*icepwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ]
   },
   {
@@ -1237,7 +1237,7 @@
       "/cost 15*(1-0.1*icepot)",
       "/roll (1d100-5+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 20+((lu+ma/2)*frzail*icepwr)_floor"
+      "/math 20+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1261,7 +1261,7 @@
       "/cost 20*(1-0.1*icepot)",
       "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*frzail*icepwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ]
   },
   {
@@ -1278,7 +1278,7 @@
       "/cost 30*(1-0.1*icepot)",
       "/roll (1d100-5+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*frzail*icepwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1302,7 +1302,7 @@
       "/cost 35*(1-0.1*icepot)",
       "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*frzail*icepwr)_floor"
+      "/math 50+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ]
   },
   {
@@ -1319,7 +1319,7 @@
       "/cost 50*(1-0.1*icepot)",
       "/roll (1d100-5+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*frzail*icepwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1343,7 +1343,7 @@
       "/cost 50*(1-0.1*icepot)",
       "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*frzail*icepwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1367,7 +1367,7 @@
       "/cost 75*(1-0.1*icepot)",
       "/roll (1d100-5+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*frzail*icepwr)_floor"
+      "/math 50+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1391,7 +1391,7 @@
       "/cost 65*(1-0.1*icepot)",
       "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*frzail*icepwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1415,7 +1415,7 @@
       "/cost 25*(1-0.1*icepot)",
       "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*frzail*icepwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ]
   },
   {
@@ -1432,7 +1432,7 @@
       "/cost 25*(1-0.1*icepot)",
       "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(16+16*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*frzail*icepwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ]
   },
   {
@@ -1481,7 +1481,7 @@
       "/cost 10*(1-0.1*elcpot)",
       "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*shkail*elcpwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ]
   },
   {
@@ -1498,7 +1498,7 @@
       "/cost 15*(1-0.1*elcpot)",
       "/roll (1d100-5+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 20+((lu+ma/2)*shkail*elcpwr)_floor"
+      "/math 20+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1522,7 +1522,7 @@
       "/cost 20*(1-0.1*elcpot)",
       "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*shkail*elcpwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ]
   },
   {
@@ -1539,7 +1539,7 @@
       "/cost 30*(1-0.1*elcpot)",
       "/roll (1d100-5+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*shkail*elcpwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1563,7 +1563,7 @@
       "/cost 35*(1-0.1*elcpot)",
       "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*shkail*elcpwr)_floor"
+      "/math 50+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ]
   },
   {
@@ -1580,7 +1580,7 @@
       "/cost 50*(1-0.1*elcpot)",
       "/roll (1d100-5+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*shkail*elcpwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1604,7 +1604,7 @@
       "/cost 50*(1-0.1*elcpot)",
       "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*shkail*elcpwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1628,7 +1628,7 @@
       "/cost 75*(1-0.1*elcpot)",
       "/roll (1d100-5+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*shkail*elcpwr)_floor"
+      "/math 50+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1652,7 +1652,7 @@
       "/cost 65*(1-0.1*elcpot)",
       "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*shkail*elcpwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1676,7 +1676,7 @@
       "/cost 25*(1-0.1*elcpot)",
       "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*shkail*elcpwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ]
   },
   {
@@ -1693,7 +1693,7 @@
       "/cost 25*(1-0.1*elcpot)",
       "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*shkail*elcpwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ]
   },
   {
@@ -1742,7 +1742,7 @@
       "/cost 10*(1-0.1*frcpot)",
       "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*mrgail*frcpwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ]
   },
   {
@@ -1759,7 +1759,7 @@
       "/cost 15*(1-0.1*frcpot)",
       "/roll (1d100-5+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 20+((lu+ma/2)*mrgail*frcpwr)_floor"
+      "/math 20+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1783,7 +1783,7 @@
       "/cost 20*(1-0.1*frcpot)",
       "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*mrgail*frcpwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ]
   },
   {
@@ -1800,7 +1800,7 @@
       "/cost 30*(1-0.1*frcpot)",
       "/roll (1d100-5+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*mrgail*frcpwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1824,7 +1824,7 @@
       "/cost 35*(1-0.1*frcpot)",
       "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*mrgail*frcpwr)_floor"
+      "/math 50+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ]
   },
   {
@@ -1841,7 +1841,7 @@
       "/cost 50*(1-0.1*frcpot)",
       "/roll (1d100-5+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*mrgail*frcpwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1865,7 +1865,7 @@
       "/cost 50*(1-0.1*frcpot)",
       "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*mrgail*frcpwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1889,7 +1889,7 @@
       "/cost 75*(1-0.1*frcpot)",
       "/roll (1d100-5+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*mrgail*frcpwr)_floor"
+      "/math 50+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1913,7 +1913,7 @@
       "/cost 65*(1-0.1*frcpot)",
       "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*mrgail*frcpwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -1937,7 +1937,7 @@
       "/cost 25*(1-0.1*frcpot)",
       "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*mrgail*frcpwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ]
   },
   {
@@ -1954,7 +1954,7 @@
       "/cost 25*(1-0.1*frcpot)",
       "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*mrgail*frcpwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ]
   },
   {
@@ -2004,7 +2004,7 @@
       "/cost 10*(1-0.1*toxpot)",
       "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/math 30+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
   },
@@ -2023,7 +2023,7 @@
       "/cost 15*(1-0.1*toxpot)",
       "/roll (1d100-5+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 20+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/math 20+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
     "aoe": [
@@ -2049,7 +2049,7 @@
       "/cost 20*(1-0.1*toxpot)",
       "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/math 40+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
   },
@@ -2068,7 +2068,7 @@
       "/cost 30*(1-0.1*toxpot)",
       "/roll (1d100-5+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/math 30+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
     "aoe": [
@@ -2094,7 +2094,7 @@
       "/cost 35*(1-0.1*toxpot)",
       "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/math 50+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
   },
@@ -2113,7 +2113,7 @@
       "/cost 50*(1-0.1*toxpot)",
       "/roll (1d100-5+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/math 40+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
     "aoe": [
@@ -2139,7 +2139,7 @@
       "/cost 50*(1-0.1*toxpot)",
       "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/math 60+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
     "aoe": [
@@ -2165,7 +2165,7 @@
       "/cost 75*(1-0.1*toxpot)",
       "/roll (1d100-5+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/math 50+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
     "aoe": [
@@ -2191,7 +2191,7 @@
       "/cost 65*(1-0.1*toxpot)",
       "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/math 60+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
     "aoe": [
@@ -2217,7 +2217,7 @@
       "/cost 25*(1-0.1*toxpot)",
       "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/math 30+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
   },
@@ -2236,7 +2236,7 @@
       "/cost 25*(1-0.1*toxpot)",
       "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*psnail*toxpwr)_floor",
+      "/math 40+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
   },
@@ -2287,7 +2287,7 @@
       "/cost 10*(1-0.1*psipot)",
       "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*cfnail*psipwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ]
   },
   {
@@ -2304,7 +2304,7 @@
       "/cost 15*(1-0.1*psipot)",
       "/roll (1d100-5+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(12+12*(ma/20))))d6",
-      "/math 20+((lu+ma/2)*cfnail*psipwr)_floor"
+      "/math 20+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2328,7 +2328,7 @@
       "/cost 20*(1-0.1*psipot)",
       "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*cfnail*psipwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ]
   },
   {
@@ -2345,7 +2345,7 @@
       "/cost 30*(1-0.1*psipot)",
       "/roll (1d100-5+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*cfnail*psipwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2369,7 +2369,7 @@
       "/cost 35*(1-0.1*psipot)",
       "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*cfnail*psipwr)_floor"
+      "/math 50+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ]
   },
   {
@@ -2386,7 +2386,7 @@
       "/cost 50*(1-0.1*psipot)",
       "/roll (1d100-5+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*cfnail*psipwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2410,7 +2410,7 @@
       "/cost 50*(1-0.1*psipot)",
       "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*cfnail*psipwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2434,7 +2434,7 @@
       "/cost 75*(1-0.1*psipot)",
       "/roll (1d100-5+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 50+((lu+ma/2)*cfnail*psipwr)_floor"
+      "/math 50+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2458,7 +2458,7 @@
       "/cost 65*(1-0.1*psipot)",
       "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*cfnail*psipwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2482,11 +2482,11 @@
       "/cost 25*(1-0.1*psipot)",
       "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*cfnail*psipwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ]
   },
   {
-    "name": "Neurotoxic Surge",
+    "name": "Psychogenic Surge",
     "skillType": 9,
     "description": "Medium Psionic damage to random foes, with a chance of Confusion, 2-5 times",
     "rollNames": [
@@ -2499,7 +2499,7 @@
       "/cost 25*(1-0.1*psipot)",
       "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(16+16*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*cfnail*psipwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ]
   },
   {
@@ -2551,8 +2551,8 @@
       "/cost 20*(1-0.1*lgtpot)",
       "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*mutail*lgtpwr)_floor",
-      "/math 40+((lu+ma/2)*mrlail*lgtpwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*mutail*lgtpwr)_floor",
+      "/math 40+((lu+ma/2)*ailpwr*mrlail*lgtpwr)_floor"
     ]
   },
   {
@@ -2570,8 +2570,8 @@
       "/cost 30*(1-0.1*lgtpot)",
       "/roll (1d100-5+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*mutail*lgtpwr)_floor",
-      "/math 30+((lu+ma/2)*mrlail*lgtpwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*mutail*lgtpwr)_floor",
+      "/math 30+((lu+ma/2)*ailpwr*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2596,8 +2596,8 @@
       "/cost 35*(1-0.1*lgtpot)",
       "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*mutail*lgtpwr)_floor",
-      "/math 60+((lu+ma/2)*mrlail*lgtpwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*mutail*lgtpwr)_floor",
+      "/math 60+((lu+ma/2)*ailpwr*mrlail*lgtpwr)_floor"
     ]
   },
   {
@@ -2615,8 +2615,8 @@
       "/cost 50*(1-0.1*lgtpot)",
       "/roll (1d100-5+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*mutail*lgtpwr)_floor",
-      "/math 40+((lu+ma/2)*mrlail*lgtpwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*mutail*lgtpwr)_floor",
+      "/math 40+((lu+ma/2)*ailpwr*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2641,8 +2641,8 @@
       "/cost 50*(1-0.1*lgtpot)",
       "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 80+((lu+ma/2)*mutail*lgtpwr)_floor",
-      "/math 80+((lu+ma/2)*mrlail*lgtpwr)_floor"
+      "/math 80+((lu+ma/2)*ailpwr*mutail*lgtpwr)_floor",
+      "/math 80+((lu+ma/2)*ailpwr*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2667,8 +2667,8 @@
       "/cost 75*(1-0.1*lgtpot)",
       "/roll (1d100-5+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*mutail*lgtpwr)_floor",
-      "/math 60+((lu+ma/2)*mrlail*lgtpwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*mutail*lgtpwr)_floor",
+      "/math 60+((lu+ma/2)*ailpwr*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2693,8 +2693,8 @@
       "/cost 65*(1-0.1*lgtpot)",
       "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*mutail*lgtpwr)_floor",
-      "/math 60+((lu+ma/2)*mrlail*lgtpwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*mutail*lgtpwr)_floor",
+      "/math 60+((lu+ma/2)*ailpwr*mrlail*lgtpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2749,8 +2749,8 @@
       "/cost 20*(1-0.1*glmpot)",
       "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*crsail*glmpwr)_floor",
-      "/math 40+((lu+ma/2)*mrlail*glmpwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*crsail*glmpwr)_floor",
+      "/math 40+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
       
     ]
   },
@@ -2769,8 +2769,8 @@
       "/cost 30*(1-0.1*glmpot)",
       "/roll (1d100-5+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*crsail*glmpwr)_floor",
-      "/math 30+((lu+ma/2)*mrlail*glmpwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*crsail*glmpwr)_floor",
+      "/math 30+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2795,8 +2795,8 @@
       "/cost 35*(1-0.1*glmpot)",
       "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*crsail*glmpwr)_floor",
-      "/math 60+((lu+ma/2)*mrlail*glmpwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*crsail*glmpwr)_floor",
+      "/math 60+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
     ]
   },
   {
@@ -2814,8 +2814,8 @@
       "/cost 50*(1-0.1*glmpot)",
       "/roll (1d100-5+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 40+((lu+ma/2)*crsail*glmpwr)_floor",
-      "/math 40+((lu+ma/2)*mrlail*glmpwr)_floor"
+      "/math 40+((lu+ma/2)*ailpwr*crsail*glmpwr)_floor",
+      "/math 40+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2840,8 +2840,8 @@
       "/cost 50*(1-0.1*glmpot)",
       "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 80+((lu+ma/2)*crsail*glmpwr)_floor",
-      "/math 80+((lu+ma/2)*mrlail*glmpwr)_floor"
+      "/math 80+((lu+ma/2)*ailpwr*crsail*glmpwr)_floor",
+      "/math 80+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2866,8 +2866,8 @@
       "/cost 75*(1-0.1*glmpot)",
       "/roll (1d100-5+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
-      "/math 80+((lu+ma/2)*crsail*glmpwr)_floor",
-      "/math 80+((lu+ma/2)*mrlail*glmpwr)_floor"
+      "/math 80+((lu+ma/2)*ailpwr*crsail*glmpwr)_floor",
+      "/math 80+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2892,8 +2892,8 @@
       "/cost 65*(1-0.1*glmpot)",
       "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
-      "/math 60+((lu+ma/2)*crsail*glmpwr)_floor",
-      "/math 60+((lu+ma/2)*mrlail*glmpwr)_floor"
+      "/math 60+((lu+ma/2)*ailpwr*crsail*glmpwr)_floor",
+      "/math 60+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -2921,7 +2921,7 @@
       "/roll (c*(glmpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/roll (c*(glmpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
-      "/math 30+((lu+ma/2)*mrlail*glmpwr)_floor"
+      "/math 30+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
     ],
     "aoe": [
       [1, 1, 1, 1, 1],
@@ -3386,7 +3386,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*ailpot)",
-      "/math 60+((lu+ma/2)*bndail*ailpwr)_floor"
+      "/math 60+((lu+ma/2)*stnail*ailpwr)_floor"
     ]
   },
   {
@@ -3399,7 +3399,7 @@
     ],
     "rolls": [
       "/cost 25*(1-0.1*ailpot)",
-      "/math 40+((lu+ma/2)*bndail*ailpwr)_floor"
+      "/math 40+((lu+ma/2)*stnail*ailpwr)_floor"
     ]
   },
   {
@@ -3963,23 +3963,40 @@
   {
     "name": "Charge",
     "skillType": 15,
-    "description": "Multiply the damage of your next phys attack by 2.25",
+    "description": "Increase Physical Power by 125% until used",
     "rollNames": [
-      "Cost"
+      "Cost",
+      "Effect"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*tacpot)"
+      "/cost 10*(1-0.1*tacpot)",
+      "/coeff {Charge} {+125% physpwr}"
     ]
   },
   {
     "name": "Concentrate",
     "skillType": 15,
-    "description": "Multiply the damage of your next magic attack by 2.25",
+    "description": "Increase Physical Power by 125% until used",
     "rollNames": [
-      "Cost"
+      "Cost",
+      "Effect"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*tacpot)"
+      "/cost 10*(1-0.1*tacpot)",
+            "/coeff {Concentrate} {+125% magpwr}"
+    ]
+  },
+  {
+    "name": "Potentiate",
+    "skillType": 15,
+    "description": "Increase Ailment Power by 125% until used",
+    "rollNames": [
+      "Cost",
+      "Effect"
+    ],
+    "rolls": [
+      "/cost 10*(1-0.1*tacpot)",
+      "/coeff {Potentiate} {+125% ailpwr}"
     ]
   },
   {
@@ -3987,10 +4004,12 @@
     "skillType": 15,
     "description": "Your next phys attack has 100% accuracy and crit rate",
     "rollNames": [
-      "Cost"
+      "Cost",
+      "Effect"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*tacpot)"
+      "/cost 25*(1-0.1*tacpot)",
+      "/coeff {Critical Aura} {Auto crit next physical attack}"
     ]
   },
   {
@@ -3998,10 +4017,12 @@
     "skillType": 15,
     "description": "Increase the effectiveness of your next healing skill by 1.25, and it can heal above max HP as bulwark",
     "rollNames": [
-      "Cost"
+      "Cost",
+      "Effect"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*tacpot)"
+      "/cost 20*(1-0.1*tacpot)",
+      "/coeff {Bowl of Hygieia} {+125% ailpwr}"
     ]
   },
   {
@@ -4009,10 +4030,12 @@
     "skillType": 15,
     "description": "Grants Tetrakarn to 1 ally (repel next phys damage start end of next turn)",
     "rollNames": [
-      "Cost"
+      "Cost",
+      "Effect"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*tacpot)"
+      "/cost 50*(1-0.1*tacpot)",
+      "/Coeff {Tetrakarn}{Repel next physical attack}"
     ]
   },
   {
@@ -4020,10 +4043,12 @@
     "skillType": 15,
     "description": "Grants Makarakarn to 1 ally (repel next (non-almighty) magic damage start end of next turn)",
     "rollNames": [
-      "Cost"
+      "Cost",
+      "Effect"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*tacpot)"
+      "/cost 50*(1-0.1*tacpot)",
+      "/Coeff {Tetrakarn}{Repel next magical attack}"
     ]
   },
   {
@@ -4031,10 +4056,12 @@
     "skillType": 15,
     "description": "Doubles the change of being targeted until the start of your next turn",
     "rollNames": [
-      "Cost"
+      "Cost",
+      "Effect"
     ],
     "rolls": [
-      "/cost 8*(1-0.1*tacpot)"
+      "/cost 8*(1-0.1*tacpot)",
+      "/Coeff {Taunt}{More likely to be targeted}"
     ]
   },
 

@@ -663,7 +663,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.skills = []; // Array of skills
                     
                     this.buffs = [0, 0, 0]; // Buffs for St, Ma, Vi, Ag, Lu
-                    this.weapon = new Skill('Bare Hands', 'An unarmed strike, inflicting weak strike damage to one foe', ['Aim', 'Damage', 'Crit Rate'], ['/roll (1d100-5+ag+lu/4)*(stkaim)*(0.2*S+1)_floor', '/roll (C*(stkpwr*(1+T*0.2)*(6+6*(st/20))))d6', '/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil']); // Array of weapons
+                    this.weapon = new Skill('Bare Hands', 'An unarmed strike, inflicting weak strike damage to one foe', ['Aim', 'Damage', 'Crit Rate', 'Damage (Crit)'], ['/roll (1d100-5+ag+lu/4)*(stkaim)*(0.2*S+1)_floor', '/roll (C*(stkpwr*(1+T*0.2)*(6+6*(st/20))))d6', '/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil', '/roll (C*(stkpwr*(1+T*0.2)*1.5*(6+6*(st/20))))d6']); // Array of weapons
                     this.armor = ['Clothes', 1, 2,]; // Array of armor
                     this.accessories = [['Watch', 'Tells the Time'], ['', ''], ['', '']]; // Array of accessories
                     this.growthRates = [2, 2, 2, 2, 2];
@@ -866,7 +866,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     case ("confusionailment"): case ("cfnail"): this.ailmentBooster[5] += valueBoost*0.01; break;
                                     case ("muteailment"): case ("mutail"): this.ailmentBooster[6] += valueBoost*0.01; break;
                                     case ("curseailment"): case ("crsail"): this.ailmentBooster[7] += valueBoost*0.01; break;
-                                    case ("bindailment"): case ("bndail"): this.ailmentBooster[8] += valueBoost*0.01; break;
+                                    case ("stunalment"): case ("stnail"): case ("binail"): this.ailmentBooster[8] += valueBoost*0.01; break;
                                     case ("charmailment"): case ("crmail"): this.ailmentBooster[9] += valueBoost*0.01; break;
                                     case ("fearailment"): case ("ferail"): this.ailmentBooster[10] += valueBoost*0.01; break;
                                     case ("sleepailment"): case ("slpail"): this.ailmentBooster[11] += valueBoost*0.01; break;
@@ -1540,7 +1540,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                         // Apply defense reduction from character stats and armor
                         if (useResistance){
-                            rawDamage = Math.floor( rawDamage * ((200 / (200 + (((activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]) + (activeDemon.value.armor[1] + activeDemon.value.armorBooster[1])) * (1 + (((activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]) + (activeDemon.value.armor[1] + activeDemon.value.armorBooster[0])) / 30)))))) );
+                            rawDamage = Math.floor( rawDamage * ((200 / (200 + (((activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]) + (activeDemon.value.armor[1] + activeDemon.value.armorBooster[0])) * (1 + (((activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]) + (activeDemon.value.armor[1] + activeDemon.value.armorBooster[0])) / 30)))))) );
                         }
                         
 
@@ -1569,16 +1569,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     } else if (messageInput.value.startsWith('/washskills')) {
                         
+                        let washall = false;
+                        if (messageInput.value.includes("all")){ washall = true }
+
                             fetch("Resources/skills.json").then(response => response.json()).then(data => {
                                 activeDemon.value.skills.forEach(skill => {
                                     let skillData = data.find(dataSkill => dataSkill.name.toLowerCase() === skill.name.toLowerCase());
-                                    // if (skill.name === skillData.name){
-                                        Object.assign(skill, skillData);  // Copy saved data into the skill instance
-                                    // }
-                                    // activeDemon.value.skills[this.skillSlot - 1] = skill; // Assign the skill to the active demon's skill slot
-                                    activeDemon.value.getVariables();
-                                    activeDemon.value.recalculateVitals();
+                                    Object.assign(skill, skillData);
                                 });
+
+                                if (washall){
+                                    demonList.value.forEach(demon => {
+                                        demon.skills.forEach(skill => {
+                                            let skillData = data.find(dataSkill => dataSkill.name.toLowerCase() === skill.name.toLowerCase());
+                                            Object.assign(skill, skillData);
+                                            console.error('all');
+                                        });
+                                        demon.getVariables();
+                                        demon.recalculateVitals();
+                                    })
+                                }
                                 
                                 activeDemon.value.getVariables();
                                 activeDemon.value.recalculateVitals();
@@ -1625,6 +1635,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         activeDemon.value.bulwark = 0;
                         log.value.push('Demon washed and stats recalculated');
                         
+                        
+                    } else if (messageInput.value.startsWith('/fairy')) {
+                        // Clean the demon's HP, coefficient, ailments, etc
+                        activeDemon.value.getVariables();
+                        activeDemon.value.recalculateVitals();
+                        activeDemon.value.hp = activeDemon.value.maxHp + activeDemon.value.hpBooster;
+                        activeDemon.value.mp += Math.ceil((activeDemon.value.maxMp + activeDemon.value.mpBooster)/10);
+                        activeDemon.value.mp = Math.min(activeDemon.value.mp, activeDemon.value.maxMp);
+                        activeDemon.value.buffs = activeDemon.value.buffs.map(b => Math.max(b, 0)); // Ckear debuffs 
+                        activeDemon.value.ailments = []; // Reset ailments
+                        log.value.push('Demon washed and stats recalculated');
                         
                     } else if (messageInput.value.startsWith('/powerlevel')) {
                         // Clean the demon's HP, coefficient, ailments, etc
