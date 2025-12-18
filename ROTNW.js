@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             case ("iceaim"): case ("iceaim"): parsedOperands.push(activeDemon.value.aimBooster[4] * elmtAim); return;
                             case ("elecaim"): case ("elcaim"): parsedOperands.push(activeDemon.value.aimBooster[5] * elmtAim); return;
                             case ("forceaim"): case ("frcaim"): parsedOperands.push(activeDemon.value.aimBooster[6] * elmtAim); return;
-                            case ("toxicaim"): case ("toxim"): parsedOperands.push(activeDemon.value.aimBooster[7] * elmtAim); return;
+                            case ("toxicaim"): case ("toxaim"): parsedOperands.push(activeDemon.value.aimBooster[7] * elmtAim); return;
                             case ("psionicaim"): case ("psiaim"): case ("psychicaim"): case ("psyaim"): parsedOperands.push(activeDemon.value.aimBooster[8] * elmtAim); return;
                             case ("lightaim"): case ("lgtaim"): parsedOperands.push(activeDemon.value.aimBooster[9] * mystAim); return;
                             case ("gloomaim"): case ("glmaim"): parsedOperands.push(activeDemon.value.aimBooster[10] * mystAim); return;
