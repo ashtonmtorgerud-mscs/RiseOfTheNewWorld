@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             case ("confusionailment"): case ("cfnail"): parsedOperands.push(activeDemon.value.ailmentBooster[5]); return;
                             case ("muteailment"): case ("mutail"): parsedOperands.push(activeDemon.value.ailmentBooster[6]); return;
                             case ("curseailment"): case ("crsail"): parsedOperands.push(activeDemon.value.ailmentBooster[7]); return;
-                            case ("bindailment"): case ("bndail"): parsedOperands.push(activeDemon.value.ailmentBooster[8]); return;
+                            case ("stunalment"): case ("stnail"): case ("binail"): parsedOperands.push(activeDemon.value.ailmentBooster[8]); return;
                             case ("charmailment"): case ("crmail"): parsedOperands.push(activeDemon.value.ailmentBooster[9]); return;
                             case ("fearailment"): case ("ferail"): parsedOperands.push(activeDemon.value.ailmentBooster[10]); return;
                             case ("sleepailment"): case ("slpail"): parsedOperands.push(activeDemon.value.ailmentBooster[11]); return;
@@ -837,7 +837,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     case ("iceaim"):     case ("iceaim"): this.aimBooster[4] += valueBoost * 0.01; break;
                                     case ("elecaim"):    case ("elcaim"): this.aimBooster[5] += valueBoost * 0.01; break;
                                     case ("forceaim"):   case ("frcaim"): this.aimBooster[6] += valueBoost * 0.01; break;
-                                    case ("toxicaim"):   case ("toxim"):  this.aimBooster[7] += valueBoost * 0.01; break;
+                                    case ("toxicaim"):   case ("toxaim"):  this.aimBooster[7] += valueBoost * 0.01; break;
                                     case ("psychicaim"): case ("psyaim"): this.aimBooster[8] += valueBoost * 0.01; break;
                                     case ("lightaim"):   case ("lgtaim"): this.aimBooster[9] += valueBoost * 0.01; break;
                                     case ("gloomaim"):   case ("glmaim"): this.aimBooster[10] += valueBoost * 0.01; break;
@@ -1645,7 +1645,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         activeDemon.value.mp = Math.min(activeDemon.value.mp, activeDemon.value.maxMp);
                         activeDemon.value.buffs = activeDemon.value.buffs.map(b => Math.max(b, 0)); // Ckear debuffs 
                         activeDemon.value.ailments = []; // Reset ailments
-                        log.value.push('Demon washed and stats recalculated');
+                        log.value.push('Fairy!!!!!!');
                         
                     } else if (messageInput.value.startsWith('/powerlevel')) {
                         // Clean the demon's HP, coefficient, ailments, etc

@@ -258,7 +258,8 @@
       "/cost 20*(1-0.1*slhpot)",
       "/roll (1d100-25+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(18+18*(st/20))))d6",
-      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+      "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
+      "/roll (c*(slhpwr*(1+T*0.2)*2*(18+18*(st/20))))d6"
     ]
   },
 
