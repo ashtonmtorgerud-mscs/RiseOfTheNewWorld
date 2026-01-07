@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             case ("rageailment"): case ("rgeail"): parsedOperands.push(activeDemon.value.ailmentBooster[12]); return;
                             case ("exhaustionailment"): case ("exhail"): parsedOperands.push(activeDemon.value.ailmentBooster[13]); return;
                             case ("enervationailment"): case ("evtail"): parsedOperands.push(activeDemon.value.ailmentBooster[14]); return;
-                            case ("bleedingailment"): case ("bldail"): parsedOperands.push(activeDemon.value.ailmentBooster[15]); return;
+                            case ("bleeingailment"): case ("bleail"): parsedOperands.push(activeDemon.value.ailmentBooster[15]); return;
                             case ("mortalailment"): case ("mrlail"): case ("ftlail"): parsedOperands.push(activeDemon.value.ailmentBooster[16]); return;
 
                             // Armor Defense and Evasion
@@ -749,6 +749,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     this.affinitiesGenusEvasion = [1.0, 1.0, 1.0, 1.0, 1.0];
                     this.damageGenusBooster = [1.0, 1.0, 1.0, 1.0, 1.0];
                     this.aimGenusBooster = [1.0, 1.0, 1.0, 1.0, 1.0];
+                    this.ailmentBooster = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
                     this.armorBooster = [0,0];
                     this.critBooster = 0;
                     this.checkBoxes = [];
