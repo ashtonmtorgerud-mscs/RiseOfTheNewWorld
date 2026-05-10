@@ -1,6 +1,4 @@
-// export let msgRD = '';
 export let rolledDice = '';
-// export let rounder = '';
 
 //because spamming random() would be dumb
 export function RollDice(dice, sides) {

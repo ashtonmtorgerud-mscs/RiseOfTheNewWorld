@@ -8,9 +8,6 @@ import { Accessory, Armor, Weapon } from "../Models/Equipment.js";
 export const prettify = ref({
   activeTab: 'profile',
 
-
-  
-
   modal: false,
   modalTab: '',
   modalString: '',

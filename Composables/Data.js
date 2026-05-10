@@ -2,6 +2,7 @@ const { createApp, ref, onMounted } = Vue;
 import { Demon, Skill } from "../Models/Demon.js";
 import { Equipment, Weapon, Armor, Accessory } from "../Models/Equipment.js"
 
+
 export let player = new Demon("Adam");
 player.getVariables();
 export let demonList = ref([player]); // List of demons
