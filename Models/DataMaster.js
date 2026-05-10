@@ -281,17 +281,12 @@ export class DataMaster {
             // console.log(savedData);
             if (savedData) {
                 this.fileData = JSON.parse(savedData);
-                // console.log("savedata: ", this.fileData);
                 if (this.fileData.demons.length < 1) { return; }
-                // console.log("savedata 2: ", this.fileData);
-                // Update the game variables with loaded data
-                // console.log(this.fileData.demons);
                 demonList.value = [];
                 let demonsArray = this.fileData.demons;
                 let equipsArray = this.fileData.equipment;
-                // console.log(demonsArray);
-
-                // Object.assign(army.value, this.fileData.army);
+                equipmentList.value = this.fileData.equipment || [];
+                
                 demonsArray.forEach(demonData => {
                     // console.log(demonData);
 
@@ -299,21 +294,15 @@ export class DataMaster {
                     Object.assign(demon, demonData);  // Copy saved data into the demon instance
 
 
-                    // Fix the weapon (assuming it's a Skill too)
-                    if (demon.weapon) {
-                        // demon.weapon = new Skill(
-                        //     demon.weapon.name,
-                        //     demon.weapon.description,
-                        //     demon.weapon.rollNames || [],
-                        //     demon.weapon.rolls || []
-                        // );
+                    // Fix the weapon
+                    // if (demon.weapon) {
 
-                        demon.equippedWeapon = new Weapon(demon.weapon.name, demon.weapon.description, 0, demon.weapon.rollNames, demon.weapon.rolls, "Weapon");
-                    }
+                    //     demon.equippedWeapon = new Weapon(demon.weapon.name, demon.weapon.description, 0, demon.weapon.rollNames, demon.weapon.rolls, "Weapon");
+                    // }
 
-                    if (demon.armor){
-                        demon.equippedArmor = new Armor(demon.armor[0], "", 0, demon.armor[1], demon.armor[2], []);
-                    }
+                    // if (demon.armor){
+                    //     demon.equippedArmor = new Armor(demon.armor[0], "", 0, demon.armor[1], demon.armor[2], []);
+                    // }
 
                     // Reconstruct each skill in the array
                     if (Array.isArray(demon.skills)) {
@@ -369,7 +358,7 @@ export class DataMaster {
                 // console.log
 
                 prettify.value.universalNotes = this.fileData.universalNotes;
-                equipmentList.value = this.fileData.equipment || [];
+                
                 colorScheme.value = this.fileData.colorScheme || ['indigo', 'blue', 'sky', 'cyan', 'teal', 'emerald', 'green', 'purple', 'fuchsia' ];
                 // console.log(this.fileData);
 
