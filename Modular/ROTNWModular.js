@@ -49,11 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // console.log(prettify.activePage);
 
-      // const savedState = localStorage.getItem('AUTOSAVE');
-      // if (savedState) {
-      //   dataMaster.saveFile = "AUTOSAVE";
-      //   dataMaster.loadData();
-      // }
+      const savedState = localStorage.getItem('AUTOSAVE');
+      if (savedState) {
+        dataMaster.saveFile = "AUTOSAVE";
+        dataMaster.loadData();
+      }
 
       // dataMaster.loadData("AUTOSAVE");
 
