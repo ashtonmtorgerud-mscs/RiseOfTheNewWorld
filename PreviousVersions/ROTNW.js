@@ -1,11 +1,11 @@
 // import * as Vue from 'vue'
 // const { ref, onMounted, defineAsyncComponent } = Vue
 const { createApp, ref, onMounted, defineAsyncComponent } = Vue;
-import { Demon, Skill } from '../models/Demon.js'
-import { DataMaster } from '../models/DataMaster.js';
-import { RollDice, dMDAS } from '../models/Calculators.js';
-import { Equipment, Weapon, Armor, Accessory } from '../models/Equipment.js';
-import { demonList, activeDemon, modal, log, colorScheme, equipmentList } from '../composables/Data.js';
+import { Demon, Skill } from '../Models/Demon.js'
+import { DataMaster } from '../Models/DataMaster.js';
+import { RollDice, dMDAS } from '../Models/Calculators.js';
+import { Equipment, Weapon, Armor, Accessory } from '../Models/Equipment.js';
+import { demonList, activeDemon, modal, log, colorScheme, equipmentList } from '../Composables/Data.js';
 
 
 document.addEventListener('DOMContentLoaded', () => {
