@@ -866,7 +866,7 @@ export function sendMessage(messageInput) {
 
             let skillName = importData;
 
-            fetch("../Resources/skills.json").then(response => response.json()).then(data => {
+            fetch("/Resources/skills.json").then(response => response.json()).then(data => {
                 let skillsCount = activeDemon.value.skills.filter(skill => skill.name !== "").length;
                 let gotSkill = false;
                 let skillData = data.find(skill => skill.name.toLowerCase().replace(/[\s']/g, '') === skillName.toLowerCase());
