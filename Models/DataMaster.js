@@ -328,7 +328,7 @@ export class DataMaster {
 
                             if (demon.armor){
                                 let tempArmor = new Armor(demon.armor[0], "", 0, demon.armor[1], demon.armor[2], []);
-                                console.log(demon.armor[1], demon.armor[2]);
+                                // console.log(demon.armor[1], demon.armor[2]);
                                 tempArmor.equipper = demon.name;
                                 tempArmor.equipped = true;
                                 demon.equippedArmor = tempArmor;
@@ -338,7 +338,7 @@ export class DataMaster {
                             if (demon.accessories){
                                 demon.accessories.forEach((acc, index) => {
                                     if(Array.isArray(acc) && acc[0] != ''){
-                                        console.log("#" +index + " acc[0]"+acc[0])
+                                        // console.log("#" +index + " acc[0]"+acc[0])
                                         let portAcc = new Accessory(acc[0], '', 0, [acc[1]]);
                                         portAcc.equipper = demon.name;
                                         portAcc.equipped = true;
