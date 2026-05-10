@@ -23,6 +23,7 @@
         <div class="text-white h-full container mx-auto text-center ring-2 ring-indigo-200 rounded-2xl bg-gradient-to-l from-cyan-800 to-blue-950 p-4">
 
             
+            
             <div class="h-[95%]" v-if="page === -1">
                 <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400">Index</h1>
 
@@ -374,7 +375,9 @@
 
             <div class="max-h-[5%] w-full flex flex-row">
                 <div class="h-full w-1/2 flex gap-2">
-                    <input type="button" value="Intex" class="rounded-2xl bg-emerald-500 hover:bg-emerald-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" v-if="page > -1" @click="page=-1">
+                    <a href="Home.html"><input type="button" value="Home Menu" class="rounded-2xl bg-sky-500 hover:bg-sky-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" @click="page=-1"></a></a>
+                    <input type="button" value="Index" class="rounded-2xl bg-emerald-500 hover:bg-emerald-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" v-if="page > -1" @click="page=-1">
+                    
                 </div>
                 <div class="h-full w-1/2 flex gap-2 justify-end">
                     <input type="button" value="Previous" class="rounded-2xl bg-emerald-500 hover:bg-emerald-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" v-if="page > 0" @click="page--">

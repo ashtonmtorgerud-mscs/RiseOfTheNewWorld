@@ -20,11 +20,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 5*(1-0.1*stkpot)*physcost",
-      "/roll (1d100-5+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 5*(1-0.1*stkpot)",
+      "/roll (1d100-5+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(8+8*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*cm*(8+8*(st/20))))d6"
+      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(8+8*(st/20))))d6"
     ]
   },
   {
@@ -39,11 +39,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*stkpot)*physcost",
-      "/roll (1d100+12+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 10*(1-0.1*stkpot)",
+      "/roll (1d100+12+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(12+12*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*cm*(12+12*(st/20))))d6"
+      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(12+12*(st/20))))d6"
     ]
   },
   {
@@ -58,11 +58,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*slhpot)*physcost",
-      "/roll (1d100-2+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
+      "/cost 10*(1-0.1*slhpot)",
+      "/roll (1d100-2+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(14+14*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*cm*(14+14*(st/20))))d6"
+      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(14+14*(st/20))))d6"
     ]
   },
   {
@@ -77,11 +77,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*prcpot)*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
+      "/cost 10*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(12+12*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(12+12*(st/20))))d6"
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(12+12*(st/20))))d6"
     ]
   },
 
@@ -98,11 +98,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost mhp*0.08*(1-0.1*prcpot)*physcost HP",
-      "/roll (1d100-10+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
+      "/cost mhp*0.08*(1-0.1*prcpot) HP",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 76-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(16+16*(st/20))))d6"
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(16+16*(st/20))))d6"
     ]
   },
   {
@@ -117,8 +117,8 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 5*(1-0.1*prcpot)*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
+      "/cost 5*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(12+12*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/roll (c*(prcpwr*(1+T*0.2)*2*(12+12*(st/20))))d6"
@@ -138,13 +138,13 @@
       "HornsDamage (Crit)"
     ],
     "rolls": [
-      "/cost 7*(1-0.1*stkpot)*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(stkaim)*(prcaim)*(0.16*S+1)_floor",
+      "/cost 7*(1-0.1*stkpot)",
+      "/roll (1d100-10+ag+lu/4)*(stkaim)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(12+12*(st/20))))d6",
       "/roll (c*(prcpwr*(1+T*0.2)*(4+4*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*cm*(12+12*(st/20))))d6",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(4+4*(st/20))))d6"
+      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(12+12*(st/20))))d6",
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(4+4*(st/20))))d6"
     ]
   },
   {
@@ -159,11 +159,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 12*(1-0.1*prcpot)*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
+      "/cost 12*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(7+7*(st/20))))d6",
       "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(7+7*(st/20))))d6"
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(7+7*(st/20))))d6"
     ]
   },
   {
@@ -178,11 +178,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 16*(1-0.1*stkpot)*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 16*(1-0.1*stkpot)",
+      "/roll (1d100-10+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(18+18*(st/20))))d6",
       "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*cm*(18+18*(st/20))))d6"
+      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(18+18*(st/20))))d6"
     ]
   },
   {
@@ -198,12 +198,12 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*prcpot)*physcost",
+      "/cost 15*(1-0.1*prcpot)",
       "/roll 1d4",
-      "/roll (1d100-2+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
+      "/roll (1d100-2+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(7+7*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(7+7*(st/20))))d6"
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(7+7*(st/20))))d6"
     ]
   },
   
@@ -217,9 +217,9 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 12*(1-0.1*slhpot)*physcost",
-      "/roll (1d100-50+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
-      "/roll (c*(slhpwr*(1+T*0.2)*cm*(17+17*(st/20))))d6"
+      "/cost 12*(1-0.1*slhpot)",
+      "/roll (1d100-50+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(17+17*(st/20))))d6"
     ]
   },
 
@@ -235,11 +235,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 12*(1-0.1*stkpot)*physcost",
-      "/roll (1d100-25+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 12*(1-0.1*stkpot)",
+      "/roll (1d100-25+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(18+18*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*cm*(18+18*(st/20))))d6"
+      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(18+18*(st/20))))d6"
     ]
   },
 
@@ -255,8 +255,8 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*slhpot)*physcost",
-      "/roll (1d100-25+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*slhpot)",
+      "/roll (1d100-25+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(18+18*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/roll (c*(slhpwr*(1+T*0.2)*2*(18+18*(st/20))))d6"
@@ -275,8 +275,8 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*stkpot)*physcost",
-      "/roll (1d100-25+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*stkpot)",
+      "/roll (1d100-25+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*((hp/mhp)*(stkpwr*(1+T*0.2)*(24+24*(st/20)))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
@@ -294,11 +294,10 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*slhpot)*physcost",
-      "/roll (1d100-25+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*slhpot)",
+      "/roll (1d100-25+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*((1.1-hp/mhp)*(slhpwr*(1+T*0.2)*(24+24*(st/20)))))d6",
-      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*((1.1-hp/mhp)*(slhpwr*(1+T*0.2)*cm*(24+24*(st/20)))))d6"
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
     ]
   },
 
@@ -314,11 +313,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*stkpot)*physcost",
-      "/roll (1d100-2+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 15*(1-0.1*stkpot)",
+      "/roll (1d100-2+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(13+13*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*cm*(13+13*(st/20))))d6"
+      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(13+13*(st/20))))d6"
     ]
   },
 
@@ -336,11 +335,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*prcpot)*physcost*physcost*physcost",
-      "/roll (1d100-2+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
+      "/cost 15*(1-0.1*prcpot)",
+      "/roll (1d100-2+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(13+13*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(13+13*(st/20))))d6"
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(13+13*(st/20))))d6"
     ]
   },
   {
@@ -355,11 +354,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*slhpot)*physcost*physcost",
-      "/roll (1d100-2+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
+      "/cost 15*(1-0.1*slhpot)",
+      "/roll (1d100-2+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(13+13*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*cm*(13+13*(st/20))))d6"
+      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(13+13*(st/20))))d6"
     ]
   },
   {
@@ -374,8 +373,8 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*stkpot)*physcost*physcost",
-      "/roll (1d100-15+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 15*(1-0.1*stkpot)",
+      "/roll (1d100-15+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(10+10*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/roll (c*(slhpwr*(1+T*0.2)*2*(10+10*(st/20))))d6"
@@ -395,11 +394,11 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*prcpot)*physcost*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(16+16*(st/20))))d6",
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(16+16*(st/20))))d6",
       "/math 60+((lu+ma/2)*psnail*toxpwr*ailpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
@@ -417,11 +416,11 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*prcpot)*physcost*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(16+16*(st/20))))d6",
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(16+16*(st/20))))d6",
       "/math 60+((lu+ma/2)*slpail*ailpwr)_floor"
     ]
   },
@@ -438,11 +437,11 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*prcpot)*physcost*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(18+18*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(18+18*(st/20))))d6",
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(18+18*(st/20))))d6",
       "/math 60+((lu+ma/2)*mutail*ailpwr)_floor"
     ]
   },
@@ -459,11 +458,11 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*stkpot)*physcost*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*stkpot)",
+      "/roll (1d100-10+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(10+10*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*cm*(10+10*(st/20))))d6",
+      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(10+10*(st/20))))d6",
       "/math 60+((lu+ma/2)*ragail*ailpwr)_floor"
     ]
   },
@@ -480,11 +479,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 55*(1-0.1*slhpot)*physcost*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
+      "/cost 55*(1-0.1*slhpot)",
+      "/roll (1d100-10+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(24+24*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*cm*(24+24*(st/20))))d6"
+      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(24+24*(st/20))))d6"
     ]
   },
 
@@ -498,9 +497,9 @@
       "Damage"
     ],
     "rolls": [
-      "/cost 55*(1-0.1*slhpot)*physcost*physcost",
-      "/roll (1d100-50+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
-      "/roll (c*(slhpwr*(1+T*0.2)*cm*(24+24*(st/20))))d6"
+      "/cost 55*(1-0.1*slhpot)",
+      "/roll (1d100-50+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
+      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(24+24*(st/20))))d6"
     ]
   },
 
@@ -520,11 +519,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 55*(1-0.1*prcpot)*physcost*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
+      "/cost 55*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(30+30*(st/20))))d6",
       "/math 71-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(30+30*(st/20))))d6"
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(30+30*(st/20))))d6"
     ]
   },
 
@@ -540,8 +539,8 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 55*(1-0.1*prcpot)*physcost*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
+      "/cost 55*(1-0.1*prcpot)",
+      "/roll (1d100-10+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(42+42*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/roll (c*(prcpwr*(1+T*0.2)*2*(42+42*(st/20))))d6"
@@ -559,11 +558,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 55*(1-0.1*slhpot)*physcost*physcost",
-      "/roll (1d100-2+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
+      "/cost 55*(1-0.1*slhpot)",
+      "/roll (1d100-2+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(44+44*(st/20))))d6",
       "/math 71-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*cm*(44+44*(st/20))))d6"
+      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(44+44*(st/20))))d6"
     ]
   },
   {
@@ -578,8 +577,8 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 60*(1-0.1*stkpot)*physcost*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 60*(1-0.1*stkpot)",
+      "/roll (1d100-10+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(48+48*(st/20))))d6",
       "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
       "/roll (c*(stkpwr*(1+T*0.2)*.5*(48+48*(st/20))))d6"
@@ -600,7 +599,7 @@
     ],
     "rolls": [
       "/cost 100*(1-0.1*(stkpot*slhpot*prcpot/3))",
-      "/roll (1d100+25+ag+lu/4+S*5)*((stkaim+slhaim+prcaim)/3)*(0.16*S+1)_floor",
+      "/roll (1d100+25+ag+lu/4)*((stkaim+slhaim+prcaim)/3)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/roll (c*(slhpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/roll (c*(prcpwr*(1+T*0.2)*(20+20*(st/20))))d6",
@@ -623,11 +622,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*stkpot)*physcost*physcost",
-      "/roll (1d100-25+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 25*(1-0.1*stkpot)",
+      "/roll (1d100-25+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(8+8*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*cm*(8+8*(st/20))))d6"
+      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(8+8*(st/20))))d6"
     ]
   },
 
@@ -643,11 +642,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*slhpot)*physcost*physcost",
-      "/roll (1d100-15+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
+      "/cost 30*(1-0.1*slhpot)",
+      "/roll (1d100-15+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(9+9*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*cm*(9+9*(st/20))))d6"
+      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(9+9*(st/20))))d6"
     ]
   },
 
@@ -663,11 +662,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*prcpot)*physcost*physcost",
-      "/roll (1d100-20+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
+      "/cost 35*(1-0.1*prcpot)",
+      "/roll (1d100-20+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(10+10*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(10+10*(st/20))))d6"
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(10+10*(st/20))))d6"
     ]
   },
 
@@ -685,11 +684,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*slhpot)*physcost*physcost",
-      "/roll (1d100-15+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*slhpot)",
+      "/roll (1d100-15+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(13+13*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*cm*(13+13*(st/20))))d6"
+      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(13+13*(st/20))))d6"
     ]
   },
 
@@ -705,11 +704,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*prcpot)*physcost*physcost",
-      "/roll (1d100-20+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
+      "/cost 35*(1-0.1*prcpot)",
+      "/roll (1d100-20+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(16+16*(st/20))))d6"
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(16+16*(st/20))))d6"
     ]
   },
 
@@ -725,11 +724,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*stkpot)*physcost*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 35*(1-0.1*stkpot)",
+      "/roll (1d100-10+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(17+17*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*cm*(17+17*(st/20))))d6"
+      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(17+17*(st/20))))d6"
     ]
   },
 
@@ -745,11 +744,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*slhpot)*physcost*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
+      "/cost 35*(1-0.1*slhpot)",
+      "/roll (1d100-10+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(17+17*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*cm*(17+17*(st/20))))d6"
+      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(17+17*(st/20))))d6"
     ]
   },
 
@@ -767,11 +766,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*stkpot)*physcost*physcost",
-      "/roll (1d100-5+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 25*(1-0.1*stkpot)",
+      "/roll (1d100-5+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*cm*(16+16*(st/20))))d6"
+      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(16+16*(st/20))))d6"
     ]
   },
   {
@@ -786,11 +785,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*stkpot)*physcost*physcost",
-      "/roll (1d100-50+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 35*(1-0.1*stkpot)",
+      "/roll (1d100-50+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(22+22*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*cm*(22+22*(st/20))))d6"
+      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(22+22*(st/20))))d6"
     ]
   },
   {
@@ -805,11 +804,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*slhpot)*physcost*physcost",
-      "/roll (1d100-10+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
+      "/cost 30*(1-0.1*slhpot)",
+      "/roll (1d100-10+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(12+12*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*cm*(12+12*(st/20))))d6"
+      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(12+12*(st/20))))d6"
     ]
   },
   {
@@ -824,11 +823,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 45*(1-0.1*slhpot)*physcost*physcost",
-      "/roll (1d100-5+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
+      "/cost 45*(1-0.1*slhpot)",
+      "/roll (1d100-5+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(slhpwr*(1+T*0.2)*cm*(20+20*(st/20))))d6"
+      "/roll (c*(slhpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6"
     ]
   },
   {
@@ -843,11 +842,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 45*(1-0.1*stkpot)*physcost*physcost",
-      "/roll (1d100-50+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 45*(1-0.1*stkpot)",
+      "/roll (1d100-50+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(25+25*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*cm*(25+25*(st/20))))d6"
+      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(25+25*(st/20))))d6"
     ]
   },
   {
@@ -860,9 +859,9 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 60*(1-0.1*prcpot)*physcost*physcost",
-      "/roll (1d100-2+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(8+8*(st/20))))d6"
+      "/cost 60*(1-0.1*prcpot)",
+      "/roll (1d100-2+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(8+8*(st/20))))d6"
     ]
   },
   {
@@ -877,11 +876,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 70*(1-0.1*stkpot)*physcost*physcost",
-      "/roll (1d100-5+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
+      "/cost 70*(1-0.1*stkpot)",
+      "/roll (1d100-5+ag+lu/4)*(stkaim)*(0.2*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(32+32*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(stkpwr*(1+T*0.2)*cm*(32+32*(st/20))))d6"
+      "/roll (c*(stkpwr*(1+T*0.2)*1.5*(32+32*(st/20))))d6"
     ]
   },
   {
@@ -896,11 +895,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 70*(1-0.1*prcpot)*physcost*physcost",
-      "/roll (1d100-5+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
+      "/cost 70*(1-0.1*prcpot)",
+      "/roll (1d100-5+ag+lu/4)*(prcaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(32+32*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(32+32*(st/20))))d6"
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(32+32*(st/20))))d6"
     ]
   },
   {
@@ -915,11 +914,11 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 85*(1-0.1*prcpot)*physcost*physcost",
-      "/roll (1d100-20+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
+      "/cost 85*(1-0.1*prcpot)",
+      "/roll (1d100-20+ag+lu/4)*(slhaim)*(0.2*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(40+40*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(prcpwr*(1+T*0.2)*cm*(40+40*(st/20))))d6"
+      "/roll (c*(prcpwr*(1+T*0.2)*1.5*(40+40*(st/20))))d6"
     ]
   },
 
@@ -938,8 +937,8 @@
       "Burn"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*firpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(firaim)*(0.16*S+1)_floor",
+      "/cost 10*(1-0.1*firpot)",
+      "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
@@ -957,8 +956,8 @@
       "Burn"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*firpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(firaim)*(0.16*S+1)_floor_floor",
+      "/cost 15*(1-0.1*firpot)",
+      "/roll (1d100-5+ma+lu/4)*(firaim)*(0.2*S+1)_floor_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
       "/math 20+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
@@ -983,8 +982,8 @@
       "Burn"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*firpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(firaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*firpot)",
+      "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
@@ -1002,8 +1001,8 @@
       "Burn"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*firpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(firaim)*(0.16*S+1)_floor",
+      "/cost 30*(1-0.1*firpot)",
+      "/roll (1d100-5+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
@@ -1028,8 +1027,8 @@
       "Burn"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*firpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(firaim)*(0.16*S+1)_floor",
+      "/cost 35*(1-0.1*firpot)",
+      "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 50+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
@@ -1047,8 +1046,8 @@
       "Burn"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*firpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(firaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*firpot)",
+      "/roll (1d100-5+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
@@ -1073,8 +1072,8 @@
       "Burn"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*firpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(firaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*firpot)",
+      "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
@@ -1099,8 +1098,8 @@
       "Burn"
     ],
     "rolls": [
-      "/cost 75*(1-0.1*firpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(firaim)*(0.16*S+1)_floor",
+      "/cost 75*(1-0.1*firpot)",
+      "/roll (1d100-5+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 50+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
@@ -1125,8 +1124,8 @@
       "Burn"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*firpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(firaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*firpot)",
+      "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
@@ -1151,8 +1150,8 @@
       "Burn"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*firpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(firaim)*(0.16*S+1)_floor",
+      "/cost 25*(1-0.1*firpot)",
+      "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
@@ -1170,8 +1169,8 @@
       "Burn"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*firpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(firaim)*(0.16*S+1)_floor",
+      "/cost 25*(1-0.1*firpot)",
+      "/roll (1d100-2+ma+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
@@ -1191,11 +1190,11 @@
       "Burn"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*firpot)*physcost",
-      "/roll (1d100-2+ag+lu/4+S*5)*(firaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*firpot)",
+      "/roll (1d100-2+ag+lu/4)*(firaim)*(0.2*S+1)_floor",
       "/roll (c*(firpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(firpwr*(1+T*0.2)*cm*(20+20*(st/20))))d6",
+      "/roll (c*(firpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 20+((lu+st/2)*firpwr)_floor",
       "/roll (c*(firpwr*ailpwr*(4+4*(lu/10))))d6"
     ],
@@ -1221,8 +1220,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*icepot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(iceaim)*(0.16*S+1)_floor",
+      "/cost 10*(1-0.1*icepot)",
+      "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(12+12*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ]
@@ -1238,8 +1237,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*icepot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(iceaim)*(0.16*S+1)_floor",
+      "/cost 15*(1-0.1*icepot)",
+      "/roll (1d100-5+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(12+12*(ma/20))))d6",
       "/math 20+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ],
@@ -1262,8 +1261,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*icepot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(iceaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*icepot)",
+      "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ]
@@ -1279,8 +1278,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*icepot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(iceaim)*(0.16*S+1)_floor",
+      "/cost 30*(1-0.1*icepot)",
+      "/roll (1d100-5+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ],
@@ -1303,8 +1302,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*icepot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(iceaim)*(0.16*S+1)_floor",
+      "/cost 35*(1-0.1*icepot)",
+      "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 50+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ]
@@ -1320,8 +1319,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*icepot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(iceaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*icepot)",
+      "/roll (1d100-5+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ],
@@ -1344,8 +1343,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*icepot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(iceaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*icepot)",
+      "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ],
@@ -1368,8 +1367,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 75*(1-0.1*icepot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(iceaim)*(0.16*S+1)_floor",
+      "/cost 75*(1-0.1*icepot)",
+      "/roll (1d100-5+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 50+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ],
@@ -1392,8 +1391,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*icepot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(iceaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*icepot)",
+      "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ],
@@ -1416,8 +1415,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*icepot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(iceaim)*(0.16*S+1)_floor",
+      "/cost 25*(1-0.1*icepot)",
+      "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(10+10*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ]
@@ -1433,8 +1432,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*icepot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(iceaim)*(0.16*S+1)_floor",
+      "/cost 25*(1-0.1*icepot)",
+      "/roll (1d100-2+ma+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(16+16*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ]
@@ -1452,11 +1451,11 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*icepot)*physcost",
-      "/roll (1d100-2+ag+lu/4+S*5)*(iceaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*icepot)",
+      "/roll (1d100-2+ag+lu/4)*(iceaim)*(0.2*S+1)_floor",
       "/roll (c*(icepwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(icepwr*(1+T*0.2)*cm*(20+20*(st/20))))d6",
+      "/roll (c*(icepwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 20+((lu+st/2)*frzail*icepwr)_floor"
     ],
     "aoe": [
@@ -1482,8 +1481,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*elcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(elcaim)*(0.16*S+1)_floor",
+      "/cost 10*(1-0.1*elcpot)",
+      "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ]
@@ -1499,8 +1498,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*elcpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(elcaim)*(0.16*S+1)_floor",
+      "/cost 15*(1-0.1*elcpot)",
+      "/roll (1d100-5+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
       "/math 20+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ],
@@ -1523,8 +1522,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*elcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(elcaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*elcpot)",
+      "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ]
@@ -1540,8 +1539,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*elcpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(elcaim)*(0.16*S+1)_floor",
+      "/cost 30*(1-0.1*elcpot)",
+      "/roll (1d100-5+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ],
@@ -1564,8 +1563,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*elcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(elcaim)*(0.16*S+1)_floor",
+      "/cost 35*(1-0.1*elcpot)",
+      "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 50+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ]
@@ -1581,8 +1580,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*elcpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(elcaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*elcpot)",
+      "/roll (1d100-5+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ],
@@ -1605,8 +1604,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*elcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(elcaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*elcpot)",
+      "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ],
@@ -1629,8 +1628,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 75*(1-0.1*elcpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(elcaim)*(0.16*S+1)_floor",
+      "/cost 75*(1-0.1*elcpot)",
+      "/roll (1d100-5+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 50+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ],
@@ -1653,8 +1652,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*elcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(elcaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*elcpot)",
+      "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ],
@@ -1677,8 +1676,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*elcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(elcaim)*(0.16*S+1)_floor",
+      "/cost 25*(1-0.1*elcpot)",
+      "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ]
@@ -1694,8 +1693,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*elcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(elcaim)*(0.16*S+1)_floor",
+      "/cost 25*(1-0.1*elcpot)",
+      "/roll (1d100-2+ma+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ]
@@ -1713,11 +1712,11 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*elcpot)*physcost",
-      "/roll (1d100-2+ag+lu/4+S*5)*(elcaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*elcpot)",
+      "/roll (1d100-2+ag+lu/4)*(elcaim)*(0.2*S+1)_floor",
       "/roll (c*(elcpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(elcpwr*(1+T*0.2)*cm*(20+20*(st/20))))d6",
+      "/roll (c*(elcpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 40+((lu+st/2)*elcpwr)_floor"
     ],
     "aoe": [
@@ -1743,8 +1742,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*frcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(frcaim)*(0.16*S+1)_floor",
+      "/cost 10*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ]
@@ -1760,8 +1759,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*frcpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(frcaim)*(0.16*S+1)_floor",
+      "/cost 15*(1-0.1*frcpot)",
+      "/roll (1d100-5+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
       "/math 20+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ],
@@ -1784,8 +1783,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*frcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(frcaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ]
@@ -1801,8 +1800,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*frcpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(frcaim)*(0.16*S+1)_floor",
+      "/cost 30*(1-0.1*frcpot)",
+      "/roll (1d100-5+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ],
@@ -1825,8 +1824,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*frcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(frcaim)*(0.16*S+1)_floor",
+      "/cost 35*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 50+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ]
@@ -1842,8 +1841,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*frcpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(frcaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*frcpot)",
+      "/roll (1d100-5+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ],
@@ -1866,8 +1865,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*frcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(frcaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ],
@@ -1890,8 +1889,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 75*(1-0.1*frcpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(frcaim)*(0.16*S+1)_floor",
+      "/cost 75*(1-0.1*frcpot)",
+      "/roll (1d100-5+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 50+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ],
@@ -1914,8 +1913,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*frcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(frcaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ],
@@ -1938,8 +1937,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*frcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(frcaim)*(0.16*S+1)_floor",
+      "/cost 25*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ]
@@ -1955,8 +1954,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*frcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(frcaim)*(0.16*S+1)_floor",
+      "/cost 25*(1-0.1*frcpot)",
+      "/roll (1d100-2+ma+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*mrgail*frcpwr)_floor"
     ]
@@ -1974,11 +1973,11 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*frcpot)*physcost",
-      "/roll (1d100-2+ag+lu/4+S*5)*(frcaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*frcpot)",
+      "/roll (1d100-2+ag+lu/4)*(frcaim)*(0.2*S+1)_floor",
       "/roll (c*(frcpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(frcpwr*(1+T*0.2)*cm*(20+20*(st/20))))d6",
+      "/roll (c*(frcpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 20+((lu+st/2)*frcpwr)_floor"
     ],
     "aoe": [
@@ -2005,8 +2004,8 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*toxpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(toxaim)*(0.16*S+1)_floor",
+      "/cost 10*(1-0.1*toxpot)",
+      "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
@@ -2024,8 +2023,8 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*toxpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(toxaim)*(0.16*S+1)_floor",
+      "/cost 15*(1-0.1*toxpot)",
+      "/roll (1d100-5+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(12+12*(ma/20))))d6",
       "/math 20+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
@@ -2050,8 +2049,8 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*toxpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(toxaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*toxpot)",
+      "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
@@ -2069,8 +2068,8 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*toxpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(toxaim)*(0.16*S+1)_floor",
+      "/cost 30*(1-0.1*toxpot)",
+      "/roll (1d100-5+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
@@ -2095,8 +2094,8 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*toxpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(toxaim)*(0.16*S+1)_floor",
+      "/cost 35*(1-0.1*toxpot)",
+      "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 50+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
@@ -2114,8 +2113,8 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*toxpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(toxaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*toxpot)",
+      "/roll (1d100-5+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
@@ -2140,8 +2139,8 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*toxpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(toxaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*toxpot)",
+      "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
@@ -2166,8 +2165,8 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 75*(1-0.1*toxpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(toxaim)*(0.16*S+1)_floor",
+      "/cost 75*(1-0.1*toxpot)",
+      "/roll (1d100-5+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 50+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
@@ -2192,8 +2191,8 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*toxpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(toxaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*toxpot)",
+      "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
@@ -2218,8 +2217,8 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*toxpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(toxaim)*(0.16*S+1)_floor",
+      "/cost 25*(1-0.1*toxpot)",
+      "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
@@ -2237,8 +2236,8 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*toxpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(toxaim)*(0.16*S+1)_floor",
+      "/cost 25*(1-0.1*toxpot)",
+      "/roll (1d100-2+ma+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(16+16*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*psnail*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
@@ -2258,11 +2257,11 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*toxpot)*physcost",
-      "/roll (1d100-2+ag+lu/4+S*5)*(toxaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*toxpot)",
+      "/roll (1d100-2+ag+lu/4)*(toxaim)*(0.2*S+1)_floor",
       "/roll (c*(toxpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(toxpwr*(1+T*0.2)*cm*(20+20*(st/20))))d6",
+      "/roll (c*(toxpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 20+((lu+st/2)*toxpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ],
@@ -2288,8 +2287,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*psipot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(psiaim)*(0.16*S+1)_floor",
+      "/cost 10*(1-0.1*psipot)",
+      "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(12+12*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ]
@@ -2305,8 +2304,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*psipot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(psiaim)*(0.16*S+1)_floor",
+      "/cost 15*(1-0.1*psipot)",
+      "/roll (1d100-5+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(12+12*(ma/20))))d6",
       "/math 20+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ],
@@ -2329,8 +2328,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*psipot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(psiaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*psipot)",
+      "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ]
@@ -2346,8 +2345,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*psipot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(psiaim)*(0.16*S+1)_floor",
+      "/cost 30*(1-0.1*psipot)",
+      "/roll (1d100-5+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ],
@@ -2370,8 +2369,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*psipot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(psiaim)*(0.16*S+1)_floor",
+      "/cost 35*(1-0.1*psipot)",
+      "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 50+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ]
@@ -2387,8 +2386,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*psipot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(psiaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*psipot)",
+      "/roll (1d100-5+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ],
@@ -2411,8 +2410,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*psipot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(psiaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*psipot)",
+      "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ],
@@ -2435,8 +2434,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 75*(1-0.1*psipot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(psiaim)*(0.16*S+1)_floor",
+      "/cost 75*(1-0.1*psipot)",
+      "/roll (1d100-5+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 50+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ],
@@ -2459,8 +2458,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*psipot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(psiaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*psipot)",
+      "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ],
@@ -2483,8 +2482,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*psipot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(psiaim)*(0.16*S+1)_floor",
+      "/cost 25*(1-0.1*psipot)",
+      "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(10+10*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ]
@@ -2500,8 +2499,8 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*psipot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(psiaim)*(0.16*S+1)_floor",
+      "/cost 25*(1-0.1*psipot)",
+      "/roll (1d100-2+ma+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(16+16*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*cfnail*psipwr)_floor"
     ]
@@ -2519,11 +2518,11 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*psipot)*physcost",
-      "/roll (1d100-2+ag+lu/4+S*5)*(psiaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*psipot)",
+      "/roll (1d100-2+ag+lu/4)*(psiaim)*(0.2*S+1)_floor",
       "/roll (c*(psipwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(psipwr*(1+T*0.2)*cm*(20+20*(st/20))))d6",
+      "/roll (c*(psipwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 20+((lu+st/2)*psipwr)_floor"
     ],
     "aoe": [
@@ -2552,8 +2551,8 @@
       "Potency (Mortal)"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*lgtpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(lgtaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*lgtpot)",
+      "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*mutail*lgtpwr)_floor",
       "/math 40+((lu+ma/2)*ailpwr*mrlail*lgtpwr)_floor"
@@ -2571,8 +2570,8 @@
       "Potency (Mortal)"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*lgtpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(lgtaim)*(0.16*S+1)_floor",
+      "/cost 30*(1-0.1*lgtpot)",
+      "/roll (1d100-5+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*mutail*lgtpwr)_floor",
       "/math 30+((lu+ma/2)*ailpwr*mrlail*lgtpwr)_floor"
@@ -2597,8 +2596,8 @@
       "Potency (Mortal)"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*lgtpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(lgtaim)*(0.16*S+1)_floor",
+      "/cost 35*(1-0.1*lgtpot)",
+      "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*mutail*lgtpwr)_floor",
       "/math 60+((lu+ma/2)*ailpwr*mrlail*lgtpwr)_floor"
@@ -2616,8 +2615,8 @@
       "Potency (Mortal)"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*lgtpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(lgtaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*lgtpot)",
+      "/roll (1d100-5+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*mutail*lgtpwr)_floor",
       "/math 40+((lu+ma/2)*ailpwr*mrlail*lgtpwr)_floor"
@@ -2642,8 +2641,8 @@
       "Potency (Mortal)"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*lgtpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(lgtaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*lgtpot)",
+      "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 80+((lu+ma/2)*ailpwr*mutail*lgtpwr)_floor",
       "/math 80+((lu+ma/2)*ailpwr*mrlail*lgtpwr)_floor"
@@ -2668,8 +2667,8 @@
       "Potency (Mortal)"
     ],
     "rolls": [
-      "/cost 75*(1-0.1*lgtpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(lgtaim)*(0.16*S+1)_floor",
+      "/cost 75*(1-0.1*lgtpot)",
+      "/roll (1d100-5+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*mutail*lgtpwr)_floor",
       "/math 60+((lu+ma/2)*ailpwr*mrlail*lgtpwr)_floor"
@@ -2694,8 +2693,8 @@
       "Potency (Mortal)"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*lgtpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(lgtaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*lgtpot)",
+      "/roll (1d100-2+ma+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*mutail*lgtpwr)_floor",
       "/math 60+((lu+ma/2)*ailpwr*mrlail*lgtpwr)_floor"
@@ -2721,11 +2720,11 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*lgtpot)*physcost",
-      "/roll (1d100-2+ag+lu/4+S*5)*(lgtaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*lgtpot)",
+      "/roll (1d100-2+ag+lu/4)*(lgtaim)*(0.2*S+1)_floor",
       "/roll (c*(lgtpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(lgtpwr*(1+T*0.2)*cm*(20+20*(st/20))))d6",
+      "/roll (c*(lgtpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 30+((lu+st/2)*lgtpwr)_floor"
     ],
     "aoe": [
@@ -2750,8 +2749,8 @@
       "Potency (Mortal)"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*glmpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(glmaim)*(0.16*S+1)_floor",
+      "/cost 20*(1-0.1*glmpot)",
+      "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*crsail*glmpwr)_floor",
       "/math 40+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
@@ -2770,8 +2769,8 @@
       "Potency (Mortal)"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*glmpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(glmaim)*(0.16*S+1)_floor",
+      "/cost 30*(1-0.1*glmpot)",
+      "/roll (1d100-5+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(18+18*(ma/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*crsail*glmpwr)_floor",
       "/math 30+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
@@ -2796,8 +2795,8 @@
       "Potency (Mortal)"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*glmpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(glmaim)*(0.16*S+1)_floor",
+      "/cost 35*(1-0.1*glmpot)",
+      "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*crsail*glmpwr)_floor",
       "/math 60+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
@@ -2815,8 +2814,8 @@
       "Potency (Mortal)"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*glmpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(glmaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*glmpot)",
+      "/roll (1d100-5+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 40+((lu+ma/2)*ailpwr*crsail*glmpwr)_floor",
       "/math 40+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
@@ -2841,8 +2840,8 @@
       "Potency (Mortal)"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*glmpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(glmaim)*(0.16*S+1)_floor",
+      "/cost 50*(1-0.1*glmpot)",
+      "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 80+((lu+ma/2)*ailpwr*crsail*glmpwr)_floor",
       "/math 80+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
@@ -2867,8 +2866,8 @@
       "Potency (Mortal)"
     ],
     "rolls": [
-      "/cost 75*(1-0.1*glmpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(glmaim)*(0.16*S+1)_floor",
+      "/cost 75*(1-0.1*glmpot)",
+      "/roll (1d100-5+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(30+30*(ma/20))))d6",
       "/math 80+((lu+ma/2)*ailpwr*crsail*glmpwr)_floor",
       "/math 80+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
@@ -2893,8 +2892,8 @@
       "Potency (Mortal)"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*glmpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(glmaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*glmpot)",
+      "/roll (1d100-2+ma+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(24+24*(ma/20))))d6",
       "/math 60+((lu+ma/2)*ailpwr*crsail*glmpwr)_floor",
       "/math 60+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
@@ -2920,11 +2919,11 @@
       "Infliction"
     ],
     "rolls": [
-      "/cost 65*(1-0.1*glmpot)*physcost",
-      "/roll (1d100-2+ag+lu/4+S*5)*(glmaim)*(0.16*S+1)_floor",
+      "/cost 65*(1-0.1*glmpot)",
+      "/roll (1d100-2+ag+lu/4)*(glmaim)*(0.2*S+1)_floor",
       "/roll (c*(glmpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
-      "/roll (c*(glmpwr*(1+T*0.2)*cm*(20+20*(st/20))))d6",
+      "/roll (c*(glmpwr*(1+T*0.2)*1.5*(20+20*(st/20))))d6",
       "/math 30+((lu+ma/2)*ailpwr*mrlail*glmpwr)_floor"
     ],
     "aoe": [
@@ -2950,7 +2949,7 @@
     ],
     "rolls": [
       "/cost 5*(1-0.1*almpot)",
-      "/roll (1d100+ma+lu/4+S*5)*(almaim)*(0.16*S+1)_floor",
+      "/roll (1d100+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(7+7*(ma/20))))d6"
     ]
   },
@@ -2965,7 +2964,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*almpot)",
-      "/roll (1d100+ma+lu/4+S*5)*(almaim)*(0.16*S+1)_floor",
+      "/roll (1d100+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(5+5*(ma/20))))d6"
     ]
   },
@@ -2981,7 +2980,7 @@
     ],
     "rolls": [
       "/cost 10*(1-0.1*almpot)",
-      "/roll (1d100+ma+lu/4+S*5)*(almaim)*(0.16*S+1)_floor",
+      "/roll (1d100+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(7+7*(ma/20))))d6",
       "/roll (c*(almpwr*(1+T*0.2)*(5+5*(ma/20))))d6"
     ]
@@ -2996,8 +2995,8 @@
       "Damage"
     ],
     "rolls": [
-      "/cost 1*(1-0.1*almpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(almaim)*(0.16*S+1)_floor",
+      "/cost 1*(1-0.1*almpot)",
+      "/roll (1d100-5+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(26+26*(ma/20))))d6"
     ]
   },
@@ -3011,8 +3010,8 @@
       "Damage"
     ],
     "rolls": [
-      "/cost 40*(1-0.1*almpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(almaim)*(0.16*S+1)_floor",
+      "/cost 40*(1-0.1*almpot)",
+      "/roll (1d100-5+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(20+20*(ma/20))))d6"
     ]
   },
@@ -3026,8 +3025,8 @@
       "Damage"
     ],
     "rolls": [
-      "/cost 70*(1-0.1*almpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(almaim)*(0.16*S+1)_floor",
+      "/cost 70*(1-0.1*almpot)",
+      "/roll (1d100-5+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(30+30*(ma/20))))d6"
     ]
   },
@@ -3041,8 +3040,8 @@
       "Damage"
     ],
     "rolls": [
-      "/cost 120*(1-0.1*almpot)*magcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(almaim)*(0.16*S+1)_floor",
+      "/cost 120*(1-0.1*almpot)",
+      "/roll (1d100-5+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(42+42*(ma/20))))d6"
     ]
   },
@@ -3057,206 +3056,10 @@
       "Critical Chance"
     ],
     "rolls": [
-      "/cost 70*(1-0.1*almpot)*physcost",
-      "/roll (1d100-5+ma+lu/4+S*5)*(almaim)*(0.16*S+1)_floor",
+      "/cost 70*(1-0.1*almpot)",
+      "/roll (1d100-5+ma+lu/4)*(almaim)*(0.2*S+1)_floor",
       "/roll (c*(almpwr*(1+T*0.2)*(28+28*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
-    ]
-  },
-
-  { "Comment: ----------------------Kala Skills----------------------------": "", "name": "" }, 
-
-  {
-    "name": "Agikala",
-    "skillType": 4,
-    "description": "Weak Fire damage to 1 foe, with a chance of Burn. Damage and potency increases with Fire potential, but potency does not decrease cost",
-    "rollNames": [
-      "Cost",
-      "Aim",
-      "Damage",
-      "Potency",
-      "Burn"
-    ],
-    "rolls": [
-      "/cost 20*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(firaim)*(0.16*S+1)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(1+0.1*firpot)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*ailpwr*brnail*firpwr)*(1+0.1*firpot)_floor",
-      "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
-    ]
-  },
-
-  {
-    "name": "Bufukala",
-    "skillType": 5,
-    "description": "Weak Ice damage to 1 foe, with a chance of Freeze. Damage and potency increases with Ice potential, but potency does not decrease cost",
-    "rollNames": [
-      "Cost",
-      "Aim",
-      "Damage",
-      "Potency"
-    ],
-    "rolls": [
-      "/cost 20*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(iceaim)*(0.16*S+1)_floor",
-      "/roll (c*(icepwr*(1+T*0.2)*(1+0.1*icepot)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*ailpwr*frzail*icepwr)*(1+0.1*icepot)_floor"
-    ]
-  },
-
-  {
-    "name": "Ziokala",
-    "skillType": 6,
-    "description": "Weak Electric damage to 1 foe, with a chance of Shock. Damage and potency increases with Elec potential, but potency does not decrease cost",
-    "rollNames": [
-      "Cost",
-      "Aim",
-      "Damage",
-      "Potency"
-    ],
-    "rolls": [
-      "/cost 20*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(elcaim)*(0.16*S+1)_floor",
-      "/roll (c*(elcpwr*(1+T*0.2)*(1+0.1*elcpot)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*ailpwr*shkail*elcpwr)*(1+0.1*elcpot)_floor"
-    ]
-  },
-
-  {
-    "name": "Zankala",
-    "skillType": 7,
-    "description": "Weak Force damage to 1 foe, with a chance of Mirage. Damage and potency increases with Force potential, but potency does not decrease cost",
-    "rollNames": [
-      "Cost",
-      "Aim",
-      "Damage",
-      "Potency"
-    ],
-    "rolls": [
-      "/cost 20*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(frcaim)*(0.16*S+1)_floor",
-      "/roll (c*(frcpwr*(1+T*0.2)*(1+0.1*frcpot)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*ailpwr*mrgail*frcpwr)*(1+0.1*frcpot)_floor"
-    ]
-  },
-
-  {
-    "name": "Freikala",
-    "skillType": 8,
-    "description": "Weak Toxic damage to 1 foe, with a chance of Poison. Damage and potency increases with Toxic potential, but potency does not decrease cost",
-    "rollNames": [
-      "Cost",
-      "Aim",
-      "Damage",
-      "Potency",
-      "Poison"
-    ],
-    "rolls": [
-      "/cost 20*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(toxaim)*(0.16*S+1)_floor",
-      "/roll (c*(toxpwr*(1+T*0.2)*(1+0.1*toxpot)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*ailpwr*psnail*toxpwr)*(1+0.1*toxpot)_floor",
-      "/roll (c*(psnail*toxpwr*ailpwr*(1+T*0.2)*(5+5*(lu/10))))d6"
-    ]
-  },
-
-  {
-    "name": "Psikala",
-    "skillType": 9,
-    "description": "Weak Psionic damage to 1 foe, with a chance of Confusion. Damage and potency increases with Psionic potential, but potency does not decrease cost",
-    "rollNames": [
-      "Cost",
-      "Aim",
-      "Damage",
-      "Potency"
-    ],
-    "rolls": [
-      "/cost 20*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(psiaim)*(0.16*S+1)_floor",
-      "/roll (c*(psipwr*(1+T*0.2)*(1+0.1*psipot)*(12+12*(ma/20))))d6",
-      "/math 30+((lu+ma/2)*ailpwr*cfnail*psipwr)*(1+0.1*psipot)_floor"
-    ]
-  },
-
-  { "Comment: ----------------------Combination Skills----------------------------": "", "name": "" }, 
-  
-  {
-    "name": "Frostfire",
-    "skillType": 4,
-    "description": "Weak Fire & Ice damage to 1 foe, with a chance of Burn and Freeze. (They do not remove each other if inflicted by this skill)",
-    "rollNames": [
-      "Cost",
-      "Aim",
-      "Damage (Fire)",
-      "Damage (Ice)",
-      "Potency",
-      "Burn"
-    ],
-    "rolls": [
-      "/cost 32*(1-0.1*firpot)*(1-0.1*icepot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(firaim)*(iceaim)*(0.16*S+1)_floor",
-      "/roll (c*(firpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/roll (c*(icepwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 32+((lu+ma/2)*ailpwr*frzail*icepwr*brnail*firpwr)_floor",
-      "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
-    ]
-  },
-  {
-    "name": "Thundershock",
-    "skillType": 6,
-    "description": "Weak Electric & Force damage to 1 foe, with a chance of Burn and Freeze.",
-    "rollNames": [
-      "Cost",
-      "Aim",
-      "Damage (Elec)",
-      "Damage (Force)",
-      "Potency"
-    ],
-    "rolls": [
-      "/cost 32*(1-0.1*elcpot)*(1-0.1*frcpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(elcaim)*(frcaim)*(0.16*S+1)_floor",
-      "/roll (c*(elcpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/roll (c*(frcpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 32+((lu+ma/2)*ailpwr*shkail*elcpwr*mrgail*frcpwr)_floor"
-    ]
-  },
-  {
-    "name": "Brainrot",
-    "skillType": 8,
-    "description": "Weak Toxic & Psionic damage to 1 foe, with a chance of Poison and Confusion.",
-    "rollNames": [
-      "Cost",
-      "Aim",
-      "Damage (Toxic)",
-      "Damage (Psionic)",
-      "Potency"
-    ],
-    "rolls": [
-      "/cost 32*(1-0.1*toxpot)*(1-0.1*psipot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(toxaim)*(psiaim)*(0.16*S+1)_floor",
-      "/roll (c*(toxpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/roll (c*(psipwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 32+((lu+ma/2)*ailpwr*psnail*toxpwr*cfnail*psipwr)_floor"
-    ]
-  },
-
-  {
-    "name": "Purgatory",
-    "skillType": 10,
-    "description": "Weak Light & Dark damage to 1 foe, with a chance of Seal and Curse.",
-    "rollNames": [
-      "Cost",
-      "Aim",
-      "Damage (Toxic)",
-      "Damage (Psionic)",
-      "Potency"
-    ],
-    "rolls": [
-      "/cost 48*(1-0.1*lgtpot)*(1-0.1*glmpot)*magcost",
-      "/roll (1d100-2+ma+lu/4+S*5)*(lgtaim)*(glmaim)*(0.16*S+1)_floor",
-      "/roll (c*(lgtpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/roll (c*(glmpwr*(1+T*0.2)*(10+10*(ma/20))))d6",
-      "/math 32+((lu+ma/2)*ailpwr*mutail*lgtpwr*crsail*glmpwr)_floor"
     ]
   },
 
@@ -3272,7 +3075,7 @@
       "Burn"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*ailpot)*magcost",
+      "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ]
@@ -3287,7 +3090,7 @@
       "Burn"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*ailpwr*brnail*firpwr)_floor",
       "/roll (c*(brnail*firpwr*(1+T*0.2)*(4+4*(lu/10))))d6"
     ]
@@ -3302,7 +3105,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*ailpot)*magcost",
+      "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ]
   },
@@ -3315,7 +3118,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*ailpwr*frzail*icepwr)_floor"
     ]
   },
@@ -3329,7 +3132,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*ailpot)*magcost",
+      "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ]
   },
@@ -3342,7 +3145,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*ailpwr*shkail*elcpwr)_floor"
     ]
   },
@@ -3356,7 +3159,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*ailpot)*magcost",
+      "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*frcpwr*mrgail*ailpwr)_floor"
     ]
   },
@@ -3369,7 +3172,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*frcpwr*mrgail*ailpwr)_floor"
     ]
   },
@@ -3384,7 +3187,7 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*ailpot)*magcost",
+      "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*psnail*toxpwr*ailpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
       
@@ -3400,7 +3203,7 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*psnail*toxpwr*ailpwr)_floor",
       "/roll (c*(psnail*toxpwr*ailpwr*(5+5*(lu/10))))d6"
     ]
@@ -3415,7 +3218,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*ailpot)*magcost",
+      "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*crmail*ailpwr)_floor"
     ]
   },
@@ -3428,7 +3231,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*crmail*ailpwr)_floor"
     ]
   },
@@ -3442,7 +3245,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*ailpot)*magcost",
+      "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*slpail*ailpwr)_floor"
     ]
   },
@@ -3455,7 +3258,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*slpail*ailpwr)_floor"
     ]
   },
@@ -3468,7 +3271,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*ailpot)*magcost",
+      "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*ferail*ailpwr)_floor"
     ]
   },
@@ -3481,7 +3284,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*ferail*ailpwr)_floor"
     ]
   },
@@ -3494,7 +3297,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*ailpot)*magcost",
+      "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*mutail*ailpwr)_floor"
     ]
   },
@@ -3507,7 +3310,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 80+((lu+ma/2)*slpail*ailpwr)_floor"
     ]
   },
@@ -3520,7 +3323,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*mutail*ailpwr)_floor"
     ]
   },
@@ -3533,7 +3336,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*ailpot)*magcost",
+      "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*rgeail*ailpwr)_floor"
     ]
   },
@@ -3546,7 +3349,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*rgeail*ailpwr)_floor"
     ]
   },
@@ -3559,7 +3362,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*ailpot)*magcost",
+      "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*cfnail*ailpwr)_floor"
     ]
   },
@@ -3572,7 +3375,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*cfnail*ailpwr)_floor"
     ]
   },
@@ -3585,7 +3388,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*ailpot)*magcost",
+      "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*stnail*ailpwr)_floor"
     ]
   },
@@ -3598,7 +3401,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*stnail*ailpwr)_floor"
     ]
   },
@@ -3611,7 +3414,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*ailpot)*magcost",
+      "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*exhail*ailpwr)_floor"
     ]
   },
@@ -3624,7 +3427,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*exhail*ailpwr)_floor"
     ]
   },
@@ -3638,7 +3441,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 10*(1-0.1*ailpot)*magcost",
+      "/cost 10*(1-0.1*ailpot)",
       "/math 60+((lu+ma/2)*evtail*ailpwr)_floor"
     ]
   },
@@ -3651,7 +3454,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*ailpot)*magcost",
+      "/cost 25*(1-0.1*ailpot)",
       "/math 40+((lu+ma/2)*evtail*ailpwr)_floor"
     ]
   },
@@ -3669,7 +3472,7 @@
       "Healing"
     ],
     "rolls": [
-      "/cost 8*(1-0.1*hlgpot)*magcost",
+      "/cost 8*(1-0.1*hlgpot)",
       "/roll (c*(hlgpwr*(12+12*(ma/20))))d6"
     ]
   },
@@ -3682,7 +3485,7 @@
       "Healing"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*hlgpot)*magcost",
+      "/cost 15*(1-0.1*hlgpot)",
       "/roll (c*(hlgpwr*(24+24*(ma/20))))d6"
     ]
   },
@@ -3695,7 +3498,7 @@
       "Healing"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*hlgpot)*magcost",
+      "/cost 35*(1-0.1*hlgpot)",
       "/roll (c*(hlgpwr*(36+36*(ma/20))))d6"
     ]
   },
@@ -3708,7 +3511,7 @@
       "Healing"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*hlgpot)*magcost",
+      "/cost 30*(1-0.1*hlgpot)",
       "/roll (c*(hlgpwr*(12+12*(ma/20))))d6"
     ]
   },
@@ -3721,7 +3524,7 @@
       "Healing"
     ],
     "rolls": [
-      "/cost 50*(1-0.1*hlgpot)*magcost",
+      "/cost 50*(1-0.1*hlgpot)",
       "/roll (c*(hlgpwr*(24+24*(ma/20))))d6"
     ]
   },
@@ -3734,7 +3537,7 @@
       "Healing"
     ],
     "rolls": [
-      "/cost 100*(1-0.1*hlgpot)*magcost",
+      "/cost 100*(1-0.1*hlgpot)",
       "/roll (c*(hlgpwr*(36+36*(ma/20))))d6"
     ]
   },
@@ -3746,7 +3549,7 @@
       "Cost"
     ],
     "rolls": [
-      "/cost 8*(1-0.1*hlgpot)*magcost"
+      "/cost 8*(1-0.1*hlgpot)"
     ]
   },
   {
@@ -3757,7 +3560,7 @@
       "Cost"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*hlgpot)*magcost"
+      "/cost 30*(1-0.1*hlgpot)"
     ]
   },
   {
@@ -3768,7 +3571,7 @@
       "Cost"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*hlgpot)*magcost"
+      "/cost 20*(1-0.1*hlgpot)"
     ]
   },
   {
@@ -3779,7 +3582,7 @@
       "Cost"
     ],
     "rolls": [
-      "/cost 60*(1-0.1*hlgpot)*magcost"
+      "/cost 60*(1-0.1*hlgpot)"
     ]
   },
   {
@@ -3791,7 +3594,7 @@
       "Healing"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*hlgpot)*magcost",
+      "/cost 30*(1-0.1*hlgpot)",
       "/roll (c*(hlgpwr*(24+24*(ma/20))))d6"
     ]
   },
@@ -4141,8 +3944,8 @@
 
   {"name":"Rasukukaja","skillType":15,"description":"Increase DEF/HIT of 1 ally by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
   {"name":"Marasukukaja","skillType":15,"description":"Increase DEF/HIT of all allies by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
-  {"name":"Rasukunda","skillType":15,"description":"Decrease DEF/HIT of 1 foe by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
-  {"name":"Marasukunda","skillType":15,"description":"Decrease DEF/HIT of all foes by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
+  {"name":"Rasunda","skillType":15,"description":"Decrease DEF/HIT of 1 foe by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
+  {"name":"Marasunda","skillType":15,"description":"Decrease DEF/HIT of all foes by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
   {"name":"Rasujaya","skillType":15,"description":"Increase DEF/HIT of 1 ally by 2 ranks","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
   {"name":"Marasujaya","skillType":15,"description":"Increase DEF/HIT of all allies by 2 ranks","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
   {"name":"Rasumara","skillType":15,"description":"Decrease DEF/HIT of 1 foe by 2 ranks ","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
@@ -4150,12 +3953,12 @@
 
   {"name":"Tasukukaja","skillType":15,"description":"Increase ATK/HIT of 1 ally by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
   {"name":"Matasukukaja","skillType":15,"description":"Increase ATK/HIT of all allies by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
-  {"name":"Tasukunda","skillType":15,"description":"Decrease ATK/HIT of 1 foe by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
-  {"name":"Matasukunda","skillType":15,"description":"Decrease ATK/HIT of all foes by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
+  {"name":"Tasunda","skillType":15,"description":"Decrease ATK/HIT of 1 foe by 1 rank","rollNames":["Cost"],"rolls":["/cost 16*(1-0.1*tacpot)"]},
+  {"name":"Matasunda","skillType":15,"description":"Decrease ATK/HIT of all foes by 1 rank","rollNames":["Cost"],"rolls":["/cost 48*(1-0.1*tacpot)"]},
   {"name":"Tasujaya","skillType":15,"description":"Increase ATK/HIT of 1 ally by 2 ranks","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
   {"name":"Matasujaya","skillType":15,"description":"Increase ATK/HIT of all allies by 2 ranks","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
-  {"name":"Tasukumara","skillType":15,"description":"Decrease ATK/HIT of 1 foe by 2 rank ","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
-  {"name":"Matasukumara","skillType":15,"description":"Decrease ATK/HIT of all foes by 2 rank ","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
+  {"name":"Tasumara","skillType":15,"description":"Decrease ATK/HIT of 1 foe by 2 rank ","rollNames":["Cost"],"rolls":["/cost 60*(1-0.1*tacpot)"]},
+  {"name":"Matasumara","skillType":15,"description":"Decrease ATK/HIT of all foes by 2 rank ","rollNames":["Cost"],"rolls":["/cost 90*(1-0.1*tacpot)"]},
 
 
 
@@ -4754,392 +4557,391 @@
     "rollNames": [],
     "rolls": []
   },
-{
-  "name": "Resist Strike",
-  "skillType": 0,
-  "description": "Resists Strike damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Resist Strike"]
-},
-{
-  "name": "Null Strike",
-  "skillType": 0,
-  "description": "Nulls Strike damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Null Strike"]
-},
-{
-  "name": "Drain Strike",
-  "skillType": 0,
-  "description": "Drains Strike damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Strike"]
-},
-{
-  "name": "Repel Strike",
-  "skillType": 0,
-  "description": "Repels Strike damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Repel Strike"]
-},
-{
-  "name": "Absorb Strike",
-  "skillType": 0,
-  "description": "Absorbs Strike damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Strike"]
-},
-{
-  "name": "Resist Slash",
-  "skillType": 0,
-  "description": "Resists Slash damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Resist Slash"]
-},
-{
-  "name": "Null Slash",
-  "skillType": 0,
-  "description": "Nulls Slash damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Null Slash"]
-},
-{
-  "name": "Drain Slash",
-  "skillType": 0,
-  "description": "Drains Slash damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Slash"]
-},
-{
-  "name": "Repel Slash",
-  "skillType": 0,
-  "description": "Repels Slash damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Repel Slash"]
-},
-{
-  "name": "Absorb Slash",
-  "skillType": 0,
-  "description": "Absorbs Slash damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Slash"]
-},
-{
-  "name": "Resist Pierce",
-  "skillType": 0,
-  "description": "Resists Pierce damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Resist Pierce"]
-},
-{
-  "name": "Null Pierce",
-  "skillType": 0,
-  "description": "Nulls Pierce damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Null Pierce"]
-},
-{
-  "name": "Drain Pierce",
-  "skillType": 0,
-  "description": "Drains Pierce damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Pierce"]
-},
-{
-  "name": "Repel Pierce",
-  "skillType": 0,
-  "description": "Repels Pierce damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Repel Pierce"]
-},
-{
-  "name": "Absorb Pierce",
-  "skillType": 0,
-  "description": "Absorbs Pierce damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Pierce"]
-},
-{
-  "name": "Resist Fire",
-  "skillType": 0,
-  "description": "Resists Fire damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Resist Fire"]
-},
-{
-  "name": "Null Fire",
-  "skillType": 0,
-  "description": "Nulls Fire damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Null Fire"]
-},
-{
-  "name": "Drain Fire",
-  "skillType": 0,
-  "description": "Drains Fire damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Fire"]
-},
-{
-  "name": "Repel Fire",
-  "skillType": 0,
-  "description": "Repels Fire damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Repel Fire"]
-},
-{
-  "name": "Absorb Fire",
-  "skillType": 0,
-  "description": "Absorbs Fire damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Fire"]
-},
-{
-  "name": "Resist Ice",
-  "skillType": 0,
-  "description": "Resists Ice damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Resist Ice"]
-},
-{
-  "name": "Null Ice",
-  "skillType": 0,
-  "description": "Nulls Ice damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Null Ice"]
-},
-{
-  "name": "Drain Ice",
-  "skillType": 0,
-  "description": "Drains Ice damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Ice"]
-},
-{
-  "name": "Repel Ice",
-  "skillType": 0,
-  "description": "Repels Ice damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Repel Ice"]
-},
-{
-  "name": "Absorb Ice",
-  "skillType": 0,
-  "description": "Absorbs Ice damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Ice"]
-},
-{
-  "name": "Resist Electric",
-  "skillType": 0,
-  "description": "Resists Electric damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Resist Electric"]
-},
-{
-  "name": "Null Electric",
-  "skillType": 0,
-  "description": "Nulls Electric damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Null Electric"]
-},
-{
-  "name": "Drain Electric",
-  "skillType": 0,
-  "description": "Drains Electric damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Electric"]
-},
-{
-  "name": "Repel Electric",
-  "skillType": 0,
-  "description": "Repels Electric damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Repel Electric"]
-},
-{
-  "name": "Absorb Electric",
-  "skillType": 0,
-  "description": "Absorbs Electric damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Electric"]
-},
-{
-  "name": "Resist Force",
-  "skillType": 0,
-  "description": "Resists Force damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Resist Force"]
-},
-{
-  "name": "Null Force",
-  "skillType": 0,
-  "description": "Nulls Force damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Null Force"]
-},
-{
-  "name": "Drain Force",
-  "skillType": 0,
-  "description": "Drains Force damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Force"]
-},
-{
-  "name": "Repel Force",
-  "skillType": 0,
-  "description": "Repels Force damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Repel Force"]
-},
-{
-  "name": "Absorb Force",
-  "skillType": 0,
-  "description": "Absorbs Force damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Force"]
-},
-{
-  "name": "Resist Toxic",
-  "skillType": 0,
-  "description": "Resists Toxic damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Resist Toxic"]
-},
-{
-  "name": "Null Toxic",
-  "skillType": 0,
-  "description": "Nulls Toxic damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Null Toxic"]
-},
-{
-  "name": "Drain Toxic",
-  "skillType": 0,
-  "description": "Drains Toxic damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Toxic"]
-},
-{
-  "name": "Repel Toxic",
-  "skillType": 0,
-  "description": "Repels Toxic damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Repel Toxic"]
-},
-{
-  "name": "Absorb Toxic",
-  "skillType": 0,
-  "description": "Absorbs Toxic damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Toxic"]
-},
-{
-  "name": "Resist Psionic",
-  "skillType": 0,
-  "description": "Resists Psionic damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Resist Psionic"]
-},
-{
-  "name": "Null Psionic",
-  "skillType": 0,
-  "description": "Nulls Psionic damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Null Psionic"]
-},
-{
-  "name": "Drain Psionic",
-  "skillType": 0,
-  "description": "Drains Psionic damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Psionic"]
-},
-{
-  "name": "Repel Psionic",
-  "skillType": 0,
-  "description": "Repels Psionic damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Repel Psionic"]
-},
-{
-  "name": "Absorb Psionic",
-  "skillType": 0,
-  "description": "Absorbs Psionic damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Psionic"]
-},
-{
-  "name": "Resist Light",
-  "skillType": 0,
-  "description": "Resists Light damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Resist Light"]
-},
-{
-  "name": "Null Light",
-  "skillType": 0,
-  "description": "Nulls Light damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Null Light"]
-},
-{
-  "name": "Drain Light",
-  "skillType": 0,
-  "description": "Drains Light damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Light"]
-},
-{
-  "name": "Repel Light",
-  "skillType": 0,
-  "description": "Repels Light damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Repel Light"]
-},
-{
-  "name": "Absorb Light",
-  "skillType": 0,
-  "description": "Absorbs Light damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Light"]
-},
-{
-  "name": "Resist Gloom",
-  "skillType": 0,
-  "description": "Resists Gloom damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Resist Gloom"]
-},
-{
-  "name": "Null Gloom",
-  "skillType": 0,
-  "description": "Nulls Gloom damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Null Gloom"]
-},
-{
-  "name": "Drain Gloom",
-  "skillType": 0,
-  "description": "Drains Gloom damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Gloom"]
-},
-{
-  "name": "Repel Gloom",
-  "skillType": 0,
-  "description": "Repels Gloom damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Repel Gloom"]
-},
-{
-  "name": "Absorb Gloom",
-  "skillType": 0,
-  "description": "Absorbs Gloom damage",
-  "rollNames": ["Effect"],
-  "rolls": ["•Drain Gloom"]
-},
-
+  {
+    "name": "Resist Strike",
+    "skillType": 0,
+    "description": "Resists Strike damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Strike",
+    "skillType": 0,
+    "description": "Nulls Strike damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Strike",
+    "skillType": 0,
+    "description": "Drains Strike damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Strike",
+    "skillType": 0,
+    "description": "Repels Strike damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Strike",
+    "skillType": 0,
+    "description": "Absorbs Strike damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Slash",
+    "skillType": 0,
+    "description": "Resists Slash damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Slash",
+    "skillType": 0,
+    "description": "Nulls Slash damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Slash",
+    "skillType": 0,
+    "description": "Drains Slash damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Slash",
+    "skillType": 0,
+    "description": "Repels Slash damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Slash",
+    "skillType": 0,
+    "description": "Absorbs Slash damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Pierce",
+    "skillType": 0,
+    "description": "Resists Pierce damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Pierce",
+    "skillType": 0,
+    "description": "Nulls Pierce damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Pierce",
+    "skillType": 0,
+    "description": "Drains Pierce damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Pierce",
+    "skillType": 0,
+    "description": "Repels Pierce damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Pierce",
+    "skillType": 0,
+    "description": "Absorbs Pierce damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Fire",
+    "skillType": 0,
+    "description": "Resists Fire damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Fire",
+    "skillType": 0,
+    "description": "Nulls Fire damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Fire",
+    "skillType": 0,
+    "description": "Drains Fire damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Fire",
+    "skillType": 0,
+    "description": "Repels Fire damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Fire",
+    "skillType": 0,
+    "description": "Absorbs Fire damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Ice",
+    "skillType": 0,
+    "description": "Resists Ice damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Ice",
+    "skillType": 0,
+    "description": "Nulls Ice damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Ice",
+    "skillType": 0,
+    "description": "Drains Ice damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Ice",
+    "skillType": 0,
+    "description": "Repels Ice damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Ice",
+    "skillType": 0,
+    "description": "Absorbs Ice damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Electric",
+    "skillType": 0,
+    "description": "Resists Electric damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Electric",
+    "skillType": 0,
+    "description": "Nulls Electric damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Electric",
+    "skillType": 0,
+    "description": "Drains Electric damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Electric",
+    "skillType": 0,
+    "description": "Repels Electric damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Electric",
+    "skillType": 0,
+    "description": "Absorbs Electric damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Force",
+    "skillType": 0,
+    "description": "Resists Force damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Force",
+    "skillType": 0,
+    "description": "Nulls Force damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Force",
+    "skillType": 0,
+    "description": "Drains Force damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Force",
+    "skillType": 0,
+    "description": "Repels Force damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Force",
+    "skillType": 0,
+    "description": "Absorbs Force damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Toxic",
+    "skillType": 0,
+    "description": "Resists Toxic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Toxic",
+    "skillType": 0,
+    "description": "Nulls Toxic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Toxic",
+    "skillType": 0,
+    "description": "Drains Toxic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Toxic",
+    "skillType": 0,
+    "description": "Repels Toxic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Toxic",
+    "skillType": 0,
+    "description": "Absorbs Toxic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Psionic",
+    "skillType": 0,
+    "description": "Resists Psionic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Psionic",
+    "skillType": 0,
+    "description": "Nulls Psionic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Psionic",
+    "skillType": 0,
+    "description": "Drains Psionic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Psionic",
+    "skillType": 0,
+    "description": "Repels Psionic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Psionic",
+    "skillType": 0,
+    "description": "Absorbs Psionic damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Light",
+    "skillType": 0,
+    "description": "Resists Light damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Light",
+    "skillType": 0,
+    "description": "Nulls Light damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Light",
+    "skillType": 0,
+    "description": "Drains Light damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Light",
+    "skillType": 0,
+    "description": "Repels Light damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Light",
+    "skillType": 0,
+    "description": "Absorbs Light damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Resist Gloom",
+    "skillType": 0,
+    "description": "Resists Gloom damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Null Gloom",
+    "skillType": 0,
+    "description": "Nulls Gloom damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Drain Gloom",
+    "skillType": 0,
+    "description": "Drains Gloom damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Repel Gloom",
+    "skillType": 0,
+    "description": "Repels Gloom damage",
+    "rollNames": [],
+    "rolls": []
+  },
+  {
+    "name": "Absorb Gloom",
+    "skillType": 0,
+    "description": "Absorbs Gloom damage",
+    "rollNames": [],
+    "rolls": []
+  },
 
 
 
