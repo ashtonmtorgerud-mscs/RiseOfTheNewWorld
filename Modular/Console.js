@@ -2,7 +2,7 @@ import { RollDice, dMDAS, resetRolledDice, rolledDice } from "../Models/Calculat
 import { activeDemon, demonList, equipmentList } from "../Composables/Data.js";
 import { DataMaster } from "../Models/DataMaster.js";
 import { gotSkill, prettify } from "../Composables/Prettify.js";
-import { Skill } from "../models/Demon.js";
+import { Skill } from "../Models/Demon.js";
 
 
 const dataMaster = new DataMaster();

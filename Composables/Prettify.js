@@ -1,7 +1,7 @@
 const { ref, reactive, createApp, defineAsyncComponent } = Vue;
 import { activeDemon, colorScheme, demonList, equipmentList } from "./Data.js";
 import { Demon, Skill } from "../Models/Demon.js";
-import { Accessory, Armor, Weapon } from "../models/Equipment.js";
+import { Accessory, Armor, Weapon } from "../Models/Equipment.js";
 
 
 
