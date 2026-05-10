@@ -50,7 +50,7 @@
                                         <div class="">
                                             <div
                                                 :class="'w-full bg-' + colorScheme[1] + '-950 aspect-square rounded-lg object-cover mb-1 border-2 border-' + colorScheme[0] + '-500 shadow-lg shadow-' + colorScheme[0] + '-500/50 hover:shadow-3xl tooltip'">
-                                                <img :src="'../Resources/AffinityIcon' + (index+1) + '.png'"
+                                                <img :src="'./Resources/AffinityIcon' + (index+1) + '.png'"
                                                     class="pulsingFilter" />
                                                 <span class="tooltiptext">{{['Strike', 'Slash', 'Pierce',
                                                     'Fire', 'Ice', 'Electricity', 'Force', 'Toxic', 'Psionic',
@@ -175,7 +175,7 @@
                         <div class="w-full aspect-[16/9] ring-2 rounded-2xl bg-slate-900 ring-slate-500 overflow-hidden p-5 hoverPop"
                             @click="birthDemon('New Demon'); prettify.skillPage=0;">
                             <div class="h-3/4 aspect-square rounded-full mx-auto">
-                                <img :src="'../Resources/DemonIcon.png'"
+                                <img :src="'./Resources/DemonIcon.png'"
                                     class="w-full h-full object-cover rounded-full ring-2 ring-slate-500 pixel-art"
                                     alt="">
                             </div>

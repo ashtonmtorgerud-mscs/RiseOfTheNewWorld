@@ -565,8 +565,8 @@
                                                 
                                                 <!-- Extra -->
                                                 <div class="aspect-square w-1/6 ring-1 ring-indigo-500 rounded-2xl">
-                                                    <img :src="'../Resources/WeaponIcon.png'" class="pulsingFilter" v-if="index === 0" />
-                                                    <img :src="'../Resources/AffinityIcon' + (skill.skillType) + '.png'" class="pulsingFilter" v-if="index != 0 && skill.skillType" />
+                                                    <img :src="'./Resources/WeaponIcon.png'" class="pulsingFilter" v-if="index === 0" />
+                                                    <img :src="'./Resources/AffinityIcon' + (skill.skillType) + '.png'" class="pulsingFilter" v-if="index != 0 && skill.skillType" />
                                                 </div>
                                                 
                                                 

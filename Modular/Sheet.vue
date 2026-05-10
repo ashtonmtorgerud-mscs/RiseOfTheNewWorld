@@ -177,7 +177,7 @@
                 <div :style="prettify.getBuffShadowStyle(activeDemon.buffs[index])"
                   class="rounded-full bg-gray-800 w-2/3 h-2/5 flex items-center justify-center ring-1 ring-slate-200">
                   <img :class="{ 'rotate-180': activeDemon.buffs[index] < 0 }" @click="activeDemon.buffs[index] =0;"
-                    :src="'../Resources/BuffIcon' + ( Math.abs(activeDemon.buffs[index])) + '.png'"
+                    :src="'./Resources/BuffIcon' + ( Math.abs(activeDemon.buffs[index])) + '.png'"
                     class="h-2/3 aspect-square object-contain pulsingFilter" alt="">
                 </div>
                 <button
@@ -217,7 +217,7 @@
                       <div
                         @click="prettify.messageInput = prettify.formatDamageIntake(affinity, index)"
                         :class="prettify.holdingShift ? 'bg-' + colorScheme[8] + '-950 border-' + colorScheme[8] + '-500' : 'bg-' + colorScheme[1] + '-950 border-' + colorScheme[0] + '-500'" class="w-full aspect-square rounded-lg object-cover mb-1 border-2 shadow-lg shadow-indigo-500/50 hover:shadow-3xl hoverPop tooltip ">
-                        <img :src="'../Resources/AffinityIcon' + (index+1) + '.png'" class="pulsingFilter" />
+                        <img :src="'./Resources/AffinityIcon' + (index+1) + '.png'" class="pulsingFilter" />
                         <span class="tooltiptext">{{['Strike', 'Slash', 'Pierce',
                           'Fire', 'Ice', 'Electricity', 'Force', 'Toxic', 'Psionic',
                           'Light', 'Gloom'][index]}}</span>
@@ -495,7 +495,7 @@
                   class="flex flex-row w-full gap-2 mb-2">
                   <div
                     :class="'w-1/5 bg-' + colorScheme[1] + '-950 aspect-square rounded-lg object-cover mb-1 border-2 border-' + colorScheme[0] + '-500 shadow-lg shadow-indigo-500/50 hover:shadow-3xl'">
-                    <img :src="'../Resources/' + activeDemon.equippedWeapon.icon + 'Icon.png'" class="pulsingFilter" />
+                    <img :src="'./Resources/' + activeDemon.equippedWeapon.icon + 'Icon.png'" class="pulsingFilter" />
                   </div>
                   <p
                     :class="'w-4/5 text-white text-lg rounded-2xl bg-gradient-to-r from-' + colorScheme[2] + '-950 to-' + colorScheme[1] + '-900 p-2 mb-1 ring-1 ring-' + colorScheme[0] + '-500'">
@@ -602,9 +602,9 @@
                   <div v-for="(ailment, index) in [...activeDemon.ailmentResistances, 'other']"
                     @click="prettify.displayAilments = false;"
                     :class="'w-1/6 bg-' + colorScheme[1] + '-950 aspect-square rounded-lg object-cover mb-1 border-2 border-' + colorScheme[0] + '-500 shadow-lg shadow-' + colorScheme[0] + '-500/50 hover:shadow-3xl tooltip'">
-                    <img v-if="index < 17" :src="'../Resources/AilmentIcon' + (index+1) + '.png'"
+                    <img v-if="index < 17" :src="'./Resources/AilmentIcon' + (index+1) + '.png'"
                       @click="prettify.displayAilments = false; prettify.messageInput = '/inflict ' + ['Burn', 'Freeze', 'Shock', 'Mirage', 'Poison', 'Confusion', 'Seal', 'Curse', 'Bind', 'Charm', 'Fear', 'Sleep', 'Rage', 'Exhaustion', 'Enervation', 'Bleeding', 'Mortal', 'Other'][index] + ' ' + activeDemon.readAffinity(ailment) + '*'"
-                      class="pulsingFilter" /> <img v-if="index == 17" :src="'../Resources/AffinityIcon13.png'"
+                      class="pulsingFilter" /> <img v-if="index == 17" :src="'./Resources/AffinityIcon13.png'"
                       @click="prettify.displayAilments = false; activeDemon.ailments.push(['New Ailment', 18, 100, 'Ailment effect'])"
                       class="pulsingFilter" /> <span class="tooltiptext">{{['Burn',
                       'Freeze', 'Shock', 'Mirage', 'Poison', 'Confusion', 'Seal', 'Curse',
@@ -619,9 +619,9 @@
                   v-for="(ailment, index) in activeDemon.ailments">
                   <div
                     :class="'w-1/5 bg-' + colorScheme[1] + '-950 aspect-square rounded-full object-cover border-2 shadow-lg shadow-' + colorScheme[0] + '-500/50 hover:shadow-3xl border-' + colorScheme[0] + '-500 hover:border-red-500 hoverPop'">
-                    <img v-if="ailment[1] <= 17" :src="'../Resources/AilmentIcon' + (ailment[1]) + '.png'"
+                    <img v-if="ailment[1] <= 17" :src="'./Resources/AilmentIcon' + (ailment[1]) + '.png'"
                       class="pulsingFilter" @click="activeDemon.ailments.splice(index, 1); DataMaster.autoSave();" />
-                    <img v-if="ailment[1] == 18" :src="'../Resources/AffinityIcon13.png'" class="pulsingFilter"
+                    <img v-if="ailment[1] == 18" :src="'./Resources/AffinityIcon13.png'" class="pulsingFilter"
                       @click="activeDemon.ailments.splice(index, 1); DataMaster.autoSave();" />
                   </div>
 

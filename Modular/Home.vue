@@ -17,22 +17,22 @@
           </div>
           <div @click="prettify.activePage = 'Sheet'" 
             :class="'hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 align-middle flex items-center justify-center chaos ring-' + colorScheme[0] + '-500'">
-            <img :src="'../Resources/SheetIcon.png'" class="h-full aspect-square object-cover p-1 pixel-art" alt="">
+            <img :src="'./Resources/SheetIcon.png'" class="h-full aspect-square object-cover p-1 pixel-art" alt="">
             <p class="text-white font-bold text-center text-3xl align-middle">Sheet</p>
           </div>
           <div @click="prettify.activePage = 'Demons'"
             :class="'hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 align-middle flex items-center justify-center chaos ring-' + colorScheme[0] + '-500'">
-            <img :src="'../Resources/DemonIcon.png'" class="h-full aspect-square object-cover p-2 pixel-art" alt="">
+            <img :src="'./Resources/DemonIcon.png'" class="h-full aspect-square object-cover p-2 pixel-art" alt="">
             <p class="text-white font-bold text-center text-3xl align-middle">Demons</p>
           </div>
           <div @click="prettify.activePage = 'Gear'"
             :class="'hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 align-middle flex items-center justify-center chaos ring-' + colorScheme[0] + '-500'">
-            <img :src="'../Resources/ArmyIcon.png'" class="h-full aspect-square object-cover p-2 pixel-art" alt="">
+            <img :src="'./Resources/ArmyIcon.png'" class="h-full aspect-square object-cover p-2 pixel-art" alt="">
             <p class="text-white font-bold text-center text-3xl align-middle">Gear</p>
           </div>
           <div @click="prettify.activePage = 'Editor'"
             :class="'hoverPop rounded-xl bg-gray-800 h-full w-1/6 box-shadow ring-2 align-middle flex items-center justify-center chaos ring-' + colorScheme[0] + '-500'">
-            <img :src="'../Resources/EditIcon.png'" class="h-full aspect-square object-cover p-2 pixel-art" alt="">
+            <img :src="'./Resources/EditIcon.png'" class="h-full aspect-square object-cover p-2 pixel-art" alt="">
             <p class="text-white font-bold text-center text-3xl align-middle">Edit</p>
           </div>
         </div>
