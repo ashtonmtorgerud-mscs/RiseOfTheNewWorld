@@ -128,8 +128,7 @@
                   100 - Math.floor(
                   (100 -
                   ((100)*(Math.min(activeDemon.buffs[1]+1, 4)*0.16))) *
-                  (200/(200+((activeDemon.stats[2]+activeDemon.statsBooster[2]+(activeDemon.equippedArmor.resistance+activeDemon.armorBooster[0]))*(1+((activeDemon.equippedArmor.resistance
-                  + activeDemon.armorBooster[0])/30))))))
+                  (200/(200+((activeDemon.stats[2]+activeDemon.statsBooster[2]+activeDemon.equippedArmor.resistance+activeDemon.armorBooster[0])*(1+((activeDemon.stats[2]+activeDemon.statsBooster[2]+activeDemon.equippedArmor.resistance+activeDemon.armorBooster[0])/30))))))
                   }}%</p>
               </div>
 
@@ -215,7 +214,7 @@
                   <div class="flex flex-col items-center h-full">
                     <div class="">
                       <div
-                        @click="prettify.messageInput = prettify.formatDamageIntake(affinity, index)"
+                        @click="prettify.messageInput = prettify.formatDamageIntake(activeDemon.getAffinities(index), index)"
                         :class="prettify.holdingShift ? 'bg-' + colorScheme[8] + '-950 border-' + colorScheme[8] + '-500' : 'bg-' + colorScheme[1] + '-950 border-' + colorScheme[0] + '-500'" class="w-full aspect-square rounded-lg object-cover mb-1 border-2 shadow-lg shadow-indigo-500/50 hover:shadow-3xl hoverPop tooltip ">
                         <img :src="'./Resources/AffinityIcon' + (index+1) + '.png'" class="pulsingFilter" />
                         <span class="tooltiptext">{{['Strike', 'Slash', 'Pierce',

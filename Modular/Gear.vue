@@ -209,7 +209,8 @@
 
 
           <div class="w-full flex px-5">
-            <p :class="'rounded-full py-1 px-3 ml-auto text-right text-white text-2xl textOutlineBlackThin bg-' + colorScheme[0] + '-950 border-2 border-' + colorScheme[0] + '-500'"> {{activeDemon.equippedWeapon.weight + activeDemon.equippedArmor.weight + activeDemon.accessories.reduce((sum, acc) => sum + (acc.weight ?? 0), 0)}} / {{Math.floor((25+(activeDemon.stats[0]+activeDemon.statsBooster[0])*5+((activeDemon.stats[0]+activeDemon.statsBooster[0])**2)/20)*activeDemon.carry)}} </p>
+            <!-- <p :class="'rounded-full py-1 px-3 ml-auto text-right text-white text-2xl textOutlineBlackThin bg-' + colorScheme[0] + '-950 border-2 border-' + colorScheme[0] + '-500'"> {{activeDemon.equippedWeapon.weight + activeDemon.equippedArmor.weight + activeDemon.accessories.reduce((sum, acc) => sum + (acc.weight ?? 0), 0)}} / {{Math.floor((25+(activeDemon.stats[0]+activeDemon.statsBooster[0])*5+((activeDemon.stats[0]+activeDemon.statsBooster[0])**2)/20)*activeDemon.carry)}} </p> -->
+             <p :class="'rounded-full py-1 px-3 ml-auto text-right text-white text-2xl textOutlineBlackThin bg-' + colorScheme[0] + '-950 border-2 border-' + colorScheme[0] + '-500'"> {{activeDemon.equippedWeapon.weight + activeDemon.equippedArmor.weight + activeDemon.accessories.reduce((sum, acc) => sum + (acc.weight ?? 0), 0)}} / {{Math.floor((20+(activeDemon.stats[0]+activeDemon.statsBooster[0])*5)*activeDemon.carry)}} </p>
           </div>
 
           <div :class="'mt-4 mx-2 text-4xl font-bold flex justify-between items-center text-' + colorScheme[5] + '-400 border-b-2 mb-2 border-' + colorScheme[0] + '-500'">

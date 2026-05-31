@@ -56,7 +56,7 @@ export class Demon {
         this.equippedWeapon = this.defaultWeapon;
         
         
-        this.weapon = this.defaultWeapon;
+        // this.weapon = this.defaultWeapon;
         
         this.defaultArmor = new Armor("Nude", "You are naked", 0, 0, 0, []);
         this.defaultArmor.default = true;
@@ -128,10 +128,10 @@ export class Demon {
 
         this.social = {
             acting:  1.0,
+            assessment:  1.0,
             authority:  1.0,
             charm:  1.0,
-            courage:  1.0,
-            discernment:  1.0
+            courage:  1.0
         },
 
         this.iq = 100;
@@ -162,10 +162,10 @@ export class Demon {
 
         this.socialBoost = {
             acting:  0.0,
+            assessment:  0.0,
             authority: 0.0,
             charm: 0.0,
-            courage: 0.0,
-            discernment: 0.0
+            courage: 0.0
         },
 
 
@@ -314,9 +314,9 @@ export class Demon {
         this.socialBoost = {
             acting: 0.0,
             authority: 0.0,
+            assessment:  1.0,
             charm: 0.0,
-            courage: 0.0,
-            discernment: 0.0
+            courage: 0.0
         },
         
 
@@ -560,7 +560,7 @@ export class Demon {
                         case "talcrg": case "talcourage": this.socialBoost.courage += valueBoost * 0.01; return;
                         case "talcrm": case "talcharm": this.socialBoost.charm += valueBoost * 0.01; return;
                         case "talact": case "talacting": this.socialBoost.acting += valueBoost * 0.01; return;
-                        case "taldcm": case "taldiscernment": this.socialBoost.discernment += valueBoost * 0.01; return;
+                        case "talasm": case "talassessment": this.socialBoost.assessment += valueBoost * 0.01; return;
 
                         case "iq": this.iqBoost += valueBoost; return;
 

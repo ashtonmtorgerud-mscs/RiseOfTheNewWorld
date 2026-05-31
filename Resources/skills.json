@@ -336,7 +336,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*prcpot)*physcost*physcost*physcost",
+      "/cost 15*(1-0.1*prcpot)*physcost",
       "/roll (1d100-2+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(13+13*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -355,7 +355,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*slhpot)*physcost*physcost",
+      "/cost 15*(1-0.1*slhpot)*physcost",
       "/roll (1d100-2+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(13+13*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -374,7 +374,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 15*(1-0.1*stkpot)*physcost*physcost",
+      "/cost 15*(1-0.1*stkpot)*physcost",
       "/roll (1d100-15+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(10+10*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -395,7 +395,7 @@
       "Poison"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*prcpot)*physcost*physcost",
+      "/cost 20*(1-0.1*prcpot)*physcost",
       "/roll (1d100-10+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -417,7 +417,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*prcpot)*physcost*physcost",
+      "/cost 20*(1-0.1*prcpot)*physcost",
       "/roll (1d100-10+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -438,7 +438,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*prcpot)*physcost*physcost",
+      "/cost 20*(1-0.1*prcpot)*physcost",
       "/roll (1d100-10+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(18+18*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -459,7 +459,7 @@
       "Potency"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*stkpot)*physcost*physcost",
+      "/cost 20*(1-0.1*stkpot)*physcost",
       "/roll (1d100-10+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(10+10*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -480,7 +480,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 55*(1-0.1*slhpot)*physcost*physcost",
+      "/cost 55*(1-0.1*slhpot)*physcost",
       "/roll (1d100-10+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(24+24*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -498,7 +498,7 @@
       "Damage"
     ],
     "rolls": [
-      "/cost 55*(1-0.1*slhpot)*physcost*physcost",
+      "/cost 55*(1-0.1*slhpot)*physcost",
       "/roll (1d100-50+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*cm*(24+24*(st/20))))d6"
     ]
@@ -520,7 +520,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 55*(1-0.1*prcpot)*physcost*physcost",
+      "/cost 55*(1-0.1*prcpot)*physcost",
       "/roll (1d100-10+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(30+30*(st/20))))d6",
       "/math 71-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -540,7 +540,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 55*(1-0.1*prcpot)*physcost*physcost",
+      "/cost 55*(1-0.1*prcpot)*physcost",
       "/roll (1d100-10+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(42+42*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -559,7 +559,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 55*(1-0.1*slhpot)*physcost*physcost",
+      "/cost 55*(1-0.1*slhpot)*physcost",
       "/roll (1d100-2+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(44+44*(st/20))))d6",
       "/math 71-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -578,7 +578,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 60*(1-0.1*stkpot)*physcost*physcost",
+      "/cost 60*(1-0.1*stkpot)*physcost",
       "/roll (1d100-10+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(48+48*(st/20))))d6",
       "/math 86-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -623,7 +623,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*stkpot)*physcost*physcost",
+      "/cost 25*(1-0.1*stkpot)*physcost",
       "/roll (1d100-25+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(8+8*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -643,7 +643,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*slhpot)*physcost*physcost",
+      "/cost 30*(1-0.1*slhpot)*physcost",
       "/roll (1d100-15+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(9+9*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -663,7 +663,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*prcpot)*physcost*physcost",
+      "/cost 35*(1-0.1*prcpot)*physcost",
       "/roll (1d100-20+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(10+10*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -685,7 +685,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 20*(1-0.1*slhpot)*physcost*physcost",
+      "/cost 20*(1-0.1*slhpot)*physcost",
       "/roll (1d100-15+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(13+13*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -705,7 +705,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*prcpot)*physcost*physcost",
+      "/cost 35*(1-0.1*prcpot)*physcost",
       "/roll (1d100-20+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -725,7 +725,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*stkpot)*physcost*physcost",
+      "/cost 35*(1-0.1*stkpot)*physcost",
       "/roll (1d100-10+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(17+17*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -745,7 +745,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*slhpot)*physcost*physcost",
+      "/cost 35*(1-0.1*slhpot)*physcost",
       "/roll (1d100-10+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(17+17*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -767,7 +767,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 25*(1-0.1*stkpot)*physcost*physcost",
+      "/cost 25*(1-0.1*stkpot)*physcost",
       "/roll (1d100-5+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(16+16*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -786,7 +786,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 35*(1-0.1*stkpot)*physcost*physcost",
+      "/cost 35*(1-0.1*stkpot)*physcost",
       "/roll (1d100-50+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(22+22*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -805,7 +805,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 30*(1-0.1*slhpot)*physcost*physcost",
+      "/cost 30*(1-0.1*slhpot)*physcost",
       "/roll (1d100-10+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(12+12*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -824,7 +824,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 45*(1-0.1*slhpot)*physcost*physcost",
+      "/cost 45*(1-0.1*slhpot)*physcost",
       "/roll (1d100-5+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
       "/roll (c*(slhpwr*(1+T*0.2)*(20+20*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -843,7 +843,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 45*(1-0.1*stkpot)*physcost*physcost",
+      "/cost 45*(1-0.1*stkpot)*physcost",
       "/roll (1d100-50+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(25+25*(st/20))))d6",
       "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -860,7 +860,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 60*(1-0.1*prcpot)*physcost*physcost",
+      "/cost 60*(1-0.1*prcpot)*physcost",
       "/roll (1d100-2+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*cm*(8+8*(st/20))))d6"
     ]
@@ -877,7 +877,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 70*(1-0.1*stkpot)*physcost*physcost",
+      "/cost 70*(1-0.1*stkpot)*physcost",
       "/roll (1d100-5+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
       "/roll (c*(stkpwr*(1+T*0.2)*(32+32*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -896,7 +896,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 70*(1-0.1*prcpot)*physcost*physcost",
+      "/cost 70*(1-0.1*prcpot)*physcost",
       "/roll (1d100-5+ag+lu/4+S*5)*(prcaim)*(0.16*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(32+32*(st/20))))d6",
       "/math 81-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
@@ -915,7 +915,7 @@
       "Damage (Crit)"
     ],
     "rolls": [
-      "/cost 85*(1-0.1*prcpot)*physcost*physcost",
+      "/cost 85*(1-0.1*prcpot)*physcost",
       "/roll (1d100-20+ag+lu/4+S*5)*(slhaim)*(0.16*S+1)_floor",
       "/roll (c*(prcpwr*(1+T*0.2)*(40+40*(st/20))))d6",
       "/math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",

@@ -190,7 +190,7 @@ export function dMDAS(iCalculation, iDemon) {
                 case "talcrg": case "talcourage": parsedOperands.push(iDemon.social.courage+iDemon.socialBoost.courage); return;
                 case "talcrm": case "talcharm": parsedOperands.push(iDemon.social.charm+iDemon.socialBoost.charm); return;
                 case "talact": case "talacting": parsedOperands.push(iDemon.social.acting+iDemon.socialBoost.acting); return;
-                case "taldcm": case "taldiscernment": parsedOperands.push(iDemon.social.discernment+iDemon.socialBoost.discernment); return;
+                case "talasm": case "talassessment": parsedOperands.push(iDemon.social.discernment+iDemon.socialBoost.discernment); return;
 
                 // Prowess
                 case "iq": parsedOperands.push(iDemon.iq+iDemon.iqBoost); return;

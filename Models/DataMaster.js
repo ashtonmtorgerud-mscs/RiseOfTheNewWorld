@@ -62,17 +62,52 @@ export class DataMaster {
                         let demonData = JSON.parse(prettify.value.modalString);
                         let demon = new Demon();  // Create a new Demon instance
                         Object.assign(demon, demonData);  // Copy saved data into the demon instance
+
+
+                        if (demon.weapon) {
+                            let tempWeapon = new Weapon(demon.weapon.name, demon.weapon.description, 0, demon.weapon.rollNames, demon.weapon.rolls, "Weapon");
+                            tempWeapon.equipper = demon.name;
+                            tempWeapon.equipped = true;
+
+                            demon.equippedWeapon = tempWeapon;
+                            equipmentList.value.push(tempWeapon);
+                        }
+
+                        if (demon.armor) {
+                            let tempArmor = new Armor(demon.armor[0], "", 0, demon.armor[1], demon.armor[2], []);
+                            console.log(demon.armor[1], demon.armor[2]);
+                            tempArmor.equipper = demon.name;
+                            tempArmor.equipped = true;
+                            demon.equippedArmor = tempArmor;
+                            equipmentList.value.push(tempArmor);
+                        }
+
+                        if (demon.accessories) {
+                            demon.accessories.forEach((acc, index) => {
+                                if (Array.isArray(acc) && acc[0] != '') {
+                                    console.log("#" + index + " acc[0]" + acc[0])
+                                    let portAcc = new Accessory(acc[0], '', 0, [acc[1]]);
+                                    portAcc.equipper = demon.name;
+                                    portAcc.equipped = true;
+                                    demon.accessories[index] = portAcc;
+                                    equipmentList.value.push(portAcc)
+                                }
+                            })
+
+
+                        }
+
                         demon.recalculateVitals();  // Optionally recalculate stats or do any necessary setup
                         demonList.value.push(demon);
                         activeDemon.value = demonList.value[demonList.value.length - 1]; // Set the newly created demon as active
-                        if (!activeDemon.value.equippedWeapon.default) {equipmentList.value.push(activeDemon.value.equippedWeapon)};
-                        if (!activeDemon.value.equippedArmor.default) {equipmentList.value.push(activeDemon.value.equippedArmor)};
-                        activeDemon.value.accessories.forEach(acc => {
-                            if (acc.id){
-                                equipmentList.value.push(acc);
-                                console.log(acc);
-                            }
-                        });
+                        // if (!activeDemon.value.equippedWeapon.default) {equipmentList.value.push(activeDemon.value.equippedWeapon)};
+                        // if (!activeDemon.value.equippedArmor.default) {equipmentList.value.push(activeDemon.value.equippedArmor)};
+                        // activeDemon.value.accessories.forEach(acc => {
+                        //     if (acc.id){
+                        //         equipmentList.value.push(acc);
+                        //         console.log(acc);
+                        //     }
+                        // });
                         prettify.value.modalString = "";
                         prettify.value.modal = false;
                         break;
@@ -324,6 +359,7 @@ export class DataMaster {
 
                                 demon.equippedWeapon = tempWeapon;
                                 equipmentList.value.push(tempWeapon);
+                                // delete demon.weapon;
                             }
 
                             if (demon.armor){
@@ -333,6 +369,7 @@ export class DataMaster {
                                 tempArmor.equipped = true;
                                 demon.equippedArmor = tempArmor;
                                 equipmentList.value.push(tempArmor);
+                                // delete demon.armor;
                             }
 
                             if (demon.accessories){

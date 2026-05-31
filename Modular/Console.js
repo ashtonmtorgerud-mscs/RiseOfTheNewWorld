@@ -562,7 +562,14 @@ export function sendMessage(messageInput) {
 
             if (useRakukaja) {
                 // rawDamage *= 1 - activeDemon.value.buffs[1] * 0.2;
-                rawDamage *= 1 - activeDemon.value.buffs[1] * 0.16;
+                let rakuAmount = activeDemon.value.buffs[1];
+                if (activeDemon.value.guard){
+                    rakuAmount++;
+                }
+                if (rakuAmount>4){
+                    rakuAmount == 4;
+                }
+                rawDamage *= 1 - rakuAmount * 0.16;
             }
 
             // Apply defense reduction from character stats and armor
