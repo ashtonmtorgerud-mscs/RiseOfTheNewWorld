@@ -278,7 +278,8 @@
       "/cost 20*(1-0.1*stkpot)*physcost",
       "/roll (1d100-25+ag+lu/4+S*5)*(stkaim)*(0.16*S+1)_floor",
       "/roll (c*((hp/mhp)*(stkpwr*(1+T*0.2)*(24+24*(st/20)))))d6",
-      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil"
+      "/math 91-(lu/4+ag/10+cb)*(1+S*0.2)_ceil",
+      "/roll (c*((hp/mhp)*(stkpwr*(1+T*0.2)*cm*(24+24*(st/20)))))d6"
     ]
   },
 

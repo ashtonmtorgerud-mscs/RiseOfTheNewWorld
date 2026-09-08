@@ -242,12 +242,12 @@ body {
 .chaosPAUSED {
   position: relative;
   --radius: 20px;
-  --duration: 6s;           /* base duration — will be slightly randomized */
-  --delay: 0s;              /* will be overridden per element */
+  --duration: 6s;
+  --delay: 0s;
 
   animation: 
     float var(--duration) ease-in-out infinite,
-    float-delay 0s forwards;   /* just to apply the delay once */
+    float-delay 0s forwards;
 }
 
 @keyframes float {
@@ -258,16 +258,14 @@ body {
   100% { transform: translate(0, 0); }
 }
 
-/* 
-   Most important part — different start time for each element 
-*/
+/* Change chaos timing */
 .chaos:nth-child(odd)  { --delay: -1.3s; }
 .chaos:nth-child(2n+1) { --delay: -2.7s; }
 .chaos:nth-child(3n)   { --delay: -4.1s; }
 .chaos:nth-child(4n+2) { --delay: -0.8s; }
 .chaos:nth-child(5n)   { --delay: -3.4s; }
 
-/* Bonus: also slightly different speed */
+/* Change chaos speed */
 .chaos:nth-child(6n+1) { --duration: 5.2s; }
 .chaos:nth-child(7n)   { --duration: 7.1s; }
 .chaos:nth-child(8n+3) { --duration: 6.4s; }
@@ -282,9 +280,11 @@ body {
   100% { transform: rotateZ(360deg); }
 }
 
+
+/* Spinning wooo */
 .spinning {
-  animation: spin-x 7s linear infinite; /* adjust speed if needed */
-  transform-style: preserve-3d;          /* necessary for 3D rotation */
+  animation: spin-x 7s linear infinite; 
+  transform-style: preserve-3d;         
 }
 
 
@@ -401,4 +401,14 @@ body {
     calc(100% - 20px) 100%,
     0 100%
   );
+}
+
+/* HTML: <div class="curved-rectangle"></div> */
+.curved-rectangle {
+  --c: 85; /* control the curvature (a percentage value without unit bigger than 50%)*/
+  
+  width: 250px;
+  aspect-ratio: 3/2;
+  mask: radial-gradient(calc(var(--c)*1%) 100% at 50% calc(-100%*cos(asin(50/var(--c)))),#0000 calc(100% - 1px),#000);
+  clip-path: ellipse(calc(var(--c)*1%) 100% at top);
 }

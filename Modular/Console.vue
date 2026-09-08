@@ -37,8 +37,6 @@
             sendMessage: Function
         },
 
-        
-
         emits: ['update:activePage'],
 
         methods: {

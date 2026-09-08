@@ -1,13 +1,15 @@
 <template>
 
+    <!-- Central Page stuff -->
     <div class="w-4/4 h-[93.333334%] py-2 flex-col gap-2" v-if="prettify.activePage === 'Demons' || prettify.runkusMode">
         <div class="w-full h-1/3 flex gap-2 flex-col p-1">
             <div :class="'h-full bg-gradient-to-r from-' + colorScheme[1] + '-950 to-' + colorScheme[3] + '-800 rounded-2xl ring-2 ring-' + colorScheme[0] + '-500 w-full flex flex-row p-3'">
                 <div class="aspect-square h-full rounded-full ring-2 ring-slate-200 bg-black">
                     <img class="rounded-full pixel-art object-cover w-full h-full" :src="activeDemon.icon" />
-                    <!-- <img class="rounded-full pixel-art" :src="'https://rokthereaper.com/wp-content/uploads/2016/05/chie_satonaka_sketch_by_kr0npr1nz-d7t1wby.jpg'" /> -->
-                    
                 </div>
+
+
+                <!-- Demon Identity -->
                 <div class="flex flex-row w-full p-2 h-full">
                     <div class="w-2/3 h-full flex flex-col">
                         <div
@@ -41,6 +43,9 @@
                             </div>
                         </div>
                     </div>
+
+
+                    <!-- Demon Affinities -->
                     <div class="w-1/2 h-full flex flex-col">
                         <div class="flex flex-row w-full h-1/3">
                             <div v-for="(affinity, index) in activeDemon.affinities"
@@ -69,6 +74,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Demon Skills -->
                         <div class="grid grid-cols-2 grid-rows-4 grid-flow-col gap-2 w-full h-full p-2 h-2/3 w-full">
                             <div v-for="skill in activeDemon.skills.slice(0, 8)" :key="skill.name" v-if="activeDemon.skillCount < 9"
                                 :class="'bg-gray-700 rounded-lg flex items-center justify-center text-white font-semibold ring-2 ring-' + colorScheme[0] + '-500'">
@@ -117,7 +124,6 @@
                                 <div class="w-full flex flex-row items-center mx-auto p-1">
                                     <div class="w-1/4 aspect-square ring-slate-200 rounded-full object-contain p-1">
                                         <img class="h-full aspect-square rounded-full ring-2 ring-slate-200 bg-black pixel-art object-cover" :src="demon.icon" />
-                                         <!-- <img class="h-full aspect-square rounded-full ring-2 ring-slate-200 bg-black pixel-art object-cover" :src="'https://rokthereaper.com/wp-content/uploads/2016/05/chie_satonaka_sketch_by_kr0npr1nz-d7t1wby.jpg'" /> -->
                                     </div>
                                     <div class="w-3/4 gap-2 flex flex-col">
                                         <div class="w-full flex flex-row sm:text-sm">
@@ -171,9 +177,11 @@
 
                         </div>
                     </div>
-                    <div class="w-1/4 p-2" v-if="demonList.length < 12">
+
+                    <!-- Add a new demon Button -->
+                    <div class="w-1/4 p-2" v-if="demonList.length < 16">
                         <div class="w-full aspect-[16/9] ring-2 rounded-2xl bg-slate-900 ring-slate-500 overflow-hidden p-5 hoverPop"
-                            @click="birthDemon('New Demon'); prettify.skillPage=0;">
+                            @click="prettify.birthDemon('New Demon'); prettify.skillPage=0;">
                             <div class="h-3/4 aspect-square rounded-full mx-auto">
                                 <img :src="'./Resources/DemonIcon.png'"
                                     class="w-full h-full object-cover rounded-full ring-2 ring-slate-500 pixel-art"
@@ -184,10 +192,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
 
 
 
@@ -213,3 +217,7 @@
     }
 
 </script>
+
+
+
+<!-- <img class="rounded-full pixel-art" :src="'https://rokthereaper.com/wp-content/uploads/2016/05/chie_satonaka_sketch_by_kr0npr1nz-d7t1wby.jpg'" /> -->

@@ -9,26 +9,18 @@ export function RollDice(dice, sides) {
     return total;
 }
 
+
+// Clears the rolledDice incase a /roll or /math function doens't use dice
 export function resetRolledDice(){
     rolledDice = '';
 }
 
+
 // The function that makes math math nicely
 export function dMDAS(iCalculation, iDemon) {
     
-    // The expression to calculate
-    // msgRD = '';
-    // let rolledDice = "";
+    
     let calculation = iCalculation;
-
-
-    // let floor = false;
-    // let ceiling = false;
-    // if (calculation.includes('_floor')) { floor = true; calculation=calculation.replace('_floor', ''); }
-    // if (calculation.includes('_ceiling') || calculation.includes('_ceil')) { ceiling = true; calculation=calculation.replace('_ceiling', ''); }
-    // console.log(floor);
-    // console.log(calculation);
-
 
     // Function to handle parentheses by recursively evaluating them
     function evaluateParentheses(expression) {
@@ -56,7 +48,7 @@ export function dMDAS(iCalculation, iDemon) {
         countersFound.forEach(counter => {
             
             try{
-                expression = expression.replace('$'+counter+'$', (iDemon.counters.find(demonCounter => demonCounter[0].toLowerCase() === counter)[1]));
+                expression = expression.replace('$'+counter+'$', (iDemon.counters.find(demonCounter => demonCounter[0].toLowerCase() === counter.toLowerCase())[1]));
             } catch{
                 expression = expression.replace('$'+counter+'$', "0")
             }
@@ -77,17 +69,11 @@ export function dMDAS(iCalculation, iDemon) {
     if (calculation.includes("+") || calculation.includes("-") || calculation.includes("*") || calculation.includes("/") || calculation.includes("d")  || calculation.includes("^")  || calculation.includes(">")  || calculation.includes("<")  || calculation.includes("=") ) {
 
         // Gather Variables
-        // let operands = calculation.split(/[+\-*/d]/);
-        // let operators = [...calculation.match(/[+\-*/d]/g)];
         let operands = calculation.split(/[+\-*/d^<>=&]/);
         let operators = [...calculation.match(/[+\-*/d^<>=&]/g)];
         let parsedOperands = [];
 
-        // case ("physpower"): case ("physpwr"): this.damageGenusBooster[0] += valueBoost * 0.01; break;
-        // case ("elmtpower"): case ("elmtpwr"): this.damageGenusBooster[1] += valueBoost * 0.01; break;
-        // case ("mystpower"): case ("mystpwr"): this.damageGenusBooster[2] += valueBoost * 0.01; break;
-        // case ("magpower"): case ("magpwr"): this.damageGenusBooster[3] += valueBoost * 0.01; break;
-        // case ("allpower"): case ("allpwr"): this.damageGenusBooster[4] += valueBoost * 0.01; break;
+        
 
 
         // Power Genus Calc
@@ -118,16 +104,11 @@ export function dMDAS(iCalculation, iDemon) {
         let magAim = iDemon.aimGenusBooster[3] * iDemon.aimGenusBooster[4];
         let allAim = iDemon.aimGenusBooster[4];
 
-        // let elmtEva = 100;
-        // console.log("allEva", allEva)
-        
+        // Checking if the demon is guarding or dodging
         let guardMuch = 0;
         let dodgeMuch = 0;
         if (iDemon.guard) { guardMuch = 1; }
         if (iDemon.dodge) { dodgeMuch = 1; }
-
-        // console.log(calculation);
-
 
 
         // Parse Opperands
@@ -190,13 +171,13 @@ export function dMDAS(iCalculation, iDemon) {
                 case "talcrg": case "talcourage": parsedOperands.push(iDemon.social.courage+iDemon.socialBoost.courage); return;
                 case "talcrm": case "talcharm": parsedOperands.push(iDemon.social.charm+iDemon.socialBoost.charm); return;
                 case "talact": case "talacting": parsedOperands.push(iDemon.social.acting+iDemon.socialBoost.acting); return;
-                case "talasm": case "talassessment": parsedOperands.push(iDemon.social.discernment+iDemon.socialBoost.discernment); return;
+                case "talasm": case "talassessment": parsedOperands.push(iDemon.social.assessment+iDemon.socialBoost.assessment); return;
 
                 // Prowess
                 case "iq": parsedOperands.push(iDemon.iq+iDemon.iqBoost); return;
                 case "wilpwr": case "willpower": parsedOperands.push(iDemon.willPower+iDemon.willPowerBoost); return;
                 case "sp": case "spe": case "fast": parsedOperands.push(iDemon.speed+iDemon.speedBoost); return;
-                case "carry": case "carry": case "carry": parsedOperands.push(iDemon.carry+iDemon.carryBoost); return;
+                case "carry": parsedOperands.push(iDemon.carry+iDemon.carryBoost); return;
 
 
 
@@ -324,6 +305,25 @@ export function dMDAS(iCalculation, iDemon) {
                 case ("bleeingailment"): case ("bleail"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentBooster[15])); return;
                 case ("mortalailment"): case ("mrlail"): case ("ftlail"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentBooster[16])); return;
 
+                // Ailment Power
+                case ("burnresistance"): case ("brnres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[0])); return;
+                case ("freezeresistance"): case ("frzres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[1])); return;
+                case ("shockresistance"): case ("shkres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[2])); return;
+                case ("mirageresistance"): case ("mrgres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[3])); return;
+                case ("poisonresistance"): case ("psnres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[4])); return;
+                case ("confusionresistance"): case ("cfnres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[5])); return;
+                case ("muteresistance"): case ("mutres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[6])); return;
+                case ("curseresistance"): case ("crsres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[7])); return;
+                case ("stunalment"): case ("stnres"): case ("binres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[8])); return;
+                case ("charmresistance"): case ("crmres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[9])); return;
+                case ("fearresistance"): case ("ferres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[10])); return;
+                case ("sleepresistance"): case ("slpres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[11])); return;
+                case ("rageresistance"): case ("rgeres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[12])); return;
+                case ("exhaustionresistance"): case ("exhres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[13])); return;
+                case ("enervationresistance"): case ("evtres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[14])); return;
+                case ("bleeingresistance"): case ("bleres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[15])); return;
+                case ("mortalresistance"): case ("mrlres"): case ("ftlres"): parsedOperands.push(Math.max(0.01,  iDemon.ailmentReducer[16])); return;
+
                 // Armor Defense and Evasion
                 case ("adefense"): case ("adef"): case ("ares"): case ("armorresistance"): case ("aresistance"): case ("armorres"): parsedOperands.push(iDemon.armorBooster[0]); return;
                 case ("aeva"): case ("armorevasion"): case ("aevasion"): case ("armoreva"): parsedOperands.push(iDemon.armorBooster[1]); return;
@@ -341,19 +341,16 @@ export function dMDAS(iCalculation, iDemon) {
         for (let i = 0; i < operators.length; i++) {
             if (operators[i] === 'd') {
 
-
                 rolledDice = (Math.floor(parsedOperands[i]) + "d" + parsedOperands[i + 1]);
 
                 // Perform the operation
                 parsedOperands[i] = RollDice(parsedOperands[i], parsedOperands[i + 1]);
-
-                // msgRD = "Rolled " + rolledDice + " (" + parsedOperands[i] + "), ";
                 rolledDice = "Rolled " + rolledDice + " (" + parsedOperands[i] + "), ";
 
-                // Remove the next operand since it has been used
+                // Remove the next operand since it has been used and shift to the next
                 parsedOperands.splice(i + 1, 1);
-                operators.splice(i, 1);  // Remove the operator as well
-                i--;  // Adjust index because we've shifted elements
+                operators.splice(i, 1);  
+                i--;  
             }
         }
 
@@ -382,8 +379,8 @@ export function dMDAS(iCalculation, iDemon) {
 
                 // Remove the next operand since it has been used
                 parsedOperands.splice(i + 1, 1);
-                operators.splice(i, 1);  // Remove the operator as well
-                i--;  // Adjust index because we've shifted elements
+                operators.splice(i, 1); 
+                i--; 
             }
         }
 
@@ -399,8 +396,8 @@ export function dMDAS(iCalculation, iDemon) {
 
                 // Remove the next operand after the operation
                 parsedOperands.splice(i + 1, 1);
-                operators.splice(i, 1);  // Remove the operator as well
-                i--;  // Adjust index because we've shifted elements
+                operators.splice(i, 1); 
+                i--;  
             }
         }
 

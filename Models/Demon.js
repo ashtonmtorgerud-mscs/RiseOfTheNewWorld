@@ -100,6 +100,7 @@ export class Demon {
 
         // 
         this.ailmentBooster = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+        this.ailmentReducer = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
 
         // 0 = phys, 1 = elemental, 2 = mystic, 3 = magic, 4 = all
         this.affinitiesGenusReducer = [1.0, 1.0, 1.0, 1.0, 1.0];
@@ -108,30 +109,30 @@ export class Demon {
         this.aimGenusBooster = [1.0, 1.0, 1.0, 1.0, 1.0];
 
         this.senses = {
-            see: 1.0,
-            hear: 1.0,
-            smell:  1.0,
-            feel:  1.0,
-            taste:  1.0,
-            sixth:  1.0
+            see: 100,
+            hear: 100,
+            smell:  100,
+            feel:  100,
+            taste:  100,
+            sixth:  100
         },
 
         this.academia = {
-            anthropology:  1.0,
-            artisanship:  1.0,
-            biology:  1.0,
-            engineering:  1.0,
-            mathematics:  1.0,
-            occultism:  1.0,
-            philosophy:  1.0
+            anthropology:  100,
+            artisanship:  100,
+            biology:  100,
+            engineering:  100,
+            mathematics:  100,
+            occultism:  100,
+            philosophy:  100
         },
 
         this.social = {
-            acting:  1.0,
-            assessment:  1.0,
-            authority:  1.0,
-            charm:  1.0,
-            courage:  1.0
+            acting:  100,
+            assessment:  100,
+            authority:  100,
+            charm:  100,
+            courage:  100
         },
 
         this.iq = 100;
@@ -272,6 +273,7 @@ export class Demon {
         this.damageGenusBooster = [1.0, 1.0, 1.0, 1.0, 1.0];
         this.aimGenusBooster = [1.0, 1.0, 1.0, 1.0, 1.0];
         this.ailmentBooster = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
+        this.ailmentReducer = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0];
         this.armorBooster = [0, 0];
 
 
@@ -314,7 +316,7 @@ export class Demon {
         this.socialBoost = {
             acting: 0.0,
             authority: 0.0,
-            assessment:  1.0,
+            assessment:  0.0,
             charm: 0.0,
             courage: 0.0
         },
@@ -375,13 +377,16 @@ export class Demon {
             try {
                 if (checkBox.startsWith("+") || checkBox.startsWith("-")) {
 
+                    checkBox = checkBox.toLowerCase()
+                    
                     // Variable Declaration
                     let percentage = false;
                     let percentageBoost = 1;
+
                     if (checkBox.split(' ')[0].endsWith('%')) { percentage = true; }
                     let valueBoost = dMDAS(checkBox.split(' ')[0], this);
-                    let attributeBoost = checkBox.split(' ')[1].toLowerCase();
-
+                    let attributeBoost = checkBox.split(' ')[1];
+                    
 
 
                     switch (attributeBoost) {
@@ -441,7 +446,7 @@ export class Demon {
                         case ("allaim"): case ("allaim"): this.aimGenusBooster[4] += valueBoost * 0.01; break;
 
 
-                        // Damage Boosters
+                        // Ailment Boosters
                         case ("burnailment"): case ("brnail"): this.ailmentBooster[0] += valueBoost * 0.01; break;
                         case ("freezeailment"): case ("frzail"): this.ailmentBooster[1] += valueBoost * 0.01; break;
                         case ("shockailment"): case ("shkail"): this.ailmentBooster[2] += valueBoost * 0.01; break;
@@ -452,13 +457,32 @@ export class Demon {
                         case ("curseailment"): case ("crsail"): this.ailmentBooster[7] += valueBoost * 0.01; break;
                         case ("stunalment"): case ("stnail"): case ("binail"): this.ailmentBooster[8] += valueBoost * 0.01; break;
                         case ("charmailment"): case ("crmail"): this.ailmentBooster[9] += valueBoost * 0.01; break;
-                        case ("fearailment"): case ("ferail"): this.ailmentBooster[10] += valueBoost * 0.01; break;
+                        case ("fearailment"): case ("ferail"): case ("fearail"): this.ailmentBooster[10] += valueBoost * 0.01; break;
                         case ("sleepailment"): case ("slpail"): this.ailmentBooster[11] += valueBoost * 0.01; break;
                         case ("rageailment"): case ("rageail"): case ("ragail"): case ("rgeail"): this.ailmentBooster[12] += valueBoost * 0.01; break;
                         case ("exhaustionailment"): case ("exhail"): this.ailmentBooster[13] += valueBoost * 0.01; break;
                         case ("enervationailment"): case ("evtail"): this.ailmentBooster[14] += valueBoost * 0.01; break;
                         case ("bleedingailment"): case ("bldail"): this.ailmentBooster[15] += valueBoost * 0.01; break;
                         case ("mortalailment"): case ("mrlail"): this.ailmentBooster[16] += valueBoost * 0.01; break;
+
+                        // Ailment Resistance
+                        case ("burnresistance"): case ("brnres"): this.ailmentReducer[0] += valueBoost * 0.01; break;
+                        case ("freezeresistance"): case ("frzres"): this.ailmentReducer[1] += valueBoost * 0.01; break;
+                        case ("shockresistance"): case ("shkres"): this.ailmentReducer[2] += valueBoost * 0.01; break;
+                        case ("mirageresistance"): case ("mrgres"): this.ailmentReducer[3] += valueBoost * 0.01; break;
+                        case ("poisonresistance"): case ("psnres"): this.ailmentReducer[4] += valueBoost * 0.01; break;
+                        case ("confusionresistance"): case ("cfnres"): this.ailmentReducer[5] += valueBoost * 0.01; break;
+                        case ("muteresistance"): case ("mutres"): this.ailmentReducer[6] += valueBoost * 0.01; break;
+                        case ("curseresistance"): case ("crsres"): this.ailmentReducer[7] += valueBoost * 0.01; break;
+                        case ("stunalment"): case ("stnres"): case ("binres"): this.ailmentReducer[8] += valueBoost * 0.01; break;
+                        case ("charmresistance"): case ("crmres"): this.ailmentReducer[9] += valueBoost * 0.01; break;
+                        case ("fearresistance"): case ("ferres"): this.ailmentReducer[10] += valueBoost * 0.01; break;
+                        case ("sleepresistance"): case ("slpres"): this.ailmentReducer[11] += valueBoost * 0.01; break;
+                        case ("rageresistance"): case ("rageres"): case ("ragres"): case ("rgeres"): this.ailmentReducer[12] += valueBoost * 0.01; break;
+                        case ("exhaustionresistance"): case ("exhres"): this.ailmentReducer[13] += valueBoost * 0.01; break;
+                        case ("enervationresistance"): case ("evtres"): this.ailmentReducer[14] += valueBoost * 0.01; break;
+                        case ("bleedingresistance"): case ("bldres"): this.ailmentReducer[15] += valueBoost * 0.01; break;
+                        case ("mortalresistance"): case ("mrlres"): this.ailmentReducer[16] += valueBoost * 0.01; break;
 
 
                         // Affinities Boosters
@@ -522,46 +546,53 @@ export class Demon {
                         case ("physicalcost"): case ("physcost"): this.physCost += valueBoost * 0.01; break;
                         case ("magicalcost"): case ("magcost"): this.magCost += valueBoost * 0.01; break;
                         case ("allcost"): this.allCost += valueBoost * 0.01; break;
-                                        // this.sensesBoost.see += valueBoost * 0.01;
 
                         // Armor Boosters
-                        case ("ares"): case ("armorresistance"): case ("aresist"): case ("armorresist"): if (percentage) { percentageBoost = this.armor[1] / 100 }; this.armorBooster[0] += valueBoost * percentageBoost; break;
-                        case ("aeva"): case ("armorevasion"): case ("aevasion"): case ("armoreva"): if (percentage) { percentageBoost = this.armor[2] / 100 }; this.armorBooster[1] += valueBoost * percentageBoost; break;
+                        case ("ares"): case ("armorresistance"): case ("aresist"): case ("armorresist"): if (percentage) { percentageBoost = this.equippedArmor.resistance / 100 }; this.armorBooster[0] += valueBoost * percentageBoost; break;
+                        case ("aeva"): case ("armorevasion"): case ("aevasion"): case ("armoreva"): if (percentage) { percentageBoost = this.equippedArmor.evasion[2] / 100 }; this.armorBooster[1] += valueBoost * percentageBoost; break;
 
                         // Evasion and Resistance Boosters
                         case ("res"): case ("resistance"): if (percentage) { percentageBoost = this.armor[1] / 100 }; this.armorBooster[0] += valueBoost * percentageBoost; break;
                         case ("eva"): case ("evasion"): if (percentage) { percentageBoost = this.armor[2] / 100 }; this.armorBooster[1] += valueBoost * percentageBoost; break;
 
 
-                        case ("willpower"): case ("wilpwr"): this.willPowerBoost += valueBoost * 0.01; break;
-                        case ("fast"): case ("spe"): case ("speed"): case ("spd"): this.speedBoost += valueBoost * 0.01; break;
-                        case ("carry"): this.carryBoost += valueBoost * 0.01; break;
+                        case ("willpower"): case ("wilpwr"):  if (percentage) { percentageBoost = this.willPower / 100 }; this.willPowerBoost += Math.floor(valueBoost * percentageBoost); break;
+                        case ("fast"): case ("spe"): case ("speed"): case ("spd"): if (percentage) { percentageBoost = this.speed / 100 }; this.speedBoost += Math.floor(valueBoost * percentageBoost); break;
+                        case ("carry"): if (percentage) { percentageBoost = this.carry / 100 }; this.carryBoost += Math.floor(valueBoost * percentageBoost); break;
 
-                        // Talents
+
+
+
+
+                        ////// Talents
 
                         // Sense
-
-                        case "talsee": case "talsight": this.sensesBoost.see += valueBoost * 0.01; return;
-                        case "talher": case "talhear": this.sensesBoost.hear += valueBoost * 0.01;  return;
-                        case "talsml": case "talsmell": this.sensesBoost.smell += valueBoost * 0.01;  return;
-                        case "talfel": case "talfeel": this.sensesBoost.feel += valueBoost * 0.01;  return;
-                        case "taltst": case "taltaste": this.sensesBoost.taste += valueBoost * 0.01;  return;
-                        case "talsxt": case "talsixth": this.sensesBoost.sixth += valueBoost * 0.01;  return;
+                        case "talsee": case "talsight": this.sensesBoost.see += valueBoost; return;
+                        case "talher": case "talhear": this.sensesBoost.hear += valueBoost;  return;
+                        case "talsml": case "talsmell": this.sensesBoost.smell += valueBoost;  return;
+                        case "talfel": case "talfeel": this.sensesBoost.feel += valueBoost;  return;
+                        case "taltst": case "taltaste": this.sensesBoost.taste += valueBoost;  return;
+                        case "talsxt": case "talsixth": this.sensesBoost.sixth += valueBoost;  return;
                         
-                        case "talatp": case "talanthropology": this.academiaBoost.anthropology += valueBoost * 0.01; return;
-                        case "talart": case "talartisanship":  case "talartisan": this.academiaBoost.artisanship += valueBoost * 0.01; return;
-                        case "talbio": case "talbiology": this.academiaBoost.biology += valueBoost * 0.01; return;
-                        case "taleng": case "talengineer": case "talengineering": this.academiaBoost.engineering += valueBoost * 0.01; return;
-                        case "talmat": case "talmath": case "talmathematics": this.academiaBoost.mathematics += valueBoost * 0.01; return;
-                        case "taloct": case "taloccult": case "taloccultism": this.academiaBoost.occultism += valueBoost * 0.01; return;
-                        case "talphi": case "talphilosophy": this.academiaBoost.philosophy += valueBoost * 0.01; return;
-                        
-                        case "talaut": case "talauthority": this.socialBoost.authority += valueBoost * 0.01; return;
-                        case "talcrg": case "talcourage": this.socialBoost.courage += valueBoost * 0.01; return;
-                        case "talcrm": case "talcharm": this.socialBoost.charm += valueBoost * 0.01; return;
-                        case "talact": case "talacting": this.socialBoost.acting += valueBoost * 0.01; return;
-                        case "talasm": case "talassessment": this.socialBoost.assessment += valueBoost * 0.01; return;
 
+                        // Academia
+                        case "talatp": case "talanthropology": this.academiaBoost.anthropology += valueBoost; return;
+                        case "talart": case "talartisanship":  case "talartisan": this.academiaBoost.artisanship += valueBoost; return;
+                        case "talbio": case "talbiology": this.academiaBoost.biology += valueBoost; return;
+                        case "taleng": case "talengineer": case "talengineering": this.academiaBoost.engineering += valueBoost; return;
+                        case "talmat": case "talmath": case "talmathematics": this.academiaBoost.mathematics += valueBoost; return;
+                        case "taloct": case "taloccult": case "taloccultism": this.academiaBoost.occultism += valueBoost; return;
+                        case "talphi": case "talphilosophy": this.academiaBoost.philosophy += valueBoost; return;
+                        
+
+                        // Social
+                        case "talaut": case "talauthority": this.socialBoost.authority += valueBoost; return;
+                        case "talcrg": case "talcourage": this.socialBoost.courage += valueBoost; return;
+                        case "talcrm": case "talcharm": this.socialBoost.charm += valueBoost; return;
+                        case "talact": case "talacting": this.socialBoost.acting += valueBoost; return;
+                        case "talasm": case "talassessment": this.socialBoost.assessment += valueBoost; return;
+
+                        // IQ
                         case "iq": this.iqBoost += valueBoost; return;
 
 
@@ -587,14 +618,10 @@ export class Demon {
         // Stats (str, mag, vit, agi, luc)
         this.statsBooster = this.statsBooster.map(Math.floor);
 
-        // Affinities (11 elements)
-        // this.affinitiesReducer = this.affinitiesReducer.map(Math.floor);
-
         // Skill Potentials (15 elements)
         this.skillPotentialBoost = this.skillPotentialBoost.map(Math.floor);
 
-        // Damage Boosters (15 elements)
-        // this.damageBooster = this.damageBooster.map(Math.floor);
+
 
     }
 
@@ -603,7 +630,7 @@ export class Demon {
 
 
 
-
+// Turns a string like electric into a corresponding value for an array of elements
 function affinityToNumber(iString) {
     // let affinitiesArray = ['Strike', 'Slash', 'Pierce', 'Fire', 'Ice', 'Electricity', 'Force', 'Toxic', 'Psionic', 'Light', 'Gloom'];
     let affinitiesArray = ['Strike', 'Slash', 'Pierce', 'Fire', 'Ice', 'Electricity', 'Force', 'Toxic', 'Psionic', 'Light', 'Gloom', 'Burn', 'Freeze', 'Shock', 'Mirage', 'Poison', 'Confusion', 'Seal', 'Curse', 'Bind', 'Charm', 'Fear', 'Sleep', 'Rage', 'Exhaustion', 'Enervation', 'Bleeding', 'Mortal'];
@@ -617,6 +644,7 @@ function affinityToNumber(iString) {
     return pickNumber;
 }
 
+// Function that checks through the affinity alterations from checkboxes and averages them to arrive at what it should be
 function resolveAffinityFromMix(iArray){
     // console.log(iArray[0]);
     if(!Array.isArray(iArray)){
@@ -636,7 +664,6 @@ function resolveAffinityFromMix(iArray){
         return '-';
     }
     goodOnes = goodOnes.splice(weakCount.length);
-    // console.log(nullCount);
     let retVal = '-';
     switch (goodOnes[goodOnes.length-1].toLowerCase()){
         case ("weak"): retVal = 'Wk'; break;
@@ -647,6 +674,3 @@ function resolveAffinityFromMix(iArray){
     }
     return retVal;
 }
-
-
-// console.log(resolveAffinityFromMix(['weak', 'weak', 'resist', 'weak',  'null']));

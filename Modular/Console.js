@@ -1,14 +1,14 @@
 import { RollDice, dMDAS, resetRolledDice, rolledDice } from "../Models/Calculators.js";
 import { activeDemon, demonList, equipmentList } from "../Composables/Data.js";
 import { DataMaster } from "../Models/DataMaster.js";
-import { gotSkill, prettify } from "../Composables/Prettify.js";
+import { prettify } from "../Composables/Prettify.js";
 import { Skill } from "../Models/Demon.js";
 
-
+// Creates the DataMaster, which handles all the data for the system
 const dataMaster = new DataMaster();
 
+// Starts the console. Taking the MessageInput string to determin an outcome
 export function sendMessage(messageInput) {
-    // console.log(messageInput);
     if (messageInput.trim() !== '') {
         let log = prettify.value.log;
         let lowercaseMessage = messageInput.trim().toLowerCase();
@@ -25,13 +25,12 @@ export function sendMessage(messageInput) {
                 let tempComment = comment.slice(1);
                 comment = "C" + tempComment;
 
-                // comment = ", " + calculation.split('-m')[1].trim();
                 comment = ", " + caplet + tempComment;
-                // console.log("Comment: " + comment);
                 calculation = calculation.split('-m')[0].trim();
             }
 
 
+            // Check if ceiling or floor is being used
             let floor = false;
             let ceiling = false;
             if (calculation.includes('_floor')) { floor = true; calculation=calculation.replace('_floor', ''); }
@@ -70,28 +69,24 @@ export function sendMessage(messageInput) {
 
 
 
-            // console.log("EXP AMOUNT: " + xpAmount);
-
-
-
-
             ///Validate Data
             if (isNaN(xpAmount) || xpAmount <= 0) {
                 messageInput = "";
                 prettify.value.log.push ('Invalid experience amount. Use format: /xp <amount>');
             }
 
+
+
             let levelUpMessage = "Base EXP: " + xpAmount;
 
+            // Adds EXP for each demon
             demonList.value.forEach(demon => {
-
                 let personalizedEXP = xpAmount;
 
                 if (defeatedLevel != 0) {
                     personalizedEXP = Math.floor((xpAmount * Math.max(0.1, (1 + ((defeatedLevel - demon.level) / 10)))) / 1);
                 }
 
-                // console.log("PERSONALIZED EXP AMOUNT: " + personalizedEXP);
                 demon.exp += personalizedEXP;
 
                 levelUpMessage += '\n' + demon.name + " gained " + personalizedEXP + "EXP";
@@ -134,10 +129,9 @@ export function sendMessage(messageInput) {
                         demon.stats[index]++;
                     }
 
-                    ///Cut XP, increase max XP, HP, and MP
+                    ///Cut XP, increase max XP, HP, and MP, and increase the next max EXP needed for a level up
                     demon.exp -= demon.maxExp;
-                    demon.maxExp = Math.floor(demon.maxExp * 1.1 + 50); // Increase maxExp by 20% each level
-                    // activeDemon.value.maxHp = Math.floor(50 + (activeDemon.value.stats[2] + activeDemon.value.level + (activeDemon.value.stats[4] / 10)) * 7);
+                    demon.maxExp = Math.floor(demon.maxExp * 1.1 + 50);
                     let oldHP = demon.maxHp;
                     demon.maxHp = Math.floor(50 + (demon.stats[2] + demon.level + (demon.stats[4] / 10)) * 7);
                     demon.hp += (demon.maxHp - oldHP);
@@ -149,19 +143,22 @@ export function sendMessage(messageInput) {
             })
 
             prettify.value.log.push (levelUpMessage)
-            // return (`Command executed: ${lowercaseMessage.trim()}`);
+        
         } else if (lowercaseMessage.startsWith('/coeff')) {
-            let formattedString = lowercaseMessage.slice(6).trim();
 
+
+            let formattedString = lowercaseMessage.slice(6).trim();
             let checkAll = formattedString.trim().endsWith('all');
             let checkClear = formattedString.trim().startsWith('clear');
 
-            // match all {...} groups
+            // Checks for matches
             let matches = [...formattedString.matchAll(/\{([^}]*)\}/g)];
 
+            // Sets the data for the new coeff
             let newCoeffName = matches[0]?.[1] || "New Coeff";
             let newCoeffBox = matches[1]?.[1] || "";
 
+            // Checks for all or clear to see if it will add the coeff to all demons or clear all the coeffs
             if (checkAll && checkClear){
                 demonList.value.forEach(demon => {
                     demon.coeffs = [];
@@ -181,19 +178,25 @@ export function sendMessage(messageInput) {
             }
 
             dataMaster.autoSave();
-        } else if (lowercaseMessage.startsWith('/counter')) {
-            let formattedString = lowercaseMessage.slice(8).trim();
 
+
+        } else if (lowercaseMessage.startsWith('/counter')) {
+
+
+            // Initializes Variables
+            let formattedString = lowercaseMessage.slice(8).trim();
             let checkAll = formattedString.trim().endsWith('all');
             let checkClear = formattedString.trim().startsWith('clear');
 
-            // match all {...} groups
+            // Checks for matches
             let matches = [...formattedString.matchAll(/\{([^}]*)\}/g)];
 
+            // Puts the new counter's data up
             let newCounterName = matches[0]?.[1].toUpperCase() || "NEWCTR";
             let newCounterTally = parseInt(matches[1]?.[1] || 0);
 
 
+            //Checks to see if it's clearing counters, adding to all, or clearing all 
             if (checkAll && checkClear){
                 demonList.value.forEach(demon => {
                     demon.counters = [];
@@ -211,8 +214,68 @@ export function sendMessage(messageInput) {
                 activeDemon.value.counters.push([newCounterName, newCounterTally]);
                 prettify.value.log.push ("Added counters to " + activeDemon.value.name + " (" + newCounterName + ", " + newCounterTally + ")");
             }
-
             dataMaster.autoSave();
+
+
+
+        } else if (lowercaseMessage.startsWith('/levelup')) {
+
+            // Initializes variables
+            let levelUpCount = parseInt(lowercaseMessage.slice(8).trim()) || 1;
+            prettify.value.log.push(activeDemon.value.level+levelUpCount);
+            let targetLevel = Math.min(99, activeDemon.value.level+levelUpCount);
+            
+            
+            // Starts the leveling loop
+            while (activeDemon.value.level < targetLevel) {
+
+                ///Block at max level
+                if (activeDemon.value.level == 99) { activeDemon.value.exp = 0; activeDemon.value.maxExp = 0; break }
+
+                ///Level up and add available points
+                activeDemon.value.level++;
+                if (activeDemon.value.level % 2 === 0) {
+                    activeDemon.value.availablePoints++;
+                }
+
+                //Randomly boost stats according to the growth rates
+                let statPool = [];
+
+                for (let i = 0; i < 5; i++) {
+                    for (let j = 0; j < activeDemon.value.growthRates[i]; j++) {
+                        statPool.push(i);
+                    }
+                }
+
+                // Shuffle the pool
+                for (let i = statPool.length - 1; i > 0; i--) {
+                    let j = Math.floor(Math.random() * (i + 1));
+                    [statPool[i], statPool[j]] = [statPool[j], statPool[i]];
+                }
+
+                // Increase 3 stats
+                let chosen = statPool.slice(0, 3);
+                for (let index of chosen) {
+                    activeDemon.value.stats[index]++;
+                }
+
+                ///Cut XP, increase max XP, HP, and MP
+                activeDemon.value.exp = 0;
+                activeDemon.value.maxExp = Math.floor(activeDemon.value.maxExp * 1.1 + 50); // Increase maxExp by 20% each level
+                let oldHP = activeDemon.value.maxHp;
+                activeDemon.value.maxHp = Math.floor(50 + (activeDemon.value.stats[2] + activeDemon.value.level + (activeDemon.value.stats[4] / 10)) * 7);
+                activeDemon.value.hp += (activeDemon.value.maxHp - oldHP);
+                let oldMP = activeDemon.value.maxMp;
+                activeDemon.value.maxMp = Math.floor(32 + ((activeDemon.value.stats[1] * 8) + (activeDemon.value.level) + (activeDemon.value.stats[4] / 4)));
+                activeDemon.value.mp += (activeDemon.value.maxMp - oldMP);
+                activeDemon.value.getVariables();
+            }
+
+            // Logs
+            prettify.value.log.push("Leved up x" + levelUpCount );
+
+
+            // Adds EXP
         } else if (lowercaseMessage.startsWith('/xp') || lowercaseMessage.startsWith('/exp')) {
 
             //Add XP
@@ -271,9 +334,10 @@ export function sendMessage(messageInput) {
                 activeDemon.value.maxMp = Math.floor(32 + ((activeDemon.value.stats[1] * 8) + (activeDemon.value.level) + (activeDemon.value.stats[4] / 4)));
                 activeDemon.value.mp += (activeDemon.value.maxMp - oldMP);
                 activeDemon.value.getVariables();
+                prettify.value.log.push (activeDemon.value.name + " has leveled up to level " + activeDemon.value.level);
             }
 
-            prettify.value.log.push (`Command executed: ${lowercaseMessage.trim()}`);
+            prettify.value.log.push ("/XP: " + activeDemon.value.name + " gained " + xpAmount + " EXP");
         } else if (lowercaseMessage.startsWith('/hp') || lowercaseMessage.startsWith('/heal')) {
 
 
@@ -286,34 +350,29 @@ export function sendMessage(messageInput) {
             }
             calculation.replace(' ', '');
             let healthAmount = parseInt(dMDAS(calculation, activeDemon.value));
-            //include damage and healing
-            // let healthAmount = parseInt(messageInput.trim().match(/^\/(?:hp)\s+(-?\d+)/i)?.[1] || 0);
 
-
+            // Ensures it's a number
             if (isNaN(healthAmount)) {
                 prettify.value.log.push ('Invalid health amount. Use format: /hp <amount>');
                 return;
             }
 
 
-
+            // Adds health and makes sure it's not over the max
             activeDemon.value.hp += healthAmount;
             if (activeDemon.value.hp > activeDemon.value.maxHp + activeDemon.value.hpBooster) {
                 activeDemon.value.hp = activeDemon.value.maxHp + activeDemon.value.hpBooster; // Cap the healing to max HP
             }
 
-            // if (activeDemon.value.hp < -activeDemon.value.maxHp + activeDemon.value.hpBooster) {
-            //     activeDemon.value.hp = -activeDemon.value.maxHp + activeDemon.value.hpBooster; // Prevent negative HP
-            // }
-
+            // Prevent negative HP
             if (activeDemon.value.hp < 0) {
-                activeDemon.value.hp = 0; // Prevent negative HP
+                activeDemon.value.hp = 0; 
             }
 
+            // Logs 
+            prettify.value.log.push ("/HP: Gained " + healthAmount + " HP");
 
 
-
-            prettify.value.log.push (`Command executed: ${lowercaseMessage.trim()}`);
         } else if (lowercaseMessage.startsWith('/mp')) {
 
             //include damage and healing
@@ -328,22 +387,24 @@ export function sendMessage(messageInput) {
                 return;
             }
 
+            // Adds MP and ensures it's not above max
             activeDemon.value.mp += manaAmount;
             if (activeDemon.value.mp > activeDemon.value.maxMp + activeDemon.value.mpBooster) {
                 activeDemon.value.mp = activeDemon.value.maxMp + activeDemon.value.mpBooster; // Cap the healing to max MP
             }
 
+            // Prevent negative MP
             if (activeDemon.value.mp < 0) {
-                activeDemon.value.mp = 0; // Prevent negative MP
+                activeDemon.value.mp = 0; 
             }
 
+            // Logs
+            prettify.value.log.push ("/MP: Gained " + manaAmount + " MP");
 
 
-
-            prettify.value.log.push (`Command executed: ${lowercaseMessage.trim()}`);
         } else if (lowercaseMessage.startsWith('/bulwark')) {
 
-            let portString = messageInput;
+            // Sets Bulwark Variables
             let doAll = false;
             if (messageInput.includes('all')){
                 doAll = true
@@ -355,15 +416,12 @@ export function sendMessage(messageInput) {
             let bulwarkAmount = parseInt(dMDAS(calculation, activeDemon.value));
 
 
-
             // Verify Bulwark is a number
             if (isNaN(bulwarkAmount)) {
                 prettify.value.log.push ('Invalid health amount. Use format: /bulwark <amount>');
                 return;
             }
 
-            
-            
 
             // Cap the healing to max HP
             activeDemon.value.bulwark += bulwarkAmount;
@@ -376,13 +434,12 @@ export function sendMessage(messageInput) {
                 activeDemon.value.bulwark = 0; 
             }
 
+            // Logs
+            prettify.value.log.push ("/bulwark: gained " + bulwarkAmount + " bulwark");
 
 
 
-            prettify.value.log.push (`Command executed: ${lowercaseMessage.trim()}`);
         } else if (lowercaseMessage.startsWith('/cost')) {
-
-            // console.log('Processing /cost command');
 
             //include damage and healing
             let calculation = lowercaseMessage.slice(5).trim();
@@ -393,56 +450,51 @@ export function sendMessage(messageInput) {
                 mpCost = false;
                 calculation = calculation.slice(0, -2).trim();
             }
-            //  else if (calculation.endsWith('mp')) {
-            //     mpCost = true;
-            //     calculation = calculation.slice(0, -2).trim();
-            // }
 
-            console.log('Cost calculation:', calculation, 'HP cost:', hpCost, 'MP cost:', mpCost);
-
+            // Removes spaces from the calculation and puts it through dMDAS
             calculation.replace(' ', '');
             let cost = parseInt(dMDAS(calculation, activeDemon.value));
             cost = Math.ceil(cost); // Ensure cost is an integer
 
+            // Ensures the cost is a number
             if (isNaN(cost)) {
-                prettify.value.log.push ('Invalid cost amount. Use format: /cost <amount> [hp/mp]');
+                prettify.value.log.push ("Invalid cost amount. Use format: /cost <amount> [hp/mp]");
                 messageInput = "";
                 return;
             }
 
+
+            // Checks if there's enough HP or MP and checks which one it's taking
+            if (hpCost && activeDemon.value.hp < cost) {
+                prettify.value.log.push ("/cost: Not enough HP to cover the cost of " + cost + " HP");
+                messageInput = "";
+            } else if (mpCost && activeDemon.value.mp < cost) {
+                prettify.value.log.push ("Not enough MP to cover the cost of " + cost + " MP");
+                messageInput = "";
+            } else
             if (hpCost && activeDemon.value.hp >= cost) {
                 activeDemon.value.hp -= cost;
-                prettify.value.log.push ('/skill cost applied: ' + cost + ' HP');
+                prettify.value.log.push ("/cost: cost applied: " + cost + " HP");
                 messageInput = "";
-                return;
             } else if (mpCost && activeDemon.value.mp >= cost) {
                 activeDemon.value.mp -= cost;
-                prettify.value.log.push ('/skill cost applied: ' + cost + ' MP');
+                prettify.value.log.push ("/cost: cost applied: " + cost + " MP");
                 messageInput = "";
-                return;
-            }
-            if (hpCost && activeDemon.value.hp < cost) {
-                prettify.value.log.push ('Not enough HP to cover the cost of ' + cost + ' HP');
-                messageInput = "";
-                return;
-            } else if (mpCost && activeDemon.value.mp < cost) {
-                prettify.value.log.push ('Not enough MP to cover the cost of ' + cost + ' MP');
-                messageInput = "";
-                return;
+            } else{
+                // Log
+                prettify.value.log.push ("Command executed: " + lowercaseMessage.trim() + ", but there was an unexpected error.");
             }
 
+            
 
 
+        } else if (lowercaseMessage.startsWith('/speed')) {
 
-            prettify.value.log.push (`Command executed: ${lowercaseMessage.trim()}, but there was an unexpected error.`);
-        } else if (messageInput.startsWith('/speed')) {
-
-            let battleSpeed = dMDAS("1d100+ag+(lu/2)", activeDemon.value);
-
-
+            // Calculates and logs battlespeed
+            let battleSpeed = dMDAS("1d100+ag+(lu/2)*(fast/100)", activeDemon.value);
             prettify.value.log.push ("Calculated battlespeed equals " + Math.floor(battleSpeed));
 
-        } else if (messageInput.startsWith('/will')) {
+        } else if (lowercaseMessage.startsWith('/will')) {
 
             // Calculate for reducing eahc ailment
 
@@ -459,8 +511,8 @@ export function sendMessage(messageInput) {
                         // Get will reduction Math
                         let willReduction = dMDAS("1d100", activeDemon.value);
                         if (willReduction > 95) { willReduction *= 2; }
-                        willReduction += Math.floor(dMDAS("(lu+(vi/2))*wilpwr", activeDemon.value));
-
+                        willReduction += Math.floor(dMDAS("(lu+(vi/2))*(wilpwr/100)", activeDemon.value));
+                        console.log(willReduction);
                         willMessage += '\n' + ailment[0] + ": " + ailment[2] + " -> "
                         ailment[2] -= willReduction;
                         willMessage += Math.max(ailment[2], 0);
@@ -472,16 +524,17 @@ export function sendMessage(messageInput) {
                 })
             }
 
+            // Ensures the will is accurate
             let willTargetNumber = parseInt(willTarget) || 0;
             if (willTargetNumber > 0 && willTargetNumber <= activeDemon.value.ailments.length) {
 
                 // Get will reduction Math
                 let willReduction = dMDAS("1d100", activeDemon.value);
                 if (willReduction > 95) { willReduction *= 2; }
-                willReduction += Math.floor(dMDAS("lu+(vi/2)", activeDemon.value));
+                willReduction += Math.floor(dMDAS("(lu+(vi/2))*(wilpwr/100)", activeDemon.value));
 
                 willMessage += '\n' + activeDemon.value.ailments[willTarget - 1][0] + ": " + activeDemon.value.ailments[willTarget - 1][1] + " -> "
-                activeDemon.value.ailments[willTarget - 1][1] -= willReduction;
+                activeDemon.value.ailments[willTarget - 1][2] -= willReduction;
                 willMessage += Math.max(activeDemon.value.ailments[willTarget - 1][1], 0);
 
             }
@@ -491,8 +544,8 @@ export function sendMessage(messageInput) {
                 let gotCrit = "";
                 if (willReduction > 95) { willReduction *= 2; gotCrit = " CRITICAL WILL" }
 
-                let willBoost = Math.floor(dMDAS("lu+(vi/2)", activeDemon.value));
-                willMessage = "1d100+(lu+vi/2)*wilpwr (" + willReduction + gotCrit + "), Total: " + (willReduction + willBoost * activeDemon.value.willPower);
+                let willBoost = Math.floor(dMDAS("lu+(vi/2)*(wilpwr/100)_floor", activeDemon.value));
+                willMessage = "1d100+(lu+(vi/2))*(wilpwr/100)_floor (" + willReduction + gotCrit + "), Total: " + (willReduction + willBoost);
             }
 
             // Cleanup Ailments
@@ -501,14 +554,20 @@ export function sendMessage(messageInput) {
             // Log it
             prettify.value.log.push ("Will: " + willMessage);
 
-        } else if (messageInput.startsWith('/inflict')) {
+
+        } else if (lowercaseMessage.startsWith('/inflict')) {
+
+
+            // Initialize Variables for ailment infliction
             let input = messageInput.toLowerCase().slice(8).trim().split(" ");
-            let willPower = dMDAS("1d100+(lu+vi/2)*wilpwr", activeDemon.value);
+            let willPower = dMDAS("1d100+(lu+vi/2)*(wilpwr/100)", activeDemon.value);
             let potency = dMDAS(input[1], activeDemon.value);
-            if (willPower > potency) {
+
+            // If the willpower 
+            if (willPower > potency && potency != -1) {
                 prettify.value.log.push ("Overcame potency!");
             } else {
-                potency *= 2;
+                if (potency == -1) {potency = 100} else { potency *= 2; }
                 switch (input[0]) {
                     case "burn": activeDemon.value.ailments.push(['Burning', 1, potency, 'Take fire damage at the start of each turn']); prettify.value.log.push ("Inflicted " + input[0]); break;
                     case "freeze": activeDemon.value.ailments.push(['Frozen', 2, potency, '-999 eva | -5% elmtres']); prettify.value.log.push ("Inflicted " + input[0]); break;
@@ -531,20 +590,21 @@ export function sendMessage(messageInput) {
 
                 
             }
-            // activeDemon.recalculateVitals();
 
             dataMaster.autoSave();
 
 
 
 
-        } else if (messageInput.startsWith('/damage')) {
+        } else if (lowercaseMessage.startsWith('/damage')) {
 
+            // Get variables to calculate damage
             let input = messageInput.toLowerCase();
             let useArmy = true;
             let useResistance = true;
             let useRakukaja = true;
 
+            // check to see if it's ignoring resistance or rakukaja
             if (input.includes("_nores")) {
                 useResistance = false;
                 input = input.replace("_nores", "");
@@ -558,10 +618,10 @@ export function sendMessage(messageInput) {
             let rawDamage = input.slice(7).trim();
 
             rawDamage = dMDAS(rawDamage, activeDemon.value);
+            let msgRawDamage = Math.floor(rawDamage);
 
-
+            // See if it's using rakukaja and reduce the damage if so
             if (useRakukaja) {
-                // rawDamage *= 1 - activeDemon.value.buffs[1] * 0.2;
                 let rakuAmount = activeDemon.value.buffs[1];
                 if (activeDemon.value.guard){
                     rakuAmount++;
@@ -574,24 +634,19 @@ export function sendMessage(messageInput) {
 
             // Apply defense reduction from character stats and armor
             if (useResistance) {
-                // rawDamage = Math.floor(rawDamage * ((200 / (200 + (((activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]) + (activeDemon.value.armor[1] + activeDemon.value.armorBooster[0])) * (1 + (((activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]) + (activeDemon.value.armor[1] + activeDemon.value.armorBooster[0])) / 30)))))));
-                // equippedArmor
                 rawDamage = Math.floor(rawDamage * ((200 / (200 + (((activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]) + (activeDemon.value.equippedArmor.resistance + activeDemon.value.armorBooster[0])) * (1 + (((activeDemon.value.stats[2] + activeDemon.value.statsBooster[2]) + (activeDemon.value.equippedArmor.resistance + activeDemon.value.armorBooster[0])) / 30)))))));
             }
 
-
+            // Make sure the final damage is at least 10
             if (rawDamage < 1) { rawDamage = 1; }
-            // Apply army damage reduction if army exists
             let finalDamage = parseInt(rawDamage) || 1;
 
-
+            // Reduce from bulwark if there is any
             if (activeDemon.value.bulwark >= finalDamage) { activeDemon.value.bulwark = Math.max(activeDemon.value.bulwark - finalDamage, 0); finalDamage = 0; }
             else {
                 finalDamage -= activeDemon.value.bulwark
                 activeDemon.value.bulwark = 0;
             }
-
-            console.log(activeDemon.value);
 
             // Apply remaining damage to player
             activeDemon.value.hp -= finalDamage;
@@ -599,13 +654,15 @@ export function sendMessage(messageInput) {
             if (activeDemon.value.hp < 0) { activeDemon.value.hp = 0; }
 
             // Handle other commands starting with "/"
-            prettify.value.log.push (`Command executed: ${lowercaseMessage.trim()} ` + finalDamage + ' damage received');
+            prettify.value.log.push ("/Damage: " + finalDamage + " damage received from: " + msgRawDamage);
 
-        } else if (messageInput.startsWith('/washskills')) {
+        } else if (lowercaseMessage.startsWith('/washskills')) {
 
+            // Check if it's for all demons
             let washall = false;
             if (messageInput.includes("all")) { washall = true }
 
+            // Update the skills with the proper ones from the updated skills list
             fetch("Resources/skills.json").then(response => response.json()).then(data => {
                 activeDemon.value.skills.forEach(skill => {
                     let skillData = data.find(dataSkill => dataSkill.name.toLowerCase() === skill.name.toLowerCase());
@@ -634,11 +691,11 @@ export function sendMessage(messageInput) {
             });
 
 
-
+            // Log
             prettify.value.log.push ('Skills have been washed');
 
 
-        } else if (messageInput.startsWith('/wash')) {
+        } else if (lowercaseMessage.startsWith('/wash')) {
 
             let portString = messageInput;
             let doAll = false;
@@ -681,18 +738,20 @@ export function sendMessage(messageInput) {
             prettify.value.log.push ('All demons washed and stats recalculated');
 
 
-        } else if (messageInput.startsWith('/fairy')) {
+        } else if (lowercaseMessage.startsWith('/fairy')) {
+
             // Clean the demon's HP, coefficient, ailments, etc
             activeDemon.value.getVariables();
             activeDemon.value.recalculateVitals();
             activeDemon.value.hp = activeDemon.value.maxHp + activeDemon.value.hpBooster;
             activeDemon.value.mp += Math.ceil((activeDemon.value.maxMp + activeDemon.value.mpBooster) / 10);
             activeDemon.value.mp = Math.min(activeDemon.value.mp, activeDemon.value.maxMp);
-            activeDemon.value.buffs = activeDemon.value.buffs.map(b => Math.max(b, 0)); // Ckear debuffs 
-            activeDemon.value.ailments = []; // Reset ailments
+            activeDemon.value.buffs = activeDemon.value.buffs.map(b => Math.max(b, 0));
+            activeDemon.value.ailments = [];
             prettify.value.log.push ('Fairy!!!!!!');
 
-        } else if (messageInput.startsWith('/powerlevel')) {
+        } else if (lowercaseMessage.startsWith('/powerlevel')) {
+
             // Clean the demon's HP, coefficient, ailments, etc
             activeDemon.value.getVariables();
             activeDemon.value.recalculateVitals();
@@ -836,50 +895,22 @@ export function sendMessage(messageInput) {
                 'Armor Resistance Boost: ' + activeDemon.value.armorBooster[0] + '\n' +
                 'Armor Evasion Boost: ' + activeDemon.value.armorBooster[1]
 
-                // 'Talents: ' + activeDemon.value.willPower + '\n' + '\n' +
-
-                // 'Senses: ' + '\n' +
-                // 'See: ' + activeDemon.value.senses.see + '\n' +
-                // 'Hear: ' + activeDemon.value.senses.hear + '\n' +
-                // 'Smell: ' + activeDemon.value.senses.smell + '\n' +
-                // 'Feel: ' + activeDemon.value.senses.feel + '\n' +
-                // 'Taste: ' + activeDemon.value.senses.taste + '\n' + 
-                // 'Sixth: ' + activeDemon.value.senses.sixth + '\n' + '\n' +
-
-                // 'Social: ' + '\n' +
-                // 'Acting: ' + activeDemon.value.social.acting + '\n' +
-                // 'Authority: ' + activeDemon.value.social.authority + '\n' +
-                // 'Charm: ' + activeDemon.value.social.charm + '\n' +
-                // 'Courage: ' + activeDemon.value.social.courage + '\n' +
-                // 'Discernment: ' + activeDemon.value.social.discernment + '\n' + '\n' + 
-
-                // 'Academia: ' + '\n' +
-                // 'Anthropology: ' + activeDemon.value.academia.anthropology + '\n' +
-                // 'Artisanship: ' + activeDemon.value.academia.artisanship + '\n' +
-                // 'Biology: ' + activeDemon.value.academia.biology + '\n' +
-                // 'Engineering: ' + activeDemon.value.academia.engineering + '\n' +
-                // 'Mathematics: ' + activeDemon.value.academia.mathematics + '\n' +
-                // 'Occultism: ' + activeDemon.value.academia.occultism + '\n' +
-                // 'Philosophy: ' + activeDemon.value.academia.philosophy + '\n' + '\n' + ''
-
             );
 
 
-        } else if (messageInput.startsWith('/display')) {
+        } else if (lowercaseMessage.startsWith('/display')) {
 
 
+            // formates the data from the message to display the skill
             let importData = messageInput.trim().toLowerCase().slice(8).trim();
-            // Get the skill data from TheRiseOfTheNewWorld/Resources/skills.json 
-
             let skillName = importData;
 
+            // Import data from the Skills.json
             fetch("Resources/skills.json").then(response => response.json()).then(data => {
-                let skillsCount = activeDemon.value.skills.filter(skill => skill.name !== "").length;
                 let gotSkill = false;
                 let skillData = data.find(skill => skill.name.toLowerCase().replace(/[\s']/g, '') === skillName.toLowerCase());
                 
-
-
+                // Get the data and turn display skill into the skill and turn on display skill stuff
                 if (skillData.name != "") {
                     prettify.value.selectedSkill = skillData || new Skill("", "", [], []);
                     prettify.value.displaySkill = true;
@@ -890,9 +921,7 @@ export function sendMessage(messageInput) {
                     prettify.value.log.push("Displayed skill: " + skillName);
                 }
 
-
-
-
+                // Catch incase there was a problem
                 if (!gotSkill) {
                     prettify.value.log.push("Could not find a skill Display");
                     displaySkill.value = false;
@@ -906,8 +935,7 @@ export function sendMessage(messageInput) {
 
             dataMaster.autoSave();
 
-
-        } else if (messageInput.startsWith('/learn')) {
+        } else if (lowercaseMessage.startsWith('/learn')) {
 
             
             let importData = messageInput.trim().toLowerCase().slice(6).trim().split(' ');
@@ -930,16 +958,26 @@ export function sendMessage(messageInput) {
                 let skillData = data.find(skill => skill.name.toLowerCase().replace(/[\s']/g, '') === skillName.toLowerCase());
                 
                 const skillSlot = parseInt(importData[1]) || -1;
-                console.log("activeDemon.value.skillCount " + activeDemon.value.skillCount);
+                // console.log("activeDemon.value.skillCount " + activeDemon.value.skillCount);
 
                 if (skillsCount > activeDemon.value.skillCount-1 && skillSlot == -1) {
-                    console.log("A skill slot is: " + skillSlot);
+                    // console.log("A skill slot is: " + skillSlot);
                     prettify.value.log.push ("All skill slots are full, please specifiy a specific slot");
                     return;
                 }
                 if (importData.length == 1) {
-                    console.log("B skill slot is: " + skillSlot);
-                    activeDemon.value.skills[skillsCount] = skillData || new Skill("", "", [], []);
+                    
+                    //Find the first available slot rather than using skillsCount
+                    let firstAvailableSkillSlot = 0;
+                    for (let i = 0; i < 8; i++){
+                        if (activeDemon.value.skills[i].name == ''){
+                            firstAvailableSkillSlot = i;
+                            console.log("gothere and i is equal to: " + i);
+                            i+=8;
+                        }
+                    }
+
+                    activeDemon.value.skills[firstAvailableSkillSlot] = skillData || new Skill("", "", [], []);
                     prettify.value.log.push ("Imported skill: " + skillName + " to slot " + (skillsCount + 1));
                     gotSkill = true;
                 };
@@ -966,21 +1004,20 @@ export function sendMessage(messageInput) {
             dataMaster.autoSave();
 
 
-        } else if (messageInput.startsWith('/import')) {
+        } else if (lowercaseMessage.startsWith('/import')) {
 
+            // Opens the import menu from the modal
             if (messageInput.trim() === '/import') {
                 prettify.value.modal = true; // Open the import modal
                 prettify.value.modalTab = 'import';
-                // console.log('Import menu opened' + prettify.modal);
                 prettify.value.log.push ('Import menu opened');
             }
 
             let importData = messageInput.trim().toLowerCase().slice(7).trim().split(' ');
-            // Get the skill data from TheRiseOfTheNewWorld/Resources/skills.json 
 
 
 
-
+            // Depreciates stuff for getting skills, replaces by /learn
             if (importData[0] === 'skill') {
 
                 let skillName = importData[1];
@@ -1021,78 +1058,79 @@ export function sendMessage(messageInput) {
             dataMaster.autoSave();
 
 
-        } else if (messageInput.startsWith('/physskills')) {
-            // Handle other commands starting with "/"
-            fetch("Resources/skills.json")
-                .then(response => response.json())
-                .then(data => {
-                    let physSkills = data.filter(skill => [1, 2, 3].includes(skill.skillType));
-                    let physSkillList = "List: ";
-                    let physSkillType = ["Strike", "Slash", "Pierce"];
-                    physSkills.forEach(physSkill => {
-                        physSkillList = physSkillList + physSkill.name + "(" + physSkillType[physSkill.skillType] + ") , ";
-                    })
-                    console.log("Physical Skills:", physSkillList); // Debug output, can be removed later
-
-                    activeDemon.value.getVariables();
-                    activeDemon.value.recalculateVitals();
-                })
-                .catch(error => {
-                    console.error('Error fetching skill data:', error);
-                });
-
-                
-        } else if (messageInput.startsWith('/colors')) {
+        
+        } else if (lowercaseMessage.startsWith('/colors')) {
             
+            // Opens the colors menu
             prettify.value.getColors();
             prettify.value.modalTab = 'colorSchemeEditor';
             prettify.value.modal = true;
 
 
-        } else if (messageInput.startsWith('/runkus')) {
+        } else if (lowercaseMessage.startsWith('/runkus')) {
 
-            // prettify.value.colorScheme = ['red', 'red', 'red', 'red', 'red', 'red', 'red', 'red', 'red' ];
+            // Turns on runkusmode, a silly scrolling easter egg
             for (let i = 0; i < 9; i++){
                 prettify.value.setColors(i, 'red')
             }
             prettify.value.runkusMode = !prettify.value.runkusMode;
 
 
-        } else if (messageInput.startsWith('/clear')) {
-            // Handle other commands starting with "/"
+        } else if (lowercaseMessage.startsWith('/clear')) {
+            
+            // Resets the log 
             prettify.value.log = [];
+
+
         } else if (messageInput.startsWith('/deletelocalstorage') || messageInput.startsWith('/clearallsavedata')) {
-            // Handle other commands starting with "/"
+            
+            
+            // Deletes all the localstorage
             localStorage.clear();
             prettify.value.log.push ("Cleared all saved data");
-        } else if (messageInput.startsWith('/deletedemon')) {
 
-            // Delete Demon
 
+
+        } else if (lowercaseMessage.startsWith('/deletedemon')) {
+
+            // Ensures the first and only demon can't be deleted
             if (demonList.value.length === 1) {
                 prettify.value.log.push ('Cannot delete the last demon!');
                 messageInput = '';
                 return
             }
 
-            if (demonList.value.length === 0) {
-                prettify.value.log.push ('No demons to delete!');
-                messageInput = '';
-                return;
-            }
 
+            // If there's no argumenets deletes the active demon
             if (messageInput == '/deletedemon') {
                 demonList.value.forEach((demon, index) => {
                     if (demon === activeDemon.value && demon != demonList.value[0]) {
-                        demonList.value.splice(index, 1); // Remove the demon from the list
+                        
+                        //Clear eqmuipment ownership of the soon to be deleted demon
+                        let unequipIDsList = [];
+                        if (demon.equippedWeapon.id){ unequipIDsList.push(demon.equippedWeapon.id);}
+                        if (demon.equippedArmor.id){ unequipIDsList.push(demon.equippedArmor.id);}
+                        demon.accessories.forEach(acc =>{
+                            if (acc.id){ unequipIDsList.push(acc.id);}
+                        })
+                        
+                        // Clears equippers of items
+                        equipmentList.value.forEach(itm =>{
+                            if (unequipIDsList.includes(itm.id)){
+                                itm.equipped = false;
+                                itm.equipper = '';
+                            }
+                        })
+
+                        // Cleans up the data
+                        demonList.value.splice(index, 1);
                         activeDemon.value = demonList.value[0];
                         prettify.value.log.push ('Demon Deleted');
                         messageInput = '';
                         return;
                     }
                     if (demon === activeDemon.value && demon == demonList.value[0]) {
-                        // demonList.value.splice(index, 1); // Remove the demon from the list
-                        // activeDemon.value = demonList.value[0];
+
                         prettify.value.log.push ('Cannot delete the first demon');
                         messageInput = '';
                         return;
@@ -1101,6 +1139,8 @@ export function sendMessage(messageInput) {
                 return;
 
             }
+
+            // Checks for an argument for a specific demon to delete
             let index = parseInt(lowercaseMessage.slice(12).trim()) || 0;
             if (index == 0) {
                 messageInput = '';
@@ -1108,6 +1148,24 @@ export function sendMessage(messageInput) {
 
             // Ensure you're not deleting the first demon
             if (index > 0 && !activeDemon.value.main) {
+                
+
+                //Clear eqmuipment ownership of the soon to be deleted demon
+                let unequipIDsList = [];
+                if (demonList.value[index].equippedWeapon.id){ unequipIDsList.push(demonList.value[index].equippedWeapon.id);}
+                if (demonList.value[index].equippedArmor.id){ unequipIDsList.push(demonList.value[index].equippedArmor.id);}
+                demonList.value[index].accessories.forEach(acc =>{
+                    if (acc.id){ unequipIDsList.push(acc.id);}
+                })
+                        
+                equipmentList.value.forEach(itm =>{
+                    if (unequipIDsList.includes(itm.id)){
+                        itm.equipped = false;
+                        itm.equipper = '';
+                    }
+                })
+
+                
                 demonList.value.splice(index, 1); // Remove the demon from the list
                 activeDemon.value = demonList.value[0];  // Set activeDemon to the new first demon
                 prettify.value.log.push ('Demon Deleted');
@@ -1119,6 +1177,8 @@ export function sendMessage(messageInput) {
 
 
         } else if (lowercaseMessage.startsWith('/load')) {
+
+            // Loads data from localstorage using datamaster
             if (lowercaseMessage.split(' ').length > 1) {
                 dataMaster.saveFile = lowercaseMessage.toUpperCase().split(' ')[1];
             } else {
@@ -1127,8 +1187,11 @@ export function sendMessage(messageInput) {
             prettify.value.displaySkill = '';
             prettify.value.skillPage = 0;
             dataMaster.loadData();
-            prettify.value.log.push ("Loaded Data");
+
+
         } else if (lowercaseMessage.startsWith('/save')) {
+
+            // Saves data to localstorage
 
             // Check save slot
             if (lowercaseMessage.split(' ').length > 1) {
@@ -1141,23 +1204,28 @@ export function sendMessage(messageInput) {
             prettify.value.log.push ("Saved Data");
 
         } else if (lowercaseMessage.startsWith('/print')) {
-            // dataMaster.printData();
+            
+            // Prints the current demon's data to the console
             console.log(activeDemon.value)
             prettify.value.log.push ("Printed Data to the Browser Console");
 
         } else if (lowercaseMessage.startsWith('/delete')) {
-            let trimmedMessage = lowercaseMessage.slice(7).trim().toUpperCase();
 
+            // Deletes a savefile from the localstorage
+            let trimmedMessage = lowercaseMessage.slice(7).trim().toUpperCase();
             localStorage.removeItem(trimmedMessage);
             prettify.value.log.push ("Deleted Data: " + trimmedMessage);
 
         } else if (lowercaseMessage.startsWith('/download')) {
-            let trimmedMessage = lowercaseMessage.slice(9).trim();
 
+            // Downloads data from localstorage
+            let trimmedMessage = lowercaseMessage.slice(9).trim();
             dataMaster.downloadData(trimmedMessage);
             prettify.value.log.push ("Downloaded Data");
 
         } else if (lowercaseMessage.startsWith('/listofsaves') || lowercaseMessage.startsWith('/listofsaves')) {
+
+            // Gets a list of saves from localstorage and displays them in the log 
             let listOfSaves = "";
             for (let i = 0; i < localStorage.length; i++) {
                 listOfSaves += (localStorage.key(i)) + ', ';
@@ -1166,69 +1234,94 @@ export function sendMessage(messageInput) {
             // dataMaster.downloadData(trimmedMessage);
             prettify.value.log.push ("List of saves: " + listOfSaves);
 
-        } else if (lowercaseMessage.startsWith('/unlock')) {
-            switch (lowercaseMessage.split(' ')[1]) {
-                case ('demon'): case ('demons'): unlockedTabs.value[1] = true; break;
-                case ('army'): case ('armies'): unlockedTabs.value[2] = true; break;
-                case ('edit'): case ('editor'): unlockedTabs.value[3] = true; break;
-                case ('all'): case ('everything'): unlockedTabs.value[1] = true; unlockedTabs.value[2] = true; unlockedTabs.value[3] = true; break;
+        } else if (lowercaseMessage.startsWith('/buffs')) {
+
+            // Alters buffs
+
+            // Gets variables
+            let checkMessage = lowercaseMessage.slice(6).trim();
+            let targetBuff = -1;
+            let changeMessage = "";
+
+            // Checks which buff is being altered
+            switch (checkMessage.split(' ')[0]) {
+                case ('atk'): targetBuff=0; break;
+                case ('def'): targetBuff=1; break;
+                case ('hit'): targetBuff=2; break;
+                default: targetBuff=0; break;
             }
+
+            // Checking how much it's being altered
+            let buffChangeValue = parseInt( checkMessage.split(' ')[2], activeDemon ) | 0;
+
+
+            // Checking how it's being altered
+            switch (checkMessage.split(' ')[1]) {
+                case ('add'):  case ('increase'): activeDemon.value.buffs[targetBuff] += buffChangeValue; changeMessage="increased by"; break;
+                case ('set'):  case ('equals'): activeDemon.value.buffs[targetBuff] = buffChangeValue; changeMessage="set to"; break;
+                case ('sub'): case ('subtract'): case ('decrease'): activeDemon.value.buffs[targetBuff] -= buffChangeValue; changeMessage="decreased by"; break;
+            }
+
+            // Updating and logging
+            activeDemon.value.buffs[targetBuff] = Math.max(activeDemon.value.buffs[targetBuff], -4);
+            activeDemon.value.buffs[targetBuff] = Math.min(activeDemon.value.buffs[targetBuff], 4);
+            prettify.value.log.push ( activeDemon.value.name + "'s " + ["ATK","DEF","HIT"][targetBuff] + " has been " + changeMessage + " " + buffChangeValue );
 
         } else if (lowercaseMessage.startsWith('/recalculatevitals')) {
-            activeDemon.value.recalculateVitals()
-            // console.log('recalculateVitals');
-            prettify.value.log.push (`Command executed: ${lowercaseMessage.trim()}`);
-        } else if (lowercaseMessage.startsWith('/equip')) {
-            ///Check what to equip (Weapon, armor, accessory)
-            let checkMessage = lowercaseMessage.slice(6);
-
-            if (checkMessage.trim().startsWith('weapon')) {
-
-                // Get Wepaon name and description
-                let weaponString = checkMessage.trim().slice(6);
-                let rawMessage = messageInput;
+            activeDemon.value.recalculateVitals();
+            prettify.value.log.push ("/recalculatevitals: Vitals recalculated");
+        } else if (lowercaseMessage.startsWith('/randomizestats')) {
 
 
-
-                // Assign weapon name and description
-                activeDemon.value.weapon.name = toTitleCase(weaponString.split('{')[1].split('}')[0]) || "Barehands";
-                activeDemon.value.weapon.description = rawMessage.split('{')[2].split('}')[0].trim();
-
-                // Get the new rolls
-                let newRolls = weaponString.split('{').slice(3).map(roll => roll.split('}')[0]).slice(0, 8);
-                activeDemon.value.weapon.rollNames = [];
-                activeDemon.value.weapon.rolls = [];
-                newRolls.forEach((roll, index) => {
-                    activeDemon.value.weapon.rollNames[index] = toTitleCase(roll.split(':')[0].trim());
-                    activeDemon.value.weapon.rolls[index] = roll.split(':')[1].trim()
-                });
-
-                prettify.value.log.push ("Equipped '" + activeDemon.value.weapon.name + "'");
-
-
-                //     /equip weapon {chainsaw} {This one-sided sword appears glows a weak purple, it's blade is around 4 feet long, and is particularly sharp.} {aim : /roll (1d100-5+ag+lu/4)*(0.2*S+1)_floor} {damage : /roll (c*(slhpwr*(1+T*0.2)*(12+12*(st/30))))d6} {critical chance : /math 96-(lu/4+ag/10+cb)*(1+S*0.2)_ceil}
-
-            } else if (checkMessage.trim().startsWith('armor')) {
-                let armorString = checkMessage.trim().slice(5).trim();
-
-                let armorName = toTitleCase(armorString.split('{')[1].split('}')[0]);
-
-                activeDemon.value.armor[0] = armorName || "Nude";
-                activeDemon.value.armor[1] = parseInt(armorString.split('{')[2].split(']')[0]) || 0;
-                activeDemon.value.armor[2] = parseInt(armorString.split('{')[3].split(']')[0]) || 0;
-
-                prettify.value.log.push ("Equipped " + activeDemon.value.armor[0] + ", " + activeDemon.value.armor[2] + " evasion and " + activeDemon.value.armor[1] + " defense")
-            } else if (checkMessage.trim().startsWith('accessory')) {
-
+            // Randomizes stats a little bit to make each demon unique, really just a DM thing
+            let randomizeAmount = parseInt(lowercaseMessage.slice(15).trim()) | 0;
+            if (activeDemon.value.stats.every(stat => stat > randomizeAmount) & randomizeAmount > 0 & randomizeAmount < 51 ){
+                activeDemon.value.stats = activeDemon.value.stats.map (stat => {return stat -= randomizeAmount;})
+                for (let i = 0; i < randomizeAmount*5; i++){
+                    activeDemon.value.stats[RollDice(1, 5)-1]++;
+                }
+                prettify.value.log.push("Ranomzed stats with a range of " + randomizeAmount)
+            } else{
+                prettify.value.log.push("Could not Ranomze stats")
             }
 
-            // Check which slot it is
 
-            // Equip the info in that slot
 
-            // Log info
+        } else if (lowercaseMessage.startsWith('/melt')) {
 
+
+            // A way to turn eqiupped equipment into a default weapon opr armor. Mostly for old data so not in the commands list
+            let checkMessage = lowercaseMessage.slice(5).trim();
+            if (checkMessage == "weapon"){
+                activeDemon.value.defaultWeapon = activeDemon.value.equippedWeapon;
+                
+                equipmentList.value = equipmentList.value.filter ( item => item.id != activeDemon.value.equippedWeapon.id );
+                activeDemon.value.equippedWeapon.default = true;
+                prettify.value.log.push ("Equipped weapon is now the default weapon");
+            } else
+            if (checkMessage == "armor"){
+                activeDemon.value.defaultArmor = activeDemon.value.equippedArmor;
+                
+                equipmentList.value = equipmentList.value.filter ( item => item.id != activeDemon.value.equippedArmor.id );
+                activeDemon.value.equippedArmor.default = true;
+                prettify.value.log.push ("Equipped armor is now the default armor");
+            } else
+            if (checkMessage == "both"){
+
+                activeDemon.value.defaultWeapon = activeDemon.value.equippedWeapon;
+                
+                equipmentList.value = equipmentList.value.filter ( item => item.id != activeDemon.value.equippedWeapon.id );
+                activeDemon.value.equippedWeapon.default = true;
+
+                activeDemon.value.defaultArmor = activeDemon.value.equippedArmor;
+                
+                equipmentList.value = equipmentList.value.filter ( item => item.id != activeDemon.value.equippedArmor.id );
+                activeDemon.value.equippedArmor.default = true;
+                prettify.value.log.push ("Equipped weapon and equipped armor are now the default weapon and armor");
+            }
+        
         } else if (lowercaseMessage.startsWith('/help')) {
+
             const helpMessage = "List of commands:\n" +
                 "/roll <dice_expression> or /math <expression> - Roll dice or calculate math expressions (e.g. 3d6 + 2d10 + (4 * 5)). Supports _floor and _ceiling/_ceil flags.\n" +
                 "/xp <amount> or /exp <amount> - Add experience points to your active demon. Levels up automatically when XP thresholds are met.\n" +
@@ -1254,8 +1347,10 @@ export function sendMessage(messageInput) {
             prettify.value.modalTab = 'help';
             prettify.value.log.push ("Loaded help menu");
 
-        } else if (messageInput.startsWith('/unequipall')) {
+        } else if (lowercaseMessage.startsWith('/unequipall')) {
             
+
+            // Goes through all demons and unequips all their items. Does not affect equipmentlist. It's a backup
             demonList.value.forEach(demon =>{
                 demon.accessories = [{}, {}, {}];
             });
@@ -1267,6 +1362,7 @@ export function sendMessage(messageInput) {
 
         } else if (messageInput.startsWith('/destroyallitemsforce')) {
             
+            // Destroys all items incase of a glitch or something
             demonList.value.forEach(demon =>{
                 demon.equippedWeapon = demon.defaultWeapon;
                 demon.equippedArmor = demon.defaultArmor;
@@ -1275,7 +1371,8 @@ export function sendMessage(messageInput) {
             equipmentList.value = [];
 
 
-        } else if (messageInput.startsWith('/')) {
+        } else if (lowercaseMessage.startsWith('/')) {
+            
             // Handle other commands starting with "/"
             prettify.value.log.push (`${lowercaseMessage.trim()} is not a valid command`);
 

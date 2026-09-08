@@ -2,13 +2,11 @@ const { ref, createApp, defineAsyncComponent } = Vue;
 const { loadModule } = window['vue3-sfc-loader'];
 
 import { demonList, activeDemon, equipmentList, modal, log, colorScheme } from '../Composables/Data.js';
-import { RollDice } from '../Models/Calculators.js';
-import { Demon } from '../Models/Demon.js';
-import { getBuffShadowStyle, activePage, activeTab, tabs, displayAilments, equip, birthDemon, gotSkill, prettify } from '../Composables/Prettify.js';
+import { prettify } from '../Composables/Prettify.js';
 import { DataMaster } from '../Models/DataMaster.js';
 import { sendMessage } from './Console.js';
 
-// shared loader config
+
 const options = {
   moduleCache: { vue: Vue },
 
@@ -25,7 +23,7 @@ const options = {
   }
 };
 
-// GLOBAL STATE (optional but clean)
+
 const AppState = {
   // log,
   demonList,
@@ -58,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // dataMaster.loadData("AUTOSAVE");
 
                 
-      return { activePage, colorScheme, activeDemon, DataMaster, demonList, equipmentList, getBuffShadowStyle, activeTab, tabs, displayAilments, equip, birthDemon, sendMessage, log, prettify };
+      return { colorScheme, activeDemon, DataMaster, demonList, equipmentList, sendMessage, log, prettify };
     },
 
 

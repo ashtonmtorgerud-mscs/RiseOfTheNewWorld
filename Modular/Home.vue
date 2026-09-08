@@ -1,17 +1,12 @@
 <template>
-
-
   <div class="w-4/4 h-[6.666667%]" >
     <div class="w-full h-full flex gap-2 flex-col">
       <div class="w-full h-full">
         <div class="h-full flex gap-2 p-1">
-            <!-- href="../Home.html" -->
-          <div
-            :class="'rounded-xl bg-gray-800 h-full w-2/6 box-shadow ring-2 align-middle flex items-center justify-center chaos ring-' + colorScheme[0] + '-500'">
+          <div :class="'rounded-xl bg-gray-800 h-full w-2/6 box-shadow ring-2 align-middle flex items-center justify-center chaos ring-' + colorScheme[0] + '-500'">
             <a>
-              <p class="text-white font-bold text-center text-2xl align-middle truncate"   >Rise of the New
-                World
-                <span class="text-xs">v 1.2.6</span>
+              <p class="text-white font-bold text-center text-2xl align-middle truncate"   >Rise of the New World
+                <span class="text-xs">v 1.2.7</span>
               </p>
             </a>
           </div>

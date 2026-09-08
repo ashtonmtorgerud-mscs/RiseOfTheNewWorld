@@ -1,81 +1,69 @@
 const { createApp, ref, onMounted } = Vue;
 import { Demon, Skill } from "./Demon.js";
 import { demonList, activeDemon, equipmentList, modal, log, colorScheme } from '../Composables/Data.js';
-
-
-// let dmdemonList.value = ref([]);
-// let activeDemon.valueref(new Demon("Placeholder"));
 import { prettify } from "../Composables/Prettify.js";
 import { Weapon, Armor, Accessory, Equipment } from "./Equipment.js";
 
 export class DataMaster {
     constructor() {
-        // Initialize the fileData as an empty object
+
+        // Initialize Variables
         this.fileData = {};
         this.saveFile = "AUTOSAVE";
-        // prettify.value.modalString = "";
         this.skillSlot = 1;
-        // this.selectedSkill = -1;
+        this.primedSaveData = false;
 
-        // Initialize fileData with the current data
+
+        // Puts information from a file into the modalstring
         this.uploadFromFile = (file) => {
             const selectedFile = file.target.files[0];
-            // prettify.modalString = "Successful upload";
             if (!selectedFile) {
-                // console.log("No file selected");
                 return;
             }
 
-            // console.log("File uploaded:", selectedFile);
-
-            // Create a new FileReader
             const reader = new FileReader();
-
-            // console.log(prettify.value.modalString);
 
             reader.onload = (event) => {
                 try {
-                    // Parse the file contents as JSON
                     const data = JSON.parse(event.target.result);
-                    // prettify.value.modal = false;
-                    prettify.value.modalString = JSON.stringify(data, null, 2); // Pretty print the JSON
-                    // prettify.value.modal = true;
-                    // console.log("Data loaded successfully:", data);
-                    // console.log(prettify.value.modalString);
+                    prettify.value.modalString = JSON.stringify(data, null, 2);
                 } catch (error) {
                     console.error("Error loading data:", error);
-                    // prettify.value.modalString = "Error loading JSON data.";
                     prettify.value.log.push("Error loading data: " + error);
                 }
             };
 
-            reader.readAsText(selectedFile); // Read the file as text
+            reader.readAsText(selectedFile);
 
-            // prettify.value.modalString = 'fromFunction';
         };
 
+        // Parses information from the modal string into a piece of data depending on the IType input
         this.parseFromModal = (iType) => {
             // console.log("Got Here");
             try {
                 switch (iType) {
+                
+                    // Imports a demon
                     case ("demon"):
                         let demonData = JSON.parse(prettify.value.modalString);
-                        let demon = new Demon();  // Create a new Demon instance
-                        Object.assign(demon, demonData);  // Copy saved data into the demon instance
+
+                        let demon = new Demon();  
+                        assignExisting(demon, demonData);
 
 
-                        if (demon.weapon) {
-                            let tempWeapon = new Weapon(demon.weapon.name, demon.weapon.description, 0, demon.weapon.rollNames, demon.weapon.rolls, "Weapon");
+
+                        // Turns demon's outdated equipment into new versions of equipment and adds it to the equipmentlist
+                        if (demonData.weapon) {
+                            let tempWeapon = new Weapon(demonData.weapon.name, demonData.weapon.description, 0, demonData.weapon.rollNames, demonData.weapon.rolls, "Weapon");
                             tempWeapon.equipper = demon.name;
                             tempWeapon.equipped = true;
-
+                            
                             demon.equippedWeapon = tempWeapon;
                             equipmentList.value.push(tempWeapon);
                         }
-
-                        if (demon.armor) {
-                            let tempArmor = new Armor(demon.armor[0], "", 0, demon.armor[1], demon.armor[2], []);
-                            console.log(demon.armor[1], demon.armor[2]);
+                        
+                        if (demonData.armor) {
+                            let tempArmor = new Armor(demonData.armor[0], "", 0, demonData.armor[1], demonData.armor[2], []);
                             tempArmor.equipper = demon.name;
                             tempArmor.equipped = true;
                             demon.equippedArmor = tempArmor;
@@ -84,8 +72,11 @@ export class DataMaster {
 
                         if (demon.accessories) {
                             demon.accessories.forEach((acc, index) => {
-                                if (Array.isArray(acc) && acc[0] != '') {
-                                    console.log("#" + index + " acc[0]" + acc[0])
+                                if (acc[0] == ''){
+                                    demon.accessories[index] = {};
+                                } else
+                                if (Array.isArray(acc)) {
+                                    // console.log("#" + index + " acc[0]" + acc[0])
                                     let portAcc = new Accessory(acc[0], '', 0, [acc[1]]);
                                     portAcc.equipper = demon.name;
                                     portAcc.equipped = true;
@@ -93,24 +84,18 @@ export class DataMaster {
                                     equipmentList.value.push(portAcc)
                                 }
                             })
-
-
                         }
 
-                        demon.recalculateVitals();  // Optionally recalculate stats or do any necessary setup
+
+
+                        // Cleans up the modal, saves, adds data
+                        demon.recalculateVitals();  
                         demonList.value.push(demon);
-                        activeDemon.value = demonList.value[demonList.value.length - 1]; // Set the newly created demon as active
-                        // if (!activeDemon.value.equippedWeapon.default) {equipmentList.value.push(activeDemon.value.equippedWeapon)};
-                        // if (!activeDemon.value.equippedArmor.default) {equipmentList.value.push(activeDemon.value.equippedArmor)};
-                        // activeDemon.value.accessories.forEach(acc => {
-                        //     if (acc.id){
-                        //         equipmentList.value.push(acc);
-                        //         console.log(acc);
-                        //     }
-                        // });
+                        activeDemon.value = demonList.value[demonList.value.length - 1]; 
                         prettify.value.modalString = "";
                         prettify.value.modal = false;
                         break;
+
                     case ("skill"):
                         let skillData = JSON.parse(prettify.value.modalString);
                         let skill = new Skill();  // Create a new Skill instance
@@ -120,109 +105,80 @@ export class DataMaster {
                         activeDemon.value.recalculateVitals(); // Recalculate the demon's stats
                         prettify.value.modalString = "";
                         prettify.value.modal = false;
+                        prettify.value.log.push("Imported Data to skill slot #" + this.skillSlot);
                         break;
                     case ("equipment"):
-                        let equipmentData = JSON.parse(prettify.value.modalString);
-                        let equipment = [];  
-                        
 
-                        equipmentData.forEach(ed =>{
+                    // Adds a list of equipment to the equipmentlist
+                    let equipmentData = JSON.parse(prettify.value.modalString);
+                        equipmentData.forEach(ed => {
                             let item = new Equipment('', '', 0)
-                            if (ed.itemType == 'Weapon'){
+                            if (ed.itemType == 'Weapon') {
                                 item = new Weapon('', '', 0, [], [], '');
-                            } else if (ed.itemType == 'Armor'){
-                                item = new Armor ('', '', 0, 0, 0, []);
-                            } else if (ed.itemType == 'Accessory'){
+                            } else if (ed.itemType == 'Armor') {
+                                item = new Armor('', '', 0, 0, 0, []);
+                            } else if (ed.itemType == 'Accessory') {
                                 item = new Accessory('', '', 0, []);
                             } else {
                                 return;
                             }
-                            item.id = crypto.randomUUID(); 
+                            item.id = crypto.randomUUID();
                             item.equipped = false;
                             item.equipper = '';
                             Object.assign(item, ed);
                             equipmentList.value.push(item);
                         });
 
-                        
+
                         prettify.value.modalString = "";
                         prettify.value.modal = false;
+                        
                         break;
                     case ("item"):
-                        console.log("got to item");
-                        let itemData = JSON.parse(prettify.value.modalString);
-                        let item = new Equipment('', '', 0)
-                        if (itemData.itemType == 'Weapon'){
-                            item = new Weapon('', '', 0, [], [], '');
-                        } else if (itemData.itemType == 'Armor'){
-                            item = new Armor ('', '', 0, 0, 0, []);
-                        } else if (itemData.itemType == 'Accessory'){
-                            item = new Accessory('', '', 0, []);
-                        } else {
-                            return;
+                        
+                        // Imports the data from Modalstring into the ItemList
+                        try {
+                            let itemData = JSON.parse(prettify.value.modalString);
+                            console.log("itemdata: ", itemData);
+                            let item = new Equipment('', '', 0)
+                            if (itemData.itemType == 'Weapon') {
+                                item = new Weapon('', '', 0, [], [], '');
+                            } else if (itemData.itemType == 'Armor') {
+                                item = new Armor('', '', 0, 0, 0, []);
+                            } else if (itemData.itemType == 'Accessory') {
+                                item = new Accessory('', '', 0, []);
+                            } else {
+                                prettify.value.modalString = "";
+                                prettify.value.modal = false;
+                                return;
+                            }
+                            
+                            Object.assign(item, itemData);
+                            
+                            item.id = crypto.randomUUID();
+                            item.equipped = false;
+                            item.equipper = '';
+                            
+                            equipmentList.value.push(item);
+                            prettify.value.log.push("Imported Data as an item");
+                            
+                            
+                            // Informs the uyser couldn't add data
+                        } catch {
+                            prettify.value.log.push("Could not import data");
                         }
-                        item.id = crypto.randomUUID(); 
-                        item.equipped = false;
-                        item.equipper = '';
-                        Object.assign(item, itemData);
-                        equipmentList.value.push(item);
+                        
+                        // Clears modal and ends case
                         prettify.value.modalString = "";
                         prettify.value.modal = false;
                         break;
                     case ("save"):
 
                         // Parse JSON 
-                        let iSaveData = JSON.parse(prettify.value.modalString);
-
-                        console.log("iSaveData: ", iSaveData);
-
-                        // Demons
-                        demonList.value = [];
-                        equipmentList.value = [];
-                        iSaveData.demons.forEach(demon => {
-
-                            let loopDemon = new Demon();
-                            Object.assign(loopDemon, demon);
-                            
-
-                            if (loopDemon.weapon) {
-                                let tempWeapon = new Weapon(loopDemon.weapon.name, loopDemon.weapon.description, 0, loopDemon.weapon.rollNames, loopDemon.weapon.rolls, "Weapon");
-                                tempWeapon.equipper = loopDemon.name;
-                                tempWeapon.equipped = true;
-
-                                loopDemon.equippedWeapon = tempWeapon;
-                                equipmentList.value.push(tempWeapon);
-                            }
-
-                            if (loopDemon.armor){
-                                let tempArmor = new Armor(loopDemon.armor[0], "", 0, loopDemon.armor[1], loopDemon.armor[2], []);
-                                console.log(loopDemon.armor[1], loopDemon.armor[2]);
-                                tempArmor.equipper = loopDemon.name;
-                                tempArmor.equipped = true;
-                                loopDemon.equippedArmor = tempArmor;
-                                equipmentList.value.push(tempArmor);
-                            }
-
-                            if (demon.accessories){
-                                demon.accessories.forEach((acc, index) => {
-                                    if(Array.isArray(acc) && acc[0] != ''){
-                                        console.log("#" +index + " acc[0]"+acc[0])
-                                        let portAcc = new Accessory(acc[0], '', 0, [acc[1]]);
-                                        portAcc.equipper = demon.name;
-                                        portAcc.equipped = true;
-                                        demon.accessories[index] = portAcc;
-                                        equipmentList.value.push(portAcc)
-                                    }
-                                })
-
-
-                            }
-
-                            demonList.value.push(loopDemon);
-
-                        });
-                        activeDemon.value = demonList.value[0];
-                        // Close Modal
+                        this.fileData = JSON.parse(prettify.value.modalString);
+                        localStorage.setItem("IMPORTDATA", JSON.stringify(this.fileData));
+                        this.saveFile = "IMPORTDATA";
+                        this.loadData();
 
                         prettify.value.modalString = "";
                         prettify.value.modal = false;
@@ -240,17 +196,14 @@ export class DataMaster {
 
         // Update fileData based on the current state of the game
         this.updateFileData = () => {
+
             this.fileData = {
-                // favoriteThing: "boobs",
                 demons: demonList.value,
                 colorScheme: colorScheme.value,
                 equipment: equipmentList.value,
-                universalNotes: prettify.value.universalNotes
-                // army: army.value
+                universalNotes: prettify.value.universalNotes,
+                version: "1.2.7"
             };
-            // console.log("file data", this.fileData);
-            // console.log("UpdateFileDataPrint:");
-            // console.log(this.fileData);
         }
 
         // Print the current fileData to the console nicely formatted
@@ -261,15 +214,26 @@ export class DataMaster {
 
         this.downloadData = (iType) => {
 
+            // Initialize variables for downloading
             let skillSlot = 0;
             let fileName = "saveddata";
             let fileExtension = "json";
-            if (iType.startsWith("skill") || iType.startsWith("item")) {
+
+
+            // Check if it's a skill or item to know to apply from the correct slot
+            if (iType.startsWith("skill")) {
                 skillSlot = parseInt(iType.charAt(iType.length - 1)) || 0;
                 iType = iType.slice(0, -1);
                 iType = iType.trim();
             }
 
+            if (iType.startsWith("item")) {
+                skillSlot = parseInt(iType.slice(4)) || 0;
+                iType = "item";
+            }
+
+
+            // Check the type of data being downloaded
             if (
                 iType !== "demon" &&
                 iType !== "skill" &&
@@ -287,9 +251,11 @@ export class DataMaster {
             }
 
 
-            // console.log(/);
+            // Prepares save and clears dataStr
             this.updateFileData();
             let dataStr = "";
+            
+            // Formates the dataStr based on Itype
             switch (iType) {
                 case ("demon"): dataStr = JSON.stringify(activeDemon.value, null, 2); fileExtension = "dmn"; fileName = activeDemon.value.name; break;
                 case ("save"): dataStr = JSON.stringify(this.fileData, null, 2); fileExtension = "rnw"; fileName = "SaveData"; break;
@@ -298,7 +264,7 @@ export class DataMaster {
                 case ("item"): dataStr = JSON.stringify(equipmentList.value[skillSlot - 1], null, 2); fileExtension = "skl"; fileName = equipmentList.value[skillSlot - 1].name; break;
             }
 
-            // console.log(fileName + ".json", dataStr );
+            // Actual Downloading
             const blob = new Blob([dataStr], { type: "application/json" });
             const link = document.createElement("a");
             link.href = URL.createObjectURL(blob);
@@ -307,39 +273,35 @@ export class DataMaster {
             link.click();
             document.body.removeChild(link);
         }
- 
 
         // Load saved data from localStorage and update game state
         this.loadData = () => {
             const savedData = localStorage.getItem(this.saveFile);
 
-            // console.log(savedData);
+
             if (savedData) {
+
+                // Checks for availablility and prepares data
                 this.fileData = JSON.parse(savedData);
-                if (this.fileData.demons.length < 1) { return; }
+                if (!this.fileData.demons) { prettify.value.log.push ("Could not load data"); return; }
                 demonList.value = [];
                 let demonsArray = this.fileData.demons;
-                let equipsArray = this.fileData.equipment;
                 equipmentList.value = this.fileData.equipment || [];
-                
+
+                let blackListedIDs = [];
+                equipmentList.value.forEach(item => {
+                    try { blackListedIDs.push(item.id) }
+                    catch { }
+                })
+
+
+                // starts the loop of demons for the save file's demonList
                 demonsArray.forEach(demonData => {
-                    // console.log(demonData);
 
-                    let demon = new Demon();  // Create a new Demon instance
-                    Object.assign(demon, demonData);  // Copy saved data into the demon instance
+                    let demon = new Demon();  
+                    assignExisting(demon, demonData);  
 
-
-                    // Fix the weapon
-                    // if (demon.weapon) {
-
-                    //     demon.equippedWeapon = new Weapon(demon.weapon.name, demon.weapon.description, 0, demon.weapon.rollNames, demon.weapon.rolls, "Weapon");
-                    // }
-
-                    // if (demon.armor){
-                    //     demon.equippedArmor = new Armor(demon.armor[0], "", 0, demon.armor[1], demon.armor[2], []);
-                    // }
-
-                    // Reconstruct each skill in the array
+                    // Prepares the demon's skills
                     if (Array.isArray(demon.skills)) {
                         demon.skills = demon.skills.map(skillData => new Skill(
                             skillData.name,
@@ -352,65 +314,63 @@ export class DataMaster {
                         })
                     }
 
-                    if (demon.weapon) {
-                                let tempWeapon = new Weapon(demon.weapon.name, demon.weapon.description, 0, demon.weapon.rollNames, demon.weapon.rolls, "Weapon");
-                                tempWeapon.equipper = demon.name;
-                                tempWeapon.equipped = true;
+                    // Turns the old weapon & armor type into the new type
+                    if (demonData.weapon) {
+                        let tempWeapon = new Weapon(demonData.weapon.name, demonData.weapon.description, 0, demonData.weapon.rollNames, demonData.weapon.rolls, "Weapon");
+                        tempWeapon.equipper = demon.name;
+                        tempWeapon.equipped = true;        
+                        demon.equippedWeapon = tempWeapon;
+                        equipmentList.value.push(tempWeapon);
+                    }
+                    
+                    if (demonData.armor) {
+                        let tempArmor = new Armor(demonData.armor[0], "", 0, demonData.armor[1], demonData.armor[2], []);
+                        tempArmor.equipper = demon.name;
+                        tempArmor.equipped = true;
+                        demon.equippedArmor = tempArmor;
+                        equipmentList.value.push(tempArmor);
+                    }
 
-                                demon.equippedWeapon = tempWeapon;
-                                equipmentList.value.push(tempWeapon);
-                                // delete demon.weapon;
+                    
+                    // Parses Accessories
+                    if (demon.accessories) {
+                        demon.accessories.forEach((acc, index) => {
+                            if (acc[0] == ''){
+                                demon.accessories[index] = {};
+                            } else
+                            if (Array.isArray(acc)) {
+                                // console.log("#" +index + " acc[0]"+acc[0])
+                                let portAcc = new Accessory(acc[0], '', 0, [acc[1]]);
+                                portAcc.equipper = demon.name;
+                                portAcc.equipped = true;
+                                demon.accessories[index] = portAcc;
+                                equipmentList.value.push(portAcc)
                             }
-
-                            if (demon.armor){
-                                let tempArmor = new Armor(demon.armor[0], "", 0, demon.armor[1], demon.armor[2], []);
-                                // console.log(demon.armor[1], demon.armor[2]);
-                                tempArmor.equipper = demon.name;
-                                tempArmor.equipped = true;
-                                demon.equippedArmor = tempArmor;
-                                equipmentList.value.push(tempArmor);
-                                // delete demon.armor;
-                            }
-
-                            if (demon.accessories){
-                                demon.accessories.forEach((acc, index) => {
-                                    if(Array.isArray(acc) && acc[0] != ''){
-                                        // console.log("#" +index + " acc[0]"+acc[0])
-                                        let portAcc = new Accessory(acc[0], '', 0, [acc[1]]);
-                                        portAcc.equipper = demon.name;
-                                        portAcc.equipped = true;
-                                        demon.accessories[index] = portAcc;
-                                        equipmentList.value.push(portAcc)
-                                    }
-                                })
-
-
-                            }
-
-
-                    demon.recalculateVitals();  // Optionally recalculate stats or do any necessary setup
-                    demonList.value.push(demon);  // Add the demon to the list
+                        })
+                    }
+                    // Adds the demon and updates
+                    demon.recalculateVitals();
+                    demonList.value.push(demon);
                 });
 
-                // console.log
-
+                // Loads the save file
+                prettify.value.log.push("Loaded: " + this.saveFile);
                 prettify.value.universalNotes = this.fileData.universalNotes;
-                
-                colorScheme.value = this.fileData.colorScheme || ['indigo', 'blue', 'sky', 'cyan', 'teal', 'emerald', 'green', 'purple', 'fuchsia' ];
-                // console.log(this.fileData);
 
-                // console.log(equipsArray);
-
-                // equipsArray.forEach(equipData => {
-                //     console.log("Demon Data:", demonData);
-                // });
+                // Loads the colorscheme
+                colorScheme.value = this.fileData.colorScheme || ['indigo', 'blue', 'sky', 'cyan', 'teal', 'emerald', 'green', 'purple', 'fuchsia'];
 
 
                 // Set the active demon
                 activeDemon.value = demonList.value[0];
-                
+
+                // Sync up
+                demonList.value.forEach(demon => {
+                    demon.getVariables();
+                });
+
             } else {
-                
+                prettify.value.log.push("Failed to load Data");
                 console.warn("Something went wrong bruv");
             }
         }
@@ -431,13 +391,31 @@ export class DataMaster {
             demonList.value.forEach(demon => {
                 demon.getVariables();
             });
-            // console.log("DemonList:");
-            // console.log(demonList);
             this.updateFileData();
             this.saveFile = "AUTOSAVE";
             this.saveData();
 
         }
 
+    }
+}
+
+// Assign existing is a function that makes it so if an object has extra keys, they are not added to the base object. Like Object.assign but without adding excess
+function assignExisting(target, source) {
+    for (const key of Object.keys(target)) {
+        if (!Object.hasOwn(source, key)) continue;
+
+        if (
+            target[key] !== null &&
+            source[key] !== null &&
+            typeof target[key] === "object" &&
+            typeof source[key] === "object" &&
+            !Array.isArray(target[key]) &&
+            !Array.isArray(source[key])
+        ) {
+            assignExisting(target[key], source[key]);
+        } else {
+            target[key] = source[key];
+        }
     }
 }

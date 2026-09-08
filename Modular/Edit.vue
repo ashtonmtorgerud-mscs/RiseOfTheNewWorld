@@ -214,7 +214,7 @@
                                         <div class="flex flex-col w-1/6 px-1"
                                             v-for="(value, key) in activeDemon.senses" :key="key">
                                             <label for="" :class="'border-b-2 mb-2 border-' + colorScheme[0] + '-500 font-bold text-white'">  {{ key.charAt(0).toUpperCase() + key.slice(1) }} </label>
-                                            <input type="text" v-model.number="activeDemon.senses[key]" name="" id="" :class="'h-1/4 bg-' + colorScheme[1] + '-950 text-white p-4 rounded-3xl ring-1 ring-' + colorScheme[3] + '-400'">
+                                            <input type="text" v-model.number="activeDemon.senses[key]" name="" id="" :class="'h-1/4 bg-' + colorScheme[1] + '-950 text-white p-4 rounded-3xl ring-1 ring-' + colorScheme[3] + '-400'"  @change="DataMaster.autoSave()">
                                         </div>
                                 </div>
 
@@ -229,7 +229,7 @@
                                                 {{ key.charAt(0).toUpperCase() + key.slice(1) }}
                                             </label>
                                             <input type="text" v-model.number="activeDemon.social[key]" name=""
-                                                id="hpBox" d
+                                                id="hpBox"  @change="DataMaster.autoSave()"
                                                 :class="'h-1/4 bg-' + colorScheme[1] + '-950 text-white p-4 rounded-3xl ring-1 ring-' + colorScheme[3] + '-400'">
                                         </div>
                                 </div>
@@ -245,7 +245,7 @@
                                                 {{ key.charAt(0).toUpperCase() + key.slice(1) }}
                                             </label>
                                             <input type="text" v-model.number="activeDemon.academia[key]" name=""
-                                                id="hpBox" d
+                                                id="hpBox" @change="DataMaster.autoSave()"
                                                 :class="'h-1/4 bg-' + colorScheme[1] + '-950 text-white p-4 rounded-3xl ring-1 ring-' + colorScheme[3] + '-400'">
                                         </div>
                                 </div>
@@ -256,19 +256,19 @@
                                     <!-- Stats for -->
                                         <div class="flex flex-col mx-auto" style="width: 20%">
                                             <label for="" :class="'border-b-2 mb-2 border-' + colorScheme[0] + '-500 font-bold text-white'"> IQ: </label>
-                                            <input type="text" v-model.number="activeDemon.iq" name="" id="" :class="'h-1/4 bg-' + colorScheme[1] + '-950 text-white p-4 rounded-3xl ring-1 ring-' + colorScheme[3] + '-400'">
+                                            <input type="text" v-model.number="activeDemon.iq" name="" id="" :class="'h-1/4 bg-' + colorScheme[1] + '-950 text-white p-4 rounded-3xl ring-1 ring-' + colorScheme[3] + '-400'" @change="DataMaster.autoSave()">
                                         </div>
                                         <div class="flex flex-col mx-auto" style="width: 20%">
                                             <label for="" :class="'border-b-2 mb-2 border-' + colorScheme[0] + '-500 font-bold text-white'"> Carry: </label>
-                                            <input type="text" v-model.number="activeDemon.carry" name="" id="" :class="'h-1/4 bg-' + colorScheme[1] + '-950 text-white p-4 rounded-3xl ring-1 ring-' + colorScheme[3] + '-400'">
+                                            <input type="text" v-model.number="activeDemon.carry" name="" id="" :class="'h-1/4 bg-' + colorScheme[1] + '-950 text-white p-4 rounded-3xl ring-1 ring-' + colorScheme[3] + '-400'" @change="DataMaster.autoSave()">
                                         </div>
                                         <div class="flex flex-col mx-auto" style="width: 20%">
                                             <label for="" :class="'border-b-2 mb-2 border-' + colorScheme[0] + '-500 font-bold text-white'"> Speed: </label>
-                                            <input type="text" v-model.number="activeDemon.speed" name="" id="" :class="'h-1/4 bg-' + colorScheme[1] + '-950 text-white p-4 rounded-3xl ring-1 ring-' + colorScheme[3] + '-400'">
+                                            <input type="text" v-model.number="activeDemon.speed" name="" id="" :class="'h-1/4 bg-' + colorScheme[1] + '-950 text-white p-4 rounded-3xl ring-1 ring-' + colorScheme[3] + '-400'" @change="DataMaster.autoSave()">
                                         </div>
                                         <div class="flex flex-col mx-auto" style="width: 20%">
                                             <label for="" :class="'border-b-2 mb-2 border-' + colorScheme[0] + '-500 font-bold text-white'"> Willpower: </label>
-                                            <input type="text" v-model.number="activeDemon.willPower" name="" id="" :class="'h-1/4 bg-' + colorScheme[1] + '-950 text-white p-4 rounded-3xl ring-1 ring-' + colorScheme[3] + '-400'">
+                                            <input type="text" v-model.number="activeDemon.willPower" name="" id="" :class="'h-1/4 bg-' + colorScheme[1] + '-950 text-white p-4 rounded-3xl ring-1 ring-' + colorScheme[3] + '-400'" @change="DataMaster.autoSave()">
                                         </div>
                                         <div class="flex flex-col mx-auto ml-5" style="width: 15%">
                                             <label for="" :class="'border-b-2 mb-2 border-' + colorScheme[0] + '-500 font-bold text-white'"> Skill Count: </label>

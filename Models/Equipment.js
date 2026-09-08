@@ -3,13 +3,11 @@ export class Equipment {
         this.id = crypto.randomUUID(); 
         this.name = iName;
         this.description = iDescription;
-        // this.requiredTags = [] || iRequiredTags; iRequiredTags, iExcludedTags,
-        // this.excludedTags = [] || iExcludedTags;
         this.weight = iWeight;
         this.equipped = false;
         this.equipper = "";
+        this.grade = 0;
     }
-    
 }
 
 
@@ -33,9 +31,7 @@ export class Weapon extends Equipment {
                 this.rollNames.splice(i, 1);
             }
         }
-
     }
-
 }
 
 export class Armor extends Equipment {
@@ -44,19 +40,16 @@ export class Armor extends Equipment {
         this.resistance = iResistance;
         this.evasion = iEvasion;
         this.boxes = iBoxes || [];
-        // this.icon = iIcon;
         this.itemType = "Armor";
         this.default = false;
     }
 }
 
-// let kevlar = ;
 
 export class Accessory extends Equipment {
     constructor(iName, iDescription, iWeight, iBoxes ){
         super(iName, iDescription, iWeight);
         this.boxes = iBoxes || [];
         this.itemType = "Accessory";
-
     }
 }

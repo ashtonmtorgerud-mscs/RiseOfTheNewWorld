@@ -9,9 +9,9 @@
     <link rel="icon" type="image/x-icon" href="Resources/HeeHo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-    <link rel="stylesheet" href=".\ROTNW.css">
+    <link rel="stylesheet" href="./Resources/ROTNW.css">
     <!-- <script src="ROTNW.js"></script> -->
-    <script src="rules.js"></script>
+    <script src="./Resources/rules.js"></script>
 
 
 </head>
@@ -36,6 +36,7 @@
                     <a @click="page = 5" class="font-bold">Affinities</a>
                     <a @click="page = 6" class="font-bold">Ailments</a>
                     <a @click="page = 7" class="font-bold">Skills</a>
+                    <a @click="page = 8" class="font-bold">Rulings</a>
                 </p>
 
             </div>
@@ -195,6 +196,7 @@
                         reduced by the rolled Will, the ailment is removed when the resist potency reaches 0.
                         If a skill inflicts damage and an ailment and the damage is blocked, dodged, drained, or repelled, the
                         ailment does not apply irregardless of it's ailment affinity.
+                        Multi-hit attacks that inflict ailments such as fire breath, do not by default inflict ailments multiple times 
                         <br>
                         Here is a list of ailments and their effects:
                     </p>
@@ -203,7 +205,7 @@
                             <tr>
                                 <th class="border border-white p-1 text-xl"><b>Burning</b></th>
                                 <th class="border border-white p-2">
-                                    Takes Fire damage at the start of each turn. The condition ends if the demon takes ice damage
+                                    Takes Fire damage at the start of each turn. The condition ends if the demon takes ice damage. The damage is inflicted AFTER the initial will save to reduce potency.
                                     (including nulling or draining it, but not dodging or repelling)
                                 </th>
                             </tr>
@@ -253,7 +255,7 @@
                             </tr>
 
                             <tr>
-                                <th class="border border-white p-1 text-xl"><b>Mute</b></th>
+                                <th class="border border-white p-1 text-xl"><b>Seal/Mute</b></th>
                                 <th class="border border-white p-2">
                                     Cannot activate skills
                                 </th>
@@ -361,21 +363,23 @@
             </div>
 
             <div class="h-[95%]" v-if="page === 8">
-                <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400 h-[6%]">Sequence and Chains</h1>
+                <h1 class="w-full text-left font-bold text-5xl border-b-2 border-indigo-500 text-emerald-400 h-[6%]">Extra Rulings</h1>
                 <div class=" overflow-y-auto max-h-[90%]">
                     <p class="text-xl text-emerald-100 font-thin my-2 text-left">
                         Certain skills apply in a sequence. For example, elemental skills like Agi and Bufu inflict an ailment after inflicting damage. If an enemy is weak or resistant to the ailment, it does not affect turn counters as the ailment infliction is a secondary effect. In addition, if a demon is immune to/repels/drains an element, the ailment or secondary effect is not inflicted, and make even be reflected.
                         <br>
-                        Certain skills happen in reaction to other skills, in which, the reaction skills resolve before the initial skills. Even if multiple reaction skills happen in sequence, the effects resolve in a reverse order of activation. if two reaction effects would attempt to activate at the same time, the order is determined by battle speed, with the higher speed activating first.
+                        Certain skills happen in reaction to other skills, in which, the reaction skills resolve before the initial skills. Even if multiple reaction skills happen in sequence, the effects resolve in a reverse order of activation. If two reaction effects would attempt to activate at the same time, the order is determined by battle speed, with the higher speed activating first.
+                        <br>
+                        If your aim would be higher than your crit rate, but lower than the target's evasion, the crit does not override the miss. Thought 96-HIT and higher automatically hit.
+                        <br>
+                        If you wouuld roll a perfect 100 on an attack's aim, inflict double damage. 
                     </p>
                 </div>
-
             </div>
 
 
             <div class="max-h-[5%] w-full flex flex-row">
                 <div class="h-full w-1/2 flex gap-2">
-                    <a href="Home.html"><input type="button" value="Home Menu" class="rounded-2xl bg-sky-500 hover:bg-sky-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" @click="page=-1"></a></a>
                     <input type="button" value="Index" class="rounded-2xl bg-emerald-500 hover:bg-emerald-700 text-white font-bold px-5 py-2 ring-1 ring-white float-left" v-if="page > -1" @click="page=-1">
                     
                 </div>
